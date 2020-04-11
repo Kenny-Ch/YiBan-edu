@@ -1,59 +1,110 @@
-<!--index.wxml-->
-<view class="container">
-
-  <!-- 用户 openid -->
-  <view class="userinfo">
-    <button 
-      open-type="getUserInfo" 
-      bindgetuserinfo="onGetUserInfo"
-      class="userinfo-avatar"
-      style="background-image: url({{avatarUrl}})"
-      size="default"
-    ></button>
-    <view class="userinfo-nickname-wrapper">
-      <button class="userinfo-nickname" bindtap="onGetOpenid">点击获取 openid</button>
-    </view>
-  </view>
-
-
-  <!-- 上传图片 -->
-  <view class="uploader">
-    <view class="uploader-text" bindtap="doUpload">
-      <text>上传图片</text>
-    </view>
-    <view class="uploader-container" wx:if="{{imgUrl}}">
-      <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
-    </view>
-  </view>
-
-
-  <!-- 操作数据库 -->
-  <view class="uploader">
-    <navigator url="../databaseGuide/databaseGuide" open-type="navigate" class="uploader-text">
-      <text>前端操作数据库</text>
-    </navigator>
-  </view>
-
-  <!-- 即时通信 -->
-  <view class="uploader">
-    <navigator url="../im/im" open-type="navigate" class="uploader-text">
-      <text>即时通信 Demo</text>
-    </navigator>
-  </view>
-
-  <!-- 新建云函数 -->
-  <view class="uploader">
-    <navigator url="../addFunction/addFunction" open-type="navigate" class="uploader-text">
-      <text>快速新建云函数</text>
-    </navigator>
-  </view>
-
-  <!-- 云调用 -->
-  <view class="uploader">
-    <navigator url="../openapi/openapi" open-type="navigate" class="uploader-text">
-      <text>云调用</text>
-    </navigator>
-  </view>
-
-
+<!--miniprogram/pages/index/index.wxml-->
+<!--导航栏-->
+<cu-custom bgColor="bg-gradual-orange" isBack="{{false}}">
+	<view slot="content"></view>
+</cu-custom>
+<!--标题-->
+<view class='head'>
+	<view class='head-left'>
+		<text class="title">以伴伴学</text>
+		<text class="underTitle">以伴已陪伴你度过{{day}}天了</text>
+	</view>
+	<view class='head-right'>
+		<image src="../../images/user.png" class='head-right-icon'></image>
+	</view>
 </view>
+<image src="../../images/head.png" class='head-under'></image>
+<!--标题以下-->
+<view class='under'>
+	<!--可移动卡片-->
+	<swiper class="card-swiper" indicator-dots="{{false}}" bindchange="cardSwiper" >
+		<swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}}">
+			<view class="swiper-item">
+				<view class="card">
+					<view class="card-bigtitle">{{item.big_title}}</view>
+					<view class="card-title">{{item.title}}</view>
+					<view class="card-smalltitle">{{item.small_title}}</view>
+					<button class='cu-btn round card-button-text' style="width: 342rpx;min-height: 60rpx;background-color: rgba(254, 123, 111, 1);color: rgba(255, 255, 255, 1);">{{item.button}}</button>
+				</view>
+			</view>
+		</swiper-item>
+	</swiper>
+	<!--首页主要内容-->
+	<view class="body">
+		<!--学习解压-->
+		<view class="learning">
+			<text class="learning-title">学习解压</text>
+			<view class="leaning-item">
+				<!--每日打卡-->
+				<view class="leaning-blue">
+					<text class="cuIcon-punch" style="margin-top:15rpx;width: 60rpx;height: 60rpx;font-size: 60rpx;color: rgba(255, 255, 255, 1);"></text>
+					<text class="leaning-text">每日打卡</text>
+				</view>
+				<!--心灵解压馆-->
+				<view class="leaning-orange">
+					<text class="cuIcon-emoji" style="margin-top:15rpx;width: 60rpx;height: 60rpx;font-size: 60rpx;color: rgba(255, 255, 255, 1);"></text>
+					<text class="leaning-text">心灵解压馆</text>
+				</view>
+			</view>
+		</view>
+		<!--三大部分-->
+		<scroll-view scroll-x class='three-nav' scroll-left='{{x}}' scroll-with-animation='true' bindtap='tabSelect'>
+　		<text wx:for='{{three}}' wx:key='{{index}}' class='item-nav {{i==index ? "active" : ""}}' data-i='{{index}}'>{{item.title}}</text>
+		</scroll-view>
+		<swiper current="{{i}}" class="swiper-box" duration="300" style="height:900rpx" bindchange="bindChange" >
+			<!--知识储备站-->
+			<swiper-item>
+				<scroll-view scroll-y="{{true}}" style="height:950rpx">
+					<view class='three-block' wx:for="{{knowledgeReserve}}">
+						<view class='three-card'>
+							<image src="{{item.image}}" class='three-card-image'></image>
+							<view class='three-card-text'>
+								<text class="three-card-text-left">{{item.left}}</text>
+								<view class="three-card-text-right">
+									<view class='three-card-text-right-watch'>点击查看</view>
+									<image src='../../images/rightArrow.png' class='three-card-text-right-icon' style="width: 40rpx;height: 40rpx;"></image>
+								</view>
+							</view>
+						</view>
+					</view>
+				</scroll-view>
+			</swiper-item>
+			<!--升学梦工厂-->
+			<swiper-item>
+				<scroll-view scroll-y="{{true}}" style="height:950rpx">
+					<view class='three-block' wx:for="{{knowledgeReserve}}">
+						<view class='three-card'>
+							<image src="{{item.image}}" class='three-card-image'></image>
+							<view class='three-card-text'>
+								<text class="three-card-text-left">{{item.left}}</text>
+								<view class="three-card-text-right">
+
+								</view>
+							</view>
+						</view>
+					</view>
+				</scroll-view>
+			</swiper-item>
+			<!--以伴课堂-->
+			<swiper-item>
+				<scroll-view scroll-y="{{true}}" style="height:950rpx">
+					<view class='three-block' wx:for="{{knowledgeReserve}}">
+						<view class='three-card'>
+							<image src="{{item.image}}" class='three-card-image'></image>
+							<view class='three-card-text'>
+								<text class="three-card-text-left">{{item.left}}</text>
+								<view class="three-card-text-right">
+
+								</view>
+							</view>
+						</view>
+					</view>
+				</scroll-view>
+			</swiper-item>
+		</swiper>
+
+	</view>
+</view>
+
+
+

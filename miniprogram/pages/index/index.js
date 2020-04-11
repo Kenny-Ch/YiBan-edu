@@ -1,120 +1,150 @@
-//index.js
+// miniprogram/pages/index/index.js
 const app = getApp()
 
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    avatarUrl: './user-unlogin.png',
-    userInfo: {},
-    logged: false,
-    takeSession: false,
-    requestResult: ''
+    cardCur: 0,
+    day:30,
+    swiperList: [{
+      id: 0,
+      big_title:"寻找你的以伴老师",
+      title: "高考陪伴公益行",
+      small_title:"对教育资源较为落后的四五线城市高中生进行“一对一高考陪伴”，助力高中生考上理想的大学院校！",
+      button:"开始匹配",
+    }, {
+      id: 1,
+      big_title:"寻找你的以伴老师",
+      title: "高考陪伴公益行",
+      small_title:"对教育资源较为落后的四五线城市高中生进行“一对一高考陪伴”，助力高中生考上理想的大学院校！",
+      button:"开始匹配",
+    }, {
+      id: 2,
+      big_title:"寻找你的以伴老师",
+      title: "高考陪伴公益行",
+      small_title:"对教育资源较为落后的四五线城市高中生进行“一对一高考陪伴”，助力高中生考上理想的大学院校！",
+      button:"开始匹配",
+    }],
+    three:[{
+      title:"知识储备站",
+    },{
+      title:"升学梦工厂",
+    },{
+      title:"以伴课堂",
+    }],
+    i:0,
+    x:0,
+    clientHeight: 0,
+    knowledgeReserve:[{
+      image:"../../images/learningMethod.png",
+      left:"学科学习法",
+    },{
+      image:"../../images/LearningMaterials.png",
+      left:"学习资料分享",
+    },{
+      image:"../../images/experienceSharing.png",
+      left:"高考心得分享",
+    }],
   },
-
-  onLoad: function() {
-    if (!wx.cloud) {
-      wx.redirectTo({
-        url: '../chooseLib/chooseLib',
-      })
-      return
-    }
-
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              this.setData({
-                avatarUrl: res.userInfo.avatarUrl,
-                userInfo: res.userInfo
-              })
-            }
-          })
-        }
-      }
+  changeSwipe:function(event) {
+    console.log(event.detail.current);
+    var type =event.detail.current;
+    this.setData({
+      i: type
+    });
+  },
+  tabSelect: function (e) {
+    console.log(e.target.dataset.i)
+    /*获取可视窗口宽度*/
+  　var w=wx.getSystemInfoSync().windowWidth;
+  　var leng=this.data.three.length;
+  　var i = e.target.dataset.i;
+  　var disX = (i - 2) * w / leng;
+  　if(i!=this.data.i){
+  　　this.setData({
+    　　i: e.target.dataset.i
+  　　})
+  　}
+  　this.setData({
+  　　x:disX
+  　})
+  },
+  cardSwiper: function (e) {
+    this.setData({
+      cardCur: e.detail.current,
     })
   },
 
-  onGetUserInfo: function(e) {
-    if (!this.data.logged && e.detail.userInfo) {
-      this.setData({
-        logged: true,
-        avatarUrl: e.detail.userInfo.avatarUrl,
-        userInfo: e.detail.userInfo
-      })
-    }
+
+ onLoad: function () {
+  var that = this;
+  wx.getSystemInfo({
+   success: function (res) {
+    that.setData({
+     clientHeight: res.windowHeight
+    });
+   }
+  });
+ },
+ bindChange: function (e) {
+  var that = this;
+  that.setData({ 
+    i: e.detail.current 
+  });
+ },
+
+
+
+  
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
   },
 
-  onGetOpenid: function() {
-    // 调用云函数
-    wx.cloud.callFunction({
-      name: 'login',
-      data: {},
-      success: res => {
-        console.log('[云函数] [login] user openid: ', res.result.openid)
-        app.globalData.openid = res.result.openid
-        wx.navigateTo({
-          url: '../userConsole/userConsole',
-        })
-      },
-      fail: err => {
-        console.error('[云函数] [login] 调用失败', err)
-        wx.navigateTo({
-          url: '../deployFunctions/deployFunctions',
-        })
-      }
-    })
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
   },
 
-  // 上传图片
-  doUpload: function () {
-    // 选择图片
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['compressed'],
-      sourceType: ['album', 'camera'],
-      success: function (res) {
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
 
-        wx.showLoading({
-          title: '上传中',
-        })
-
-        const filePath = res.tempFilePaths[0]
-        
-        // 上传图片
-        const cloudPath = 'my-image' + filePath.match(/\.[^.]+?$/)[0]
-        wx.cloud.uploadFile({
-          cloudPath,
-          filePath,
-          success: res => {
-            console.log('[上传文件] 成功：', res)
-
-            app.globalData.fileID = res.fileID
-            app.globalData.cloudPath = cloudPath
-            app.globalData.imagePath = filePath
-            
-            wx.navigateTo({
-              url: '../storageConsole/storageConsole'
-            })
-          },
-          fail: e => {
-            console.error('[上传文件] 失败：', e)
-            wx.showToast({
-              icon: 'none',
-              title: '上传失败',
-            })
-          },
-          complete: () => {
-            wx.hideLoading()
-          }
-        })
-
-      },
-      fail: e => {
-        console.error(e)
-      }
-    })
   },
 
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
 })
