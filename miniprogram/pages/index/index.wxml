@@ -51,10 +51,10 @@
 		<scroll-view scroll-x class='three-nav' scroll-left='{{x}}' scroll-with-animation='true' bindtap='tabSelect'>
 　		<text wx:for='{{three}}' wx:key='{{index}}' class='item-nav {{i==index ? "active" : ""}}' data-i='{{index}}'>{{item.title}}</text>
 		</scroll-view>
-		<swiper current="{{i}}" class="swiper-box" duration="300" style="height:900rpx" bindchange="bindChange" >
+		<swiper current="{{i}}" class="swiper-box" duration="300" style="height:920rpx" bindchange="bindChange" >
 			<!--知识储备站-->
 			<swiper-item>
-				<scroll-view scroll-y="{{true}}" style="height:950rpx">
+				<scroll-view scroll-y="{{true}}" style="height:920rpx">
 					<view class='three-block' wx:for="{{knowledgeReserve}}">
 						<view class='three-card'>
 							<image src="{{item.image}}" class='three-card-image'></image>
@@ -71,7 +71,7 @@
 			</swiper-item>
 			<!--升学梦工厂-->
 			<swiper-item>
-				<scroll-view scroll-y="{{true}}" style="height:950rpx">
+				<scroll-view scroll-y="{{true}}" style="height:920rpx">
 					<view class='three-block' wx:for="{{knowledgeReserve}}">
 						<view class='three-card'>
 							<image src="{{item.image}}" class='three-card-image'></image>
@@ -87,7 +87,7 @@
 			</swiper-item>
 			<!--以伴课堂-->
 			<swiper-item>
-				<scroll-view scroll-y="{{true}}" style="height:950rpx">
+				<scroll-view scroll-y="{{true}}" style="height:920rpx">
 					<view class='three-block' wx:for="{{knowledgeReserve}}">
 						<view class='three-card'>
 							<image src="{{item.image}}" class='three-card-image'></image>
@@ -102,7 +102,6 @@
 				</scroll-view>
 			</swiper-item>
 		</swiper>
-
 	</view>
 </view>
 

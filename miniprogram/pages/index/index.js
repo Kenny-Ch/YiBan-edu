@@ -49,9 +49,10 @@ Page({
       left:"高考心得分享",
     }],
   },
-  changeSwipe:function(event) {
-    console.log(event.detail.current);
-    var type =event.detail.current;
+  changeSwipe:function(e) {
+    var adress=(e.detail.current==0)?"知识储备站":((e.detail.current==1)?"升学梦工厂":"以伴课堂");
+    console.log("目前在",adress);
+    var type =e.detail.current;
     this.setData({
       i: type
     });
@@ -90,6 +91,8 @@ Page({
   });
  },
  bindChange: function (e) {
+   var adress=(e.detail.current==0)?"知识储备站":((e.detail.current==1)?"升学梦工厂":"以伴课堂");
+   console.log("目前在",adress);
   var that = this;
   that.setData({ 
     i: e.detail.current 
