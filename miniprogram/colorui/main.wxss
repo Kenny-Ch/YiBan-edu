@@ -144,9 +144,7 @@ image.loading::after {
          开关
  ==================== */
 
-switch,
-checkbox,
-radio {
+switch{
 	position: relative;
 }
 
@@ -192,33 +190,7 @@ switch[checked]::before {
 	transform: scale(0, 0);
 }
 
-radio::before,
-checkbox::before {
-	font-family: "cuIcon";
-	content: "\e645";
-	position: absolute;
-	color: var(--white) !important;
-	top: 50%;
-	margin-top: -8px;
-	right: 5px;
-	font-size: 32rpx;
-	line-height: 16px;
-	pointer-events: none;
-	transform: scale(1, 1);
-	transition: all 0.3s ease-in-out 0s;
-	z-index: 9;
-}
 
-radio .wx-radio-input,
-checkbox .wx-checkbox-input {
-	margin: 0;
-	width: 24px;
-	height: 24px;
-}
-
-checkbox.round .wx-checkbox-input {
-	border-radius: 100rpx;
-}
 
 switch .wx-switch-input {
 	border: none;
@@ -253,10 +225,6 @@ switch .wx-switch-input.wx-switch-input-checked::after {
 	transform: scale(0.9, 0.9);
 }
 
-radio-group {
-	display: inline-block;
-}
-
 
 
 switch.radius .wx-switch-input::after,
@@ -265,30 +233,10 @@ switch.radius .wx-switch-input::before {
 	border-radius: 10rpx;
 }
 
-switch .wx-switch-input::before,
-radio.radio::before,
-checkbox .wx-checkbox-input::before,
-radio .wx-radio-input::before,
-radio.radio::before {
+switch .wx-switch-input::before {
 	display: none;
 }
 
-radio.radio[checked]::after {
-	content: "";
-	background-color: transparent;
-	display: block;
-	position: absolute;
-	width: 8px;
-	height: 8px;
-	z-index: 999;
-	top: 0rpx;
-	left: 0rpx;
-	right: 0;
-	bottom: 0;
-	margin: auto;
-	border-radius: 200rpx;
-	border: 8px solid var(--white) !important;
-}
 
 .switch-sex::after {
 	content: "\e71c";
@@ -308,201 +256,138 @@ radio.radio[checked]::after {
 	border-color: var(--blue) !important;
 }
 
-switch.red[checked] .wx-switch-input,
-checkbox.red[checked] .wx-checkbox-input,
-radio.red[checked] .wx-radio-input {
+switch.red[checked] .wx-switch-input{
 	border-color: var(--red) !important;
 }
 
-switch.orange[checked] .wx-switch-input,
-checkbox.orange[checked] .wx-checkbox-input,
-radio.orange[checked] .wx-radio-input {
+switch.orange[checked] .wx-switch-input{
 	border-color: var(--orange) !important;
 }
 
-switch.yellow[checked] .wx-switch-input,
-checkbox.yellow[checked] .wx-checkbox-input,
-radio.yellow[checked] .wx-radio-input {
+switch.yellow[checked] .wx-switch-input{
 	border-color: var(--yellow) !important;
 }
 
-switch.olive[checked] .wx-switch-input,
-checkbox.olive[checked] .wx-checkbox-input,
-radio.olive[checked] .wx-radio-input {
+switch.olive[checked] .wx-switch-input{
 	border-color: var(--olive) !important;
 }
 
-switch.green[checked] .wx-switch-input,
-checkbox.green[checked] .wx-checkbox-input,
-checkbox[checked] .wx-checkbox-input,
-radio.green[checked] .wx-radio-input {
+switch.green[checked] .wx-switch-input{
 	border-color: var(--green) !important;
 }
 
-switch.cyan[checked] .wx-switch-input,
-checkbox.cyan[checked] .wx-checkbox-input,
-radio.cyan[checked] .wx-radio-input {
+switch.cyan[checked] .wx-switch-input{
 	border-color: var(--cyan) !important;
 }
 
-switch.blue[checked] .wx-switch-input,
-checkbox.blue[checked] .wx-checkbox-input,
-radio.blue[checked] .wx-radio-input {
+switch.blue[checked] .wx-switch-input {
 	border-color: var(--blue) !important;
 }
 
-switch.purple[checked] .wx-switch-input,
-checkbox.purple[checked] .wx-checkbox-input,
-radio.purple[checked] .wx-radio-input {
+switch.purple[checked] .wx-switch-input{
 	border-color: var(--purple) !important;
 }
 
-switch.mauve[checked] .wx-switch-input,
-checkbox.mauve[checked] .wx-checkbox-input,
-radio.mauve[checked] .wx-radio-input {
+switch.mauve[checked] .wx-switch-input{
 	border-color: var(--mauve) !important;
 }
 
-switch.pink[checked] .wx-switch-input,
-checkbox.pink[checked] .wx-checkbox-input,
-radio.pink[checked] .wx-radio-input {
+switch.pink[checked] .wx-switch-input{
 	border-color: var(--pink) !important;
 }
 
-switch.brown[checked] .wx-switch-input,
-checkbox.brown[checked] .wx-checkbox-input,
-radio.brown[checked] .wx-radio-input {
+switch.brown[checked] .wx-switch-input {
 	border-color: var(--brown) !important;
 }
 
-switch.grey[checked] .wx-switch-input,
-checkbox.grey[checked] .wx-checkbox-input,
-radio.grey[checked] .wx-radio-input {
+switch.grey[checked] .wx-switch-input {
 	border-color: var(--grey) !important;
 }
 
-switch.gray[checked] .wx-switch-input,
-checkbox.gray[checked] .wx-checkbox-input,
-radio.gray[checked] .wx-radio-input {
+switch.gray[checked] .wx-switch-input {
 	border-color: var(--grey) !important;
 }
 
-switch.black[checked] .wx-switch-input,
-checkbox.black[checked] .wx-checkbox-input,
-radio.black[checked] .wx-radio-input {
+switch.black[checked] .wx-switch-input {
 	border-color: var(--black) !important;
 }
 
-switch.white[checked] .wx-switch-input,
-checkbox.white[checked] .wx-checkbox-input,
-radio.white[checked] .wx-radio-input {
+switch.white[checked] .wx-switch-input {
 	border-color: var(--white) !important;
 }
 
-switch.red[checked] .wx-switch-input.wx-switch-input-checked,
-checkbox.red[checked] .wx-checkbox-input,
-radio.red[checked] .wx-radio-input {
+switch.red[checked] .wx-switch-input.wx-switch-input-checked {
 	background-color: var(--red) !important;
 	color: var(--white) !important;
 }
 
-switch.orange[checked] .wx-switch-input,
-checkbox.orange[checked] .wx-checkbox-input,
-radio.orange[checked] .wx-radio-input {
+switch.orange[checked] .wx-switch-input {
 	background-color: var(--orange) !important;
 	color: var(--white) !important;
 }
 
-switch.yellow[checked] .wx-switch-input,
-checkbox.yellow[checked] .wx-checkbox-input,
-radio.yellow[checked] .wx-radio-input {
+switch.yellow[checked] .wx-switch-input {
 	background-color: var(--yellow) !important;
 	color: var(--black) !important;
 }
 
-switch.olive[checked] .wx-switch-input,
-checkbox.olive[checked] .wx-checkbox-input,
-radio.olive[checked] .wx-radio-input {
+switch.olive[checked] .wx-switch-input {
 	background-color: var(--olive) !important;
 	color: var(--white) !important;
 }
 
 switch.green[checked] .wx-switch-input,
-switch[checked] .wx-switch-input,
-checkbox.green[checked] .wx-checkbox-input,
-checkbox[checked] .wx-checkbox-input,
-radio.green[checked] .wx-radio-input,
-radio[checked] .wx-radio-input {
+switch[checked] .wx-switch-input{
 	background-color: var(--green) !important;
 	color: var(--white) !important;
 }
 
-switch.cyan[checked] .wx-switch-input,
-checkbox.cyan[checked] .wx-checkbox-input,
-radio.cyan[checked] .wx-radio-input {
+switch.cyan[checked] .wx-switch-input{
 	background-color: var(--cyan) !important;
 	color: var(--white) !important;
 }
 
-switch.blue[checked] .wx-switch-input,
-checkbox.blue[checked] .wx-checkbox-input,
-radio.blue[checked] .wx-radio-input {
+switch.blue[checked] .wx-switch-input{
 	background-color: var(--blue) !important;
 	color: var(--white) !important;
 }
 
-switch.purple[checked] .wx-switch-input,
-checkbox.purple[checked] .wx-checkbox-input,
-radio.purple[checked] .wx-radio-input {
+switch.purple[checked] .wx-switch-input {
 	background-color: var(--purple) !important;
 	color: var(--white) !important;
 }
 
-switch.mauve[checked] .wx-switch-input,
-checkbox.mauve[checked] .wx-checkbox-input,
-radio.mauve[checked] .wx-radio-input {
+switch.mauve[checked] .wx-switch-input{
 	background-color: var(--mauve) !important;
 	color: var(--white) !important;
 }
 
-switch.pink[checked] .wx-switch-input,
-checkbox.pink[checked] .wx-checkbox-input,
-radio.pink[checked] .wx-radio-input {
+switch.pink[checked] .wx-switch-input {
 	background-color: var(--pink) !important;
 	color: var(--white) !important;
 }
 
-switch.brown[checked] .wx-switch-input,
-checkbox.brown[checked] .wx-checkbox-input,
-radio.brown[checked] .wx-radio-input {
+switch.brown[checked] .wx-switch-input {
 	background-color: var(--brown) !important;
 	color: var(--white) !important;
 }
 
-switch.grey[checked] .wx-switch-input,
-checkbox.grey[checked] .wx-checkbox-input,
-radio.grey[checked] .wx-radio-input {
+switch.grey[checked] .wx-switch-input{
 	background-color: var(--grey) !important;
 	color: var(--white) !important;
 }
 
-switch.gray[checked] .wx-switch-input,
-checkbox.gray[checked] .wx-checkbox-input,
-radio.gray[checked] .wx-radio-input {
+switch.gray[checked] .wx-switch-input {
 	background-color: #f0f0f0 !important;
 	color: var(--black) !important;
 }
 
-switch.black[checked] .wx-switch-input,
-checkbox.black[checked] .wx-checkbox-input,
-radio.black[checked] .wx-radio-input {
+switch.black[checked] .wx-switch-input {
 	background-color: var(--black) !important;
 	color: var(--white) !important;
 }
 
-switch.white[checked] .wx-switch-input,
-checkbox.white[checked] .wx-checkbox-input,
-radio.white[checked] .wx-radio-input {
+switch.white[checked] .wx-switch-input {
 	background-color: var(--white) !important;
 	color: var(--black) !important;
 }

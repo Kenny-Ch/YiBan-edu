@@ -11,7 +11,7 @@
 	},
 	"appid": "wx7a4010768611ebc5",
 	"projectname": "YiBan-edu",
-	"libVersion": "2.8.1",
+	"libVersion": "2.10.4",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
@@ -48,6 +48,48 @@
 					"id": -1,
 					"name": "pages/test/test",
 					"pathName": "pages/test/test",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/matching/matching",
+					"pathName": "pages/matching/matching",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/display/artical/artical",
+					"pathName": "pages/display/artical/artical",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/decompress/heart/heart",
+					"pathName": "pages/decompress/heart/heart",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/decompress/heart/question/question",
+					"pathName": "pages/decompress/heart/question/question",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/decompress/heart/community/community",
+					"pathName": "pages/decompress/heart/community/community",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/display/detail/detail",
+					"pathName": "pages/display/detail/detail",
 					"scene": null
 				}
 			]

@@ -1,0 +1,136 @@
+/* miniprogram/pages/matching/matching.wxss */
+.title{
+  width: 100%;
+	height: 84rpx;
+	color: rgba(56, 56, 56, 1);
+	font-size: 56rpx;
+	line-height: 150%;
+	text-align: left;
+  font-weight: bold;
+  position: absolute;
+  top: 168rpx;
+  margin-left: 30rpx;
+}
+.line{
+  width: 257rpx;
+	height: 17rpx;
+	color: rgba(80, 80, 80, 1);
+	background-color: rgba(248, 211, 100, 1);
+	font-size: 28rpx;
+	line-height: 150%;
+  text-align: center;
+  margin-top:80rpx ;
+  margin-bottom:20rpx ;
+}
+.container{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin-left: 35rpx;
+}
+.text_title{
+  width: 100%;
+	color: rgba(254, 123, 111, 1);
+	font-size: 32rpx;
+	line-height: 150%;
+	text-align: left;
+  font-weight: bold;
+  margin-top:35rpx ;
+}
+.row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.text_name{
+  font-size: 26rpx;
+	line-height: 150%;
+  text-align: left;
+  margin-left: 10rpx;
+  margin-right: 40rpx;
+}
+.text_input{
+  width: 106rpx;
+	height: 40rpx;
+	color: rgba(80, 80, 80, 1);
+	background-color: rgba(255, 141, 26, 0.1357142857142857);
+	border-radius: 12rpx;
+	font-size: 28rpx;
+	line-height: 150%;
+  text-align: left;
+  padding-left:20rpx ;
+}
+.checkbox .wx-checkbox-input {
+  border-radius: 10rpx; 
+  width: 40rpx; 
+  height: 40rpx; 
+  border:3rpx solid rgba(254, 123, 111, 1);
+}
+.checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  width: 46rpx; 
+  height: 46rpx; 
+  border:none;
+  background: rgba(254, 123, 111, 1);
+}
+.checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  border-radius:10rpx; 
+  width: 46rpx; 
+  height: 46rpx; 
+  line-height: 46rpx;
+  text-align: center;
+  font-size: 35rpx; /* 对勾大小 30rpx */
+  color: #fff; /* 对勾颜色 白色 */
+  background: rgba(254, 123, 111, 1);
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}
+.ii{
+  margin-top:14rpx ;
+}
+radio{
+  border-radius: 50%;
+  height: 36rpx; 
+  width: 36rpx;
+  border:3rpx solid rgba(254, 123, 111, 1);
+}
+radio .wx-radio-input{ 
+  height: 36rpx; 
+  width: 36rpx;
+  border-radius: 50%;
+  background-color: white;
+  border:none;
+}
+radio .wx-radio-input.wx-radio-input-checked{
+  border:none;
+}
+radio .wx-radio-input.wx-radio-input-checked::before{
+  border-radius: 50%;
+  width: 28rpx; 
+  height: 28rpx;
+  background-color: rgba(254, 123, 111, 1);
+  font-size:0rpx; /* 对勾大小 去掉 */
+  margin-bottom:3rpx ;
+}
+.leaning{
+  width: 670rpx;
+	min-height: 150rpx;
+	color: rgba(80, 80, 80, 1);
+	background-color: rgba(255, 141, 26, 0.1357142857142857);
+	border-radius: 12rpx;
+	font-size: 30rpx;
+	line-height: 150%;
+  text-align: left;
+  padding:5rpx 20rpx 10rpx 20rpx;
+  margin-top:10rpx ;
+}
+button{
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(254, 123, 111, 1);
+	font-size: 28rpx;
+	line-height: 150%;
+	text-align: center;
+  font-weight: bold;
+  margin-top:65rpx ;
+  margin-bottom:50rpx ;
+}

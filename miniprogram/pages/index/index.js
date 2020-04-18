@@ -17,16 +17,10 @@ Page({
       button:"开始匹配",
     }, {
       id: 1,
-      big_title:"寻找你的以伴老师",
-      title: "高考陪伴公益行",
-      small_title:"对教育资源较为落后的四五线城市高中生进行“一对一高考陪伴”，助力高中生考上理想的大学院校！",
-      button:"开始匹配",
-    }, {
-      id: 2,
-      big_title:"寻找你的以伴老师",
-      title: "高考陪伴公益行",
-      small_title:"对教育资源较为落后的四五线城市高中生进行“一对一高考陪伴”，助力高中生考上理想的大学院校！",
-      button:"开始匹配",
+      big_title:"伴学服务介绍",
+      title: "服务介绍细则",
+      small_title:"“一对一高考陪伴”服务有着明确的服务对象，如您对伴学服务感兴趣，可查看具体介绍",
+      button:"具体介绍",
     }],
     three:[{
       title:"知识储备站",
@@ -39,14 +33,39 @@ Page({
     x:0,
     clientHeight: 0,
     knowledgeReserve:[{
+      url:"../display/artical/artical",
       image:"../../images/learningMethod.png",
       left:"学科学习法",
     },{
+      url:"../display/artical/artical",
       image:"../../images/LearningMaterials.png",
       left:"学习资料分享",
     },{
+      url:"../display/artical/artical",
       image:"../../images/experienceSharing.png",
       left:"高考心得分享",
+    }],
+    dreamFactory:[{
+      url:"../display/artical/artical",
+      image:"../../images/learningMethod.png",
+      left:"选科咨讯",
+    },{
+      url:"../display/artical/artical",
+      image:"../../images/LearningMaterials.png",
+      left:"高校资讯",
+    },{
+      url:"../display/artical/artical",
+      image:"../../images/experienceSharing.png",
+      left:"专业了解",
+    }],
+    companionClass:[{
+      url:"../display/artical/artical",
+      image:"../../images/learningMethod.png",
+      left:"精品课堂",
+    },{
+      url:"../display/artical/artical",
+      image:"../../images/LearningMaterials.png",
+      left:"学霸讲座",
     }],
   },
   changeSwipe:function(e) {

@@ -1,0 +1,35 @@
+<!--miniprogram/pages/decompress/heart/heart.wxml-->
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">以伴edu</view>
+</cu-custom>
+<view class="title">心灵解压馆</view>
+<view class='title-bottom'>同学们可以在这里释放压力，查找遇到问题的答案，还可以找到一群知心朋友，带着期待来探索吧！</view>
+<!--常见问题解答-->
+<navigator url="./question/question" hover-class="none">
+  <view class='card' style="background-image: linear-gradient( 90deg, #FD7E70 10%, #E53A6C 100%);">
+    <view class='text'>
+      <view class="text-title">常见问题解答</view>
+      <view class='text-titlebottom'>在这里你会找到所遇到的问题的答案！</view>
+    </view>
+    <image src='../../../images/decompress/question.png' class='img'></image>
+  </view>
+</navigator>
+<!--寻找匿名社区-->
+<navigator url="./community/community" hover-class="none">
+  <view class='card' style="background-image: linear-gradient( 90deg, #7E9CFE 10%, #6554E9 100%);">
+    <view class='text'>
+      <view class="text-title">寻找匿名社区</view>
+      <view class='text-titlebottom'>你可能会在这里找到知心朋友哦！</view>
+    </view>
+    <image src='../../../images/decompress/community.png' class='img'></image>
+  </view>
+</navigator>
+<!--心情树洞-->
+<view class='card' style="background-image: linear-gradient( 90deg, #FFC805 10%, #FF8855 100%);">
+  <view class='text'>
+    <view class="text-title">心情树洞</view>
+    <view class='text-titlebottom'>大家可以互相分享心情，互相加油打气！</view>
+  </view>
+  <image src='../../../images/decompress/emotion.png' class='img'></image>
+</view>

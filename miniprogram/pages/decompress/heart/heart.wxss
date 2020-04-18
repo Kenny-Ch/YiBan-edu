@@ -1,0 +1,68 @@
+/* miniprogram/pages/decompress/heart/heart.wxss */
+page{
+  background: white;
+}
+.title{
+  width: 80%;
+	height: 84rpx;
+	color: rgba(80, 80, 80, 1);
+	font-size: 56rpx;
+	line-height: 150%;
+	text-align: left;
+  font-weight: bold;
+  margin-left:35rpx ;
+  margin-top:30rpx ;
+}
+.title-bottom{
+  width: 684rpx;
+	height: 70rpx;
+	color: rgba(128, 128, 128, 1);
+	font-size: 24rpx;
+	line-height: 150%;
+  text-align: left;
+  margin-left:35rpx ;
+  margin-top:40rpx ;
+  margin-bottom:60rpx ;
+}
+.card{
+  width: 684rpx;
+	height: 190rpx;
+  color: rgba(80, 80, 80, 1);
+	border-radius: 16rpx;
+	font-size: 28rpx;
+	line-height: 150%;
+  text-align: center;
+  margin-left:35rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom:50rpx ;
+}
+.text{
+  width: 488rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin-left:38rpx ;
+}
+.img{
+  width: 124rpx;
+  height: 124rpx;
+}
+.text-title{
+  width: 100%;
+	height: 60rpx;
+	color: rgba(255, 255, 255, 1);
+	font-size: 40rpx;
+	line-height: 150%;
+	text-align: left;
+}
+.text-titlebottom{
+  width: 100%rpx;
+	height: 36rpx;
+	color: rgba(255, 255, 255, 0.8);
+	font-size: 24rpx;
+	line-height: 150%;
+  text-align: left;
+  margin-top:8rpx ;
+}

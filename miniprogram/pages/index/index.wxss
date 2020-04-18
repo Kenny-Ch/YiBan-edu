@@ -262,6 +262,7 @@ page{
 	display: flex;
   flex-direction: row;
 	align-items: center;
+	margin-top:12rpx ;
  }
  .three-card-text-left{
 	width: 50%;

@@ -1,7 +1,13 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/test/test"
+    "pages/test/test",
+    "pages/matching/matching",
+    "pages/display/artical/artical",
+    "pages/decompress/heart/heart",
+    "pages/decompress/heart/question/question",
+    "pages/decompress/heart/community/community",
+    "pages/display/detail/detail"
   ],
   "window": {
     "navigationStyle": "custom",
@@ -11,10 +17,13 @@
     "navigationBarTitleText": "云开发 QuickStart",
     "navigationBarTextStyle": "black"
   },
+  "navigateToMiniProgramAppIdList": [
+    "wx855c5d7718f218c9"
+  ],
   "sitemapLocation": "sitemap.json",
   "style": "v2",
   "usingComponents": {
-    "cu-custom":"/colorui/components/cu-custom",
-    "towxml":"/towxml/towxml"
+    "cu-custom": "/colorui/components/cu-custom",
+    "towxml": "/towxml/towxml"
   }
 }
