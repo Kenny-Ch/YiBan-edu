@@ -64,6 +64,8 @@ Page({
     punch:true,
     class:true,
     getAlong:true,
+    custom:'',
+    willing:'',
   },
   class_Change:function(e){
     console.log('是否接受不定期班会：',e.detail.value)
@@ -95,6 +97,37 @@ Page({
   fraction:function(e){
     console.log(e.target.dataset.name,": ",e.detail.value)
     this.data.sub_fra[e.target.dataset.name]=e.detail.value
+  },
+  getCustom:function(e){
+    console.log("custom:",e.detail.value)
+    this.data.custom=e.detail.value
+  },
+  getWilling:function(e){
+    console.log("willing:",e.detail.value)
+    this.data.willing=e.detail.value
+  },
+  uploadMatchInfo:function(e){
+    var weakSubject = {};
+    // for(sub in subject){
+    //   weakSubject[sub.en]=sub.checked
+    // }
+    var that = this
+    wx.cloud.callFunction({
+      name: 'uploadMatchInfo',
+      data: {
+        'weakSubject':that.data.sub_fra,
+        'willCheckIn':that.data.punch,
+        'willMeeting':that.data.class,
+        'willGetAlong':that.data.getAlong,
+        'habitAndPlan':that.data.custom,
+        'expection':that.data.willing
+
+      },
+      success: function (res) {
+        console.log(res.result)
+      },
+      fail: console.error
+    })
   },
   /**
    * 生命周期函数--监听页面加载3

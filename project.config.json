@@ -90,6 +90,25 @@
 					"id": -1,
 					"name": "pages/display/detail/detail",
 					"pathName": "pages/display/detail/detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/matching/matching",
+					"pathName": "pages/matching/matching",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/decompress/heart/question/question",
+					"pathName": "pages/decompress/heart/question/question",
 					"scene": null
 				}
 			]
