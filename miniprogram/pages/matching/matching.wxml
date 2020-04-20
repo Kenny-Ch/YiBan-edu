@@ -5,9 +5,9 @@
 </cu-custom>
 <view class='title'>匹配登记</view>
 <view class="line"></view>
-<form class="container" bindsubmit="formSubmit" >
+<form class="container" bindsubmit="formSubmit">
   <view class='text_title'>希望被指导的科目以及目前分数：</view>
-  <checkbox-group bindchange="checkboxChange" >
+  <checkbox-group bindchange="checkboxChange">
     <view class='row ii' wx:for="{{subject}}">
       <checkbox class='checkbox' value="{{item.en}}" checked="{{item.checked}}">
         <view class='text_name'>{{item.name}}</view>
@@ -18,26 +18,27 @@
   <view class='text_title'>是否愿意参加每日打卡记录学习情况：</view>
   <radio-group class='row ii' bindchange="punch_Change">
     <view class='row' wx:for="{{judge}}">
-      <radio value="{{item.value}}" checked="{{item.checked}}" color='#fff' /> <view class='text_name'>{{item.name}}</view>
+      <radio value="{{item.value}}" checked="{{item.checked}}" color='#fff' />
+      <view class='text_name'>{{item.name}}</view>
     </view>
   </radio-group>
   <view class='text_title'>是否接受不定期班会：</view>
   <radio-group class='row ii' bindchange="class_Change">
     <view class='row' wx:for="{{judge}}">
-      <radio value="{{item.value}}" checked="{{item.checked}}" color='#fff' /> <view class='text_name'>{{item.name}}</view>
+      <radio value="{{item.value}}" checked="{{item.checked}}" color='#fff' />
+      <view class='text_name'>{{item.name}}</view>
     </view>
   </radio-group>
   <view class='text_title'>是否愿意与志愿者老师好好相处并学到知识：</view>
   <radio-group class='row ii' bindchange="getAlong_Change">
     <view class='row' wx:for="{{judge}}">
-      <radio value="{{item.value}}" checked="{{item.checked}}" color='#fff' /> <view class='text_name'>{{item.name}}</view>
+      <radio value="{{item.value}}" checked="{{item.checked}}" color='#fff' />
+      <view class='text_name'>{{item.name}}</view>
     </view>
   </radio-group>
   <view class='text_title'>学习习惯与学习计划：</view>
-  <textarea name='leaning' auto-height class='leaning' />
+  <textarea name='leaning' auto-height class='leaning' bindinput="getCustom" />
   <view class='text_title'>对老师的期望：</view>
-  <textarea name='teacher' auto-height  class='leaning'/>
-  <button form-type="submit" style="width: 342rpx;min-height: 50rpx;border-radius: 55rpx;">提交登记</button>
+  <textarea name='teacher' auto-height class='leaning' bindinput="getWilling" />
+  <button form-type="submit" style="width: 342rpx;min-height: 50rpx;border-radius: 55rpx;" bindtap="uploadMatchInfo">提交登记</button>
 </form>
-
-
