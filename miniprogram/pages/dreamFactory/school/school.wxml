@@ -1,0 +1,38 @@
+<!--miniprogram/pages/dreamFactory/school/school.wxml-->
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">以伴edu</view>
+</cu-custom>
+<image src="{{school.img}}" class='img1'></image>
+<view class='title'>{{school.title}}</view>
+<view class='row'>
+  <view class='card coloum'>
+    <view class='row ii'>
+      <image class='icon' src="../../../images/display/paiming .png"></image>
+      <view class='rank'>{{school.country_rank}}</view>
+    </view>
+    <view class='rankname'>全国排名</view>
+  </view>
+  <view class='card coloum'>
+    <view class='row ii'>
+      <image class='icon' src="../../../images/display/paiming .png"></image>
+      <view class='rank'>{{school.other_rank}}</view>
+    </view>
+    <view class='rankname'>广东省排名</view>
+  </view>
+</view>
+<view class='row bb'>
+  <view class="shu"></view>
+  <view class='samll-title'>院校介绍</view>
+</view>
+<view class='text'>
+  {{school.introduce}}
+</view>
+<view class='row bb'>
+  <view class="shu"></view>
+  <view class='samll-title'>特色专业</view>
+</view>
+<view class='text'>
+  {{school.specail}}
+</view>
+<view class='block'></view>

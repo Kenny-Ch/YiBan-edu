@@ -1,0 +1,20 @@
+<!--miniprogram/pages/my/my.wxml-->
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">以伴edu</view>
+</cu-custom>
+<view class="top">
+  <image class="avatar" src='{{userinfo.url}}'></image>
+  <view class='mid'>
+    <view class="name">{{userinfo.name}}</view>
+    <view class='identify'>{{userinfo.identity}}</view>
+  </view>
+  <image src='../../images/my/bianji.png' class='bianji'></image>
+</view>
+<view class='list'>
+  <view class='list-item' wx:for="{{list}}">
+    <image src="{{item.icon}}" class='icon'></image>
+    <view class='title' >{{item.title}}</view>
+    <text class="cuIcon-right lg text-gray "></text>
+  </view>
+</view>

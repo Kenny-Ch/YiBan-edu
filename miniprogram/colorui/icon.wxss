@@ -849,9 +849,6 @@
 	content: "\e759";
 }
 
-.cuIcon-radiobox:before {
-	content: "\e75b";
-}
 
 .cuIcon-rounddown:before {
 	content: "\e75c";
@@ -869,9 +866,6 @@
 	content: "\e761";
 }
 
-.cuIcon-radioboxfill:before {
-	content: "\e763";
-}
 
 .cuIcon-punch:before {
 	content: "\e764";

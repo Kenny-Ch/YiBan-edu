@@ -1,0 +1,50 @@
+<!--miniprogram/pages/dreamFactory/school/school.wxml-->
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">以伴edu</view>
+</cu-custom>
+<image src="{{school.img}}" class='img1'></image>
+<view class='title'>{{school.title}}</view>
+<view class='row'>
+  <view class='card coloum'>
+    <view class='row ii'>
+      <view class='rank'>{{school.country_rank}}</view>
+    </view>
+    <view class='rankname'>应届平均月薪</view>
+  </view>
+  <view class='card coloum'>
+    <view class='row ii'>
+      <view class='rank'>{{school.other_rank}}</view>
+    </view>
+    <view class='rankname'>就业率</view>
+  </view>
+</view>
+<view class='row'>
+  <view class='card coloum'>
+    <view class='row ii'>
+      <view class='rank1'>房地产</view>
+    </view>
+    <view class='rankname'>最多去向行业</view>
+  </view>
+  <view class='card coloum'>
+    <view class='row ii'>
+      <view class='rank1'>上海</view>
+    </view>
+    <view class='rankname'>最多去向城市</view>
+  </view>
+</view>
+<view class='row bb'>
+  <view class="shu"></view>
+  <view class='samll-title'>专业介绍</view>
+</view>
+<view class='text'>
+  {{school.introduce}}
+</view>
+<view class='row bb'>
+  <view class="shu"></view>
+  <view class='samll-title'>特色专业</view>
+</view>
+<view class='text'>
+  {{school.specail}}
+</view>
+<view class='block'></view>

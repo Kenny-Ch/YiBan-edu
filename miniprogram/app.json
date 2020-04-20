@@ -7,7 +7,15 @@
     "pages/decompress/heart/heart",
     "pages/decompress/heart/question/question",
     "pages/decompress/heart/community/community",
-    "pages/display/detail/detail"
+    "pages/display/detail/detail",
+    "pages/my/my",
+    "pages/display/classroom/classrooom",
+    "pages/my/login/login",
+    "pages/my/information/information",
+    "pages/dreamFactory/school/school",
+    "pages/dreamFactory/major/major",
+    "pages/matching/result/result",
+    "pages/matching/introduce/introduce"
   ],
   "window": {
     "navigationStyle": "custom",

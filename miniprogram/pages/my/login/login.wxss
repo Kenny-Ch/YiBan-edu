@@ -1,0 +1,115 @@
+/* miniprogram/pages/my/login/login.wxss */
+page{
+  background: linear-gradient(90deg, #ffbd92, #fd6b67);
+}
+.title{
+  width: 112rpx;
+	height: 84rpx;
+	color: rgba(80, 80, 80, 1);
+	font-size: 56rpx;
+	line-height: 150%;
+	text-align: left;
+	font-weight: bold;
+  margin-left:50rpx ;
+  margin-top:20rpx ;
+}
+.card{
+  width: 650rpx;
+	height: 926rpx;
+	color: rgba(80, 80, 80, 1);
+	background: rgba(255, 255, 255, 1);
+	border-radius: 16rpx;
+	font-size: 28rpx;
+	line-height: 150%;
+	box-shadow: 0rpx 7rpx 14rpx 0rpx rgba(0, 0, 0, 0.12);
+  text-align: center;
+  margin-left:50rpx ;
+  margin-top:10rpx ;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding-top:20rpx ;
+  margin-bottom:40rpx ;
+}
+.label{
+  width: 400rpx;
+	height: 36rpx;
+	left: 41rpx;
+	top: 149rpx;
+	color: rgba(166, 166, 166, 1);
+	font-size: 24rpx;
+	line-height: 150%;
+  text-align: left;
+  margin-left:30rpx ;
+  margin-top:20rpx ;
+}
+.contents{
+  width: 590rpx;
+	height: 42rpx;
+	color: rgba(80, 80, 80, 1);
+	font-size: 28rpx;
+	line-height: 150%;
+  text-align: left;
+  border-bottom: 3rpx solid rgba(80, 80, 80, 1);
+  margin-left:30rpx ;
+}
+.ii{
+  margin-top:14rpx ;
+}
+radio{
+  border-radius: 50%;
+  height: 32rpx; 
+  width: 32rpx;
+  border:3rpx solid rgba(74, 144, 226, 1);
+  margin-left:30rpx ;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+radio .wx-radio-input{ 
+  height: 26rpx; 
+  width: 26rpx;
+  border-radius: 50%;
+  background-color: white;
+  border:none;
+  margin-left:11.5rpx ;
+  margin-bottom:2rpx ;
+}
+radio .wx-radio-input.wx-radio-input-checked{
+  border:none;
+}
+radio .wx-radio-input.wx-radio-input-checked::before{
+  border-radius: 50%;
+  width: 24rpx; 
+  height: 24rpx;
+  background-color: rgba(74, 144, 226, 1);
+  font-size:0rpx; /* 对勾大小 去掉 */
+  margin-bottom:8rpx ;
+}
+.row{
+  height: 50rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.text_name{
+  color: rgba(80, 80, 80, 1);
+	font-size: 28rpx;
+	line-height: 150%;
+  text-align: left;
+  margin-right:20rpx ;
+  margin-left:12rpx ;
+}
+.top{
+  margin-top:5rpx ;
+}
+.btn{
+	color: rgba(80, 80, 80, 1);
+	background-color: rgba(255, 255, 255, 1);
+	font-size: 28rpx;
+	line-height: 150%;
+	box-shadow: 0rpx 7rpx 14rpx 0rpx rgba(0, 0, 0, 0.12);
+  text-align: center;
+  margin-bottom:40rpx ;
+}

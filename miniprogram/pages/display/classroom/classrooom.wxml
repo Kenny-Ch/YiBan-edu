@@ -1,0 +1,26 @@
+<!--miniprogram/pages/display/classroom/classrooom.wxml-->
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">以伴edu</view>
+</cu-custom>
+<view class='title'>精品课堂</view>
+<view class="line"></view>
+<view class='con'>
+  <view wx:for="{{list}}" class='card'>
+    <view class='row ii'>
+      <view class='shu'></view>
+      <view class='card-title'>{{item.title}}</view>
+    </view>
+    <view class='row ii'>
+      <image src="{{item.img}}" class='img'></image>
+      <view class='card-name'>{{item.name}}</view>
+      <image src="../../../images/display/shijian.png" class='shijian'></image>
+      <view class='card-have'>{{item.have}}</view>
+    </view>
+    <view class='row ii'>
+      <view class='card-time'>{{item.time}}</view>
+      <view class='chakan'>点击观看视频</view>
+       <text class="cuIcon-right text-gray size"></text>
+    </view>
+  </view>
+</view>

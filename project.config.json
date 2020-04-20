@@ -90,6 +90,62 @@
 					"id": -1,
 					"name": "pages/display/detail/detail",
 					"pathName": "pages/display/detail/detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/my",
+					"pathName": "pages/my/my",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/login/login",
+					"pathName": "pages/my/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/information/information",
+					"pathName": "pages/my/information/information",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/display/classroom/classrooom",
+					"pathName": "pages/display/classroom/classrooom",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/dreamFactory/school/school",
+					"pathName": "pages/dreamFactory/school/school",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/dreamFactory/major/major",
+					"pathName": "pages/dreamFactory/major/major",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/matching/result/result",
+					"pathName": "pages/matching/result/result",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/matching/introduce/introduce",
+					"pathName": "pages/matching/introduce/introduce",
 					"scene": null
 				}
 			]

@@ -1,0 +1,81 @@
+/* miniprogram/pages/my/my.wxss */
+.top{
+  width: 750rpx;
+	height: 214rpx;
+	color: rgba(80, 80, 80, 1);
+	background-color: rgba(255, 255, 255, 1);
+	font-size: 28rpx;
+	line-height: 150%;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.avatar{
+  width: 120rpx;
+	height: 120rpx;
+  border-radius: 60rpx;
+  margin-left:50rpx ;
+}
+.mid{
+  width: 420rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin-left:50rpx ;
+}
+.name{
+  width: 100%;
+	height: 72rpx;
+	color: rgba(80, 80, 80, 1);
+	font-size: 48rpx;
+	line-height: 150%;
+	text-align: left;
+  font-weight: bold;
+  
+}
+.identify{
+  width: 100%;
+	height: 36rpx;
+	color: rgba(80, 80, 80, 1);
+	font-size: 24rpx;
+	line-height: 150%;
+	text-align: left;
+}
+.bianji{
+  width: 40rpx;
+	height: 40rpx;
+	font-size: 40rpx;
+	color: rgba(229, 229, 229, 1);
+}
+.list{
+  width: 100%;
+  margin-top:35rpx ;
+  background-color: rgba(255, 255, 255, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+.list-item{
+  width: 100%;
+  height: 113rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.icon{
+  width: 50rpx;
+	height: 50rpx;
+	font-size: 50rpx;
+  color: rgba(153, 153, 153, 1);
+  margin-left: 40rpx;
+}
+.title{
+  width: 535rpx;
+	height: 42rpx;
+	color: rgba(80, 80, 80, 1);
+	font-size: 28rpx;
+	line-height: 150%;
+  text-align: left;
+  margin-left: 40rpx;
+}
