@@ -155,3 +155,7 @@
   margin-top:30rpx ;
   margin-bottom:30rpx ;
 }
+.yuan{
+  overflow:hidden;
+  display: block;
+}
