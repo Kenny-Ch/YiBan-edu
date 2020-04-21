@@ -146,6 +146,20 @@
 					"id": -1,
 					"name": "pages/matching/introduce/introduce",
 					"pathName": "pages/matching/introduce/introduce",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/matching/teacher/teacher",
+					"pathName": "pages/matching/teacher/teacher",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/decompress/heart/tree/tree",
+					"pathName": "pages/decompress/heart/tree/tree",
 					"scene": null
 				}
 			]
