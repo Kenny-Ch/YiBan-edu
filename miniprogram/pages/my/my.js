@@ -1,4 +1,5 @@
 // miniprogram/pages/my/my.js
+const app = getApp()
 Page({
 
   /**
@@ -41,6 +42,19 @@ Page({
         }    
       })
 
+    //判断是不是新用户
+    if(app.globalData.isNew){
+
+    } else {
+      this.setData({
+        userInfo:{
+          name: app.globalData.userinfo.name,
+          url: this.data.userinfo.url,
+          identity: app.globalData.userinfo.job
+        }
+      })
+
+    }
   },
 
   /**

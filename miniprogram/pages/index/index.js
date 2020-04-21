@@ -108,6 +108,43 @@ Page({
     });
    }
   });
+
+
+   /**
+    * 获取openid并存入全局变量中，同时查询个人信息是否存在
+    * 存在则放入全局变量中，并设置isNew为false
+    * 不存在则只设置isNes为true
+    * isNew也存入全局变量中
+    */
+   wx.cloud.callFunction({
+    // 要调用的云函数名称
+    name: 'getOpenid',
+  }).then(res => {
+    console.log('【index调用云函数getOpenid返回值】',res)
+    app.globalData.openid = res.result.openid
+
+    //获取openid成功后获取个人信息
+    wx.cloud.callFunction({
+      name: 'getUserInfo',
+      data:{
+        openid: res.result.openid
+      }
+    }).then(res => {
+      console.log('【index调用云函数getUserInfo返回值】',res)
+      if(res.result.length == 0){
+        app.globalData.isNew = true
+      } else {
+        app.globalData.userInfo = res.result[0]
+        app.globalData.isNew = false
+      }
+    })
+
+
+  }).catch(err => {
+    console.log('appjs获取openid失败')
+  })
+
+
  },
  bindChange: function (e) {
    var adress=(e.detail.current==0)?"知识储备站":((e.detail.current==1)?"升学梦工厂":"以伴课堂");
@@ -116,6 +153,17 @@ Page({
   that.setData({ 
     i: e.detail.current 
   });
+ },
+
+ //跳转个人信息页面
+ jumpToMyPage: function( ){
+   wx.navigateTo({
+     url: '/pages/my/my',
+     fail: (res) => {
+       console.log('【index页面跳转我的个人信息界面失败】,res')
+     },
+     success: (result) => {},
+   })
  },
 
 

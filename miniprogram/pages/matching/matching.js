@@ -120,7 +120,7 @@ Page({
         'willMeeting':that.data.class,
         'willGetAlong':that.data.getAlong,
         'habitAndPlan':that.data.custom,
-        'expection':that.data.willing
+        'expectation':that.data.willing
 
       },
       success: function (res) {
