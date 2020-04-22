@@ -5,16 +5,16 @@
 </cu-custom>
 <view class='title'>寻找社区</view>
 <view class='body'>
-  <view class='card' wx:for="{{community}}" wx:key="{{item.id}}">
+  <view class='card' wx:for="{{community}}" wx:key="{{item._id}}">
     <view id="{{item.id}}" class="card-item" bindtap="kindToggle">
       <image src="{{item.icon}}" class='icon'></image>
       <view class='text'>
-        <view class='card-title'>{{item.title}}</view>
-        <view class='card-introduce'>{{item.introduce}}</view>
+        <view class='card-title'>{{item.name}}</view>
+        <view class='card-introduce'>{{item.introduction}}</view>
       </view>
     </view>
     <view class='open' wx:if="{{item.open}}">
-      <image src="{{item.QR_code}}" class='QR' ></image>
+      <image src="{{item.qq}}" class='QR' ></image>
     </view>
     <view class='close' wx:else></view>
   </view>

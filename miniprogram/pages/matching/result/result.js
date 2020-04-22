@@ -24,11 +24,28 @@ Page({
       subject:['数学','物理','英语'],
     }]
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    // var that = this
+    // wx.cloud.callFunction({
+    //   name: 'uploadMatchInfo',
+    //   data: {
+    //     'weakSubject': that.data.sub_fra,
+    //     'willCheckIn': that.data.punch,
+    //     'willMeeting': that.data.class,
+    //     'willGetAlong': that.data.getAlong,
+    //     'habitAndPlan': that.data.custom,
+    //     'expection': that.data.willing
+
+    //   },
+    //   success: function (res) {
+    //     console.log(res.result)
+    //   },
+    //   fail: console.error
+    // })
 
   },
 

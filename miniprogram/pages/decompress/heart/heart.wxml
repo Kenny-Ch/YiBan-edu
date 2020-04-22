@@ -26,10 +26,12 @@
   </view>
 </navigator>
 <!--心情树洞-->
-<view class='card' style="background-image: linear-gradient( 90deg, #FFC805 10%, #FF8855 100%);">
-  <view class='text'>
-    <view class="text-title">心情树洞</view>
-    <view class='text-titlebottom'>大家可以互相分享心情，互相加油打气！</view>
+<navigator url="./tree/tree" hover-class="none">
+  <view class='card' style="background-image: linear-gradient( 90deg, #FFC805 10%, #FF8855 100%);">
+    <view class='text'>
+      <view class="text-title">心情树洞</view>
+      <view class='text-titlebottom'>大家可以互相分享心情，互相加油打气！</view>
+    </view>
+    <image src='../../../images/decompress/emotion.png' class='img'></image>
   </view>
-  <image src='../../../images/decompress/emotion.png' class='img'></image>
-</view>
+</navigator>
