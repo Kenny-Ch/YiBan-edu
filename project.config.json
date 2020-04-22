@@ -160,6 +160,19 @@
 					"id": -1,
 					"name": "pages/decompress/heart/tree/tree",
 					"pathName": "pages/decompress/heart/tree/tree",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/matching/teaching",
+					"pathName": "pages/matching/teacher/teacher",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
 					"scene": null
 				}
 			]
