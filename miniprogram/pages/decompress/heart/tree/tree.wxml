@@ -1,0 +1,30 @@
+<!--miniprogram/pages/decompress/heart/tree/tree.wxml-->
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">以伴edu</view>
+</cu-custom>
+<view class='title'>心情树洞</view>
+<view class="line"></view>
+<view class="con1">
+  <view class="card" wx:for='{{list}}'>
+    <view class="row top">
+      <image src='{{item.userimg}}' class='userimg'></image>
+      <view class='coloum  imgright'>
+        <view class="username">{{item.username}}</view>
+        <view class='time'>{{item.time}}</view>
+      </view>
+    </view>
+    <view class='liuyan'>{{item.liuyan}}</view>
+    <view class="row">
+      <view wx:if="{{item.isShowDian}}" data-id='{{item.id}}' bindtap='showDianzan' >
+        <image src='../../../../images/decompress/havedianzan.png' class='dianzan'></image>
+      </view>
+      <view wx:else data-id='{{item.id}}'  bindtap='showDianzan' >
+        <image src='../../../../images/decompress/dianzan.png' class='dianzan'></image>
+      </view>
+      <view class='num'>{{item.dianzan}}</view>
+      <image src='../../../../images/decompress/pinglun.png' class='pinglun'></image>
+      <view class='num'>{{item.pinglun}}</view>
+    </view>
+  </view>
+</view>

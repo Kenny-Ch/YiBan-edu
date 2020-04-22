@@ -70,7 +70,9 @@
 <view class="comment-fixed">
   <!-- <form catchsubmit="formSubmit" report-submit="true"> -->
   <view class="cu-bar input">
-    <view class="cu-avatar round" style="background-image:url({{userInfo.avatarUrl}});" ></view>
+    <view class="cu-avatar round yuan" >
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
     <view class='action' wx:if="{{isShow}}" bindtap='showMenuBox' >
       <image  src="../../../images/jian.png" class='ic'></image>
     </view>

@@ -15,7 +15,9 @@
     "pages/dreamFactory/school/school",
     "pages/dreamFactory/major/major",
     "pages/matching/result/result",
-    "pages/matching/introduce/introduce"
+    "pages/matching/introduce/introduce",
+    "pages/matching/teacher/teacher",
+    "pages/decompress/heart/tree/tree"
   ],
   "window": {
     "navigationStyle": "custom",

@@ -163,8 +163,15 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/index/index",
-					"pathName": "pages/index/index",
+					"name": "pages/matching/teacher/teacher",
+					"pathName": "pages/matching/teacher/teacher",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/decompress/heart/tree/tree",
+					"pathName": "pages/decompress/heart/tree/tree",
 					"scene": null
 				}
 			]

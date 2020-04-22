@@ -4,9 +4,11 @@
   <view slot="content">以伴edu</view>
 </cu-custom>
 <view class="top">
-  <image class="avatar" src='{{userinfo.url}}'></image>
+  <view class="avatar" >
+    <open-data type="userAvatarUrl"></open-data>
+  </view>
   <view class='mid'>
-    <view class="name">{{userinfo.name}}</view>
+    <view class="name"><open-data type="userNickName" lang="zh_CN"></open-data></view>
     <view class='identify'>{{userinfo.identity}}</view>
   </view>
   <image src='../../images/my/bianji.png' class='bianji'></image>

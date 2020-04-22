@@ -1,0 +1,17 @@
+<!--miniprogram/pages/matching/teacher/teacher.wxml-->
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">以伴edu</view>
+</cu-custom>
+<view class="con1">
+  <image src='{{user.img}}' class="info"></image>
+  <view class='card'>
+    <view class="name">{{user.name}}</view>
+    <view class="school">{{user.school}}</view>
+    <view class='subject'>擅长科目：{{user.subject[0]}}、{{user.subject[1]}}、{{user.subject[2]}}</view>
+    <view class="introduce">
+      <text>{{user.introduce}}</text>
+    </view>
+    <image src="{{user.QR}}" class='QR'></image>
+  </view>
+</view>

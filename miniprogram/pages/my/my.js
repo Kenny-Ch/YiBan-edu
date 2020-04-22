@@ -27,20 +27,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that=this;    
-    /**
-     *  获取用户信息     
-     * */    
-    wx.getUserInfo({      
-      success:function(res){        
-        console.log(res);           
-        var userinfo=that.data.userinfo;
-        userinfo.url=res.userInfo.avatarUrl;
-        that.setData({          
-          userinfo: userinfo,             
-         })      
-        }    
-      })
+    
+    
 
     //判断是不是新用户
     if(app.globalData.isNew){
