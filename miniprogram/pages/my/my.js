@@ -35,10 +35,10 @@ Page({
 
     } else {
       this.setData({
-        userInfo:{
-          name: app.globalData.userinfo.name,
+        userinfo:{
+          name: app.globalData.userInfo.name,
           url: this.data.userinfo.url,
-          identity: app.globalData.userinfo.job
+          identity: app.globalData.userInfo.job
         }
       })
 

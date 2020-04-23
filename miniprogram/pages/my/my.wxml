@@ -11,7 +11,9 @@
     <view class="name"><open-data type="userNickName" lang="zh_CN"></open-data></view>
     <view class='identify'>{{userinfo.identity}}</view>
   </view>
-  <image src='../../images/my/bianji.png' class='bianji'></image>
+  <navigator url="login/login" hover-class="none">
+    <image src='../../images/my/bianji.png' class='bianji'></image>
+  </navigator>
 </view>
 <view class='list'>
   <view class='list-item' wx:for="{{list}}">
