@@ -11,16 +11,25 @@ Page({
       name:'小明',
       identity:'学生',
     },
-    list:[{
-      icon:'../../images/my/tongxunlu.png',
-      title:'个人信息'
-    },{
-      icon:'../../images/my/fankuiheyan.png',
-      title:'问题与反馈'
-    },{
-      icon:'../../images/my/shoucang.png',
-      title:'我的收藏'
-    }]
+    // list:[{
+    //   icon:'../../images/my/tongxunlu.png',
+    //   title:'个人信息'
+    // },{
+    //   icon:'../../images/my/fankuiheyan.png',
+    //   title:'问题与反馈'
+    // },{
+    //   icon:'../../images/my/shoucang.png',
+    //   title:'我的收藏'
+    // }],
+    appId: "wx8abaf00ee8c3202e",
+    extraData : {
+      // 把1221数字换成你的产品ID，否则会跳到别的产品
+      id: "144926",
+      // 自定义参数，具体参考文档
+      customData: {
+        customInfo: `iPhone OS 10.3.1 / 3.2.0.43 / 0`,
+      }
+    }
   },
 
   /**
