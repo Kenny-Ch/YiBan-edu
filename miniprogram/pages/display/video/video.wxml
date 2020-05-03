@@ -3,47 +3,130 @@
   <view slot="backText">返回</view>
   <view slot="content">以伴edu</view>
 </cu-custom>
-<view class='vs'>
-  <txv-video vid="{{video.vid}}"   playerid="{{video.vid}}" autoplay="{{true}}"> </txv-video>
-</view>
-<view class='con'>
-  <view class="title">{{video.title}}</view>
-  <view class='row li'>
-    <image src="{{video.img}}" class='img'></image>
-    <view class='teacher_name'>{{video.teacher_name}}</view>
-    <view class='time'>{{video.time}}</view>
+<view class='ww'>
+  <view class='vs'>
+    <txv-video vid="{{video.vid}}"   playerid="{{video.vid}}" autoplay="{{true}}"> </txv-video>
   </view>
-  <view class='introduction'>{{video.introduction}}</view>
-</view>
-<view class='con'>
-  <view class='recommend'>推荐视频</view>
-  <view class='row li'>
-    <view class="card">
-      <navigator url="{{video.recommend[0].url}}" hover-class="none">
-        <image src="{{video.recommend[0].img}}" class='card_img'></image>
-        <view class='card_title'>{{video.recommend[0].title}}</view>
-      </navigator>
+  <view class='con'>
+    <view class="title">{{video.title}}</view>
+    <view class='row li'>
+      <image src="{{video.img}}" class='img'></image>
+      <view class='teacher_name'>{{video.teacher_name}}</view>
+      <view class='time'>{{video.time}}</view>
     </view>
-    <view class="card">
-      <navigator url="{{video.recommend[1].url}}" hover-class="none">
-        <image src="{{video.recommend[1].img}}" class='card_img'></image>
-        <view class='card_title'>{{video.recommend[1].title}}</view>
-      </navigator>
-    </view>
-  </view>
-  <view class='row li'>
-    <view class="card">
-      <navigator url="{{video.recommend[2].url}}" hover-class="none">
-        <image src="{{video.recommend[2].img}}" class='card_img'></image>
-        <view class='card_title'>{{video.recommend[2].title}}</view>
-      </navigator>
-    </view>
-    <view class="card">
-      <navigator url="{{video.recommend[3].url}}" hover-class="none">
-        <image src="{{video.recommend[3].img}}" class='card_img'></image>
-        <view class='card_title'>{{video.recommend[3].title}}</view>
-      </navigator>
-    </view>
+    <view class='introduction'>{{video.introduction}}</view>
   </view>
 </view>
+
+<!--推荐视频-->
+<view class='ww rr'>
+  <view class='con'>
+    <view class='recommend'>推荐视频</view>
+    <view class='row li'>
+      <view class="card">
+        <navigator url="{{video.recommend[0].url}}" hover-class="none">
+          <image src="{{video.recommend[0].img}}" class='card_img'></image>
+          <view class='card_title'>{{video.recommend[0].title}}</view>
+        </navigator>
+      </view>
+      <view class="card">
+        <navigator url="{{video.recommend[1].url}}" hover-class="none">
+          <image src="{{video.recommend[1].img}}" class='card_img'></image>
+          <view class='card_title'>{{video.recommend[1].title}}</view>
+        </navigator>
+      </view>
+    </view>
+    <view class='row li'>
+      <view class="card">
+        <navigator url="{{video.recommend[2].url}}" hover-class="none">
+          <image src="{{video.recommend[2].img}}" class='card_img'></image>
+          <view class='card_title'>{{video.recommend[2].title}}</view>
+        </navigator>
+      </view>
+      <view class="card">
+        <navigator url="{{video.recommend[3].url}}" hover-class="none">
+          <image src="{{video.recommend[3].img}}" class='card_img'></image>
+          <view class='card_title'>{{video.recommend[3].title}}</view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 评论列表 -->
+<import src ="../../template/template.wxml"/>
+<view class="bg-white margin-top-xs">
+  <view class="cu-bar bg-white">
+    <view class='action'>
+      <text class='cuIcon-titles text-orange '></text>
+      共{{video.commentList.length}}条评论
+    </view>
+  </view>
+  <!-- 数据不存在 -->
+  <view wx:if="{{video.commentList.length==0?true:false}}">
+    <template is="nodata" data="{{ nodata_str }}" />
+  </view>
+  <view class="cu-list menu menu-avatar comment solids-top">
+    <view class="cu-item" wx:for="{{video.commentList}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
+      <view class="cu-avatar round" style="background-image:url({{item.cAvatarUrl}});" data-id="{{item._id}}" data-name="{{item.cNickName}}" data-openid="{{item.cOpenId}}" bindtap="focusComment"></view>
+      <view class='content'>
+        <view class='text-grey' data-id="{{item._id}}" data-name="{{item.cNickName}}" data-openid="{{item.cOpenId}}" bindtap="focusComment">
+          {{item.cNickName}}
+        </view>
+        <view class='text-gray text-content text-df'>{{item.comment}}</view>
+        <view class='padding-sm radius  text-sm text-gray'>
+          <view class="flex" wx:for="{{item.childComment}}" wx:key="id" wx:for-index="id" wx:for-item="childItem">
+            <view data-id="{{item._id}}" data-name="{{childItem.cNickName}}" data-openid="{{childItem.cOpenId}}" bindtap="focusComment">
+              <view class='text-grey'>{{childItem.cNickName}}：</view>
+            </view>
+            <view class='flex-sub'>{{childItem.comment}}</view>
+          </view>
+        </view>
+        <view class='flex justify-between'>
+          <view class='text-gray text-df'></view>
+          <view>
+            <text class="cuIcon-messagefill text-gray margin-left-sm"></text>
+            <text class="text-gray margin-left-xs">{{item.childComment.length}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view style="padding:50rpx"></view>
+</view>
+
+<!-- 底部功能 -->
+<view class="comment-fixed">
+  <!-- <form catchsubmit="formSubmit" report-submit="true"> -->
+  <view class="cu-bar input">
+    <view class="cu-avatar round yuan" >
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
+    <view class='action' wx:if="{{isShow}}" bindtap='showMenuBox' >
+      <image  src="../../../images/jian.png" class='ic'></image>
+    </view>
+    <view class='action' wx:else bindtap='showMenuBox' >
+      <image  src="../../../images/jia.png" class='ic'></image>
+    </view>
+    <input class='solid-bottom' maxlength="300" cursor-spacing="10" confirm-type="send" bindinput='commentInput' name="inputComment" value="{{commentContent}}" placeholder="{{placeholder}}" focus="{{focus}}" bindblur="onReplyBlur"></input>
+    <button class='cu-btn bg-orange shadow-blur' style="width: 162rpx;min-height: 50rpx;border-radius: 55rpx;" bindtap="formSubmit">发送</button>
+  </view>
+
+  <!-- </form> -->
+  <view class="cu-list grid col-3 no-border menu-box {{isShow ? 'emoji-move-in' : 'emoji-move-out'}}">
+    <view class="cu-item item">
+      <view class='cuIcon-share text-orange' style="margin-top:0;"></view>
+      <text>转发</text>
+      <button class="share-button" open-type="share"></button>
+    </view>
+    <view class="cu-item item" bindtap='postCollection'>
+      <view class='cuIcon-{{collection.icon}} text-orange' style="margin-top:0;"></view>
+      <text>{{collection.text}}</text>
+    </view>
+    <view class="cu-item item" bindtap='postZan'>
+      <view class='cuIcon-{{zan.icon}} text-orange' style="margin-top:0;"></view>
+      <text>{{zan.text}}</text>
+    </view>
+  </view>
+</view>
+
 

@@ -18,7 +18,8 @@
     "pages/matching/introduce/introduce",
     "pages/matching/teacher/teacher",
     "pages/decompress/heart/tree/tree",
-    "pages/display/video/video"
+    "pages/display/video/video",
+    "pages/dreamFactory/schoollist/schoollist"
   ],
   "window": {
     "navigationStyle": "custom",

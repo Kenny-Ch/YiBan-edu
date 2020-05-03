@@ -6,7 +6,7 @@ Page({
    */
   data: {
     school:{
-      img:'../../../images/display/scnu.png',
+      img:'cloud://yiban-edu.7969-yiban-edu-1301806073/schoollist/scnu.png',
       title:'华南师范大学',
       country_rank:73,
       other_rank:5,

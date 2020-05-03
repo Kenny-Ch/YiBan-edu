@@ -179,6 +179,13 @@
 					"id": -1,
 					"name": "pages/display/video/video",
 					"pathName": "pages/display/video/video",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/dreamFactory/schoollist/schoollist",
+					"pathName": "pages/dreamFactory/schoollist/schoollist",
 					"scene": null
 				}
 			]

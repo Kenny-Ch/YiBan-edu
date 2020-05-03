@@ -6,7 +6,7 @@ Page({
    */
   data: {
     school:{
-      img:'../../../images/display/caiwuguanli.jpg',
+      img:'cloud://yiban-edu.7969-yiban-edu-1301806073/majorlist/caiwuguanli.jpg',
       title:'财务管理（本科专业）',
       country_rank:'￥6357',
       other_rank:'83.85%',

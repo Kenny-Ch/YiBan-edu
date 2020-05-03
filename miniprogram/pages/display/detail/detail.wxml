@@ -18,7 +18,7 @@
         <text class="cuIcon-appreciatefill" />
         {{post.totalZans}}
         <text class="cuIcon-messagefill" />
-        {{post.totalComments}}
+        {{post.commentList.length}}
       </view>
     </view>
   </view>
@@ -27,19 +27,20 @@
   </view>
 </view>
 <!-- 评论列表 -->
+<import src ="../../template/template.wxml"/>
 <view class="bg-white margin-top-xs">
   <view class="cu-bar bg-white">
     <view class='action'>
       <text class='cuIcon-titles text-orange '></text>
-      共{{post.totalComments}}条评论
+      共{{post.commentList.length}}条评论
     </view>
   </view>
   <!-- 数据不存在 -->
-  <view wx:if="{{nodata}}">
+  <view wx:if="{{video.commentList.length==0?true:false}}">
     <template is="nodata" data="{{ nodata_str }}" />
   </view>
   <view class="cu-list menu menu-avatar comment solids-top">
-    <view class="cu-item" wx:for="{{commentList}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
+    <view class="cu-item" wx:for="{{post.commentList}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
       <view class="cu-avatar round" style="background-image:url({{item.cAvatarUrl}});" data-id="{{item._id}}" data-name="{{item.cNickName}}" data-openid="{{item.cOpenId}}" bindtap="focusComment"></view>
       <view class='content'>
         <view class='text-grey' data-id="{{item._id}}" data-name="{{item.cNickName}}" data-openid="{{item.cOpenId}}" bindtap="focusComment">
@@ -55,7 +56,7 @@
           </view>
         </view>
         <view class='flex justify-between'>
-          <view class='text-gray text-df'>{{item.createDate}}</view>
+          <view class='text-gray text-df'></view>
           <view>
             <text class="cuIcon-messagefill text-gray margin-left-sm"></text>
             <text class="text-gray margin-left-xs">{{item.childComment.length}}</text>

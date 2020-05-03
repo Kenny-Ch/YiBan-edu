@@ -13,18 +13,24 @@ Page({
       createTime:'2020-02-05',
       totalVisits:292,
       totalZans:54,
-      totalComments:16,
-      article: {},
+      commentList:[
+        {
+          cAvatarUrl:'../../../images/display/plimg.jpg',
+          cNickName:'清风自来',
+          comment:'很棒！',
+          childComment:[
+            {
+              cNickName:'清风自来',
+              comment:'很棒！',
+            }
+          ]
+        }
+      ],
     },
     collection: { status: false, text: "收藏", icon: "favor" },
     zan: { status: false, text: "点赞", icon: "appreciate" },
     
     userInfo: {},
-    commentContent: "",
-    commentPage: 1,
-    commentList: [],
-    nomore: false,
-    nodata: false,
     commentId: "",
     placeholder: "评论...",
     focus: false,

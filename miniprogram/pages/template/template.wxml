@@ -1,0 +1,5 @@
+<template name="nodata"> 
+  <view class="nodata">    
+    {{ nodata_str || '—— 没有对应的数据哦 ——' }}
+  </view>
+</template>

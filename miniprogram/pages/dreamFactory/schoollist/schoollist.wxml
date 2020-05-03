@@ -1,0 +1,12 @@
+<!--miniprogram/pages/dreamFactory/schoollist/schoollist.wxml-->
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">以伴edu</view>
+</cu-custom>
+<view class='title'>名校排名</view>
+<view class="line"></view>
+<view class='con'>
+  <view class='card' wx:for="{{schoollist}}">
+    <view class='num'>{{}}</view>
+  </view>
+</view>
