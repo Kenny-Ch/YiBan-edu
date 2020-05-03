@@ -160,6 +160,13 @@
 					"id": -1,
 					"name": "pages/decompress/heart/tree/tree",
 					"pathName": "pages/decompress/heart/tree/tree",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/display/video/video",
+					"pathName": "pages/display/video/video",
 					"scene": null
 				}
 			]

@@ -1,0 +1,12 @@
+/* miniprogram/pages/display/video/video.wxss */
+.test{
+  width: 292px;
+	height: 30px;
+	left: 9px;
+	top: 291px;
+	color: rgba(56, 56, 56, 1);
+	font-size: 20px;
+	line-height: 150%;
+	text-align: left;
+	font-weight: bold;
+}

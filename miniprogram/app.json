@@ -17,7 +17,8 @@
     "pages/matching/result/result",
     "pages/matching/introduce/introduce",
     "pages/matching/teacher/teacher",
-    "pages/decompress/heart/tree/tree"
+    "pages/decompress/heart/tree/tree",
+    "pages/display/video/video"
   ],
   "window": {
     "navigationStyle": "custom",
@@ -35,5 +36,11 @@
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom",
     "towxml": "/towxml/towxml"
+  },
+  "plugins": {
+    "tencentvideo": {
+      "version": "1.3.12",
+      "provider": "wxa75efa648b60994b"
+    }
   }
 }

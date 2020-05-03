@@ -1,0 +1,6 @@
+<!--miniprogram/pages/display/video/video.wxml-->
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">以伴edu</view>
+</cu-custom>
+<txv-video vid="{{vid}}"   playerid="{{vid}}" autoplay="{{true}}"> </txv-video>
