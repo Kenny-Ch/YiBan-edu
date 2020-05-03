@@ -36,7 +36,7 @@ exports.main = async (event, context) => {
   //submitQue：个人中心-意见反馈  usingQue：个人中心-常见问题   pressQue:心灵解压馆-压力疏导-常见问题解答
   var flag = event.flag
 
-  if(flag.equals('submitQue')) {
+  if(flag == 'submitQue') {
     //个人中心-意见反馈
       try {
         return await db.collection('question').add({
@@ -51,7 +51,7 @@ exports.main = async (event, context) => {
       } catch (e) {
         console.error(e)
       } 
-  } else if (flag.equals('usingQue')) {
+  } else if (flag == 'usingQue') {
     //个人中心-常见问题
     try {
       return await db.collection('question').add({
@@ -66,7 +66,7 @@ exports.main = async (event, context) => {
     } catch (e) {
       console.error(e)
     } 
-  } else if (flag.equals('pressQue')) {
+  } else if (flag == 'pressQue') {
     //心灵解压馆-压力疏导-常见问题解答
     try {
       return await db.collection('question').add({

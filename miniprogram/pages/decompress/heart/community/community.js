@@ -55,9 +55,22 @@ Page({
       name: 'getCommunities',
       data: {},
       success: function(res) {
-        
+        console.log(res)
+        var com = []
+        for(var i = 0; i<res.result.length; i++){
+          var temp ={}
+          temp.id = i
+          temp.open = false
+          temp.icon = '../../../../images/decompress/qq.png'
+          temp.title = res.result[i].name
+          temp.introduce = res.result[i].introduction
+          temp.QR_code = res.result[i].qq
+
+          com.push(temp)
+        }
         that.setData({
-          community: res.result[0]
+          
+          community: com
         })
         console.log(that.data.community)
       },

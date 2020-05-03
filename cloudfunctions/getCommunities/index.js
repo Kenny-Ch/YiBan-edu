@@ -23,7 +23,9 @@ exports.main = async (event, context) => {
 
   for (let i = 0; i < batchTimes; i++) {
     var res = await db.collection('community').skip(i * MAX_LIMIT).limit(MAX_LIMIT).get()
-    communities.push(res.data)
+    for(item of res.data){
+      communities.push(item)
+    }
   }
 
   return communities

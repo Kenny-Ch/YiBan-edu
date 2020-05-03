@@ -17,7 +17,7 @@ exports.main = async (event, context) => {
   //submitQue：个人中心-意见反馈  usingQue：个人中心-常见问题   pressQue:心灵解压馆-压力疏导-常见问题解答
   var flag = event.flag
 
-  if(flag.equals('submitQue')) {
+  if(flag == 'submitQue') {
     //submitQue：个人中心-意见反馈
     // 先取出集合记录总数
     const countResult = await db.collection('question').where({
@@ -40,7 +40,7 @@ exports.main = async (event, context) => {
 
     return questions
 
-  } else if (flag.equals('usingQue')) {
+  } else if (flag == 'usingQue') {
     //usingQue：个人中心-常见问题
     // 先取出集合记录总数
     const countResult = await db.collection('question').where({
@@ -63,7 +63,7 @@ exports.main = async (event, context) => {
 
     return questions
 
-  } else if (flag.equals('pressQue')) {
+  } else if (flag == 'pressQue') {
     //pressQue:心灵解压馆-压力疏导-常见问题解答
     // 先取出集合记录总数
     const countResult = await db.collection('question').where({

@@ -13,9 +13,7 @@
 		</view>
 		<view class='identify'>{{userinfo.identity}}</view>
 	</view>
-	<navigator url="login/login" hover-class="none">
-		<image src='../../images/my/bianji.png' class='bianji'></image>
-	</navigator>
+	
 </view>
 <view class='list'>
 
