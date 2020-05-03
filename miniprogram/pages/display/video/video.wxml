@@ -1,6 +1,49 @@
 <!--miniprogram/pages/display/video/video.wxml-->
-<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}" >
   <view slot="backText">返回</view>
   <view slot="content">以伴edu</view>
 </cu-custom>
-<txv-video vid="{{vid}}"   playerid="{{vid}}" autoplay="{{true}}"> </txv-video>
+<view class='vs'>
+  <txv-video vid="{{video.vid}}"   playerid="{{video.vid}}" autoplay="{{true}}"> </txv-video>
+</view>
+<view class='con'>
+  <view class="title">{{video.title}}</view>
+  <view class='row li'>
+    <image src="{{video.img}}" class='img'></image>
+    <view class='teacher_name'>{{video.teacher_name}}</view>
+    <view class='time'>{{video.time}}</view>
+  </view>
+  <view class='introduction'>{{video.introduction}}</view>
+</view>
+<view class='con'>
+  <view class='recommend'>推荐视频</view>
+  <view class='row li'>
+    <view class="card">
+      <navigator url="{{video.recommend[0].url}}" hover-class="none">
+        <image src="{{video.recommend[0].img}}" class='card_img'></image>
+        <view class='card_title'>{{video.recommend[0].title}}</view>
+      </navigator>
+    </view>
+    <view class="card">
+      <navigator url="{{video.recommend[1].url}}" hover-class="none">
+        <image src="{{video.recommend[1].img}}" class='card_img'></image>
+        <view class='card_title'>{{video.recommend[1].title}}</view>
+      </navigator>
+    </view>
+  </view>
+  <view class='row li'>
+    <view class="card">
+      <navigator url="{{video.recommend[2].url}}" hover-class="none">
+        <image src="{{video.recommend[2].img}}" class='card_img'></image>
+        <view class='card_title'>{{video.recommend[2].title}}</view>
+      </navigator>
+    </view>
+    <view class="card">
+      <navigator url="{{video.recommend[3].url}}" hover-class="none">
+        <image src="{{video.recommend[3].img}}" class='card_img'></image>
+        <view class='card_title'>{{video.recommend[3].title}}</view>
+      </navigator>
+    </view>
+  </view>
+</view>
+

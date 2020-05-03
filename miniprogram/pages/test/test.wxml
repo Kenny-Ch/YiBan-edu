@@ -1,7 +1,14 @@
-<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+<!-- <cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
   <view slot="backText">返回</view>
   <view slot="content">以伴edu</view>
 </cu-custom>
 <view class="container">
   <towxml nodes="{{article}}"/>
+</view> -->
+
+<view style="position:relative;top:500px">
+  <navigator target="miniProgram" open-type="navigate" app-id="{{ appId }}" extra-data="{{ extraData }}" version="release">
+    test
+  
+  </navigator>
 </view>

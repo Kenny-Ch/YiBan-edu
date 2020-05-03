@@ -5,7 +5,37 @@ Page({
    * 页面的初始数据
    */
   data: {
-    vid:'h0955s6ib3y',
+    video:{
+      vid:'h0955s6ib3y',
+      title:'历史课堂1：高中历史选择题技巧',
+      img:'../../../images/display/teacher.png',
+      teacher_name:'以伴团队',
+      time:'2020-04-19',
+      introduction:'历史学霸带你玩转高中历史！',
+      recommend:[
+        {
+          img:'../../../images/display/recommend.png',
+          title:'【数学】求参数的取值范围 第一节',
+          url:'',
+        },
+        {
+          img:'../../../images/display/recommend.png',
+          title:'【数学】求参数的取值范围 第一节',
+          url:'',
+        },
+        {
+          img:'../../../images/display/recommend.png',
+          title:'【数学】求参数的取值范围 第一节',
+          url:'',
+        },
+        {
+          img:'../../../images/display/recommend.png',
+          title:'【数学】求参数的取值范围 第一节',
+          url:'',
+        },
+      ]
+    },
+    
   },
 
   /**

@@ -6,6 +6,7 @@ cloud.init({
 const db = cloud.database()
 
 /*  参数表：
+    "flag": 0/1                     //判断老师还是学生，1是学生，0是老师
     "openid": ""                    //openid
     "registerDate": Date()          //注册日期
     "job": "",                      //职业
@@ -38,6 +39,7 @@ const db = cloud.database()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
+  console.log('传入参数：',event)
   //flag看是学生还是老师
   var flag = event.flag
 
@@ -52,17 +54,7 @@ exports.main = async (event, context) => {
             registerDate: new Date(),
             job: event.job,
             name: event.name,
-            perInfo:{
-              gender: event.gender,
-              school: event.school,
-              grade: event.grade,
-              major: event.major,
-              speciality: event.speciality,
-              introduction: event.introduction,
-              wechat: event.wechat,
-              tel: event.tel,
-              stuNum: event.stuNum
-            },
+            perInfo:event.perInfo,
           }
         })
       } catch (e) {
@@ -80,15 +72,7 @@ exports.main = async (event, context) => {
             registerDate: new Date(),
             job: event.job,
             name: event.name,
-            perInfo: {
-              gender: event.gender,
-              school: event.school,
-              grade: event.grade,
-              area: event.area,
-              qq: event.qq,
-              tel: event.tel,
-              email: event.email
-            },
+            perInfo: event.perInfo
           }
         })
       } catch (e) {

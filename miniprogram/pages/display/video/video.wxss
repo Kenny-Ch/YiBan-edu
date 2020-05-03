@@ -10,3 +10,100 @@
 	text-align: left;
 	font-weight: bold;
 }
+.vs{
+	height: auto;
+  position: relative;
+	bottom: 10rpx;
+}
+.con{
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.title{
+	width: 92%;
+	height: 60rpx;
+	color: rgba(56, 56, 56, 1);
+	font-size: 40rpx;
+	line-height: 150%;
+	text-align: left;
+	font-weight: bold;
+	margin-top:24rpx ;
+}
+.row{
+	display: flex;
+	flex-direction: row;
+}
+.colum{
+	display: flex;
+	flex-direction: column;
+}
+.li{
+	width: 92%;
+	align-items: left;
+	margin-top:16rpx ;
+}
+.img{
+	width: 40rpx;
+	height: 40rpx;
+	border-radius: 21rpx;
+}
+.teacher_name{
+	width: 300rpx;
+	height: 36rpx;
+	color: rgba(80, 80, 80, 1);
+	font-size: 24rpx;
+	line-height: 150%;
+	text-align: left;
+	margin-top:8rpx ;
+	margin-left:8rpx ;
+}
+.time{
+	width: 200rpx;
+	height: 36rpx;
+	color: rgba(80, 80, 80, 1);
+	font-size: 24rpx;
+	line-height: 150%;
+	text-align: right;
+	margin-top:8rpx ;
+	margin-left:144rpx ;
+}
+.introduction{
+	width: 92%;
+	height: auto;
+	color: rgba(80, 80, 80, 1);
+	font-size: 28rpx;
+	line-height: 150%;
+	text-align: left;
+	margin-top:16rpx ;
+}
+.recommend{
+	width: 92%;
+	height: 48rpx;
+	color: rgba(56, 56, 56, 1);
+	font-size: 32rpx;
+	line-height: 150%;
+	text-align: left;
+	font-weight: bold;
+	margin-top:32rpx ;
+}
+.card{
+	width: 48%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-right: 30rpx;
+}
+.card_img{
+	width: 332rpx;
+	height: 186rpx;
+}
+.card_title{
+	width: 92%;
+	color: rgba(80, 80, 80, 1);
+	font-size: 28rpx;
+	line-height: 150%;
+	text-align: center;
+}

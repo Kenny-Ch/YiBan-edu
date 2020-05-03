@@ -6,35 +6,35 @@
 <form bindsubmit="formSubmit">
   <view class="cu-form-group margin-top">
     <view class="title">姓名</view>
-    <input placeholder="       小明"></input>
+    <input placeholder="       {{userInfo.name}}"></input>
   </view>
   <view class="cu-form-group">
     <view class="title">联系方式</view>
-    <input placeholder="13426712862"></input>
+    <input placeholder="{{userInfo.perInfo.tel}}"></input>
   </view>
   <view class="cu-form-group">
     <view class="title">性别</view>
-    <input placeholder="       男"></input>
+    <input placeholder="       {{userInfo.perInfo.gender}}"></input>
   </view>
   <view class="cu-form-group">
     <view class="title">所在地区</view>
-    <input placeholder="广东省广州市番禺区"></input>
+    <input placeholder="{{userInfo.perInfo.area[0] + userInfo.perInfo.area[1] + userInfo.perInfo.area[2]}}"></input>
   </view>
   <view class="cu-form-group">
     <view class="title">在读学校</view>
-    <input placeholder="光明中学"></input>
+    <input placeholder="{{userInfo.perInfo.school}}"></input>
   </view>
   <view class="cu-form-group">
     <view class="title">在读年级</view>
-    <input placeholder="高三"></input>
+    <input placeholder="{{userInfo.perInfo.grade}}"></input>
   </view>
   <view class="cu-form-group">
     <view class="title">QQ</view>
-    <input placeholder="        123342112"></input>
+    <input placeholder="        {{userInfo.perInfo.qq}}"></input>
   </view>
   <view class="cu-form-group">
     <view class="title">邮箱</view>
-    <input placeholder="       123342112@qq.com"></input>
+    <input placeholder="       {{userInfo.perInfo.email}}"></input>
   </view>
   <button form-type="submit" style="width: 342rpx;min-height: 60rpx;" class='btn'>提交保存</button>
 </form>

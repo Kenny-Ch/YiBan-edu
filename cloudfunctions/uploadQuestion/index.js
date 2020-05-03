@@ -17,8 +17,9 @@ const _ = db.command
     //或者
     //(个人中心-常见问题)
     "flag": "usingQue",
-    "question": "",                 //问题
-    "answer": "",                   //答案
+    "officialAnswer": ""            //官方答案
+    "question": [],                 //问题
+    "answer": [],                   //答案
 
 
     //或者
@@ -57,6 +58,7 @@ exports.main = async (event, context) => {
         // data 字段表示需新增的 JSON 数据
         data: {
           flag: event.flag,
+          officialAnswer: event.officialAnswer,
           question: event.question,
           answer: event.answer
         }

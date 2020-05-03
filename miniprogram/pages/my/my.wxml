@@ -1,22 +1,44 @@
 <!--miniprogram/pages/my/my.wxml-->
 <cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
-  <view slot="backText">返回</view>
-  <view slot="content">以伴edu</view>
+	<view slot="backText">返回</view>
+	<view slot="content">以伴edu</view>
 </cu-custom>
 <view class="top">
-  <view class="avatar" >
-    <open-data type="userAvatarUrl"></open-data>
-  </view>
-  <view class='mid'>
-    <view class="name"><open-data type="userNickName" lang="zh_CN"></open-data></view>
-    <view class='identify'>{{userinfo.identity}}</view>
-  </view>
-  <image src='../../images/my/bianji.png' class='bianji'></image>
+	<view class="avatar">
+		<open-data type="userAvatarUrl"></open-data>
+	</view>
+	<view class='mid'>
+		<view class="name">
+			<open-data type="userNickName" lang="zh_CN"></open-data>
+		</view>
+		<view class='identify'>{{userinfo.identity}}</view>
+	</view>
+	<navigator url="login/login" hover-class="none">
+		<image src='../../images/my/bianji.png' class='bianji'></image>
+	</navigator>
 </view>
 <view class='list'>
-  <view class='list-item' wx:for="{{list}}">
-    <image src="{{item.icon}}" class='icon'></image>
-    <view class='title' >{{item.title}}</view>
-    <text class="cuIcon-right lg text-gray "></text>
-  </view>
+
+	<view class='list-item' >
+		<navigator url="./information/information" hover-class="none" class='nv'>
+			<image src="../../images/my/tongxunlu.png" class='icon'></image>
+			<view class='title'>个人信息</view>
+			<text class="cuIcon-right lg text-gray "></text>
+		</navigator>
+	</view>
+
+	<view class='list-item' >
+		<navigator target="miniProgram" open-type="navigate" app-id="{{ appId }}" extra-data="{{ extraData }}" version="release" hover-class="none" class='nv'>
+			<image src="../../images/my/fankuiheyan.png" class='icon'></image>
+			<view class='title'>问题与反馈</view>
+			<text class="cuIcon-right lg text-gray "></text>
+		</navigator>
+	</view>
+
+  <view class='list-item' >
+			<image src="../../images/my/shoucang.png" class='icon'></image>
+			<view class='title'>我的收藏</view>
+			<text class="cuIcon-right lg text-gray "></text>
+	</view>
+
 </view>

@@ -5,129 +5,138 @@ Page({
    * 页面的初始数据
    */
   data: {
-    subject:[{
-      id:1,
-      name:'语文',
-      en:'Chinese',
-      checked:false,
-    },{
-      id:2,
-      name:'数学',
-      en:'Mathematics',
-      checked:false,
-    },{
-      id:3,
-      name:'英语',
-      en:'English',
-      checked:false,
-    },{
-      id:4,
-      name:'物理',
-      en:'Physics',
-      checked:false,
-    },{
-      id:5,
-      name:'化学',
-      en:'Chemistry',
-      checked:false,
-    },{
-      id:6,
-      name:'生物',
-      en:'Biology',
-      checked:false,
-    },{
-      id:7,
-      name:'政治',
-      en:'Politics',
-      checked:false,
-    },{
-      id:8,
-      name:'历史',
-      en:'History',
-      checked:false,
-    },{
-      id:9,
-      name:'地理',
-      en:'Geography',
-      checked:false,
+    subject: [{
+      id: 1,
+      name: '语文',
+      en: 'Chinese',
+      checked: false,
+    }, {
+      id: 2,
+      name: '数学',
+      en: 'Mathematics',
+      checked: false,
+    }, {
+      id: 3,
+      name: '英语',
+      en: 'English',
+      checked: false,
+    }, {
+      id: 4,
+      name: '物理',
+      en: 'Physics',
+      checked: false,
+    }, {
+      id: 5,
+      name: '化学',
+      en: 'Chemistry',
+      checked: false,
+    }, {
+      id: 6,
+      name: '生物',
+      en: 'Biology',
+      checked: false,
+    }, {
+      id: 7,
+      name: '政治',
+      en: 'Politics',
+      checked: false,
+    }, {
+      id: 8,
+      name: '历史',
+      en: 'History',
+      checked: false,
+    }, {
+      id: 9,
+      name: '地理',
+      en: 'Geography',
+      checked: false,
     }],
-    sub_fra:{},
-    judge:[{
-      name:'是',
-      checked:true,
-      value:true
-    },{
-      name:'否',
-      checked:false,
-      value:false
+    sub_fra: {},
+    judge: [{
+      name: '是',
+      checked: true,
+      value: true
+    }, {
+      name: '否',
+      checked: false,
+      value: false
     }],
-    punch:true,
-    class:true,
-    getAlong:true,
-    custom:'',
-    willing:'',
+    punch: true,
+    class: true,
+    getAlong: true,
+    custom: '',
+    willing: '',
   },
-  class_Change:function(e){
-    console.log('是否接受不定期班会：',e.detail.value)
+  class_Change: function (e) {
+    console.log('是否接受不定期班会：', e.detail.value)
     this.setData({
-      class:e.detail.value,
+      class: e.detail.value,
     })
   },
-  punch_Change:function(e){
-    console.log('是否愿意参加每日打卡记录学习情况：',e.detail.value)
+  punch_Change: function (e) {
+    console.log('是否愿意参加每日打卡记录学习情况：', e.detail.value)
     this.setData({
-      punch:e.detail.value,
+      punch: e.detail.value,
     })
   },
-  getAlong_Change:function(e){
-    console.log('是否愿意与志愿者老师好好相处并学到知识：',e.detail.value)
+  getAlong_Change: function (e) {
+    console.log('是否愿意与志愿者老师好好相处并学到知识：', e.detail.value)
     this.setData({
-      getAlong:e.detail.value,
+      getAlong: e.detail.value,
     })
   },
-  checkboxChange:function(e){
+  checkboxChange: function (e) {
     console.log('checkbox发生change事件，携带value值为：', e.detail.value)
     console.log("长度:" + e.detail.value.length);
     this.setData({
       chooseSubject: e.detail.value,
       chooseSubject_length: e.detail.value.length
     })
-    
-  },
-  fraction:function(e){
-    console.log(e.target.dataset.name,": ",e.detail.value)
-    this.data.sub_fra[e.target.dataset.name]=e.detail.value
-  },
-  getCustom:function(e){
-    console.log("custom:",e.detail.value)
-    this.data.custom=e.detail.value
-  },
-  getWilling:function(e){
-    console.log("willing:",e.detail.value)
-    this.data.willing=e.detail.value
-  },
-  uploadMatchInfo:function(e){
-    var weakSubject = {};
-    // for(sub in subject){
-    //   weakSubject[sub.en]=sub.checked
-    // }
-    var that = this
-    wx.cloud.callFunction({
-      name: 'uploadMatchInfo',
-      data: {
-        'weakSubject':that.data.sub_fra,
-        'willCheckIn':that.data.punch,
-        'willMeeting':that.data.class,
-        'willGetAlong':that.data.getAlong,
-        'habitAndPlan':that.data.custom,
-        'expection':that.data.willing
 
-      },
-      success: function (res) {
-        console.log(res.result)
-      },
-      fail: console.error
-    })
+  },
+  fraction: function (e) {
+    console.log(e.target.dataset.name, ": ", e.detail.value)
+    this.data.sub_fra[e.target.dataset.name] = e.detail.value
+  },
+  getCustom: function (e) {
+    console.log("custom:", e.detail.value)
+    this.data.custom = e.detail.value
+  },
+  getWilling: function (e) {
+    console.log("willing:", e.detail.value)
+    this.data.willing = e.detail.value
+  },
+  uploadMatchInfo: function (e) {
+    //检验不合格
+    if (false) {
+
+    } 
+    //检验合格
+    else {
+      var weakSubject = {};
+      for (sub in this.data.chooseSubject) {
+        weakSubject[sub] = this.data.sub_fra[sub]
+      }
+      var that = this
+      wx.cloud.callFunction({
+
+        name: 'uploadMatchInfo',
+        data: {
+          'weakSubject': weakSubject,
+          'willCheckIn': that.data.punch,
+          'willMeeting': that.data.class,
+          'willGetAlong': that.data.getAlong,
+          'habitAndPlan': that.data.custom,
+          'expectation': that.data.willing
+
+        },
+        success: function (res) {
+          console.log(res.result)
+        },
+        fail: console.error
+      })
+    }
+
   },
   /**
    * 生命周期函数--监听页面加载3

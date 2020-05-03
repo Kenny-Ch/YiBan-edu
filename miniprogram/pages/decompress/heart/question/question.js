@@ -89,6 +89,7 @@ Page({
         });
       }
     });
+    this.getQuestions();
 
   },
 
@@ -102,7 +103,7 @@ Page({
       success: function(res) {
         console.log(res.result)
         var qa = [];
-        for (returndata in res.result) {
+        for (returndata of res.result) {
           qa.push({
             'question': returndata.question,
             'abstract_answer': returndata.officialAnswer,
