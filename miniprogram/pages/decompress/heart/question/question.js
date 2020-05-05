@@ -101,14 +101,15 @@ Page({
         'flag': 'pressQue',
       },
       success: function(res) {
-        console.log(res.result)
+        console.log("【question页面调用函数getQuestions】",res.result)
         var qa = [];
-        for (returndata of res.result) {
+        for (let returndata of res.result[0]) {
           qa.push({
             'question': returndata.question,
             'abstract_answer': returndata.officialAnswer,
             'common': returndata.answer.length + 1
           });
+          console.log(returndata)
         }
         that.setData({
           common: qa

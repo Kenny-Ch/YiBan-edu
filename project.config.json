@@ -186,6 +186,13 @@
 					"id": -1,
 					"name": "pages/dreamFactory/schoollist/schoollist",
 					"pathName": "pages/dreamFactory/schoollist/schoollist",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
 					"scene": null
 				}
 			]

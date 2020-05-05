@@ -9,12 +9,12 @@
     <view id="{{item.id}}" class="card-item" bindtap="kindToggle">
       <image src="{{item.icon}}" class='icon'></image>
       <view class='text'>
-        <view class='card-title'>{{item.name}}</view>
+        <view class='card-title'>{{item.title}}</view>
         <view class='card-introduce'>{{item.introduction}}</view>
       </view>
     </view>
     <view class='open' wx:if="{{item.open}}">
-      <image src="{{item.qq}}" class='QR' ></image>
+      <image src="{{item.icon}}" class='QR' ></image>
     </view>
     <view class='close' wx:else></view>
   </view>

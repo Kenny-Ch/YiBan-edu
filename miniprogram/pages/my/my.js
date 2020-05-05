@@ -29,7 +29,8 @@ Page({
       customData: {
         customInfo: `iPhone OS 10.3.1 / 3.2.0.43 / 0`,
       }
-    }
+    },
+    jumpUrl: ''
   },
 
   /**
@@ -41,6 +42,9 @@ Page({
 
     //判断是不是新用户
     if(app.globalData.isNew){
+      this.setData({
+        jumpUrl: 'login/login'
+      })
 
     } else {
       this.setData({
@@ -48,7 +52,8 @@ Page({
           name: app.globalData.userInfo.name,
           url: this.data.userinfo.url,
           identity: app.globalData.userInfo.job
-        }
+        },
+        jumpUrl: 'information/information'
       })
 
     }

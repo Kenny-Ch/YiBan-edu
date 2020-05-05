@@ -55,9 +55,9 @@ Page({
       name: 'getCommunities',
       data: {},
       success: function(res) {
-        console.log(res)
-        var com = []
-        for(var i = 0; i<res.result.length; i++){
+        console.log("【community界面调用函数getCommunities】",res.result)
+        let com = []
+        for(let i = 0; i<res.result.length; i++){
           var temp ={}
           temp.id = i
           temp.open = false
@@ -65,11 +65,9 @@ Page({
           temp.title = res.result[i].name
           temp.introduce = res.result[i].introduction
           temp.QR_code = res.result[i].qq
-
           com.push(temp)
         }
         that.setData({
-          
           community: com
         })
         console.log(that.data.community)
