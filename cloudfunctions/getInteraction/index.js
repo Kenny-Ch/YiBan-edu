@@ -95,7 +95,7 @@ exports.main = async (event, context) => {
       // 先取出集合记录总数
       var countResult = await db.collection('interaction').where({
         flag: 'comment',
-        id: event.id
+        contextIid: event.id
       }).count()
       var total = countResult.total
       // 计算需分几次取
@@ -106,7 +106,7 @@ exports.main = async (event, context) => {
       for (let i = 0; i < batchTimes; i++) {
         var res = await db.collection('interaction').skip(i * MAX_LIMIT).limit(MAX_LIMIT).where({
           flag: 'comment',
-          id: event.id
+          contextId: event.id
         }).get()
         comments.push(res.data)
       }
@@ -118,7 +118,7 @@ exports.main = async (event, context) => {
       // 先取出集合记录总数
       var countResult = await db.collection('interaction').where({
         flag: 'like',
-        id: event.id
+        contextId: event.id
       }).count()
       var total = countResult.total
       // 计算需分几次取
@@ -129,7 +129,7 @@ exports.main = async (event, context) => {
       for (let i = 0; i < batchTimes; i++) {
         var res = await db.collection('interaction').skip(i * MAX_LIMIT).limit(MAX_LIMIT).where({
           flag: 'like',
-          id: event.id
+          contextId: event.id
         }).get()
         likes.push(res.data)
       }
@@ -141,7 +141,7 @@ exports.main = async (event, context) => {
       // 先取出集合记录总数
       var countResult = await db.collection('interaction').where({
         flag: 'store',
-        id: event.id
+        contextId: event.id
       }).count()
       var total = countResult.total
       // 计算需分几次取
@@ -152,7 +152,7 @@ exports.main = async (event, context) => {
       for (let i = 0; i < batchTimes; i++) {
         var res = await db.collection('interaction').skip(i * MAX_LIMIT).limit(MAX_LIMIT).where({
           flag: 'store',
-          id: event.id
+          contextId: event.id
         }).get()
         stores.push(res.data)
       }
@@ -160,7 +160,7 @@ exports.main = async (event, context) => {
       data.stores = stores
     }
   }
-  return deta
+  return data
 
 }
 //返回值：

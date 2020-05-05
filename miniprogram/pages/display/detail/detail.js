@@ -340,16 +340,21 @@ Page({
   },
 
   getAllComment: function() {
+    var that = this;
     wx.cloud.callFunction({
       name: 'getInteraction',
       data: {
         'comment': true,
         'like': false,
         'store': false,
-        'type': 0
+        'type': 0,
+        'id': '123'
       },
       success: function(res) {
         console.log("【detail调用函数getInteraction】", res)
+        that.setData({
+
+        })
       },
       fail: function(err) {
         console.log(err)

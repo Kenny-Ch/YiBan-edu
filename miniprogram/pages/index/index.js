@@ -61,7 +61,7 @@ Page({
       left: "专业了解",
     }],
     companionClass: [{
-      url: "../display/artical/artical",
+      url: "../display/classroom/classroom",
       image: "../../images/learningMethod.png",
       left: "精品课堂",
     }, {
