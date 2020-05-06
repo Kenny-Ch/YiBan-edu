@@ -131,9 +131,9 @@ Page({
 
         },
         success: function (res) {
-          console.log(res.result)
+          console.log('匹配信息添加成功！')
         },
-        fail: console.error
+        fail: console.log('匹配信息添加失败!')
       })
     }
 

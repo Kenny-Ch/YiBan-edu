@@ -103,7 +103,7 @@ Page({
       success: function(res) {
         console.log("【question页面调用函数getQuestions】",res.result)
         var qa = [];
-        for (let returndata of res.result[0]) {
+        for (let returndata of res.result) {
           qa.push({
             'question': returndata.question,
             'abstract_answer': returndata.officialAnswer,

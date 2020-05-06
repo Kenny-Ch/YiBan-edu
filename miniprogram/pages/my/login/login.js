@@ -90,8 +90,9 @@ Page({
               email: input.email
           }
           }
+          app.globalData.isNew = false
             wx.redirectTo({
-              url: '/pages/my/information/information',
+              url: '/pages/my/my',
               complete: (res) => {},
               fail: (res) => {},
               success: (res) => {},
@@ -140,8 +141,9 @@ Page({
               stuNum: input.stuNum
             }
           }
+          app.globalData.isNew = false
             wx.redirectTo({
-              url: '/pages/my/information/information',
+              url: '/pages/my/my',
               complete: (res) => {},
               fail: (res) => {},
               success: (res) => {},

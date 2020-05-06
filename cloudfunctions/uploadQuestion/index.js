@@ -25,9 +25,10 @@ const _ = db.command
     //或者
     //（心灵解压馆-压力疏导-常见问题解答）
     "flag": "pressQue",
+    "tag":                          //分类标签
     "question": "",                 //问题
-    "answer": "",                   //答案
-    "advisor": "",                  //回答者
+    "answer": [],                   //答案
+    "advisor": [],                  //回答者
 */
 
 // 云函数入口函数

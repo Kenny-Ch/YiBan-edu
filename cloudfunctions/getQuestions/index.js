@@ -52,13 +52,13 @@ exports.main = async (event, context) => {
     const batchTimes = Math.ceil(total / 100)
 
     // 承载所有读操作的 promise 的数组
-    const questions = []
+    var questions = []
 
     for (let i = 0; i < batchTimes; i++) {
       var res = await db.collection('question').skip(i * MAX_LIMIT).limit(MAX_LIMIT).where({
         flag: event.flag
       }).get()
-      questions.push(res.data)
+      questions = questions.concat(res.data)
     }
 
     return questions
@@ -75,13 +75,13 @@ exports.main = async (event, context) => {
     const batchTimes = Math.ceil(total / 100)
 
     // 承载所有读操作的 promise 的数组
-    const questions = []
+    var questions = []
 
     for (let i = 0; i < batchTimes; i++) {
       var res = await db.collection('question').skip(i * MAX_LIMIT).limit(MAX_LIMIT).where({
         flag: event.flag
       }).get()
-      questions.push(res.data)
+      questions = questions.concat(res.data)
     }
 
     return questions
@@ -99,14 +99,15 @@ exports.main = async (event, context) => {
     //或者
     //(个人中心-常见问题)
     "flag": "usingQue",
-    "question": "",                 //问题
-    "answer": "",                   //答案
+    "question": [],                 //问题
+    "answer": [],                   //答案
 
 
     //或者
     //（心灵解压馆-压力疏导-常见问题解答）
     "flag": "pressQue",
+    "tag": ""                       //分类标签
     "question": "",                 //问题
-    "answer": "",                   //答案
-    "advisor": "",                  //回答者
+    "answer": [],                   //答案
+    "advisor": [],                  //回答者
  */

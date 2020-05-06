@@ -122,7 +122,7 @@ Page({
       // 要调用的云函数名称
       name: 'getOpenid',
     }).then(res => {
-      console.log('【index调用云函数getOpenid返回值】', res)
+      console.log('【index调用云函数getOpenid返回值】', res.result)
       app.globalData.openid = res.result.openid
 
       //获取openid成功后获取个人信息
@@ -132,7 +132,7 @@ Page({
           openid: res.result.openid
         }
       }).then(res => {
-        console.log('【index调用云函数getUserInfo返回值】', res)
+        console.log('【index调用云函数getUserInfo返回值】', res.result)
         if (res.result.length == 0) {
           app.globalData.isNew = true
         } else {
@@ -160,6 +160,7 @@ Page({
   //跳转个人信息页面
   jumpToMyPage: function () {
     if (app.globalData.isNew) {
+      console.log('【index】用户未注册，跳转注册页面')
       wx.navigateTo({
         url: '/pages/my/login/login',
         fail: (res) => {
@@ -168,6 +169,7 @@ Page({
         success: (result) => {},
       })
     } else {
+      console.log('【index】用户已注册，跳转我的页面')
       wx.navigateTo({
         url: '/pages/my/my',
         fail: (res) => {

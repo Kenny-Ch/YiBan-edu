@@ -10,9 +10,9 @@
 		<text class="underTitle">以伴已陪伴你度过{{day}}天了</text>
 	</view>
 	<view class='head-right'>
-  <navigator url="../my/my" hover-class="none">
-<image src="../../images/user.png" class='head-right-icon'></image>
-  </navigator>
+
+<image src="../../images/user.png" class='head-right-icon' bindtap="jumpToMyPage"></image>
+
 	</view>
 </view>
 <image src="../../images/head.png" class='head-under'></image>
