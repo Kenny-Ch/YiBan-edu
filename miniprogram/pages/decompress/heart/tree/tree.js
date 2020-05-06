@@ -39,55 +39,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.cloud.callFunction({
+      name: 'getComments',
+      success: function(res){
+        for(var i = 0; i<res.result.length; i++){
+          temp.id = i
+          if(res.result[i].isAnonymous){
+            temp.userimg = '../../../../images/my/touxiang.jpg'
+          } else {
+            
+          }
+          temp.username = res.result[i].name
+          temp.time = res.result[i].time
+          temp.liuyan = res.result[i].comment
+          temp.contextId = res.result[i]._id
+        }
+      }
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
 
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
