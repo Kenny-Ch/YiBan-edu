@@ -5,47 +5,47 @@ Page({
    * 页面的初始数据
    */
   data: {
-    title:'学科学习法',
-    articals:[{
-      title:'语文快速提分方法',
-      abstract:'语文成绩一直是考生又爱又恨的一门科目，即使花很多时间在短时间内也不会有大幅度提高，想……',
-      img:'https://7969-yiban-edu-1301806073.tcb.qcloud.la/xxxx/0001/img.png?sign=73b287c9fecaad7746f1fedffd8cbc4d&t=1587107921',
-      time:'2019年4月16日',
-      praisePoints:30,
-      browseVolume:30,
-      comment:5,
-    },{
-      title:'2分钟梳理三年数学知识',
-      abstract:'数学复习要紧紧抓住课本，反复吃透课本是搞好数学复习的第一条生命线，要把课本中的基本概……',
-      img:'https://7969-yiban-edu-1301806073.tcb.qcloud.la/xxxx/0002/img.png?sign=44baffa7fc9c267220bebbbb526731d9&t=1587106425',
-      time:'2019年4月14日',
-      praisePoints:30,
-      browseVolume:30,
-      comment:10,
-    },{
-      title:'物理压轴大题解题思路',
-      abstract:'一份试卷的压轴题，难度大，分值也大，是用来鉴别考生掌握知识与综合应用能力高下的分档题……',
-      img:'https://7969-yiban-edu-1301806073.tcb.qcloud.la/xxxx/0003/img.png?sign=4c76d44994ab58bcbc7a66b92545a7d2&t=1587107934',
-      time:'2019年4月12日',
-      praisePoints:30,
-      browseVolume:30,
-      comment:20,
-    },{
-      title:'错题集怎么做',
-      abstract:'“人人都说错题集，可它到底怎么做”',
-      img:'https://7969-yiban-edu-1301806073.tcb.qcloud.la/xxxx/0004/img.jpg?sign=4cf7e64356f764b29cc583afdf0bb67b&t=1587109077',
-      time:'2019年4月10日',
-      praisePoints:40,
-      browseVolume:30,
-      comment:20,
-    },{
-      title:'学点好方法',
-      abstract:'学习学的好不好，关键还要看方法！',
-      img:'https://7969-yiban-edu-1301806073.tcb.qcloud.la/xxxx/0005/img.png?sign=b400738e96d3f5120b34243ab1966924&t=1587109221',
-      time:'2019年4月8日',
-      praisePoints:30,
-      browseVolume:30,
-      comment:30,
+    title: '学科学习法',
+    articals: [{
+      title: '语文快速提分方法',
+      abstract: '语文成绩一直是考生又爱又恨的一门科目，即使花很多时间在短时间内也不会有大幅度提高，想……',
+      img: 'https://7969-yiban-edu-1301806073.tcb.qcloud.la/xxxx/0001/img.png?sign=73b287c9fecaad7746f1fedffd8cbc4d&t=1587107921',
+      time: '2019年4月16日',
+      praisePoints: 30,
+      browseVolume: 30,
+      comment: 5,
+    }, {
+      title: '2分钟梳理三年数学知识',
+      abstract: '数学复习要紧紧抓住课本，反复吃透课本是搞好数学复习的第一条生命线，要把课本中的基本概……',
+      img: 'https://7969-yiban-edu-1301806073.tcb.qcloud.la/xxxx/0002/img.png?sign=44baffa7fc9c267220bebbbb526731d9&t=1587106425',
+      time: '2019年4月14日',
+      praisePoints: 30,
+      browseVolume: 30,
+      comment: 10,
+    }, {
+      title: '物理压轴大题解题思路',
+      abstract: '一份试卷的压轴题，难度大，分值也大，是用来鉴别考生掌握知识与综合应用能力高下的分档题……',
+      img: 'https://7969-yiban-edu-1301806073.tcb.qcloud.la/xxxx/0003/img.png?sign=4c76d44994ab58bcbc7a66b92545a7d2&t=1587107934',
+      time: '2019年4月12日',
+      praisePoints: 30,
+      browseVolume: 30,
+      comment: 20,
+    }, {
+      title: '错题集怎么做',
+      abstract: '“人人都说错题集，可它到底怎么做”',
+      img: 'https://7969-yiban-edu-1301806073.tcb.qcloud.la/xxxx/0004/img.jpg?sign=4cf7e64356f764b29cc583afdf0bb67b&t=1587109077',
+      time: '2019年4月10日',
+      praisePoints: 40,
+      browseVolume: 30,
+      comment: 20,
+    }, {
+      title: '学点好方法',
+      abstract: '学习学的好不好，关键还要看方法！',
+      img: 'https://7969-yiban-edu-1301806073.tcb.qcloud.la/xxxx/0005/img.png?sign=b400738e96d3f5120b34243ab1966924&t=1587109221',
+      time: '2019年4月8日',
+      praisePoints: 30,
+      browseVolume: 30,
+      comment: 30,
     }],
   },
 
@@ -53,9 +53,76 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log('【article页面】传入参数：', options)
     this.setData({
-      title:options.name,
+      title: options.name,
     })
+
+    switch (this.data.title) {
+      case "学科学习法":
+        wx.cloud.callFunction({
+          // 要调用的云函数名称
+          name: 'getOpenid',
+        }).then(res => {
+              
+        }).catch(err => {
+          console.log('学科学习法获取失败')
+        })
+        break
+      case "学习资料分享":
+        wx.cloud.callFunction({
+          // 要调用的云函数名称
+          name: 'getOpenid',
+        }).then(res => {
+              
+        }).catch(err => {
+          console.log('学习资料分享获取失败')
+        })
+        break
+      case "高考心得分享":
+        wx.cloud.callFunction({
+          // 要调用的云函数名称
+          name: 'getOpenid',
+        }).then(res => {
+              
+        }).catch(err => {
+          console.log('高考心得分享获取失败')
+        })
+        break
+      case "选科咨询":
+        wx.cloud.callFunction({
+          // 要调用的云函数名称
+          name: 'getOpenid',
+        }).then(res => {
+              
+        }).catch(err => {
+          console.log('选科咨询获取失败')
+        })
+        break
+      case "高校资讯":
+        wx.cloud.callFunction({
+          // 要调用的云函数名称
+          name: 'getOpenid',
+        }).then(res => {
+              
+        }).catch(err => {
+          console.log('高校资讯获取失败')
+        })
+        break
+      case "专业了解":
+        wx.cloud.callFunction({
+          // 要调用的云函数名称
+          name: 'getOpenid',
+        }).then(res => {
+              
+        }).catch(err => {
+          console.log('专业了解获取失败')
+        })
+        break
+      default:
+        console.log('传入参数有误，无法匹配哪个页面类型')
+
+    }
   },
 
   /**

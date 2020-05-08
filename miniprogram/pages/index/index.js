@@ -65,7 +65,7 @@ Page({
       image: "../../images/learningMethod.png",
       left: "精品课堂",
     }, {
-      url: "../display/artical/artical",
+      url: "../display/classroom/classroom",
       image: "../../images/LearningMaterials.png",
       left: "学霸讲座",
     }],
