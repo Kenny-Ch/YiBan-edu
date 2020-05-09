@@ -11,6 +11,9 @@ const MAX_LIMIT = 100
       like: bool            //是否获取所有点赞
       store: bool           //是否获取所有收藏
 
+      id: string            //如果是文章视频，则填写该字段
+      openid: string        //如果是用户，则填写该字段
+
       type: 0/1             //0代表是用户要获得该数据，1代表是文章/视频获得该数据
     }
 */
@@ -26,7 +29,7 @@ exports.main = async (event, context) => {
       // 先取出集合记录总数
       var countResult = await db.collection('interaction').where({
         flag: 'comment',
-        openid: event.openid
+        userOpenid: event.openid
       }).count()
       var total = countResult.total
       // 计算需分几次取
@@ -37,7 +40,7 @@ exports.main = async (event, context) => {
       for (let i = 0; i < batchTimes; i++) {
         var res = await db.collection('interaction').skip(i * MAX_LIMIT).limit(MAX_LIMIT).where({
           flag: 'comment',
-          openid: event.openid
+          userOpenid: event.openid
         }).get()
         comments.push(res.data)
       }
@@ -49,7 +52,7 @@ exports.main = async (event, context) => {
       // 先取出集合记录总数
       var countResult = await db.collection('interaction').where({
         flag: 'like',
-        openid: event.openid
+        userOpenid: event.openid
       }).count()
       var total = countResult.total
       // 计算需分几次取
@@ -60,7 +63,7 @@ exports.main = async (event, context) => {
       for (let i = 0; i < batchTimes; i++) {
         var res = await db.collection('interaction').skip(i * MAX_LIMIT).limit(MAX_LIMIT).where({
           flag: 'like',
-          openid: event.openid
+          userOpenid: event.openid
         }).get()
         likes.push(res.data)
       }
@@ -72,7 +75,7 @@ exports.main = async (event, context) => {
       // 先取出集合记录总数
       var countResult = await db.collection('interaction').where({
         flag: 'store',
-        openid: event.openid
+        userOpenid: event.openid
       }).count()
       var total = countResult.total
       // 计算需分几次取
@@ -83,7 +86,7 @@ exports.main = async (event, context) => {
       for (let i = 0; i < batchTimes; i++) {
         var res = await db.collection('interaction').skip(i * MAX_LIMIT).limit(MAX_LIMIT).where({
           flag: 'store',
-          openid: event.openid
+          userOpenid: event.openid
         }).get()
         stores.push(res.data)
       }
@@ -95,7 +98,7 @@ exports.main = async (event, context) => {
       // 先取出集合记录总数
       var countResult = await db.collection('interaction').where({
         flag: 'comment',
-        contextIid: event.id
+        contextId: event.id
       }).count()
       var total = countResult.total
       // 计算需分几次取
