@@ -52,7 +52,6 @@ exports.main = async (event, context) => {
         var res = await db.collection('comments').skip(i * MAX_LIMIT).limit(MAX_LIMIT).get()
         comments.push(res.data)
       }
-  
       return comments
     
   }
