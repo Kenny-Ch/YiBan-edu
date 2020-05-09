@@ -57,72 +57,21 @@ Page({
     this.setData({
       title: options.name,
     })
+    var that = this
+    wx.cloud.callFunction({
+      // 要调用的云函数名称
+      name: 'getContext',
+      data: {
+        flag: options.name
+      }
+    }).then(res => {
+      that.setData({
 
-    switch (this.data.title) {
-      case "学科学习法":
-        wx.cloud.callFunction({
-          // 要调用的云函数名称
-          name: 'getOpenid',
-        }).then(res => {
-              
-        }).catch(err => {
-          console.log('学科学习法获取失败')
-        })
-        break
-      case "学习资料分享":
-        wx.cloud.callFunction({
-          // 要调用的云函数名称
-          name: 'getOpenid',
-        }).then(res => {
-              
-        }).catch(err => {
-          console.log('学习资料分享获取失败')
-        })
-        break
-      case "高考心得分享":
-        wx.cloud.callFunction({
-          // 要调用的云函数名称
-          name: 'getOpenid',
-        }).then(res => {
-              
-        }).catch(err => {
-          console.log('高考心得分享获取失败')
-        })
-        break
-      case "选科咨询":
-        wx.cloud.callFunction({
-          // 要调用的云函数名称
-          name: 'getOpenid',
-        }).then(res => {
-              
-        }).catch(err => {
-          console.log('选科咨询获取失败')
-        })
-        break
-      case "高校资讯":
-        wx.cloud.callFunction({
-          // 要调用的云函数名称
-          name: 'getOpenid',
-        }).then(res => {
-              
-        }).catch(err => {
-          console.log('高校资讯获取失败')
-        })
-        break
-      case "专业了解":
-        wx.cloud.callFunction({
-          // 要调用的云函数名称
-          name: 'getOpenid',
-        }).then(res => {
-              
-        }).catch(err => {
-          console.log('专业了解获取失败')
-        })
-        break
-      default:
-        console.log('传入参数有误，无法匹配哪个页面类型')
+      })
+    }).catch(err => {
+      console.log(options.name, '获取失败',err)
+    })
 
-    }
   },
 
   /**
