@@ -42,7 +42,7 @@ exports.main = async (event, context) => {
           flag: 'comment',
           userOpenid: event.openid
         }).get()
-        comments.push(res.data)
+        comments = comments.concat(res.data)
       }
 
       data.comments = comments
@@ -65,7 +65,7 @@ exports.main = async (event, context) => {
           flag: 'like',
           userOpenid: event.openid
         }).get()
-        likes.push(res.data)
+        likes = likes.concat(res.data)
       }
 
       data.likes = likes
@@ -88,7 +88,7 @@ exports.main = async (event, context) => {
           flag: 'store',
           userOpenid: event.openid
         }).get()
-        stores.push(res.data)
+        stores = stores.concat(res.data)
       }
 
       data.stores = stores
@@ -111,7 +111,7 @@ exports.main = async (event, context) => {
           flag: 'comment',
           contextId: event.id
         }).get()
-        comments.push(res.data)
+        comments = comments.concat(res.data)
       }
 
       data.comments = comments
@@ -134,7 +134,7 @@ exports.main = async (event, context) => {
           flag: 'like',
           contextId: event.id
         }).get()
-        likes.push(res.data)
+        likes = likes.concat(res.data)
       }
 
       data.likes = likes
@@ -157,7 +157,7 @@ exports.main = async (event, context) => {
           flag: 'store',
           contextId: event.id
         }).get()
-        stores.push(res.data)
+        stores = stores.concat(res.data)
       }
 
       data.stores = stores

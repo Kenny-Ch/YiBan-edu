@@ -126,7 +126,7 @@ Page({
       console.log("【artical调用函数getContext】", res.result)
       dataList = res.result;
     }).catch(err => {
-      console.log(options.name, '获取失败', err)
+      console.error(options.name, '获取失败', err)
     })
     this.getData(dataList);
   },
@@ -147,7 +147,7 @@ Page({
         'like': true,
         'store': false,
         'type': 1,
-        'id': '111'
+        'id': item._id
       }
     }).then(function(res) {
       console.log("【artical调用函数getInteraction】", res.result);
