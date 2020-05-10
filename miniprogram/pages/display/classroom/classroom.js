@@ -33,7 +33,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log('【classroom页面】传入参数：', options)
+    this.setData({
+      title: options.name,
+    })
+    this.getVideo(options).then(function(res) {
+      console.log("video list加载成功")
+    });
   },
 
   /**
@@ -83,5 +89,54 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  
+  async getVideo(options) {
+    var that = this
+    let dataList;
+    await wx.cloud.callFunction({
+      // 要调用的云函数名称
+      name: 'getContext',
+      data: {
+        flag: options.name
+      }
+    }).then(res => {
+      console.log("【classroom调用函数getContext】", res.result)
+      dataList = res.result;
+    }).catch(err => {
+      console.error(options.name, '获取失败', err)
+    })
+    this.setData({
+      list: this.data.list.concat(item)
+    })
+    //this.getData(dataList);
+  },
+
+  async getData(dataList){
+    for(let item of dataList){
+      item.time = item.time.substring(0, 10);
+      //获取留言数
+      await this.getInteraction(item);
+    }
+  },
+
+  async getInteraction(item) {
+    await wx.cloud.callFunction({
+      name: 'getInteraction',
+      data: {
+        'comment': true,
+        'like': true,
+        'store': false,
+        'type': 1,
+        'id': item._id
+      }
+    }).then(function(res) {
+      console.log("【classroom调用函数getInteraction】", res.result);
+      item.praisePoints = res.result.likes.length;
+      item.comment = res.result.comments.length;
+    })
+    this.setData({
+      list: this.data.list.concat(item)
+    })
   }
 })

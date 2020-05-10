@@ -6,7 +6,7 @@
 <view class="title">{{title}}</view>
 <view class="artical">
   <view class="card" wx:for="{{articals}}">
-    <navigator url='../detail/detail' hover-class="none">
+    <navigator url='../detail/detail?id={{item._id}}' hover-class="none">
       <view class="top"> 
         <view class='text'>
           <view class='text-title'>{{item.title}}</view>

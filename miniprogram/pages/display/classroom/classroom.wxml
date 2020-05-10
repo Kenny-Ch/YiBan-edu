@@ -3,7 +3,7 @@
   <view slot="backText">返回</view>
   <view slot="content">以伴edu</view>
 </cu-custom>
-<view class='title'>精品课堂</view>
+<view class='title'>{{title}}</view>
 <view class="line"></view>
 <view class='con'>
   <view wx:for="{{list}}" class='card'>
