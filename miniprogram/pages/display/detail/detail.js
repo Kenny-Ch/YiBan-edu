@@ -248,6 +248,7 @@ Page({
         return
       }
 
+      const app = getApp()
       wx.cloud.callFunction({
         name: 'uploadInteraction',
         data: {
@@ -259,7 +260,7 @@ Page({
           'comment': content
         },
         success: function(res) {
-          console.log("【detail调用函数uploadInteraction，flag=comment】", res)
+          console.log("【detail调用函数uploadInteraction】【flag: 'comment'】", res)
         },
         fail: function(err) {
           console.log(err)

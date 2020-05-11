@@ -107,45 +107,20 @@ Page({
     }).catch(err => {
       console.error(options.name, '获取失败', err)
     })
-    // this.setData({
-    //   list: this.data.list.concat(item)
-    // })
     this.getData(dataList);
   },
 
   async getData(dataList){
     for(let item of dataList){
       var data = {}
-      data.time = item.time;
-      //获取留言数
-      // await this.getInteraction(item);
+      data.time = item.videoTime;
       data.name = item.author
       data.img = item.coverImgUrl
       data.title = item.title
-      data.contextid = item._id
+      data.id = item._id
       this.setData({
         list: this.data.list.concat(data)
       })
     }
-  },
-
-  async getInteraction(item) {
-    await wx.cloud.callFunction({
-      name: 'getInteraction',
-      data: {
-        'comment': true,
-        'like': true,
-        'store': false,
-        'type': 1,
-        'id': item._id
-      }
-    }).then(function(res) {
-      console.log("【classroom调用函数getInteraction】", res.result);
-      item.praisePoints = res.result.likes.length;
-      item.comment = res.result.comments.length;
-    })
-    this.setData({
-      list: this.data.list.concat(item)
-    })
   }
 })

@@ -58,6 +58,7 @@ exports.main = async (event, context) => {
           flag: event.flag,
           contextId: event.contextId,
           comment: event.comment,
+          userOpenid: event.userOpenid,
         }
       })
     } catch (e) {
@@ -71,6 +72,7 @@ exports.main = async (event, context) => {
           flag: event.flag,
           contextId: event.contextId,
           comment: event.comment,
+          userOpenid: event.userOpenid,
         }
       })
     } catch (e) {

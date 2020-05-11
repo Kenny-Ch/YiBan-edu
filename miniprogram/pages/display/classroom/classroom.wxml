@@ -7,7 +7,7 @@
 <view class="line"></view>
 <view class='con'>
   <view wx:for="{{list}}" class='card'>
-    <navigator url="../video/video" hover-class="none">
+    <navigator url="../video/video?url={{item.id}}" hover-class="none">
       <view class='row ii'>
         <view class='shu'></view>
         <view class='card-title'>{{item.title}}</view>
