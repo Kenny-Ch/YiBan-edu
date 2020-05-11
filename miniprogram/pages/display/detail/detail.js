@@ -267,28 +267,6 @@ Page({
         }
       })
 
-      wx.requestSubscribeMessage({
-        tmplIds: [config.subcributeTemplateId],
-        success(res) {
-          wx.showLoading({
-            title: '加载中...',
-          })
-          console.info(res)
-          console.info(res[config.subcributeTemplateId])
-          that.submitContent(content, commentPage, res[config.subcributeTemplateId]).then((res) => {
-            console.info(res)
-            wx.hideLoading()
-          })
-        },
-        fail(res) {
-          console.info(res)
-          wx.showToast({
-            title: '程序有一点点小异常，操作失败啦',
-            icon: 'none',
-            duration: 1500
-          })
-        }
-      })
     } catch (err) {
       wx.showToast({
         title: '程序有一点点小异常，操作失败啦',
