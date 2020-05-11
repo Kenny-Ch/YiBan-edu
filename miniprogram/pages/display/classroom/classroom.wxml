@@ -15,8 +15,8 @@
       <view class='row ii'>
         <image src="{{item.img}}" class='img'></image>
         <view class='card-name'>{{item.name}}</view>
-        <image src="../../../images/display/shijian.png" class='shijian'></image>
-        <view class='card-have'>{{item.have}}</view>
+        <!-- <image src="../../../images/display/shijian.png" class='shijian'></image>
+        <view class='card-have'>{{item.have}}</view> -->
       </view>
       <view class='row ii'>
         <view class='card-time'>{{item.time}}</view>

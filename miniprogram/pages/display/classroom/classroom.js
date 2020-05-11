@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list:[{
+    list:[
+      {
       title:'历史课堂1：高中历史选择题技巧',
       img:'../../../images/display/teacher.png',
       name:'以伴团队',
@@ -106,17 +107,25 @@ Page({
     }).catch(err => {
       console.error(options.name, '获取失败', err)
     })
-    this.setData({
-      list: this.data.list.concat(item)
-    })
-    //this.getData(dataList);
+    // this.setData({
+    //   list: this.data.list.concat(item)
+    // })
+    this.getData(dataList);
   },
 
   async getData(dataList){
     for(let item of dataList){
-      item.time = item.time.substring(0, 10);
+      var data = {}
+      data.time = item.time;
       //获取留言数
-      await this.getInteraction(item);
+      // await this.getInteraction(item);
+      data.name = item.author
+      data.img = item.coverImgUrl
+      data.title = item.title
+      data.contextid = item._id
+      this.setData({
+        list: this.data.list.concat(data)
+      })
     }
   },
 

@@ -200,6 +200,13 @@
 					"id": -1,
 					"name": "pages/display/video/video",
 					"pathName": "pages/display/video/video",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/display/classroom/classroom",
+					"pathName": "pages/display/classroom/classroom",
 					"scene": null
 				}
 			]
