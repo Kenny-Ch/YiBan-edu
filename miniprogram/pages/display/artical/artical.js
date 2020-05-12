@@ -123,7 +123,7 @@ Page({
         flag: options.name
       }
     }).then(res => {
-      console.log("【artical调用函数getContext】", res.result)
+      console.log("【artical调用函数getContext】", res)
       dataList = res.result;
     }).catch(err => {
       console.error(options.name, '获取失败', err)
@@ -140,6 +140,7 @@ Page({
   },
 
   async getInteraction(item) {
+    
     await wx.cloud.callFunction({
       name: 'getInteraction',
       data: {

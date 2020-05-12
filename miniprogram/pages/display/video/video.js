@@ -158,7 +158,8 @@ Page({
     let that = this
     db.collection('interaction').where({
         userOpenid: app.globalData.openid,
-        contextId: that.data.video.vid
+        contextId: that.data.video._id,
+        flag: 'like'
       })
       .get()
       .then(function(res) {
@@ -187,7 +188,7 @@ Page({
     if (!that.data.collection.status) {
       db.collection('interaction').where({
           userOpenid: app.globalData.openid,
-          contextId: that.data.video.vid,
+          contextId: that.data.video._id,
           flag: 'store'
         })
         .get()
@@ -222,10 +223,10 @@ Page({
         data: {
           'flag': 'store',
           'userOpenid': app.globalData.openid,
-          'contextId': that.data.video.vid
+          'contextId': that.data.video._id
         }
       }).then(function(res) {
-        console.log("【video调用函数uploadInteraction】【点赞成功】", res)
+        console.log("【video调用函数uploadInteraction】【收藏成功】", res)
         that.setData({
           collection: {
             status: true,
@@ -253,11 +254,10 @@ Page({
         data: {
           'flag': 'like',
           'userOpenid': app.globalData.openid,
-          'contextId': that.data.video.vid
+          'contextId': that.data.video._id
         }
       }).then(function(res) {
         console.log("【video调用函数uploadInteraction】【点赞成功】", res)
-        let collection = "comment."
         that.setData({
           zan: {
             status: true,
@@ -269,7 +269,6 @@ Page({
         console.log(err)
       })
     }
-
   },
   /**
    * 获取收藏和喜欢的状态
@@ -315,7 +314,8 @@ Page({
    * 提交评论
    * @param {} e 
    */
-  formSubmit: function(e) {
+  formSubmit: function (e) {
+    var that = this;
     try {
       let that = this;
       let commentPage = 1
@@ -330,46 +330,25 @@ Page({
         return
       }
 
-      wx.requestSubscribeMessage({
-        tmplIds: [config.subcributeTemplateId],
-        success(res) {
-          wx.showLoading({
-            title: '加载中...',
-          })
-          console.info(res)
-          console.info(res[config.subcributeTemplateId])
-          that.submitContent(content, commentPage, res[config.subcributeTemplateId]).then((res) => {
-            console.info(res)
-            wx.hideLoading()
-          })
-          const app = getApp()
-          wx.cloud.callFunction({
-            name: 'uploadInteraction',
-            data: {
-              'flag': "comment",
-              'userOpenid': app.globalData.openid,
-              'imgUrl': that.data.userInfo.avatarUrl,
-              'nickname': that.data.userInfo.nickName,
-              'contextId': that.data.video.vid,
-              'comment': content
-            },
-            success: function (res) {
-              console.log("【detail调用函数uploadInteraction】【flag: 'comment'】", res)
-            },
-            fail: function (err) {
-              console.log(err)
-            }
-          })
+      const app = getApp()
+      wx.cloud.callFunction({
+        name: 'uploadInteraction',
+        data: {
+          'flag': "comment",
+          'userOpenid': app.globalData.openid,
+          'imgUrl': that.data.userInfo.avatarUrl,
+          'nickname': that.data.userInfo.nickName,
+          'contextId': '111',
+          'comment': content
         },
-        fail(res) {
-          console.info(res)
-          wx.showToast({
-            title: '程序有一点点小异常，操作失败啦',
-            icon: 'none',
-            duration: 1500
-          })
+        success: function (res) {
+          console.log("【detail调用函数uploadInteraction】【flag: 'comment'】", res)
+        },
+        fail: function (err) {
+          console.log(err)
         }
       })
+
     } catch (err) {
       wx.showToast({
         title: '程序有一点点小异常，操作失败啦',
@@ -428,12 +407,14 @@ Page({
       .get()
       .then(function(res) {
         console.log("【video获取数据库inClass数据】", res)
+        let _id = "video._id"
         let title = "video.title"
         let time = "video.time"
         let introduction = "video.introduction"
         let img = "video.img"
         let vid = "video.vid"
         that.setData({
+          [_id]: res.data._id,
           [title]: res.data.title,
           [time]: res.data.time.getFullYear() + '年' + res.data.time.getMonth() + '月' + res.data.time.getDate() + '日',
           [introduction]: res.data.introduction,
@@ -455,7 +436,7 @@ Page({
         'like': false,
         'store': false,
         'type': 1,
-        'id': that.data.video.vid
+        'id': that.data.video._id
       }
     }).then(function(res) {
       console.log("【video调用函数getInteraction】", res)

@@ -57,10 +57,10 @@
         </view>
         <view class='flex justify-between'>
           <view class='text-gray text-df'></view>
-          <view>
+          <!-- <view>
             <text class="cuIcon-messagefill text-gray margin-left-sm"></text>
             <text class="text-gray margin-left-xs">{{item.childComment.length}}</text>
-          </view>
+          </view> -->
         </view>
       </view>
     </view>

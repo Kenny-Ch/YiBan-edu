@@ -68,6 +68,8 @@ exports.main = async (event, context) => {
       flag: flag
     }).skip(i * MAX_LIMIT).limit(MAX_LIMIT).get()
     for (item of res.data) {
+      item.flag = flag
+      item.collection = collection
       result.push(item)
     }
   }

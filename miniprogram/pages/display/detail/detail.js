@@ -17,10 +17,10 @@ Page({
         cAvatarUrl: '../../../images/display/plimg.jpg',
         cNickName: '清风自来',
         comment: '很棒！',
-        childComment: [{
-          cNickName: '清风自来',
-          comment: '很棒！',
-        }]
+        // childComment: [{
+        //   cNickName: '清风自来',
+        //   comment: '很棒！',
+        // }]
       }],
     },
     collection: {
@@ -55,6 +55,8 @@ Page({
     }
     const _ts = this;
 
+    this.getArtical(options)
+
     app.getText('https://mgt-1301264585.cos.ap-guangzhou.myqcloud.com/0005/0005.md', res => {
       let obj = app.towxml(res.data, 'markdown', {
         theme: 'light',
@@ -73,6 +75,8 @@ Page({
 
     //获取文章所有评论
     this.getAllComment();
+    this.getZanStatus()
+    this.getCollectionStatus()
   },
 
   /**
@@ -152,42 +156,129 @@ Page({
     }
   },
 
+  /**
+   * 获取点赞状态
+   */
+  getZanStatus() {
+    const db = wx.cloud.database()
+    const app = getApp()
+    let that = this
+    db.collection('interaction').where({
+        userOpenid: app.globalData.openid,
+        contextId: that.data.post._id,
+        flag: 'like'
+      })
+      .get()
+      .then(function(res) {
+        console.log("【detail获取数据库interaction数据】【flag: 'like'】", res)
+        if (res.data.length != 0) {
+          that.setData({
+            zan: {
+              status: true,
+              text: "已赞",
+              icon: "appreciatefill"
+            }
+          })
+        }
+      }).catch(function(err) {
+        console.log(err)
+      })
+  },
+
+  /**
+   * 获取收藏状态
+   */
+  getCollectionStatus() {
+    const db = wx.cloud.database()
+    const app = getApp()
+    let that = this
+    if (!that.data.collection.status) {
+      db.collection('interaction').where({
+          userOpenid: app.globalData.openid,
+          contextId: that.data.post._id,
+          flag: 'store'
+        })
+        .get()
+        .then(function(res) {
+          console.log("【detail获取数据库interaction数据】【flag: 'store'】", res)
+          if (res.data.length != 0) {
+            that.setData({
+              collection: {
+                status: true,
+                text: "已收藏",
+                icon: "favorfill"
+              }
+            })
+          }
+        }).catch(function(err) {
+          console.log(err)
+        })
+    }
+  },
 
   /**
    * 收藏功能
    */
   postCollection: async function() {
-    wx.cloud.callFunction({
-      name: 'uploadInteraction',
-      data: {
-        'flag': 'store',
-        'userOpenid': app.globalData.openid,
-        'contextId': ''
-      },
-      success: function(res) {
-        console.log("【detail调用函数uploadInteraction，flag=store】", res)
-      },
-      fail: console.err
-    })
-
+    let that = this
+    let app = getApp();
+    //此处按照逻辑需要判断是否曾经点过赞
+    //暂时不实现该功能
+    if (!that.data.collection.status) {
+      await wx.cloud.callFunction({
+        name: 'uploadInteraction',
+        data: {
+          'flag': 'store',
+          'userOpenid': app.globalData.openid,
+          'contextId': that.data.post._id
+        }
+      }).then(function(res) {
+        console.log("【detail调用函数uploadInteraction】【收藏成功】", res)
+        that.setData({
+          collection: {
+            status: true,
+            text: "已收藏",
+            icon: "favorfill"
+          }
+        })
+      }).catch(function(err) {
+        console.log(err)
+      })
+    }
   },
   /**
    * 点赞功能
    */
   postZan: async function() {
-    wx.cloud.callFunction({
-      name: 'uploadInteraction',
-      data: {
-        'flag': 'like',
-        'userOpenid': app.globalData.openid,
-        'contextId': ''
-      },
-      success: function(res) {
-        console.log("【detail调用函数uploadInteraction，flag=like】", res)
-      },
-      fail: console.err
-    })
+    let that = this
+    let app = getApp();
+    //此处按照逻辑需要判断是否曾经点过赞
+    //若点过赞，则不能多次点赞，增加数据库负担
+    //暂时不实现该功能
+    if (!that.data.zan.status) {
+      await wx.cloud.callFunction({
+        name: 'uploadInteraction',
+        data: {
+          'flag': 'like',
+          'userOpenid': app.globalData.openid,
+          'contextId': that.data.post._id
+        }
+      }).then(function(res) {
+        console.log("【detail调用函数uploadInteraction】【点赞成功】", res)
+        let collection = "comment."
+        that.setData({
+          zan: {
+            status: true,
+            text: "已赞",
+            icon: "appreciatefill"
+          }
+        })
+      }).catch(function(err) {
+        console.log(err)
+      })
+    }
   },
+
   /**
    * 获取收藏和喜欢的状态
    */
@@ -318,6 +409,38 @@ Page({
     }
   },
 
+  // 获取文章详情
+  async getArtical(options) {
+
+
+    // title: '以伴干货篇 | 学点好方法',
+    //   defaultImageUrl: 'https://7969-yiban-edu-1301806073.tcb.qcloud.la/xxxx/0005/0005.jpg?sign=8ab25e435f2084606c7f270feea8e401&t=1587129429',
+    //     createTime: '2020-02-05',
+    //       totalVisits: 292,
+    //         totalZans: 54,
+
+    let that = this
+    let db = wx.cloud.database()
+    console.log(options)
+    await db.collection(options.collection).doc(options.id)
+      .get()
+      .then(function(res) {
+        console.log("【detail获取数据库" + options.collection + "数据】", res)
+        let _id = "post._id"
+        let title = "post.title"
+        let defaultImageUrl = "post.defaultImageUrl"
+        let createTime = "post.createTime"
+        that.setData({
+          [_id]: res.data._id,
+          [title]: res.data.title,
+          [defaultImageUrl]: res.data.coverImgUrl,
+          [createTime]: res.data.time.getFullYear() + '年' + res.data.time.getMonth() + '月' + res.data.time.getDate() + '日',
+        })
+      }).catch(function(err) {
+        console.log(err)
+      })
+  },
+
   getAllComment: function() {
     var that = this;
     wx.cloud.callFunction({
@@ -327,7 +450,7 @@ Page({
         'like': false,
         'store': false,
         'type': 0,
-        'id': '123'
+        'id': that.data.post._id
       },
       success: function(res) {
         console.log("【detail调用函数getInteraction】", res)

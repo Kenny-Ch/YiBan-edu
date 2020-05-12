@@ -117,7 +117,7 @@ Page({
       data.name = item.author
       data.img = item.coverImgUrl
       data.title = item.title
-      data.id = item._id
+      data._id = item._id
       this.setData({
         list: this.data.list.concat(data)
       })
