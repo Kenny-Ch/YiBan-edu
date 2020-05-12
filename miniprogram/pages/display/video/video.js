@@ -69,6 +69,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    this.data._options = options
     console.log("video传入参数", options)
     this.getVideo(options)
     this.getZanStatus()
@@ -314,7 +315,7 @@ Page({
    * 提交评论
    * @param {} e 
    */
-  formSubmit: function (e) {
+  formSubmit: async function (e) {
     var that = this;
     try {
       let that = this;
@@ -331,18 +332,28 @@ Page({
       }
 
       const app = getApp()
-      wx.cloud.callFunction({
+      await wx.cloud.callFunction({
         name: 'uploadInteraction',
         data: {
           'flag': "comment",
           'userOpenid': app.globalData.openid,
           'imgUrl': that.data.userInfo.avatarUrl,
           'nickname': that.data.userInfo.nickName,
-          'contextId': '111',
+          'contextId': that.data.video._id,
           'comment': content
         },
         success: function (res) {
           console.log("【detail调用函数uploadInteraction】【flag: 'comment'】", res)
+          wx.showToast({
+            title: '发送成功',
+            icon: 'none',
+            duration: 1500
+          })
+
+          wx.redirectTo({
+            url: 'video?url='+that.data.video._id,
+
+          })
         },
         fail: function (err) {
           console.log(err)

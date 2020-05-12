@@ -48,7 +48,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: async function(options) {
-    
+
+    this.data._options = options
+
     const _ts = this;
 
     this.getArtical(options)
@@ -70,7 +72,7 @@ Page({
     });
 
     //获取文章所有评论
-    this.getAllComment();
+    this.getComment();
     this.getZanStatus()
     this.getCollectionStatus()
   },
@@ -343,11 +345,20 @@ Page({
           'userOpenid': app.globalData.openid,
           'imgUrl': that.data.userInfo.avatarUrl,
           'nickname': that.data.userInfo.nickName,
-          'contextId': '111',
+          'contextId': that.data.post._id,
           'comment': content
         },
         success: function(res) {
           console.log("【detail调用函数uploadInteraction】【flag: 'comment'】", res)
+          wx.showToast({
+            title: '发送成功',
+            icon: 'none',
+            duration: 1500
+          })
+
+          wx.redirectTo({
+            url: 'detail?id=' + that.data.post._id + '&collection=' + that.data.post.collection,
+          })
         },
         fail: function(err) {
           console.log(err)
@@ -426,18 +437,20 @@ Page({
         let title = "post.title"
         let defaultImageUrl = "post.defaultImageUrl"
         let createTime = "post.createTime"
+        let collection = "post.collection"
         that.setData({
           [_id]: res.data._id,
           [title]: res.data.title,
           [defaultImageUrl]: res.data.coverImgUrl,
           [createTime]: res.data.time.getFullYear() + '年' + res.data.time.getMonth() + '月' + res.data.time.getDate() + '日',
+          [collection]: res.data.collection
         })
       }).catch(function(err) {
         console.log(err)
       })
   },
 
-  getAllComment: function() {
+  getComment: function() {
     var that = this;
     wx.cloud.callFunction({
       name: 'getInteraction',
@@ -445,14 +458,20 @@ Page({
         'comment': true,
         'like': false,
         'store': false,
-        'type': 0,
+        'type': 1,
         'id': that.data.post._id
       },
       success: function(res) {
         console.log("【detail调用函数getInteraction】", res)
-        that.setData({
-
-        })
+        let comments = res.result.comments
+        for (let item of comments) {
+          let data = {}
+          data.comment = item.comment
+          let commentList = "post.commentList"
+          that.setData({
+            [commentList]: that.data.post.commentList.concat(data)
+          })
+        }
       },
       fail: function(err) {
         console.log(err)
