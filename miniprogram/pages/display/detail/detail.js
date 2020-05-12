@@ -48,11 +48,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: async function(options) {
-    let that = this;
-    let blogId = options.id;
-    if (options.scene) {
-      blogId = decodeURIComponent(options.scene);
-    }
+    
     const _ts = this;
 
     app.getText('https://mgt-1301264585.cos.ap-guangzhou.myqcloud.com/0005/0005.md', res => {

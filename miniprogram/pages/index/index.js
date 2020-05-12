@@ -8,7 +8,7 @@ Page({
    */
   data: {
     cardCur: 0,
-    day: 30,
+    day: 1,
     swiperList: [{
       id: 0,
       big_title: "寻找你的以伴老师",
@@ -136,6 +136,7 @@ Page({
         if (res.result.length == 0) {
           app.globalData.isNew = true
         } else {
+          this.getDays(res.result[0].registerDate)
           app.globalData.userInfo = res.result[0]
           app.globalData.isNew = false
         }
@@ -148,6 +149,19 @@ Page({
 
 
   },
+
+  //计算相隔天数
+  getDays: function(date){
+    date = new Date(date)
+    var d1 = Date.parse(date)
+    var d2 = Date.parse(new Date())
+    var d = d2 - d1
+    var days = Math.ceil(d / (24 * 3600 * 1000))
+    this.setData({
+      day: days
+    })
+  },
+
   bindChange: function (e) {
     var adress = (e.detail.current == 0) ? "知识储备站" : ((e.detail.current == 1) ? "升学梦工厂" : "以伴课堂");
     console.log("目前在", adress);
