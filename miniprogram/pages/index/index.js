@@ -56,7 +56,7 @@ Page({
       image: "../../images/LearningMaterials.png",
       left: "高校资讯",
     }, {
-        url: "../dreamFactory/list",
+      url: "../dreamFactory/list",
       image: "../../images/experienceSharing.png",
       left: "专业了解",
     }],
@@ -70,7 +70,7 @@ Page({
       left: "学霸讲座",
     }],
   },
-  changeSwipe: function (e) {
+  changeSwipe: function(e) {
     var adress = (e.detail.current == 0) ? "知识储备站" : ((e.detail.current == 1) ? "升学梦工厂" : "以伴课堂");
     console.log("目前在", adress);
     var type = e.detail.current;
@@ -78,7 +78,7 @@ Page({
       i: type
     });
   },
-  tabSelect: function (e) {
+  tabSelect: function(e) {
     /*获取可视窗口宽度*/
     var w = wx.getSystemInfoSync().windowWidth;
     var leng = this.data.three.length;
@@ -93,17 +93,17 @@ Page({
       x: disX
     })
   },
-  cardSwiper: function (e) {
+  cardSwiper: function(e) {
     this.setData({
       cardCur: e.detail.current,
     })
   },
 
 
-  onLoad: function () {
+  onLoad: function() {
     var that = this;
     wx.getSystemInfo({
-      success: function (res) {
+      success: function(res) {
         that.setData({
           clientHeight: res.windowHeight
         });
@@ -138,6 +138,11 @@ Page({
           this.getDays(res.result[0].registerDate)
           app.globalData.userInfo = res.result[0]
           app.globalData.isNew = false
+          if (res.result[0].matchInfo.length != 0) {
+            app.globalData.isMatch = true
+          } else {
+            app.globalData.isMatch = false
+          }
         }
       })
 
@@ -150,7 +155,7 @@ Page({
   },
 
   //计算相隔天数
-  getDays: function(date){
+  getDays: function(date) {
     date = new Date(date)
     var d1 = Date.parse(date)
     var d2 = Date.parse(new Date())
@@ -161,7 +166,7 @@ Page({
     })
   },
 
-  bindChange: function (e) {
+  bindChange: function(e) {
     var adress = (e.detail.current == 0) ? "知识储备站" : ((e.detail.current == 1) ? "升学梦工厂" : "以伴课堂");
     var that = this;
     that.setData({
@@ -170,7 +175,7 @@ Page({
   },
 
   //跳转个人信息页面
-  jumpToMyPage: function () {
+  jumpToMyPage: function() {
     if (app.globalData.isNew) {
       console.log('【index】用户未注册，跳转注册页面')
       wx.navigateTo({
@@ -192,55 +197,76 @@ Page({
     }
   },
 
-
+  jumpToMatch: function() {
+    if (app.globalData.isMatch) {
+      console.log('【index】用户已填写信息，跳转匹配界面')
+      wx.navigateTo({
+        url: '/pages/matching/result/result',
+        fail: (res) => {
+          console.log('【index页面跳转匹配界面失败】,res')
+        },
+        success: (result) => {},
+      })
+    }
+    else{
+      console.log('【index】用户未填写信息，跳转填写信息页面')
+      wx.navigateTo({
+        url: '/pages/matching/matching',
+        fail: (res) => {
+          console.log('【index页面跳转填写信息信息界面失败】,res')
+        },
+        success: (result) => { },
+      })
+    }
+  },
 
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })
