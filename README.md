@@ -85,8 +85,10 @@
     //（心灵解压馆-压力疏导-常见问题解答）
     "flag": "pressQue",
     "question": "",                 //问题
+    "officialAnswer": "",           //官方答案
     "answer": [],                   //答案
     "advisor": [],                  //回答者
+    "tag": "",                      //分类标签
 },
 
 
@@ -174,7 +176,8 @@
         "QS": 0,                        //QS排名
     }, 
     "site": "",                     //地点
-    "contextUrl": "",               //内容链接
+    "introduction": ""              //院校介绍
+    "speciality": ""                //特色专业
 
 
     //或者
@@ -195,6 +198,7 @@
     "subtitle": "",                 //副标题
     "coverImgUrl": "",              //封面
     "time": "Date()",               //时间
+    "videoTime": "",                //视频时长
     "author": "",                   //作者
     "contextUrl": "",               //内容链接
     "introdution": "",              //视频介绍
@@ -208,6 +212,7 @@
     "subtitle": "",                 //副标题
     "coverImgUrl": "",              //封面
     "time": "Date()",               //时间
+    "videoTime": "",                //视频时长
     "author": "",                   //作者
     "contextUrl": "",               //内容链接
     "introdution": "",              //视频介绍

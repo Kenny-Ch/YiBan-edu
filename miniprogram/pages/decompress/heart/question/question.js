@@ -6,16 +6,22 @@ Page({
    */
   data: {
     three: [{
+      //normal
       title: "常见",
     }, {
+      //study
       title: "学习",
     }, {
+      //method
       title: "方法",
     }, {
+      //life
       title: "作息",
     }, {
+      //family
       title: "家庭",
     }, {
+      //society
       title: "社交",
     }],
     i: 0,
@@ -93,23 +99,23 @@ Page({
 
   },
 
-  getQuestions: function() {
+  getQuestions: async function() {
     var that = this
-    wx.cloud.callFunction({
+    await wx.cloud.callFunction({
       name: 'getQuestions',
       data: {
         'flag': 'pressQue',
       },
       success: function(res) {
-        console.log("【question页面调用函数getQuestions】",res.result)
+        console.log("【question页面调用函数getQuestions】", res.result)
         var qa = [];
         for (let returndata of res.result) {
           qa.push({
             'question': returndata.question,
             'abstract_answer': returndata.officialAnswer,
-            'common': returndata.answer.length + 1
+            'common': returndata.answer.length + 1,
+            'tag': returndata.tag
           });
-          console.log(returndata)
         }
         that.setData({
           common: qa
@@ -117,6 +123,7 @@ Page({
       },
       fail: console.error
     })
+    console.log(that.data)
   },
 
   /**

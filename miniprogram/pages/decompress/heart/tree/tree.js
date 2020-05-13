@@ -45,7 +45,7 @@ Page({
     wx.cloud.callFunction({
       name: 'getComments',
       success: function(res) {
-        console.log("【tree调用getComments】", res.result)
+        console.log("【tree调用函数getComments】", res.result)
         that.setList(res.result[0])
       }
     })
@@ -56,7 +56,7 @@ Page({
     var that = this
     for (let item of result) {
       var temp = {}
-      // temp.id = item.
+      temp._id = item._id
       if (item.isAnonymous) {
         temp.userimg = '../../../../images/my/touxiang.jpg'
         temp.username = '匿名'
@@ -90,6 +90,10 @@ Page({
     this.setData({
       list: this.data.list.concat(temp)
     })
+  },
+
+  isShowDian(){
+    wx.get
   }
 
 })

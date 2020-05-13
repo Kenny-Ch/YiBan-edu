@@ -5,69 +5,85 @@ Page({
    * 页面的初始数据
    */
   data: {
-    school:{
-      img:'cloud://yiban-edu.7969-yiban-edu-1301806073/schoollist/scnu.png',
-      title:'华南师范大学',
-      country_rank:73,
-      other_rank:5,
-      introduce:'华南师范大学（South China Normal University），简称“华南师大” [1]  ，校本部位于广东省广州市，是广东省人民政府和教育部共建高校，入选国家“双一流”世界一流学科建设高校 [2]  、首批国家“211工程”重点建设大学，入选国家“111计划” [3]  、“卓越教师培养计划”、广东省高水平大学整体建设高校、广东省重点大学、中国政府奖学金来华留学生接收院校、国家大学生文化素质教育基地，中国100所首批联入CERNET和INTERNET网的高校之一。',
-      specail:'截至2017年6月，学校下设25个二级学院，拥有84个本科专业，学科布局覆盖哲学、经济学、法学、教育学、文学、历史学、理学、工学、农学、医学、管理学、艺术学12个门类。',
+    school: {
+      // coverImgUrl: 'cloud://yiban-edu.7969-yiban-edu-1301806073/schoollist/scnu.png',
+      // title: '华南师范大学',
+      // rank: {
+      //   'QS': "74",
+      //   'alumni': "0"
+      // },
+      // introduce: '华南师范大学（South China Normal University），简称“华南师大” [1]  ，校本部位于广东省广州市，是广东省人民政府和教育部共建高校，入选国家“双一流”世界一流学科建设高校 [2]  、首批国家“211工程”重点建设大学，入选国家“111计划” [3]  、“卓越教师培养计划”、广东省高水平大学整体建设高校、广东省重点大学、中国政府奖学金来华留学生接收院校、国家大学生文化素质教育基地，中国100所首批联入CERNET和INTERNET网的高校之一。',
+      // speciality: '截至2017年6月，学校下设25个二级学院，拥有84个本科专业，学科布局覆盖哲学、经济学、法学、教育学、文学、历史学、理学、工学、农学、医学、管理学、艺术学12个门类。',
     },
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function(options) {
+    console.log(options)
+    this.getSchoolDetail(options)
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
+  },
+
+  getSchoolDetail: async function(options) {
+    let that = this
+    const db = wx.cloud.database()
+    db.collection(options.collection).doc(options.id)
+      .get()
+      .then(function(res) {
+        console.log("【school查询数据库" + options.collection + "】", res)
+        that.setData({
+          school: res.data
+        })
+      })
   }
 })
