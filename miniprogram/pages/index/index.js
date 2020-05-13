@@ -198,26 +198,25 @@ Page({
   },
 
   jumpToMatch: function() {
-    if (app.globalData.isMatch) {
-      console.log('【index】用户已填写信息，跳转匹配界面')
-      wx.navigateTo({
-        url: '/pages/matching/result/result',
-        fail: (res) => {
-          console.log('【index页面跳转匹配界面失败】,res')
-        },
-        success: (result) => {},
-      })
-    }
-    else{
-      console.log('【index】用户未填写信息，跳转填写信息页面')
+    // if (app.globalData.isMatch) {
+    //   console.log('【index】用户已填写信息，跳转匹配界面')
+    //   wx.navigateTo({
+    //     url: '/pages/matching/result/result',
+    //     fail: (res) => {
+    //       console.log('【index页面跳转匹配界面失败】,res')
+    //     },
+    //     success: (result) => {},
+    //   })
+    // } else {
+    //   console.log('【index】用户未填写信息，跳转填写信息页面')
       wx.navigateTo({
         url: '/pages/matching/matching',
         fail: (res) => {
           console.log('【index页面跳转填写信息信息界面失败】,res')
         },
-        success: (result) => { },
+        success: (result) => {},
       })
-    }
+    // }
   },
 
 

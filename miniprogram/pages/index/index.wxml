@@ -1,125 +1,121 @@
 <!--miniprogram/pages/index/index.wxml-->
 <!--导航栏-->
 <cu-custom bgColor="bg-gradual-orange" isBack="{{false}}">
-	<view slot="content"></view>
+  <view slot="content"></view>
 </cu-custom>
 <!--标题-->
 <view class='head'>
-	<view class='head-left'>
-		<text class="title">以伴伴学</text>
-		<text class="underTitle">以伴已陪伴你度过{{day}}天了</text>
-	</view>
-	<view class='head-right'>
+  <view class='head-left'>
+    <text class="title">以伴伴学</text>
+    <text class="underTitle">以伴已陪伴你度过{{day}}天了</text>
+  </view>
+  <view class='head-right'>
 
-<image src="../../images/user.png" class='head-right-icon' bindtap="jumpToMyPage"></image>
+    <image src="../../images/user.png" class='head-right-icon' bindtap="jumpToMyPage"></image>
 
-	</view>
+  </view>
 </view>
 <image src="../../images/head.png" class='head-under'></image>
 <!--标题以下-->
 <view class='under'>
-	<!--可移动卡片-->
-	<swiper class="card-swiper" indicator-dots="{{false}}" bindchange="cardSwiper" >
-		<swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}}">
-			<view class="swiper-item">
-				<view class="card">
-					<view class="card-bigtitle">{{item.big_title}}</view>
-					<view class="card-title">{{item.title}}</view>
-					<view class="card-smalltitle">{{item.small_title}}</view>
-					<!-- <navigator url="{{item.url}}" hover-class="none"> -->
-						<button class='cu-btn round card-button-text' style="width: 342rpx;min-height: 60rpx;background-color: rgba(254, 123, 111, 1);color: rgba(255, 255, 255, 1);" bindtap="jumpToMatch">{{item.button}}</button>
-					<!-- </navigator> -->
-				</view>
-			</view>
-		</swiper-item>
-	</swiper>
-	<!--首页主要内容-->
-	<view class="body">
-		<!--学习解压-->
-		<view class="learning">
-			<text class="learning-title">学习解压</text>
-			<view class="leaning-item">
-				<!--每日打卡-->
-				<navigator target="miniProgram" open-type='navigate' app-id='wx855c5d7718f218c9' path='pages/index/index' hover-class="none">
-					<view class="leaning-blue">
-						<text class="cuIcon-punch" style="margin-top:15rpx;width: 60rpx;height: 60rpx;font-size: 60rpx;color: rgba(255, 255, 255, 1);"></text>
-						<text class="leaning-text">每日打卡</text>
-					</view>
-				</navigator>
-				<!--心灵解压馆-->
-				<navigator url="../decompress/heart/heart" hover-class="none">
-					<view class="leaning-orange">
-						<text class="cuIcon-emoji" style="margin-top:15rpx;width: 60rpx;height: 60rpx;font-size: 60rpx;color: rgba(255, 255, 255, 1);"></text>
-						<text class="leaning-text">心灵解压馆</text>
-					</view>
-				</navigator>
-			</view>
-		</view>
-		<!--三大部分-->
-		<scroll-view scroll-x class='three-nav' scroll-left='{{x}}' scroll-with-animation='true' bindtap='tabSelect'>
-　		<text wx:for='{{three}}' wx:key='{{index}}' class='item-nav {{i==index ? "active" : ""}}' data-i='{{index}}'>{{item.title}}</text>
-		</scroll-view>
-		<swiper current="{{i}}" class="swiper-box" duration="300" style="height:920rpx" bindchange="bindChange" >
-			<!--知识储备站-->
-			<swiper-item>
-				<scroll-view scroll-y="{{true}}" style="height:920rpx">
-					<view class='three-block' wx:for="{{knowledgeReserve}}">
-						<navigator url="{{item.url}}?name={{item.left}}" hover-class="none">
-							<view class='three-card'>
-								<image src="{{item.image}}" class='three-card-image'></image>
-								<view class='three-card-text'>
-									<text class="three-card-text-left">{{item.left}}</text>
-									<view class="three-card-text-right">
-										<view class='three-card-text-right-watch'>点击查看</view>
-										<image src='../../images/rightArrow.png' class='three-card-text-right-icon' style="width: 40rpx;height: 40rpx;"></image>
-									</view>
-								</view>
-							</view>
-						</navigator>
-					</view>
-				</scroll-view>
-			</swiper-item>
-			<!--升学梦工厂-->
-			<swiper-item>
-				<scroll-view scroll-y="{{true}}" style="height:920rpx">
-					<view class='three-block' wx:for="{{dreamFactory}}">
-						<navigator url="{{item.url}}?name={{item.left}}" hover-class="none">
-							<view class='three-card'>
-								<image src="{{item.image}}" class='three-card-image'></image>
-								<view class='three-card-text'>
-									<text class="three-card-text-left">{{item.left}}</text>
-									<view class="three-card-text-right">
-										<view class='three-card-text-right-watch'>点击查看</view>
-										<image src='../../images/rightArrow.png' class='three-card-text-right-icon' style="width: 40rpx;height: 40rpx;"></image>
-									</view>
-								</view>
-							</view>
-						</navigator>
-					</view>
-				</scroll-view>
-			</swiper-item>
-			<!--以伴课堂-->
-			<swiper-item>
-				<scroll-view scroll-y="{{true}}" style="height:920rpx">
-					<view class='three-block' wx:for="{{companionClass}}">
-						<navigator url="{{item.url}}?name={{item.left}}" hover-class="none">
-							<view class='three-card'>
-								<image src="{{item.image}}" class='three-card-image'></image>
-								<view class='three-card-text'>
-									<text class="three-card-text-left">{{item.left}}</text>
-									<view class="three-card-text-right">
-										<view class='three-card-text-right-watch'>点击查看</view>
-										<image src='../../images/rightArrow.png' class='three-card-text-right-icon' style="width: 40rpx;height: 40rpx;"></image>
-									</view>
-								</view>
-							</view>
-						</navigator>
-					</view>
-				</scroll-view>
-			</swiper-item>
-		</swiper>
-	</view>
+  <!--可移动卡片-->
+  <swiper class="card-swiper" indicator-dots="{{false}}" bindchange="cardSwiper">
+    <swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}}">
+      <view class="swiper-item">
+        <view class="card">
+          <view class="card-bigtitle">{{item.big_title}}</view>
+          <view class="card-title">{{item.title}}</view>
+          <view class="card-smalltitle">{{item.small_title}}</view>
+          <button class='cu-btn round card-button-text' style="width: 342rpx;min-height: 60rpx;background-color: rgba(254, 123, 111, 1);color: rgba(255, 255, 255, 1);" bindtap="jumpToMatch">{{item.button}}</button>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+  <!--首页主要内容-->
+  <view class="body">
+    <!--学习解压-->
+    <view class="learning">
+      <text class="learning-title">学习解压</text>
+      <view class="leaning-item">
+        <!--每日打卡-->
+        <navigator target="miniProgram" open-type='navigate' app-id='wx855c5d7718f218c9' path='pages/index/index' hover-class="none">
+          <view class="leaning-blue">
+            <text class="cuIcon-punch" style="margin-top:15rpx;width: 60rpx;height: 60rpx;font-size: 60rpx;color: rgba(255, 255, 255, 1);"></text>
+            <text class="leaning-text">每日打卡</text>
+          </view>
+        </navigator>
+        <!--心灵解压馆-->
+        <navigator url="../decompress/heart/heart" hover-class="none">
+          <view class="leaning-orange">
+            <text class="cuIcon-emoji" style="margin-top:15rpx;width: 60rpx;height: 60rpx;font-size: 60rpx;color: rgba(255, 255, 255, 1);"></text>
+            <text class="leaning-text">心灵解压馆</text>
+          </view>
+        </navigator>
+      </view>
+    </view>
+    <!--三大部分-->
+    <scroll-view scroll-x class='three-nav' scroll-left='{{x}}' scroll-with-animation='true' bindtap='tabSelect'>
+    
+      <text wx:for='{{three}}' wx:key='{{index}}' class='item-nav {{i==index ? "active" : ""}}' data-i='{{index}}'>{{item.title}}</text>
+    </scroll-view>
+    <swiper current="{{i}}" class="swiper-box" duration="300" style="height:920rpx" bindchange="bindChange">
+      <!--知识储备站-->
+      <swiper-item>
+        <scroll-view scroll-y="{{true}}" style="height:920rpx">
+          <view class='three-block' wx:for="{{knowledgeReserve}}">
+            <navigator url="{{item.url}}?name={{item.left}}" hover-class="none">
+              <view class='three-card'>
+                <image src="{{item.image}}" class='three-card-image'></image>
+                <view class='three-card-text'>
+                  <text class="three-card-text-left">{{item.left}}</text>
+                  <view class="three-card-text-right">
+                    <view class='three-card-text-right-watch'>点击查看</view>
+                    <image src='../../images/rightArrow.png' class='three-card-text-right-icon' style="width: 40rpx;height: 40rpx;"></image>
+                  </view>
+                </view>
+              </view>
+            </navigator>
+          </view>
+        </scroll-view>
+      </swiper-item>
+      <!--升学梦工厂-->
+      <swiper-item>
+        <scroll-view scroll-y="{{true}}" style="height:920rpx">
+          <view class='three-block' wx:for="{{dreamFactory}}">
+            <navigator url="{{item.url}}?name={{item.left}}" hover-class="none">
+              <view class='three-card'>
+                <image src="{{item.image}}" class='three-card-image'></image>
+                <view class='three-card-text'>
+                  <text class="three-card-text-left">{{item.left}}</text>
+                  <view class="three-card-text-right">
+                    <view class='three-card-text-right-watch'>点击查看</view>
+                    <image src='../../images/rightArrow.png' class='three-card-text-right-icon' style="width: 40rpx;height: 40rpx;"></image>
+                  </view>
+                </view>
+              </view>
+            </navigator>
+          </view>
+        </scroll-view>
+      </swiper-item>
+      <!--以伴课堂-->
+      <swiper-item>
+        <scroll-view scroll-y="{{true}}" style="height:920rpx">
+          <view class='three-block' wx:for="{{companionClass}}">
+            <navigator url="{{item.url}}?name={{item.left}}" hover-class="none">
+              <view class='three-card'>
+                <image src="{{item.image}}" class='three-card-image'></image>
+                <view class='three-card-text'>
+                  <text class="three-card-text-left">{{item.left}}</text>
+                  <view class="three-card-text-right">
+                    <view class='three-card-text-right-watch'>点击查看</view>
+                    <image src='../../images/rightArrow.png' class='three-card-text-right-icon' style="width: 40rpx;height: 40rpx;"></image>
+                  </view>
+                </view>
+              </view>
+            </navigator>
+          </view>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+  </view>
 </view>
-
-
-

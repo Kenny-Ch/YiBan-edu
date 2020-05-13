@@ -125,11 +125,10 @@ Page({
     this.data.willing = e.detail.value
   },
   uploadMatchInfo: function(e) {
-    console.log(this.data.sub_fra)
     var weakSubject = {};
     for (let sub of this.data.subject) {
       if(sub.checked == true)
-        weakSubject[sub.en] = sub.score
+        weakSubject[sub.en+''] = sub.score
     }
     console.log("wak",weakSubject)
     // 检验不合格
@@ -148,10 +147,6 @@ Page({
     }
     //检验合格
     else {
-      var weakSubject = {};
-      for (sub in this.data.chooseSubject) {
-        weakSubject[sub] = this.data.sub_fra[sub]
-      }
       var that = this
       const app = getApp()
       wx.cloud.callFunction({
