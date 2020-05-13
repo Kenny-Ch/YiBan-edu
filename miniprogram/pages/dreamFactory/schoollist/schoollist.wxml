@@ -7,6 +7,24 @@
 <view class="line"></view>
 <view class='con'>
   <view class='card' wx:for="{{schoollist}}">
-    <view class='num'>{{}}</view>
+    <!-- <view class='num'>{{}}</view> -->
+        <navigator url='../school/school?id={{item._id}}&collection={{item.collection}}' hover-class="none">
+      <view class="top"> 
+        <view class='text'>
+          <view class='text-title'>{{item.name}}</view>
+          <view class="text-abstract">{{item.introdution}}</view>
+        </view>
+        <image src="{{item.coverImgUrl}}" class="img"></image>
+      </view>
+      <view class="bottom" wx:for="{{item.tag}}">
+        <!-- <image src='../../../images/dianzan.png' class='icon'></image> -->
+        <text class='num'>{{item}}</text>
+        <!-- <image src='../../../images/icon-.png' class='icon'></image> -->
+        <!-- <text class='num'>{{item.viwerNum}}</text> -->
+        <!-- <image src='../../../images/pinglun.png' class='icon1'></image> -->
+        <!-- <text class='num'>{{item.comment}}</text>
+        <view class='time'>{{item.time}}</view> -->
+      </view>
+    </navigator>
   </view>
 </view>
