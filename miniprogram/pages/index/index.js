@@ -52,11 +52,11 @@ Page({
       image: "../../images/learningMethod.png",
       left: "选科资讯",
     }, {
-      url: "../display/artical/artical",
+      url: "../dreamFactory/schoollist/schoollist",
       image: "../../images/LearningMaterials.png",
       left: "高校资讯",
     }, {
-      url: "../display/artical/artical",
+        url: "../dreamFactory/list",
       image: "../../images/experienceSharing.png",
       left: "专业了解",
     }],
