@@ -18,11 +18,14 @@ Page({
     userInfo: {
 
     },
+    region:[],
     changeValue: {
       'perInfo':{
 
       }
-    }
+    },
+    picker: ['高一', '高二', '高三'],
+    sexs:['男','女'],
   },
 
   /**
@@ -66,11 +69,21 @@ Page({
   getGender:function(e){
     console.log("【性别】改变为 ", e.detail.value)
     this.data.changeValue.perInfo.gender = e.detail.value
+
+    var sex = e.detail.value == '0'?'男':'女'
+    console.log("【性别】改变为 ", sex)
+    this.data.changeValue.perInfo.gender = sex
+    this.setData({
+      index1: e.detail.value,
+    })
   },
 
   getArea:function(e){
     console.log("【所在地区】改变为 ", e.detail.value)
     this.data.changeValue.perInfo.tel = e.detail.value
+    this.setData({
+      region: e.detail.value
+    })
   },
 
   getSchool: function (e) {
@@ -79,8 +92,12 @@ Page({
   },
 
   getGrade: function (e) {
-    console.log("【在读年级】改变为 ", e.detail.value)
-    this.data.changeValue.perInfo.grade = e.detail.value
+    var grade = e.detail.value == '0'?'高一':(e.detail.value == '1'?'高二':'高三')
+    console.log("【在读年级】改变为 ",grade)
+    this.data.changeValue.perInfo.grade =grade
+    this.setData({
+      index: e.detail.value,
+    })
   },
 
   getQQ: function (e) {

@@ -5,36 +5,48 @@
 </cu-custom>
 <form bindsubmit="formSubmit">
   <view class="cu-form-group margin-top">
-    <view class="title">姓名</view>
-    <input value="{{userInfo.name}}" bindblur="getName"></input>
+    <view class="title wd">姓名</view>
+    <input type='text' value="{{userInfo.name}}" bindblur="getName"></input>
   </view>
   <view class="cu-form-group">
-    <view class="title">联系方式</view>
-    <input value="{{userInfo.perInfo.tel}}" bindblur="getPhoneNumber"></input>
+    <view class="title wd">联系方式</view>
+    <input type='number' value="{{userInfo.perInfo.tel}}" bindblur="getPhoneNumber"></input>
   </view>
   <view class="cu-form-group">
-    <view class="title">性别</view>
-    <input value="{{userInfo.perInfo.gender}}"></input>
+    <view class="title wd">性别</view>
+    <picker bindchange="getGender" value="{{index1}}" range="{{sexs}}">
+      <view class="contents">
+        {{index1?sexs[index1]:userInfo.perInfo.gender}}
+      </view>
+    </picker>
   </view>
   <view class="cu-form-group">
-    <view class="title">所在地区</view>
-    <input value="{{userInfo.perInfo.area[0] + userInfo.perInfo.area[1] + userInfo.perInfo.area[2]}}"></input>
+    <view class="title wd">所在地区</view>
+    <picker mode="region" bindchange="getArea" value="{{region}}" custom-item="{{customItem}}">
+      <view class="contents">
+        {{region.length==0?userInfo.perInfo.area[0] + userInfo.perInfo.area[1] + userInfo.perInfo.area[2]:region[0]+region[1]+region[2]}}
+      </view>
+    </picker>
   </view>
   <view class="cu-form-group">
-    <view class="title">在读学校</view>
-    <input value="{{userInfo.perInfo.school}}"></input>
+    <view class="title wd">在读学校</view>
+    <input type='text' value="{{userInfo.perInfo.school}}"></input>
   </view>
   <view class="cu-form-group">
-    <view class="title">在读年级</view>
-    <input value="{{userInfo.perInfo.grade}}"></input>
+    <view class="title wd">在读年级</view>
+    <picker bindchange="getGrade" value="{{index}}" range="{{picker}}">
+      <view class="contents">
+        {{index?picker[index]:userInfo.perInfo.grade}}
+      </view>
+    </picker>
   </view>
   <view class="cu-form-group">
-    <view class="title">QQ</view>
-    <input value="{{userInfo.perInfo.qq}}"></input>
+    <view class="title wd">QQ</view>
+    <input type='number' value="{{userInfo.perInfo.qq}}"></input>
   </view>
   <view class="cu-form-group">
-    <view class="title">邮箱</view>
-    <input value="{{userInfo.perInfo.email}}"></input>
+    <view class="title wd">邮箱</view>
+    <input type='text' value="{{userInfo.perInfo.email}}"></input>
   </view>
   <button form-type="submit" style="width: 342rpx;min-height: 60rpx;" class='btn'>提交保存</button>
 </form>

@@ -9,3 +9,6 @@
   font-weight: bold;
   margin-top:80rpx ;
 }
+.wd{
+  width: 150rpx;
+}
