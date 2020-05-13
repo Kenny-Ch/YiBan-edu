@@ -39,7 +39,7 @@ Page({
       title: options.name,
     })
     this.getVideo(options).then(function(res) {
-      console.log("video list加载成功")
+      console.log("【classroom页面】video list加载成功")
     });
   },
 

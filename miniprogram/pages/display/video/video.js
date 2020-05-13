@@ -68,15 +68,15 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-    this.data._options = options
+  onLoad: function (options) {
     console.log("video传入参数", options)
+    this.data._options = options
     this.getVideo(options)
     this.getZanStatus()
     this.getCollectionStatus()
   },
 
-  onUnload: function() {
+  onUnload: function () {
     if (rewardedVideoAd && rewardedVideoAd.destroy) {
       rewardedVideoAd.destroy()
     }
@@ -84,7 +84,7 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: async function() {
+  onReachBottom: async function () {
     wx.showLoading({
       title: '加载中...',
     })
@@ -121,13 +121,13 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
   /**
    * 返回
    */
-  navigateBack: function(e) {
+  navigateBack: function (e) {
 
   },
 
@@ -135,7 +135,7 @@ Page({
    * 获取用户头像
    * @param {} e 
    */
-  getUserInfo: function(e) {
+  getUserInfo: function (e) {
     console.log(e.detail.userInfo)
     if (e.detail.userInfo) {
       app.globalData.userInfo = e.detail.userInfo
@@ -163,8 +163,8 @@ Page({
         flag: 'like'
       })
       .get()
-      .then(function(res) {
-        console.log("【video获取数据库interaction数据】【flag: 'like'】", res)
+      .then(function (res) {
+        console.log("【video获取数据库interaction数据】【flag: 'like'（点赞信息）", res)
         if (res.data.length != 0) {
           that.setData({
             zan: {
@@ -174,7 +174,7 @@ Page({
             }
           })
         }
-      }).catch(function(err) {
+      }).catch(function (err) {
         console.log(err)
       })
   },
@@ -193,8 +193,8 @@ Page({
           flag: 'store'
         })
         .get()
-        .then(function(res) {
-          console.log("【video获取数据库interaction数据】【flag: 'store'】", res)
+        .then(function (res) {
+          console.log("【video获取数据库interaction数据】【flag: 'store'（收藏信息）】", res)
           if (res.data.length != 0) {
             that.setData({
               collection: {
@@ -204,7 +204,7 @@ Page({
               }
             })
           }
-        }).catch(function(err) {
+        }).catch(function (err) {
           console.log(err)
         })
     }
@@ -213,11 +213,9 @@ Page({
   /**
    * 收藏功能
    */
-  postCollection: async function() {
+  postCollection: async function () {
     let that = this
     let app = getApp();
-    //此处按照逻辑需要判断是否曾经点过赞
-    //暂时不实现该功能
     if (!that.data.collection.status) {
       await wx.cloud.callFunction({
         name: 'uploadInteraction',
@@ -226,7 +224,7 @@ Page({
           'userOpenid': app.globalData.openid,
           'contextId': that.data.video._id
         }
-      }).then(function(res) {
+      }).then(function (res) {
         console.log("【video调用函数uploadInteraction】【收藏成功】", res)
         that.setData({
           collection: {
@@ -235,7 +233,7 @@ Page({
             icon: "favorfill"
           }
         })
-      }).catch(function(err) {
+      }).catch(function (err) {
         console.log(err)
       })
     }
@@ -243,12 +241,9 @@ Page({
   /**
    * 点赞功能
    */
-  postZan: async function() {
+  postZan: async function () {
     let that = this
     let app = getApp();
-    //此处按照逻辑需要判断是否曾经点过赞
-    //若点过赞，则不能多次点赞，增加数据库负担
-    //暂时不实现该功能
     if (!that.data.zan.status) {
       await wx.cloud.callFunction({
         name: 'uploadInteraction',
@@ -257,7 +252,7 @@ Page({
           'userOpenid': app.globalData.openid,
           'contextId': that.data.video._id
         }
-      }).then(function(res) {
+      }).then(function (res) {
         console.log("【video调用函数uploadInteraction】【点赞成功】", res)
         that.setData({
           zan: {
@@ -266,7 +261,7 @@ Page({
             icon: "appreciatefill"
           }
         })
-      }).catch(function(err) {
+      }).catch(function (err) {
         console.log(err)
       })
     }
@@ -274,7 +269,7 @@ Page({
   /**
    * 获取收藏和喜欢的状态
    */
-  getPostRelated: async function(blogId) {
+  getPostRelated: async function (blogId) {
     let where = {
       postId: blogId,
       openId: app.globalData.openid
@@ -305,7 +300,7 @@ Page({
     }
   },
 
-  commentInput: function(e) {
+  commentInput: function (e) {
     this.setData({
       commentContent: e.detail.value
     })
@@ -316,7 +311,7 @@ Page({
    * @param {} e 
    */
   formSubmit: async function (e) {
-    var that = this;
+    var that = this
     try {
       let that = this;
       let commentPage = 1
@@ -330,7 +325,6 @@ Page({
         })
         return
       }
-
       const app = getApp()
       await wx.cloud.callFunction({
         name: 'uploadInteraction',
@@ -343,7 +337,7 @@ Page({
           'comment': content
         },
         success: function (res) {
-          console.log("【detail调用函数uploadInteraction】【flag: 'comment'】", res)
+          console.log("【detail调用函数uploadInteraction】【flag: 'comment'（上传评论）】", res)
           wx.showToast({
             title: '发送成功',
             icon: 'none',
@@ -351,7 +345,7 @@ Page({
           })
 
           wx.redirectTo({
-            url: 'video?url='+that.data.video._id,
+            url: 'video?url=' + that.data.video._id,
 
           })
         },
@@ -359,7 +353,6 @@ Page({
           console.log(err)
         }
       })
-
     } catch (err) {
       wx.showToast({
         title: '程序有一点点小异常，操作失败啦',
@@ -373,7 +366,7 @@ Page({
   /**
    * 点击评论内容回复
    */
-  focusComment: function(e) {
+  focusComment: function (e) {
     let that = this;
     let name = e.currentTarget.dataset.name;
     let commentId = e.currentTarget.dataset.id;
@@ -390,7 +383,7 @@ Page({
   /**
    * 显示隐藏功能
    */
-  showMenuBox: function() {
+  showMenuBox: function () {
     this.setData({
       isShow: !this.data.isShow
     })
@@ -399,7 +392,7 @@ Page({
    * 失去焦点时
    * @param {*} e 
    */
-  onReplyBlur: function(e) {
+  onReplyBlur: function (e) {
     let that = this;
     const text = e.detail.value.trim();
     if (text === '') {
@@ -416,24 +409,22 @@ Page({
     const db = wx.cloud.database()
     await db.collection('inClass').doc(options.url)
       .get()
-      .then(function(res) {
+      .then(function (res) {
         console.log("【video获取数据库inClass数据】", res)
-        let _id = "video._id"
         let title = "video.title"
         let time = "video.time"
         let introduction = "video.introduction"
         let img = "video.img"
-        let vid = "video.vid"
+        let _id = "video._id"
         that.setData({
-          [_id]: res.data._id,
           [title]: res.data.title,
           [time]: res.data.time.getFullYear() + '年' + res.data.time.getMonth() + '月' + res.data.time.getDate() + '日',
           [introduction]: res.data.introduction,
           [img]: res.data.coverImgUrl,
-          [vid]: res.data.contextUrl
+          [_id]: res.data.contextUrl
         })
         that.getComment(res.data.contextUrl)
-      }).catch(function(err) {
+      }).catch(function (err) {
         console.log(err)
       })
   },
@@ -449,8 +440,8 @@ Page({
         'type': 1,
         'id': that.data.video._id
       }
-    }).then(function(res) {
-      console.log("【video调用函数getInteraction】", res)
+    }).then(function (res) {
+      console.log("【video调用函数getInteraction】【flag：comment（获取评论）】", res)
       let comments = res.result.comments
       for (let item of comments) {
         let data = {}
@@ -460,7 +451,7 @@ Page({
           [commentList]: that.data.video.commentList.concat(data)
         })
       }
-    }).catch(function(err) {
+    }).catch(function (err) {
       console.log(err)
     })
   },
@@ -468,49 +459,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

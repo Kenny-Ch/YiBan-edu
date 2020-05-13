@@ -50,7 +50,7 @@ Page({
     dreamFactory: [{
       url: "../display/artical/artical",
       image: "../../images/learningMethod.png",
-      left: "选科咨讯",
+      left: "选科资讯",
     }, {
       url: "../display/artical/artical",
       image: "../../images/LearningMaterials.png",
@@ -79,7 +79,6 @@ Page({
     });
   },
   tabSelect: function (e) {
-    console.log(e.target.dataset.i)
     /*获取可视窗口宽度*/
     var w = wx.getSystemInfoSync().windowWidth;
     var leng = this.data.three.length;
@@ -164,7 +163,6 @@ Page({
 
   bindChange: function (e) {
     var adress = (e.detail.current == 0) ? "知识储备站" : ((e.detail.current == 1) ? "升学梦工厂" : "以伴课堂");
-    console.log("目前在", adress);
     var that = this;
     that.setData({
       i: e.detail.current

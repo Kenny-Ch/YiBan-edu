@@ -27,7 +27,7 @@ exports.main = async (event, context) => {
       collection = 'knowledge'
       flag = 'thoughts'
       break;
-    case "选课资讯": 
+    case "选科资讯": 
       collection = 'collegeInfo'
       flag = 'pickData'
       break;
