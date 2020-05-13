@@ -119,7 +119,6 @@ Page({
       }
       var that = this
       wx.cloud.callFunction({
-
         name: 'uploadMatchInfo',
         data: {
           'weakSubject': weakSubject,
@@ -131,6 +130,7 @@ Page({
 
         },
         success: function (res) {
+          console.log("【matching调用函数uploadMatchInfo】")
           console.log('匹配信息添加成功！')
         },
         fail: console.log('匹配信息添加失败!')
