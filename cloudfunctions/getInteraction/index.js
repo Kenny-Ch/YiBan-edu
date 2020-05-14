@@ -167,9 +167,8 @@ exports.main = async (event, context) => {
 
 }
 //返回值：
-{
+
   //以下三种不一定全都有，取决于参数的传入情况
   // comments: [],
   // likes: [],
   // stores: [],
-}

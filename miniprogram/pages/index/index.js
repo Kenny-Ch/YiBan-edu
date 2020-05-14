@@ -138,7 +138,7 @@ Page({
           this.getDays(res.result[0].registerDate)
           app.globalData.userInfo = res.result[0]
           app.globalData.isNew = false
-          if (res.result[0].matchInfo.length != 0) {
+          if (res.result[0].hasOwnProperty('matchInfo')) {
             app.globalData.isMatch = true
           } else {
             app.globalData.isMatch = false

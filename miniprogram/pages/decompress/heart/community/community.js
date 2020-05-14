@@ -70,7 +70,6 @@ Page({
         that.setData({
           community: com
         })
-        console.log(that.data.community)
       },
       fail: console.error
     })
