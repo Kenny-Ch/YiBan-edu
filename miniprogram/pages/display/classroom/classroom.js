@@ -8,21 +8,21 @@ Page({
     list:[
       {
       title:'历史课堂1：高中历史选择题技巧',
-      img:'../../../images/display/teacher.png',
+      img:'cloud://yiban-edu.7969-yiban-edu-1301806073/teacher.png',
       name:'以伴团队',
       time:'13:41',
       have:'未观看',
     },
     {
       title:'语文课堂1：高考病句破题技巧',
-      img:'../../../images/display/teacher.png',
+      img:'cloud://yiban-edu.7969-yiban-edu-1301806073/teacher.png',
       name:'以伴团队',
       time:'17:30',
       have:'未观看',
     },
     {
       title:'数学课堂1：求参数的取值范围',
-      img:'../../../images/display/teacher.png',
+      img:'cloud://yiban-edu.7969-yiban-edu-1301806073/teacher.png',
       name:'以伴团队',
       time:'18:51',
       have:'未观看',

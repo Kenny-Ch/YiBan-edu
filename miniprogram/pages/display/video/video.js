@@ -8,7 +8,7 @@ Page({
     video: {
       vid: 'h0955s6ib3y',
       title: '历史课堂1：高中历史选择题技巧',
-      img: '../../../images/display/teacher.png',
+      img: 'cloud://yiban-edu.7969-yiban-edu-1301806073/teacher.png',
       teacher_name: '以伴团队',
       time: '2020-04-19',
       introduction: '历史学霸带你玩转高中历史！',

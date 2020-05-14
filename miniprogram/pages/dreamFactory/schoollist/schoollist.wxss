@@ -22,11 +22,74 @@
   margin-top:80rpx ;
   margin-bottom:20rpx ;
 }
+.hh{
+  width: 100%;
+  height: 24rpx;
+}
 .con{
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-@import "../../display/artical/artical.wxss"
+.card{
+  width: 682rpx;
+	height: 140rpx;
+	color: rgba(80, 80, 80, 1);
+	background-color: rgba(255, 255, 255, 1);
+	border-radius: 16rpx;
+	font-size: 28rpx;
+	line-height: 150%;
+	box-shadow: 0rpx 7rpx 14rpx 0rpx rgba(0, 0, 0, 0.12);
+  text-align: center;
+  display: flex;
+}
+.coloum{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.img{
+  width: 80rpx;
+  height: 80rpx;
+  margin-left:32rpx ;
+}
+.cen{
+  width:360rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin-left:32rpx ;
+}
+.tag{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top:8rpx ;
+}
+.name{
+  width: 100%;
+	color: rgba(80, 80, 80, 1);
+	font-size: 28rpx;
+	line-height: 150%;
+	text-align: left;
+}
+.tagbottom{
+	color: rgba(128, 128, 128, 1);
+	font-size: 24rpx;
+	line-height: 150%;
+  text-align: left;
+  margin-right:12rpx ;
+}
+.rank{
+	color: rgba(128, 128, 128, 1);
+	font-size: 24rpx;
+	line-height: 150%;
+	text-align: left;
+}

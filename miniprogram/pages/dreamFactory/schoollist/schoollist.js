@@ -5,28 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    schoollist: [{
-      num: 1,
-      name: '北京大学',
-    }, {
-      num: 2,
-      name: '北京大学',
-    }, {
-      num: 3,
-      name: '北京大学',
-    }, {
-      num: 4,
-      name: '北京大学',
-    }, {
-      num: 5,
-      name: '北京大学',
-    }, {
-      num: 6,
-      name: '北京大学',
-    }, {
-      num: 7,
-      name: '北京大学',
-    }, ]
+    schoollist: [],
   },
 
   /**

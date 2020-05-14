@@ -8,17 +8,17 @@
 <view class='row'>
   <view class='card coloum'>
     <view class='row ii'>
-      <image class='icon' src="../../../images/display/paiming .png"></image>
+      <image class='icon' src="../../../images/display/paiming.png"></image>
       <view class='rank'>{{school.country_rank}}</view>
     </view>
-    <view class='rankname'>全国排名</view>
+    <view class='rankname'>校友会排名</view>
   </view>
   <view class='card coloum'>
     <view class='row ii'>
-      <image class='icon' src="../../../images/display/paiming .png"></image>
+      <image class='icon' src="../../../images/display/paiming.png"></image>
       <view class='rank'>{{school.other_rank}}</view>
     </view>
-    <view class='rankname'>广东省排名</view>
+    <view class='rankname'>QS排名</view>
   </view>
 </view>
 <view class='row bb'>
@@ -34,5 +34,14 @@
 </view>
 <view class='text'>
   {{school.specail}}
+</view>
+<view class='row bb'>
+  <view class="shu"></view>
+  <view class='samll-title'>在校师兄师姐联系方式</view>
+</view>
+<view wx:for="{{school.contact}}" class='cc row'>
+  <image src="../../../images/display/contact.png" class='img'></image>
+  <view class="name">{{item.name}}</view>
+  <view class="wechat" bindtap='copyText' data-wechat="{{item.wechat}}">微信：{{item.wechat}}</view>
 </view>
 <view class='block'></view>

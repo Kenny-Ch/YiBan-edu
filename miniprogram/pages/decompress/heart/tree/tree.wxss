@@ -30,7 +30,6 @@
 }
 .card{
   width: 710rpx;
-	height: 330rpx;
 	color: rgba(80, 80, 80, 1);
 	background-color: rgba(255, 255, 255, 1);
 	border-radius: 9rpx;
@@ -85,7 +84,6 @@
 }
 .liuyan{
   width: 584rpx;
-	height: 166rpx;
 	color: rgba(80, 80, 80, 1);
 	font-size: 28rpx;
 	line-height: 150%;
@@ -112,4 +110,25 @@
   text-align: left;
   margin-top:8rpx ;
   margin-left:8rpx ;
+}
+.plusBtn{
+  position: fixed;
+  z-index: 100;
+  bottom: 70rpx;
+  right: 32rpx;
+  background-color: #FFA332;
+  border-radius: 140rpx;
+  width: 140rpx;
+  height: 140rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+}
+.plusIcon{
+  width: 70rpx;
+  height: 70rpx;
+}
+.hh{
+  margin-top:16rpx ;
+  margin-bottom:16rpx ;
 }

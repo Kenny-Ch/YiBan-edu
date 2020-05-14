@@ -56,7 +56,7 @@ Page({
       image: "../../images/LearningMaterials.png",
       left: "高校资讯",
     }, {
-        url: "../dreamFactory/list",
+      url: "../display/artical/artical",
       image: "../../images/experienceSharing.png",
       left: "专业了解",
     }],

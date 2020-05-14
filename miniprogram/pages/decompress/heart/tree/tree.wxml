@@ -3,6 +3,11 @@
   <view slot="backText">返回</view>
   <view slot="content">以伴edu</view>
 </cu-custom>
+<view class='plusBtn'>
+  <navigator url="" class="plusBtn">
+    <image src="../../../../images/decompress/jia.png" class='plusIcon'></image>
+  </navigator>
+</view>
 <view class='title'>心情树洞</view>
 <view class="line"></view>
 <view class="con1">
@@ -15,7 +20,7 @@
       </view>
     </view>
     <view class='liuyan'>{{item.liuyan}}</view>
-    <view class="row">
+    <view class="hh row">
       <view wx:if="{{item.isShowDian}}" data-id='{{item.id}}' bindtap='showDianzan' >
         <image src='../../../../images/decompress/havedianzan.png' class='dianzan'></image>
       </view>

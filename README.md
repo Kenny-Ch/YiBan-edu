@@ -168,6 +168,7 @@
     "flag": "schoolData",
     "name": "",                     //院校名
     "tag": [],                      //标签
+    "schoolLogo":"",                  //学校logo
     "coverImgUrl": "",              //封面
     "rank": {                       //排名
         "alumni": 0,                    //校友会排名
