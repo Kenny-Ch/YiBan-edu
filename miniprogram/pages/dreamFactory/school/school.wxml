@@ -3,8 +3,8 @@
   <view slot="backText">返回</view>
   <view slot="content">以伴edu</view>
 </cu-custom>
-<image src="{{school.img}}" class='img1'></image>
-<view class='title'>{{school.title}}</view>
+<image src="{{school.coverImgUrl}}" class='img1'></image>
+<view class='title'>{{school.name}}</view>
 <view class='row'>
   <view class='card coloum'>
     <view class='row ii'>
@@ -26,14 +26,14 @@
   <view class='samll-title'>院校介绍</view>
 </view>
 <view class='text'>
-  {{school.introduce}}
+  {{school.introduction}}
 </view>
 <view class='row bb'>
   <view class="shu"></view>
   <view class='samll-title'>特色专业</view>
 </view>
 <view class='text'>
-  {{school.specail}}
+  {{school.speciality}}
 </view>
 <view class='row bb'>
   <view class="shu"></view>

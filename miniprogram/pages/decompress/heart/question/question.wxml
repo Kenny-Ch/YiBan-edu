@@ -11,7 +11,7 @@
 	<!--常见-->
 	<swiper-item>
 		<scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
-			<view class='card' wx:for="{{common}}">
+			<view class='card' wx:for="{{common}}" wx:if="{{item.tag == 'normal'}}">
         <view class='top'>
 				  <view class='front'></view>
           <view class="card-title">{{item.question}}</view>
@@ -24,10 +24,10 @@
 			</view>
 		</scroll-view>
 	</swiper-item>
-
+  <!-- 学习 -->
 	<swiper-item>
 		<scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
-			<view class='card' wx:for="{{common}}">
+			<view class='card' wx:for="{{common}}" wx:if="{{item.tag == 'study'}}">
         <view class='top'>
 				  <view class='front'></view>
           <view class="card-title">{{item.question}}</view>
@@ -40,10 +40,10 @@
 			</view>
 		</scroll-view>
 	</swiper-item>
-
+  <!-- 方法 -->
 	<swiper-item>
 		<scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
-			<view class='card' wx:for="{{common}}">
+			<view class='card' wx:for="{{common}}" wx:if="{{item.tag == 'method'}}">
         <view class='top'>
 				  <view class='front'></view>
           <view class="card-title">{{item.question}}</view>
@@ -56,5 +56,52 @@
 			</view>
 		</scroll-view>
 	</swiper-item>
-
+  <!-- 作息 -->
+  <swiper-item>
+		<scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
+			<view class='card' wx:for="{{common}}" wx:if="{{item.tag == 'life'}}">
+        <view class='top'>
+				  <view class='front'></view>
+          <view class="card-title">{{item.question}}</view>
+        </view>
+        <view class="card-abstract_answer">{{item.abstract_answer}}</view>
+        <view class='common'>
+          <image src="../../../../images/decompress/common.png" class='icon'></image>
+          <view class='common-text'>{{item.common}}</view>
+        </view>
+			</view>
+		</scroll-view>
+	</swiper-item>
+  <!-- 家庭 -->
+  <swiper-item>
+		<scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
+			<view class='card' wx:for="{{common}}" wx:if="{{item.tag == 'family'}}">
+        <view class='top'>
+				  <view class='front'></view>
+          <view class="card-title">{{item.question}}</view>
+        </view>
+        <view class="card-abstract_answer">{{item.abstract_answer}}</view>
+        <view class='common'>
+          <image src="../../../../images/decompress/common.png" class='icon'></image>
+          <view class='common-text'>{{item.common}}</view>
+        </view>
+			</view>
+		</scroll-view>
+	</swiper-item>
+  <!-- 社交 -->
+  <swiper-item>
+		<scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
+			<view class='card' wx:for="{{common}}" wx:if="{{item.tag == 'society'}}">
+        <view class='top'>
+				  <view class='front'></view>
+          <view class="card-title">{{item.question}}</view>
+        </view>
+        <view class="card-abstract_answer">{{item.abstract_answer}}</view>
+        <view class='common'>
+          <image src="../../../../images/decompress/common.png" class='icon'></image>
+          <view class='common-text'>{{item.common}}</view>
+        </view>
+			</view>
+		</scroll-view>
+	</swiper-item>
 </swiper>

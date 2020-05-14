@@ -7,12 +7,12 @@
 <view class="line"></view>
 <form class="container" bindsubmit="formSubmit">
   <view class='text_title'>希望被指导的科目以及目前分数：</view>
-  <checkbox-group bindchange="checkboxChange">
-    <view class='row ii' wx:for="{{subject}}">
+  <checkbox-group wx:for="{{subject}}" bindchange="checkboxChange" data-index="{{item.id}}" data-score="">
+    <view class='row ii'>
       <checkbox class='checkbox' value="{{item.en}}" checked="{{item.checked}}">
         <view class='text_name'>{{item.name}}</view>
       </checkbox>
-      <input type="number" bindblur="fraction" name="{{item.name}}" data-name='{{item.en}}' class='text_input'></input>
+      <input type="number" bindblur="fraction" name="{{item.name}}" data-index='{{item.id}}' class='text_input' disabled="{{!item.checked}}" value="{{item.score}}"></input>
     </view>
   </checkbox-group>
   <view class='text_title'>是否愿意参加每日打卡记录学习情况：</view>
