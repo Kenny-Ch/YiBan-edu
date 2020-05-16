@@ -21,10 +21,10 @@
     </view>
     <view class='liuyan'>{{item.liuyan}}</view>
     <view class="hh row">
-      <view wx:if="{{item.isShowDian}}" data-id='{{item.id}}' bindtap='showDianzan' >
+      <view wx:if="{{item.isLike}}" data-_id='{{item._id}}' data-like="{{item.isLike}}" data-index="{{item.index}}" bindtap='changeLike'>
         <image src='../../../../images/decompress/havedianzan.png' class='dianzan'></image>
       </view>
-      <view wx:else data-id='{{item.id}}'  bindtap='showDianzan' >
+      <view wx:else data-_id='{{item._id}}' data-like="{{item.isLike}}" data-index="{{item.index}}" bindtap='changeLike'>
         <image src='../../../../images/decompress/dianzan.png' class='dianzan'></image>
       </view>
       <view class='num'>{{item.dianzan}}</view>

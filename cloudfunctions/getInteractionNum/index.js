@@ -46,12 +46,12 @@ exports.main = async (event, context) => {
   }
 
   if (event.selfLike) {
-    var res = await db.collection('interaction').skip(i * MAX_LIMIT).limit(MAX_LIMIT).where({
+    var res = await db.collection('interaction').where({
       flag: 'like',
       contextId: event.id,
       userOpenid: event.openid
-    }).get()
-    if (res.data.length != 0)
+    }).count()
+    if (res.total != 0)
       isLike = true
     else
       isLike = false

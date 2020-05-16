@@ -8,13 +8,13 @@ Page({
     list: [],
 
   },
-  showDianzan: function(e) {
-    var list = this.data.list;
-    list[e.currentTarget.dataset.id].isShowDian = !list[e.currentTarget.dataset.id].isShowDian;
-    this.setData({
-      list: list,
-    })
-  },
+  // showDianzan: function(e) {
+  //   var list = this.data.list;
+  //   list[e.currentTarget.dataset.id].isShowDian = !list[e.currentTarget.dataset.id].isShowDian;
+  //   this.setData({
+  //     list: list,
+  //   })
+  // },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -32,6 +32,7 @@ Page({
 
   async setList(result) {
     var that = this
+    let i = 0;
     for (let item of result) {
       var temp = {}
       temp._id = item._id
@@ -46,32 +47,75 @@ Page({
       temp.time = item.time.substring(0, 10)
       temp.liuyan = item.comment
       temp.contextId = item._id
+      temp.index = i
+      i++
       await that.getInteraction(temp)
     }
   },
 
   async getInteraction(temp) {
     await wx.cloud.callFunction({
-      name: 'getInteraction',
+      name: 'getInteractionNum',
       data: {
         'comment': true,
         'like': true,
-        'store': false,
-        'type': 0,
-        'id': temp.contextId
+        'selfLike': true,
+        'id': temp.contextId,
+        'openid': getApp().globalData.openid
       }
     }).then(function(res) {
-      console.log("【tree调用getInteraction】", res.result)
-      temp.dianzan = res.result.likes.length;
-      temp.pinglun = res.result.comments.length;
+      console.log("【tree调用getInteractionNum】", res.result)
+      temp.dianzan = res.result.likesLen;
+      temp.pinglun = res.result.commentsLen;
+      temp.isLike = res.result.isLike
     })
     this.setData({
       list: this.data.list.concat(temp)
     })
   },
 
-  isShowDian(){
-    wx.get
+  changeLike: function(e) {
+    let that = this
+    const app = getApp()
+    let data = e.currentTarget.dataset
+    const db = wx.cloud.database()
+    if (data.like) {
+      //取消点赞
+      db.collection('interaction').where({
+          'flag': 'like',
+          'contextId': data._id,
+          'userOpenid': app.globalData.openid
+        })
+        .remove()
+      .then(function(res){
+        console.log("【tree添加数据到数据库interaction】【flag: like】【取消点赞】", res)
+        let listLike = "list[" + data.index + "].isLike"
+        let listLikeNum = "list[" + data.index + "].dianzan"
+        that.setData({
+          [listLike]: false,
+          [listLikeNum]: that.data.list[data.index].dianzan - 1
+        })
+      })
+    } else {
+      // 点赞
+      //此处如果用云函数，由于权限问题则取消点赞也需要写云函数，会导致速度慢，因此直接上传到数据库
+      db.collection('interaction').add({
+        data: {
+          'flag': 'like',
+          'userOpenid': app.globalData.openid,
+          'contextId': data._id
+        }
+      }).then(function(res) {
+        console.log("【tree添加数据到数据库interaction】【flag: like】【点赞】", res)
+        let listLike = "list[" + data.index + "].isLike"
+        let listLikeNum = "list[" + data.index + "].dianzan"
+        that.setData({
+          [listLike]: true,
+          [listLikeNum]: that.data.list[data.index].dianzan + 1
+        })
+      })
+    }
   }
+
 
 })

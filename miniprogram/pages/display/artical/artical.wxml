@@ -15,11 +15,11 @@
         <image src="{{item.coverImgUrl}}" class="img"></image>
       </view>
       <view class="bottom">
-        <!-- <image src='../../../images/dianzan.png' class='icon'></image> -->
+        <image src='../../../images/dianzan.png' class='icon'></image>
         <text class='num'>{{item.praisePoints}}</text>
-        <!-- <image src='../../../images/icon-.png' class='icon'></image> -->
+        <image src='../../../images/icon-.png' class='icon'></image>
         <text class='num'>{{item.viwerNum}}</text>
-        <!-- <image src='../../../images/pinglun.png' class='icon1'></image> -->
+        <image src='../../../images/pinglun.png' class='icon1'></image>
         <text class='num'>{{item.comment}}</text>
         <view class='time'>{{item.time}}</view>
       </view>

@@ -127,10 +127,10 @@ Page({
   uploadMatchInfo: function(e) {
     var weakSubject = {};
     for (let sub of this.data.subject) {
-      if(sub.checked == true)
-        weakSubject[sub.en+''] = sub.score
+      if (sub.checked == true)
+        weakSubject[sub.en + ''] = sub.score
     }
-    console.log("wak",weakSubject)
+    console.log("wak", weakSubject)
     // 检验不合格
     if (this.data.custom == '' || this.data.willing == '') {
       wx.showToast({
@@ -138,8 +138,7 @@ Page({
         duration: 1000,
         icon: 'none'
       })
-    }
-    else if(weakSubject == undefined){
+    } else if (weakSubject == undefined) {
       wx.showToast({
         title: '输入的分数有误！',
         icon: 'none'

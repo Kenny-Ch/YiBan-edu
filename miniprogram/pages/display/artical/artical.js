@@ -143,18 +143,17 @@ Page({
   async getInteraction(item) {
     
     await wx.cloud.callFunction({
-      name: 'getInteraction',
+      name: 'getInteractionNum',
       data: {
         'comment': true,
         'like': true,
-        'store': false,
-        'type': 1,
+        'selfLike': false,
         'id': item._id
       }
     }).then(function(res) {
-      console.log("【artical调用函数getInteraction】", res.result);
-      item.praisePoints = res.result.likes.length;
-      item.comment = res.result.comments.length;
+      console.log("【artical调用函数getInteractionNum】", res);
+      item.praisePoints = res.result.likesLen;
+      item.comment = res.result.commentsLen;
     })
     this.setData({
       articals: this.data.articals.concat(item)
