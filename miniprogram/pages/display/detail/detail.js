@@ -72,9 +72,10 @@ Page({
     });
 
     //获取文章所有评论
-    this.getComment();
+    this.getComment()
     this.getZanStatus()
     this.getCollectionStatus()
+    this.getLikeNum(options)
   },
 
   /**
@@ -220,8 +221,6 @@ Page({
   postCollection: async function() {
     let that = this
     let app = getApp();
-    //此处按照逻辑需要判断是否曾经点过赞
-    //暂时不实现该功能
     if (!that.data.collection.status) {
       await wx.cloud.callFunction({
         name: 'uploadInteraction',
@@ -438,12 +437,14 @@ Page({
         let defaultImageUrl = "post.defaultImageUrl"
         let createTime = "post.createTime"
         let collection = "post.collection"
+        let viwerNum = "post.totalVisits"
         that.setData({
           [_id]: res.data._id,
           [title]: res.data.title,
           [defaultImageUrl]: res.data.coverImgUrl,
           [createTime]: res.data.time.getFullYear() + '年' + res.data.time.getMonth() + '月' + res.data.time.getDate() + '日',
-          [collection]: res.data.collection
+          [collection]: res.data.collection,
+          [viwerNum]: res.data.viwerNum
         })
       }).catch(function(err) {
         console.log(err)
@@ -460,22 +461,39 @@ Page({
         'store': false,
         'type': 1,
         'id': that.data.post._id
-      },
-      success: function(res) {
-        console.log("【detail调用函数getInteraction】", res)
-        let comments = res.result.comments
-        for (let item of comments) {
-          let data = {}
-          data.comment = item.comment
-          let commentList = "post.commentList"
-          that.setData({
-            [commentList]: that.data.post.commentList.concat(data)
-          })
-        }
-      },
-      fail: function(err) {
-        console.log(err)
       }
+    }).then(function(res) {
+      console.log("【detail调用函数getInteraction】", res)
+      let comments = res.result.comments
+      for (let item of comments) {
+        let data = {}
+        data.comment = item.comment
+        let commentList = "post.commentList"
+        that.setData({
+          [commentList]: that.data.post.commentList.concat(data)
+        })
+      }
+    }).catch(function(err) {
+      console.log(err)
+    })
+  },
+
+  getLikeNum: function(options) {
+    let that = this
+    wx.cloud.callFunction({
+      name: 'getInteractionNum',
+      data: {
+        'comment': false,
+        'like': true,
+        'selfLike': false,
+        'id': options.id
+      }
+    }).then(function(res) {
+      console.log("【detail调用函数getInteractionNum】", res)
+      let like = "post.totalZans"
+      that.setData({
+        [like]: res.result.likesLen
+      })
     })
   }
 

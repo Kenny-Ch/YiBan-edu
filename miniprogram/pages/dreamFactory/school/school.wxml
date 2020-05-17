@@ -9,14 +9,14 @@
   <view class='card coloum'>
     <view class='row ii'>
       <image class='icon' src="../../../images/display/paiming.png"></image>
-      <view class='rank'>{{school.country_rank}}</view>
+      <view class='rank'>{{school.rank.alumni}}</view>
     </view>
     <view class='rankname'>校友会排名</view>
   </view>
   <view class='card coloum'>
     <view class='row ii'>
       <image class='icon' src="../../../images/display/paiming.png"></image>
-      <view class='rank'>{{school.other_rank}}</view>
+      <view class='rank'>{{school.rank.QS}}</view>
     </view>
     <view class='rankname'>QS排名</view>
   </view>
