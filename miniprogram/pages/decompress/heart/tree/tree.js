@@ -88,7 +88,7 @@ Page({
         })
         .remove()
       .then(function(res){
-        console.log("【tree添加数据到数据库interaction】【flag: like】【取消点赞】", res)
+        console.log("【trees删除数据到数据库interaction】【flag: like】【取消点赞】", res)
         let listLike = "list[" + data.index + "].isLike"
         let listLikeNum = "list[" + data.index + "].dianzan"
         that.setData({

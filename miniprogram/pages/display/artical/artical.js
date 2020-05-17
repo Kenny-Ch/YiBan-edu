@@ -141,7 +141,6 @@ Page({
   },
 
   async getInteraction(item) {
-    
     await wx.cloud.callFunction({
       name: 'getInteractionNum',
       data: {
@@ -158,5 +157,6 @@ Page({
     this.setData({
       articals: this.data.articals.concat(item)
     })
+   console.log(this.data.articals)
   }
 })
