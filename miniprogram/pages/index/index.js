@@ -134,11 +134,12 @@ Page({
         console.log('【index调用云函数getUserInfo返回值】', res.result)
         if (res.result.length == 0) {
           app.globalData.isNew = true
+          app.globalData.isMatch = false
         } else {
           this.getDays(res.result[0].registerDate)
           app.globalData.userInfo = res.result[0]
           app.globalData.isNew = false
-          if (res.result[0].hasOwnProperty('matchInfo')) {
+          if (res.result[0].isMatchFull) {
             app.globalData.isMatch = true
           } else {
             app.globalData.isMatch = false

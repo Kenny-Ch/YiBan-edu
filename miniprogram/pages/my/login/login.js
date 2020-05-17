@@ -65,6 +65,8 @@ Page({
           registerDate: new Date(),
           job: input.job,
           name: input.uname,
+          isMatchFull: false,
+          matchList: [],
           perInfo:{
             gender: pick.gender,
             school: input.school,
@@ -112,6 +114,8 @@ Page({
           registerDate: new Date(),
           job: input.job,
           name: input.uname,
+          isMatchFull: false,
+          matchList: [],
           perInfo:{
             gender: pick.gender,
             school: input.school,

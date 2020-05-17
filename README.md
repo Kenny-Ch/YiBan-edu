@@ -21,6 +21,8 @@
     "job": "",                      //职业
     "name": "",                     //姓名
     "registerDate": "",             //注册日期
+    "matchList": "",                //匹配的名单列表（openid）
+    "isMatchFull": false,           //匹配是否已经满了
 
     //个人信息模块
     "perInfo": {
