@@ -6,9 +6,14 @@
 <view class="con">
   <view class="question">
     <view class="shu"></view>
-    <view class="question-context">{{question.context}}</view>
+    <view class="question-context">{{context}}</view>
   </view>
-  <view class='answer' wx:for="{{question.answer}}">
+  <view class="answer">
+    <view class="detail">
+      {{officialAnswer}}
+    </view>
+  </view>
+  <view class='answer' wx:for="{{answer}}">
     <view class='detail'>{{item}}</view>
   </view>
 </view>

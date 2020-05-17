@@ -111,6 +111,7 @@ Page({
         var qa = [];
         for (let returndata of res.result) {
           qa.push({
+            '_id': returndata._id,
             'question': returndata.question,
             'abstract_answer': returndata.officialAnswer,
             'common': returndata.answer.length + 1,
