@@ -19,18 +19,34 @@
 <!--标题以下-->
 <view class='under'>
   <!--可移动卡片-->
-  <swiper class="card-swiper" indicator-dots="{{false}}" bindchange="cardSwiper">
-    <swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}}">
-      <view class="swiper-item">
-        <view class="card">
-          <view class="card-bigtitle">{{item.big_title}}</view>
-          <view class="card-title">{{item.title}}</view>
-          <view class="card-smalltitle">{{item.small_title}}</view>
-          <button class='cu-btn round card-button-text' style="width: 342rpx;min-height: 60rpx;background-color: rgba(254, 123, 111, 1);color: rgba(255, 255, 255, 1);" bindtap="jumpToMatch">{{item.button}}</button>
+  <view wx:if="{{havematch}}">
+    <swiper class="card-swiper" indicator-dots="{{false}}" bindchange="cardSwiper">
+      <swiper-item wx:for="{{haveswiperList}}" wx:key class="{{cardCur==index?'cur':''}}">
+        <view class="swiper-item">
+          <view class="card">
+            <view class="card-bigtitle">{{item.big_title}}</view>
+            <view class="card-title">{{item.title}}</view>
+            <view class="card-smalltitle">{{item.small_title}}</view>
+            <button class='cu-btn round card-button-text' style="width: 342rpx;min-height: 60rpx;background-color: rgba(254, 123, 111, 1);color: rgba(255, 255, 255, 1);" bindtap="jumpToMatch">{{item.button}}</button>
+          </view>
         </view>
-      </view>
-    </swiper-item>
-  </swiper>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view wx:else>
+    <swiper class="card-swiper" indicator-dots="{{false}}" bindchange="cardSwiper">
+      <swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}}">
+        <view class="swiper-item">
+          <view class="card">
+            <view class="card-bigtitle">{{item.big_title}}</view>
+            <view class="card-title">{{item.title}}</view>
+            <view class="card-smalltitle">{{item.small_title}}</view>
+            <button class='cu-btn round card-button-text' style="width: 342rpx;min-height: 60rpx;background-color: rgba(254, 123, 111, 1);color: rgba(255, 255, 255, 1);" bindtap="jumpToMatch">{{item.button}}</button>
+          </view>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
   <!--首页主要内容-->
   <view class="body">
     <!--学习解压-->
