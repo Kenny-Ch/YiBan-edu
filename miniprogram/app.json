@@ -19,7 +19,10 @@
     "pages/matching/teacher/teacher",
     "pages/decompress/heart/tree/tree",
     "pages/display/video/video",
-    "pages/dreamFactory/schoollist/schoollist"
+    "pages/dreamFactory/schoollist/schoollist",
+    "pages/my/myCollection/myCollection",
+    "pages/decompress/heart/tree/establish/establish",
+    "pages/decompress/heart/tree/detail/detail"
   ],
   "window": {
     "navigationStyle": "custom",

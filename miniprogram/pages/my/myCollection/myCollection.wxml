@@ -1,0 +1,33 @@
+<!--miniprogram/pages/my/myCollection/myCollection.wxml-->
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">以伴edu</view>
+</cu-custom>
+<!--三大部分-->
+<scroll-view scroll-x class='three-nav' scroll-left='{{x}}' scroll-with-animation='true' bindtap='tabSelect'>
+　<text wx:for='{{three}}' wx:key='{{index}}' class='item-nav {{i==index ? "active" : ""}}' data-i='{{index}}'>{{item.title}}</text>
+</scroll-view>
+<swiper current="{{i}}" class="swiper-box" duration="300" style="height:{{height_sys}}px" bindchange="bindChange" >
+	<!--文章-->
+	<swiper-item>
+		<scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
+			<view class='card' wx:for="{{common}}" >
+        <view class='shu'></view>
+          <view class='title'>{{item.title}}</view>
+          <view class='time'>{{item.time}}</view>
+			</view>
+		</scroll-view>
+	</swiper-item>
+  <!-- 视频 -->
+	<swiper-item>
+		<scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
+			<view class='card' wx:for="{{common}}" >
+        <view class='shu'></view>
+          <view class='title'>{{item.title}}</view>
+          <view class='time'>{{item.time}}</view>
+			</view>
+		</scroll-view>
+	</swiper-item>
+</swiper>
+
+

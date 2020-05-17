@@ -207,6 +207,27 @@
 					"id": -1,
 					"name": "pages/display/classroom/classroom",
 					"pathName": "pages/display/classroom/classroom",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/myCollection/myCollection",
+					"pathName": "pages/my/myCollection/myCollection",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/decompress/heart/tree/establish/establish",
+					"pathName": "pages/decompress/heart/tree/establish/establish",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/decompress/heart/tree/detail/detail",
+					"pathName": "pages/decompress/heart/tree/detail/detail",
 					"scene": null
 				}
 			]

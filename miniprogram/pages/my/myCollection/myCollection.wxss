@@ -1,0 +1,90 @@
+/* miniprogram/pages/my/myCollection/myCollection.wxss */
+.three-nav{
+	width: 95%;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+  margin-top:48rpx ;
+  margin-left:20rpx ;
+}
+
+.three-nav .item-nav{
+	position: relative;
+	padding-right: 32rpx;
+	color: rgba(80, 80, 80, 1);
+	font-size: 28rpx;
+	cursor: pointer;
+	display: inline-block
+}
+.three-nav .active{
+	height: 60rpx;
+	color: rgba(80, 80, 80, 1);
+	font-size: 34rpx;
+	line-height: 150%;
+	text-align: left;
+	font-weight: bold;
+}
+.three-nav .active::after{
+	content:'';
+	position: absolute;
+	left: 0rpx;
+	right: 50rpx;
+	height:0;
+	bottom: 8rpx;
+	margin-bottom: 20rpx;
+}
+ .swiper-box {
+	display: block;
+	height: 100%;
+	width: 100%;
+  overflow: hidden;
+  margin-left:20rpx ;
+  margin-top:36rpx ;
+ }
+ .card{
+	width: 682rpx;
+	height: 82rpx;
+	color: rgba(80, 80, 80, 1);
+	background-color: rgba(255, 255, 255, 1);
+	border-radius: 16rpx;
+	font-size: 28rpx;
+	line-height: 150%;
+	box-shadow: 0rpx 7rpx 14rpx 0rpx rgba(0, 0, 0, 0.12);
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  margin-bottom:32rpx ;
+  margin-left:16rpx ;
+ }
+ .shu{
+  width: 12rpx;
+	height: 45rpx;
+	color: rgba(80, 80, 80, 1);
+	background-color: rgba(255, 163, 50, 1);
+	font-size: 28rpx;
+	line-height: 150%;
+	text-align: center;
+ }
+ .title{
+  width: 516rpx;
+	height: 48rpx;
+	color: rgba(80, 80, 80, 1);
+	font-size: 32rpx;
+	line-height: 150%;
+	text-align: left;
+  font-weight: bold;
+  margin-left:20rpx ;
+ }
+ .time{
+  width: 132rpx;
+	height: 36rpx;
+	color: rgba(166, 166, 166, 1);
+	font-size: 24rpx;
+	line-height: 150%;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+ }
+ 
+ 

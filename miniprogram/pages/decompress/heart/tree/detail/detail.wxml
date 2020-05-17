@@ -1,0 +1,49 @@
+<!--miniprogram/pages/decompress/heart/tree/detail/detail.wxml-->
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">以伴edu</view>
+</cu-custom>
+<view class='title'>树洞详情</view>
+<view class="line"></view>
+<view class='con'>
+  <view class='card'>
+    <view class='top'>
+      <image src='{{detail.userImg}}' class='userImg'></image>
+      <view class='card-nati'>
+        <view class='name'>{{detail.username}}</view>
+        <view class="time">{{detail.time}}</view>
+      </view>
+    </view>
+    <view class='context'>{{detail.context}}</view>
+    <view class='comments_num'>
+      <view class='num'>{{detail.dianzan}}</view>
+      <view wx:if="{{detail.isShowDian}}" bindtap='showDianzan' >
+        <image src='../../../../../images/decompress/havedianzan.png' class='pinglun'></image>
+      </view>
+      <view wx:else bindtap='showDianzan' >
+        <image src='../../../../../images/decompress/dianzan.png' class='pinglun'></image>
+      </view>  
+      <view class='num'>{{detail.pinglun}}</view>
+      <image src='../../../../../images/decompress/pinglun.png' class="pinglun"></image>
+    </view>
+  </view>
+  <!--评论-->
+  <view class='comment' wx:for="{{detail.comment}}">
+    <view class='comment-top'>
+      <image src="{{item.img}}" class='comment-img'></image>
+      <view class="comment-name">{{item.name}}</view>
+      <view class='comment-time'>{{item.time}}</view>
+    </view>
+    <view class="comment-context">{{item.context}}</view>
+  </view>
+</view>
+<!-- 底部功能 -->
+<view class="comment-fixed">
+  <view class="cu-bar input">
+    <view class="cu-avatar round yuan" >
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
+    <input class='solid-bottom' maxlength="600" cursor-spacing="10" confirm-type="send" bindinput='commentInput' name="inputComment" value="{{commentContent}}"  placeholder="{{placeholder}}" focus="{{focus}}" bindblur="onReplyBlur"></input>
+    <button class='cu-btn bg-orange shadow-blur' style="width: 162rpx;min-height: 50rpx;border-radius: 55rpx;" bindtap="formSubmit">发送</button>
+  </view>
+</view>

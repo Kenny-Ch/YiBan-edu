@@ -88,7 +88,7 @@ page{
 	margin-left:35rpx ;
 }
 .samll-title{
-	width: 300rpx;
+	width: 500rpx;
 	height: 48rpx;
 	left: 27rpx;
 	top: 365rpx;
@@ -114,4 +114,26 @@ page{
 .block{
 	width: 100%;
 	height: 40rpx;
+}
+.img{
+	width: 40rpx;
+	height: 40rpx;
+}
+.name{
+	color: rgba(80, 80, 80, 1);
+	font-size: 28rpx;
+	line-height: 150%;
+	text-align: left;
+	margin-right: 20rpx;
+	margin-left:20rpx ;
+}
+.wechat{
+	color: rgba(80, 80, 80, 1);
+	font-size: 28rpx;
+	line-height: 150%;
+	text-align: left;
+}
+.cc{
+	margin-left:35rpx ;
+	margin-top:20rpx ;
 }
