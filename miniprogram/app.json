@@ -22,7 +22,9 @@
     "pages/dreamFactory/schoollist/schoollist",
     "pages/my/myCollection/myCollection",
     "pages/decompress/heart/tree/establish/establish",
-    "pages/decompress/heart/tree/detail/detail"
+    "pages/decompress/heart/tree/detail/detail",
+    "pages/dreamFactory/majorlist/majorlist",
+    "pages/decompress/heart/question/detail/detail"
   ],
   "window": {
     "navigationStyle": "custom",

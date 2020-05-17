@@ -1,0 +1,17 @@
+<!--miniprogram/pages/dreamFactory/majorlist/majorlist.wxml-->
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">以伴edu</view>
+</cu-custom>
+<view class='title'>专业了解</view>
+<view class="line"></view>
+<view class='con'>
+  <view class='block' wx:for="{{majorlist}}" wx:for-item="item">
+    <view class='leibie'>{{item.classAlias}}</view>
+    <view class='items'>
+      <view class='smallcard' wx:for="{{item.majors}}" wx:for-item="smallcard" data-id="{{smallcard.majorId}}" bindtap="jumpDetail">
+        <view class='name'>{{smallcard.name}}</view>
+      </view>
+    </view>
+  </view>
+</view>

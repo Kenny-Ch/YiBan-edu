@@ -3,7 +3,7 @@
   <view slot="backText">返回</view>
   <view slot="content">以伴edu</view>
 </cu-custom>
-<view class='title'>名校排名</view>
+<view class='title'>名校介绍</view>
 <view class="line"></view>
 <view class='hh'></view>
 <view class='con'>

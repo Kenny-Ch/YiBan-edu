@@ -1,0 +1,15 @@
+<!--miniprogram/pages/decompress/heart/question/detail/detail.wxml-->
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">以伴edu</view>
+</cu-custom>
+<view class="con">
+  <view class="question">
+    <view class="shu"></view>
+    <view class="question-context">{{question.context}}</view>
+  </view>
+  <view class='answer' wx:for="{{question.answer}}">
+    <view class='detail'>{{item}}</view>
+  </view>
+</view>
+<view class="block"></view>

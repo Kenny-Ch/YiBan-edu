@@ -228,6 +228,20 @@
 					"id": -1,
 					"name": "pages/decompress/heart/tree/detail/detail",
 					"pathName": "pages/decompress/heart/tree/detail/detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/dreamFactory/majorlist/majorlist",
+					"pathName": "pages/dreamFactory/majorlist/majorlist",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/decompress/heart/question/detail/detail",
+					"pathName": "pages/decompress/heart/question/detail/detail",
 					"scene": null
 				}
 			]
