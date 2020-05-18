@@ -116,10 +116,15 @@ Page({
     let listLikeNum = "list[" + data.index + "].dianzan"
     let listCommentNum = "list[" + data.index + "].pinglun"
     this.setData({
-      [listLike]: data.isLike,
       [listLikeNum]: data.likesLen,
       [listCommentNum]: data.commentsLen
     })
+    //因为get方法传过来的是string值，要转换成boolean值才能在前端进行if判断
+    if(Boolean(data.isLike) != this.data.list[data.index].isLike){
+      this.setData({
+        [listLike]: !(this.data.list[data.index].isLike)
+      })
+    }
   }
 
 
