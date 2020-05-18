@@ -30,11 +30,11 @@
   <!--评论-->
   <view class='comment' wx:for="{{detail.comment}}">
     <view class='comment-top'>
-      <image src="{{item.img}}" class='comment-img'></image>
-      <view class="comment-name">{{item.name}}</view>
+      <image src="{{item.imgUrl}}" class='comment-img'></image>
+      <view class="comment-name">{{item.nickname}}</view>
       <view class='comment-time'>{{item.time}}</view>
     </view>
-    <view class="comment-context">{{item.context}}</view>
+    <view class="comment-context">{{item.comment}}</view>
   </view>
 </view>
 <!-- 底部功能 -->

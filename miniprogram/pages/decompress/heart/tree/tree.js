@@ -8,13 +8,7 @@ Page({
     list: [],
 
   },
-  // showDianzan: function(e) {
-  //   var list = this.data.list;
-  //   list[e.currentTarget.dataset.id].isShowDian = !list[e.currentTarget.dataset.id].isShowDian;
-  //   this.setData({
-  //     list: list,
-  //   })
-  // },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -88,7 +82,7 @@ Page({
         })
         .remove()
       .then(function(res){
-        console.log("【trees删除数据到数据库interaction】【flag: like】【取消点赞】", res)
+        console.log("【tree删除数据到数据库interaction】【flag: like】【取消点赞】", res)
         let listLike = "list[" + data.index + "].isLike"
         let listLikeNum = "list[" + data.index + "].dianzan"
         that.setData({

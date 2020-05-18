@@ -231,6 +231,7 @@
     "nickname": "",
     "contextId": "",
     "comment": "",
+    "time": Date
     
 
     //或者
