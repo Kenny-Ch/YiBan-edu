@@ -222,7 +222,10 @@ Page({
         data: {
           'flag': 'store',
           'userOpenid': app.globalData.openid,
-          'contextId': that.data.video._id
+          'contextId': that.data.video._id,
+          'contextName': that.data.video.title,
+          'type': "video",
+          'database': 'inClass'
         }
       }).then(function(res) {
         console.log("【video调用函数uploadInteraction】【收藏成功】", res)

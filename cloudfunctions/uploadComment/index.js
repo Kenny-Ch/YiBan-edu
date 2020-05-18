@@ -22,6 +22,7 @@ exports.main = async (event, context) => {
         openid: event.openid,
         name: event.name,
         comment: event.comment,
+        imgUrl: evetn.imgUrl,
         time: new Date(),
         isAnonymous: event.isAnonymous
       }

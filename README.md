@@ -245,6 +245,9 @@
     "flag": "store",
     "userOpenid": "",
     "contextId": "",
+    "contextName": "",
+    "type": "",   //文章为article、视频为video
+    "database": "" //数据库名称
 }
 ```
 

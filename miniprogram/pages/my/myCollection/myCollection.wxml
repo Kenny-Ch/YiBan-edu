@@ -5,29 +5,32 @@
 </cu-custom>
 <!--三大部分-->
 <scroll-view scroll-x class='three-nav' scroll-left='{{x}}' scroll-with-animation='true' bindtap='tabSelect'>
-　<text wx:for='{{three}}' wx:key='{{index}}' class='item-nav {{i==index ? "active" : ""}}' data-i='{{index}}'>{{item.title}}</text>
+
+  <text wx:for='{{three}}' wx:key='{{index}}' class='item-nav {{i==index ? "active" : ""}}' data-i='{{index}}'>{{item.title}}</text>
 </scroll-view>
-<swiper current="{{i}}" class="swiper-box" duration="300" style="height:{{height_sys}}px" bindchange="bindChange" >
-	<!--文章-->
-	<swiper-item>
-		<scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
-			<view class='card' wx:for="{{common}}" >
-        <view class='shu'></view>
-          <view class='title'>{{item.title}}</view>
+<swiper current="{{i}}" class="swiper-box" duration="300" style="height:{{height_sys}}px" bindchange="bindChange">
+  <!--文章-->
+  <swiper-item>
+    <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
+      <view wx:for="{{article}}">
+        <navigator class='card' hover-class="none" url="../../display/detail/detail?id={{item._id}}&collection={{item.database}}">
+          <view class='shu'></view>
+          <view class='title'>{{item.contextName}}</view>
           <view class='time'>{{item.time}}</view>
-			</view>
-		</scroll-view>
-	</swiper-item>
+        </navigator>
+      </view>
+    </scroll-view>
+  </swiper-item>
   <!-- 视频 -->
-	<swiper-item>
-		<scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
-			<view class='card' wx:for="{{common}}" >
-        <view class='shu'></view>
-          <view class='title'>{{item.title}}</view>
+  <swiper-item>
+    <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
+      <view wx:for="{{video}}">
+        <navigator class='card' hover-class="none" url="../../display/video/video?id={{item._id}}&collection={{item.database}}">
+          <view class='shu'></view>
+          <view class='title'>{{item.contextName}}</view>
           <view class='time'>{{item.time}}</view>
-			</view>
-		</scroll-view>
-	</swiper-item>
+        </navigator>
+      </view>
+    </scroll-view>
+  </swiper-item>
 </swiper>
-
-

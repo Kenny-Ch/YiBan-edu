@@ -74,6 +74,8 @@ exports.main = async (event, context) => {
           contextId: event.contextId,
           comment: event.comment,
           userOpenid: event.userOpenid,
+          type: event.type,
+          database: event.database
         }
       })
     } catch (e) {

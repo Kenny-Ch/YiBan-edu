@@ -6,10 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userinfo:{
-      url:'../../images/my/touxiang.jpg',
-      name:'小明',
-      identity:'学生',
+    userinfo: {
+      url: '../../images/my/touxiang.jpg',
+      name: '小明',
+      identity: '学生',
     },
     // list:[{
     //   icon:'../../images/my/tongxunlu.png',
@@ -22,7 +22,7 @@ Page({
     //   title:'我的收藏'
     // }],
     appId: "wx8abaf00ee8c3202e",
-    extraData : {
+    extraData: {
       // 把1221数字换成你的产品ID，否则会跳到别的产品
       id: "144926",
       // 自定义参数，具体参考文档
@@ -36,22 +36,28 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    
-    
+  onLoad: function(options) {
+
+
 
     //判断是不是新用户
-    if(app.globalData.isNew){
+    if (app.globalData.isNew) {
       this.setData({
         jumpUrl: 'login/login'
       })
 
     } else {
+      console.log(app.globalData)
+      let identity = ''
+      if (app.globalData.userInfo.job == 1) 
+        identity = '学生'
+      else
+        identity = '老师'
       this.setData({
-        userinfo:{
+        userinfo: {
           name: app.globalData.userInfo.name,
           url: this.data.userinfo.url,
-          identity: app.globalData.userInfo.job
+          identity: identity
         },
         jumpUrl: 'information/information'
       })
@@ -62,49 +68,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

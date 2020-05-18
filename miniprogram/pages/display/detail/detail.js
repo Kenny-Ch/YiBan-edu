@@ -49,7 +49,9 @@ Page({
    */
   onLoad: async function(options) {
 
-    this.data._options = options
+    this.setData({
+      _options: options
+    })
 
     const _ts = this;
 
@@ -227,7 +229,10 @@ Page({
         data: {
           'flag': 'store',
           'userOpenid': app.globalData.openid,
-          'contextId': that.data.post._id
+          'contextId': that.data.post._id,
+          'contextName': that.data.post.title,
+          'type': 'article',
+          'database': that.data._options.collection
         }
       }).then(function(res) {
         console.log("【detail调用函数uploadInteraction】【收藏成功】", res)
@@ -427,7 +432,7 @@ Page({
 
     let that = this
     let db = wx.cloud.database()
-    console.log(options)
+    console.log("detail页面【传入参数】", options)
     await db.collection(options.collection).doc(options.id)
       .get()
       .then(function(res) {
