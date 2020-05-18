@@ -6,7 +6,6 @@ Page({
    */
   data: {
     list: [],
-
   },
 
   /**
@@ -81,15 +80,15 @@ Page({
           'userOpenid': app.globalData.openid
         })
         .remove()
-      .then(function(res){
-        console.log("【tree删除数据到数据库interaction】【flag: like】【取消点赞】", res)
-        let listLike = "list[" + data.index + "].isLike"
-        let listLikeNum = "list[" + data.index + "].dianzan"
-        that.setData({
-          [listLike]: false,
-          [listLikeNum]: that.data.list[data.index].dianzan - 1
+        .then(function(res) {
+          console.log("【tree删除数据到数据库interaction】【flag: like】【取消点赞】", res)
+          let listLike = "list[" + data.index + "].isLike"
+          let listLikeNum = "list[" + data.index + "].dianzan"
+          that.setData({
+            [listLike]: false,
+            [listLikeNum]: that.data.list[data.index].dianzan - 1
+          })
         })
-      })
     } else {
       // 点赞
       //此处如果用云函数，由于权限问题则取消点赞也需要写云函数，会导致速度慢，因此直接上传到数据库
@@ -109,6 +108,18 @@ Page({
         })
       })
     }
+  },
+
+  onChangeData: function(data) {
+    console.log(data)
+    let listLike = "list[" + data.index + "].isLike"
+    let listLikeNum = "list[" + data.index + "].dianzan"
+    let listCommentNum = "list[" + data.index + "].pinglun"
+    this.setData({
+      [listLike]: data.isLike,
+      [listLikeNum]: data.likesLen,
+      [listCommentNum]: data.commentsLen
+    })
   }
 
 

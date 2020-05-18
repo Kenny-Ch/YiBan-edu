@@ -12,7 +12,7 @@
 <view class="line"></view>
 <view class="con1">
   <view class="card" wx:for='{{list}}'>
-    <navigator url="detail/detail?id={{item._id}}" hover-class="none">
+    <navigator url="detail/detail?id={{item._id}}&likesLen={{item.dianzan}}&isLike={{item.isLike}}&index={{item.index}}" hover-class="none">
       <view class="row top">
         <image src='{{item.userimg}}' class='userimg'></image>
         <view class='coloum  imgright'>
