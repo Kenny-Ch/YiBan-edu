@@ -9,51 +9,7 @@ Page({
   data: {
     cardCur: 0,
     day: 1,
-    swiperList: [{
-      id: 0,
-      big_title: "寻找你的以伴老师",
-      title: "高考陪伴公益行",
-      small_title: "对教育资源较为落后的四五线城市高中生进行“一对一高考陪伴”，助力高中生考上理想的大学院校！",
-      button: "开始匹配",
-      url: "../matching/matching"
-    }, {
-      id: 1,
-      big_title: "伴学服务介绍",
-      title: "服务介绍细则",
-      small_title: "“一对一高考陪伴”服务有着明确的服务对象，如您对伴学服务感兴趣，可查看具体介绍",
-      button: "具体介绍",
-      url: "../matching/introduce/introduce"
-    },{
-      id: 2,
-      big_title: "成为伴学志愿者",
-      title: "一起迈向公益之路",
-      small_title: "只要你有足够的热情，想为公益事业做出一份自己的贡献，都可以申请成为以伴志愿者！",
-      button: "加入我们",
-      url: "../matching/introduce/introduce"
-    }
-  ],
-    haveswiperList: [{
-      id: 0,
-      big_title: "已提交匹配登记",
-      title: "高考陪伴公益行",
-      small_title: "对教育资源较为落后的四五线城市高中生进行“一对一高考陪伴”，助力高中生考上理想的大学院校！",
-      button: "查看登记",
-      url: "../matching/matching"
-    }, {
-      id: 1,
-      big_title: "伴学服务介绍",
-      title: "服务介绍细则",
-      small_title: "“一对一高考陪伴”服务有着明确的服务对象，如您对伴学服务感兴趣，可查看具体介绍",
-      button: "具体介绍",
-      url: "../matching/introduce/introduce"
-    },{
-      id: 2,
-      big_title: "成为伴学志愿者",
-      title: "一起迈向公益之路",
-      small_title: "只要你有足够的热情，想为公益事业做出一份自己的贡献，都可以申请成为以伴志愿者！",
-      button: "加入我们",
-      url: "../matching/introduce/introduce"
-    }],
+    swiperList: [],
     three: [{
       title: "知识储备站",
     }, {
@@ -101,6 +57,8 @@ Page({
     }],
 
     havematch:false,
+    haveteacher:true,
+    fuwu:true,
   },
   changeSwipe: function(e) {
     var adress = (e.detail.current == 0) ? "知识储备站" : ((e.detail.current == 1) ? "升学梦工厂" : "以伴课堂");
@@ -176,7 +134,81 @@ Page({
           } else {
             app.globalData.isMatch = false
           }
+
+
+
+          /**
+           * 通过判断isMatch和isTeacher(是否已是志愿者老师)来决定顶部选项卡的显示
+           */
+          var list=[];
+          
+          if(app.globalData.isMatch==true){
+            var item={};
+            item.id=0;
+            item.big_title="已提交匹配登记";
+            item.title="高考陪伴公益行";
+            item.small_title="对教育资源较为落后的四五线城市高中生进行“一对一高考陪伴”，助力高中生考上理想的大学院校！";
+            item.button= "查看登记";
+            item.url="../matching/matching";
+            list.push(item)
+          }
+          else{
+            var item={};
+            item.id=0;
+            item.big_title="寻找你的以伴老师";
+            item.title="高考陪伴公益行";
+            item.small_title="对教育资源较为落后的四五线城市高中生进行“一对一高考陪伴”，助力高中生考上理想的大学院校！";
+            item.button= "开始匹配";
+            item.url="../matching/matching";
+            list.push(item)
+          }
+          if(this.data.fuwu==true){
+            var item={};
+            item.id=1;
+            item.big_title= "伴学服务介绍";
+            item.title="服务介绍细则";
+            item.small_title="“一对一高考陪伴”服务有着明确的服务对象，如您对伴学服务感兴趣，可查看具体介绍";
+            item.button="具体介绍";
+            item.url="../matching/introduce/introduce";
+            list.push(item)
+          }
+          if(this.data.haveteacher==true){
+            var item={};
+            item.id=2;
+            item.big_title="已为伴学志愿者";
+            item.title="一起迈向公益之路";
+            item.small_title="只要你有足够的热情，想为公益事业做出一份自己的贡献，都可以申请成为以伴志愿者！";
+            item.button="查看学生信息";
+            item.url="../matching/introduce/introduce";
+            list.push(item)
+            that.setData({
+              swiperList:list,
+            })
+          }
+          else{
+            var item={};
+            item.id=2;
+            item.big_title="成为伴学志愿者";
+            item.title="一起迈向公益之路";
+            item.small_title="只要你有足够的热情，想为公益事业做出一份自己的贡献，都可以申请成为以伴志愿者！";
+            item.button="加入我们";
+            item.url="../matching/introduce/introduce";
+            list.push(item)
+            that.setData({
+              swiperList:list,
+            })
+          }
+
+
+
+
+
         }
+
+
+
+
+
       })
 
 
