@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    context: '',
+    placeholder: '这一刻的想法......'
   },
 
   /**
@@ -20,6 +21,13 @@ Page({
    */
   onReady: function () {
 
+  },
+
+  onReplyBlur:function(e){
+    this.setData({
+      context: e.detail.value
+    })
+    console.log(this.data.context)
   },
 
   /**

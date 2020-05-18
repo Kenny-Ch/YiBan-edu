@@ -6,6 +6,6 @@
 <view class='title'>发布</view>
 <view class="line"></view>
 <form class="con" bindsubmit="formSubmit">
-  <textarea name='thinking' maxlength='-1' placeholder="这一刻的想法……" auto-focus />
+  <textarea name='thinking' maxlength='-1' placeholder="这一刻的想法……" auto-focus value="{{context}}" bindblur="onReplyBlur" />
   <button form-type="submit" style="width: 342rpx;min-height:50rpx;border-radius: 55rpx;" >发布到树洞</button>
 </form>
