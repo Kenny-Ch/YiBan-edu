@@ -134,6 +134,7 @@ Page({
           } else {
             app.globalData.isMatch = false
           }
+          app.globalData.name = res.result[0].name
 
 
 

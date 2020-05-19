@@ -428,9 +428,11 @@ Page({
         let introduction = "video.introduction"
         let img = "video.img"
         let _id = "video._id"
+        //此方法返回的month从0开始计算月份，因此+1
+        let month = res.data.time.getMonth()
         that.setData({
           [title]: res.data.title,
-          [time]: res.data.time.getFullYear() + '年' + res.data.time.getMonth() + '月' + res.data.time.getDate() + '日',
+          [time]: res.data.time.getFullYear() + '年' + month + '月' + res.data.time.getDate() + '日',
           [introduction]: res.data.introduction,
           [img]: res.data.coverImgUrl,
           [_id]: res.data.contextUrl

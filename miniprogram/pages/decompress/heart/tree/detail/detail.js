@@ -12,7 +12,7 @@ Page({
       // context: '为了借助社交产品的流量，让用户主动分享APP中的内容到社交平台来达到拉新和促活的目的，市场上绝大多数APP都有第三方分享的功能，它是内容分发的最有效途径',
       // dianzan: 21,
       // pinglun: 5,
-      isShowDian: false,
+      // isShowDian: false,
       comment: [
         // {
         //   img: '../../../../../images/my/touxiang.jpg',
@@ -168,6 +168,8 @@ Page({
         let time = "detail.time"
         let likesLen = "detail.dianzan"
         let isLike = "detail.isShowDian"
+        //此方法返回的month从0开始计算月份，因此+1
+        let month = res.data.time.getMonth() + 1
         that.setData({
           '_options': options,
           [isLike]: options.isLike,
@@ -175,7 +177,7 @@ Page({
           [_id]: res.data._id,
           [context]: res.data.comment,
           [username]: res.data.username,
-          [time]: res.data.time.getFullYear() + '年' + res.data.time.getMonth() + '月' + res.data.time.getDate() + '日',
+          [time]: res.data.time.getFullYear() + '年' + month + '月' + res.data.time.getDate() + '日',
         })
       })
       .catch(function(err) {

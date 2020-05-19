@@ -110,8 +110,9 @@ Page({
     }
   },
 
+  //更新点赞和评论数
   onChangeData: function(data) {
-    console.log(data)
+    console.log("【从detail返回到tree】",data)
     let listLike = "list[" + data.index + "].isLike"
     let listLikeNum = "list[" + data.index + "].dianzan"
     let listCommentNum = "list[" + data.index + "].pinglun"
@@ -120,11 +121,19 @@ Page({
       [listCommentNum]: data.commentsLen
     })
     //因为get方法传过来的是string值，要转换成boolean值才能在前端进行if判断
-    if(Boolean(data.isLike) != this.data.list[data.index].isLike){
+    if (Boolean(data.isLike) != this.data.list[data.index].isLike) {
       this.setData({
         [listLike]: !(this.data.list[data.index].isLike)
       })
     }
+  },
+
+  //更新列表
+  onChangeList: function(data) {
+    console.log("【从establish返回到tree】", data)
+    this.setData({
+      list: this.data.list.concat(data)
+    })
   }
 
 
