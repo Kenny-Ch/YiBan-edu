@@ -57,8 +57,7 @@ Page({
     }],
 
     havematch:false,
-    haveteacher:true,
-    fuwu:true,
+    haveteacher:false,
   },
   changeSwipe: function(e) {
     var adress = (e.detail.current == 0) ? "知识储备站" : ((e.detail.current == 1) ? "升学梦工厂" : "以伴课堂");
@@ -151,6 +150,38 @@ Page({
             item.button= "查看登记";
             item.url="../matching/matching";
             list.push(item)
+            var item1={};
+            item1.id=1;
+            item1.big_title= "伴学服务介绍";
+            item1.title="服务介绍细则";
+            item1.small_title="“一对一高考陪伴”服务有着明确的服务对象，如您对伴学服务感兴趣，可查看具体介绍";
+            item1.button="具体介绍";
+            item1.url="../matching/introduce/introduce";
+            list.push(item1)
+            that.setData({
+              swiperList:list,
+            })
+          }
+          else if(this.data.haveteacher==true){
+            var item1={};
+            item1.id=2;
+            item1.big_title="感谢您的志愿付出";
+            item1.title="一起迈向公益之路";
+            item1.small_title="只要你有足够的热情，想为公益事业做出一份自己的贡献，都可以申请成为以伴志愿者！";
+            item1.button="查看我的学生";
+            item1.url="../matching/introduce/introduce";
+            list.push(item1)
+            var item={};
+            item.id=1;
+            item.big_title= "伴学服务介绍";
+            item.title="服务介绍细则";
+            item.small_title="“一对一高考陪伴”服务有着明确的服务对象，如您对伴学服务感兴趣，可查看具体介绍";
+            item.button="具体介绍";
+            item.url="../matching/introduce/introduce";
+            list.push(item)
+            that.setData({
+              swiperList:list,
+            })
           }
           else{
             var item={};
@@ -161,39 +192,22 @@ Page({
             item.button= "开始匹配";
             item.url="../matching/matching";
             list.push(item)
-          }
-          if(this.data.fuwu==true){
-            var item={};
-            item.id=1;
-            item.big_title= "伴学服务介绍";
-            item.title="服务介绍细则";
-            item.small_title="“一对一高考陪伴”服务有着明确的服务对象，如您对伴学服务感兴趣，可查看具体介绍";
-            item.button="具体介绍";
-            item.url="../matching/introduce/introduce";
-            list.push(item)
-          }
-          if(this.data.haveteacher==true){
-            var item={};
-            item.id=2;
-            item.big_title="已为伴学志愿者";
-            item.title="一起迈向公益之路";
-            item.small_title="只要你有足够的热情，想为公益事业做出一份自己的贡献，都可以申请成为以伴志愿者！";
-            item.button="查看学生信息";
-            item.url="../matching/introduce/introduce";
-            list.push(item)
-            that.setData({
-              swiperList:list,
-            })
-          }
-          else{
-            var item={};
-            item.id=2;
-            item.big_title="成为伴学志愿者";
-            item.title="一起迈向公益之路";
-            item.small_title="只要你有足够的热情，想为公益事业做出一份自己的贡献，都可以申请成为以伴志愿者！";
-            item.button="加入我们";
-            item.url="../matching/introduce/introduce";
-            list.push(item)
+            var item1={};
+            item1.id=1;
+            item1.big_title= "伴学服务介绍";
+            item1.title="服务介绍细则";
+            item1.small_title="“一对一高考陪伴”服务有着明确的服务对象，如您对伴学服务感兴趣，可查看具体介绍";
+            item1.button="具体介绍";
+            item1.url="../matching/introduce/introduce";
+            list.push(item1)
+            var item2={};
+            item2.id=2;
+            item2.big_title="成为伴学志愿者";
+            item2.title="一起迈向公益之路";
+            item2.small_title="只要你有足够的热情，想为公益事业做出一份自己的贡献，都可以申请成为以伴志愿者！";
+            item2.button="加入我们";
+            item2.url="../matching/introduce/introduce";
+            list.push(item2)
             that.setData({
               swiperList:list,
             })

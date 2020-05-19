@@ -24,7 +24,13 @@
     "pages/decompress/heart/tree/establish/establish",
     "pages/decompress/heart/tree/detail/detail",
     "pages/dreamFactory/majorlist/majorlist",
-    "pages/decompress/heart/question/detail/detail"
+    "pages/decompress/heart/question/detail/detail",
+    "pages/join/join",
+    "pages/manager/manager",
+    "pages/manager/viewTeacher/viewTeacher",
+    "pages/manager/teacherMatch/teacherMatch",
+    "pages/join/myStudent/myStudent",
+    "pages/join/studentDetail/studentDetail"
   ],
   "window": {
     "navigationStyle": "custom",

@@ -1,0 +1,62 @@
+<!--miniprogram/pages/join/studentDetail/studentDetail.wxml-->
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">以伴edu</view>
+</cu-custom>
+<!--个人信息-->
+<view class="title1">个人信息</view>
+<view class="block">
+  <view class="cu-form-group margin-top">
+    <view class="title wd">姓名</view>
+    <input type='text' value="{{student.name}}" disabled="true"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">联系方式</view>
+    <input type='number' value="{{student.perInfo.tel}}" disabled="true"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">性别</view>
+    <input type='text' value="{{student.perInfo.gender}}" disabled="true"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">所在地区</view>
+    <input type='text' value="{{student.perInfo.area[0] + student.perInfo.area[1] + student.perInfo.area[2]}}" disabled="true"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">在读学校</view>
+    <input type='text' value="{{student.perInfo.school}}" disabled="true"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">在读年级</view>
+    <input type='text' value="{{student.perInfo.grade}}" disabled="true"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">QQ</view>
+    <input type='number' value="{{student.perInfo.qq}}" disabled="true"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">邮箱</view>
+    <input type='text' value="{{student.perInfo.email}}" disabled="true"></input>
+  </view>
+</view>
+<!--登记信息-->
+<view class="title1">登记信息</view>
+<view class="block margin-top">
+  <view class="cu-form-group" wx:for="{{student.subject}}">
+    <view class="title wd">{{item.name}}</view>
+    <view class="tex">{{item.score}}</view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">学习习惯</view>
+    <view class='tex'>{{student.learning}}</view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">对老师期望</view>
+    <view class="tex">{{student.expectationForTeacher}}</view>
+  </view>
+</view>
+<view class='rr' wx:if="{{student.isAdopt==false}}">
+  <button style="width: 284rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn'>通过审核</button>
+  <button style="width: 284rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn'>退回申请</button>
+</view>
+<view class="hh"></view>

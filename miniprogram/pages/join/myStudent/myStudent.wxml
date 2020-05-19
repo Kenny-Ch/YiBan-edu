@@ -1,0 +1,49 @@
+<!--miniprogram/pages/manager/teacherMatch/teacherMatch.wxml-->
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">以伴edu</view>
+</cu-custom>
+<view class='title'>我的学生</view>
+<view class="line"></view>
+<view class="con">
+  <!--待审核-->
+  <view wx:if='{{teacher.student.length>0}}'>
+    <view class="smalltitle">待审核</view>
+    <view class="card" wx:for="{{teacher.student}}">
+      <navigator class='bottom_card' url="" hover-class="none">
+        <view class="left">
+          <view class='top'>
+            <view class="shu"></view>
+            <view class='name'>{{item.name}}</view>
+            <view class='school'>{{item.school}}</view>
+            <view class="major">{{item.grade}}</view>
+          </view>
+          <view class="bottom">
+            <view class="subject">希望被辅导科目：{{item.subject[0]}}、{{item.subject[1]}}、{{item.subject[2]}}</view>
+          </view>
+        </view>
+        <image src="../.../../../../images/manager/toBeReviewed.svg" class="right"  data-id="{{item.id}}"></image>   
+      </navigator>
+    </view>
+  </view>
+  <!--已通过-->
+  <view wx:if='{{teacher.studentAdopt.length>0}}'>
+    <view class="smalltitle">已通过</view>
+    <view class="card" wx:for="{{teacher.studentAdopt}}">
+      <navigator class='bottom_card' url="" hover-class="none">
+        <view class="left">
+          <view class='top'>
+            <view class="shu"></view>
+            <view class='name'>{{item.name}}</view>
+            <view class='school'>{{item.school}}</view>
+            <view class="major">{{item.grade}}</view>
+          </view>
+          <view class="bottom">
+            <view class="subject">希望被辅导科目：{{item.subject[0]}}、{{item.subject[1]}}、{{item.subject[2]}}</view>
+          </view>
+        </view>
+        <image src="../.../../../../images/manager/haveBeReviewed.svg" class="right"  data-id="{{item.id}}"></image>   
+      </navigator>
+    </view>
+  </view>
+</view>

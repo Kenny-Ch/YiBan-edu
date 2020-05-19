@@ -1,0 +1,23 @@
+<!--miniprogram/pages/manager/viewTeacher/viewTeacher.wxml-->
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">以伴edu</view>
+</cu-custom>
+<view class='title'>老师管理</view>
+<view class="line"></view>
+<view class="con">
+  <view class="card" wx:for="{{teacher}}">
+    <navigator class="left" url="../teacherMatch/teacherMatch" hover-class="none">
+      <view class='top'>
+        <view class="shu"></view>
+        <view class='name'>{{item.name}}</view>
+        <view class='school'>{{item.school}}</view>
+        <view class="major">{{item.major}}</view>
+      </view>
+      <view class="bottom">
+        <view class="subject">擅长科目：{{item.subject[0]}}、{{item.subject[1]}}、{{item.subject[2]}}</view>
+      </view>
+    </navigator>
+    <image src="../.../../../../images/manager/delete.svg" class="right" bindtap="delete" data-id="{{item.id}}"></image>   
+  </view>
+</view>

@@ -51,197 +51,239 @@
 			"current": 0,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "db guide",
 					"pathName": "pages/databaseGuide/databaseGuide",
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 1,
 					"name": "pages/test/test",
 					"pathName": "pages/test/test",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 2,
 					"name": "pages/matching/matching",
 					"pathName": "pages/matching/matching",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 3,
 					"name": "pages/display/artical/artical",
 					"pathName": "pages/display/artical/artical",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 4,
 					"name": "pages/decompress/heart/heart",
 					"pathName": "pages/decompress/heart/heart",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 5,
 					"name": "pages/decompress/heart/question/question",
 					"pathName": "pages/decompress/heart/question/question",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 6,
 					"name": "pages/decompress/heart/community/community",
 					"pathName": "pages/decompress/heart/community/community",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 7,
 					"name": "pages/display/detail/detail",
 					"pathName": "pages/display/detail/detail",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 8,
 					"name": "pages/my/my",
 					"pathName": "pages/my/my",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 9,
 					"name": "pages/my/login/login",
 					"pathName": "pages/my/login/login",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 10,
 					"name": "pages/my/information/information",
 					"pathName": "pages/my/information/information",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 11,
 					"name": "pages/display/classroom/classrooom",
 					"pathName": "pages/display/classroom/classrooom",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 12,
 					"name": "pages/dreamFactory/school/school",
 					"pathName": "pages/dreamFactory/school/school",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 13,
 					"name": "pages/dreamFactory/major/major",
 					"pathName": "pages/dreamFactory/major/major",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 14,
 					"name": "pages/matching/result/result",
 					"pathName": "pages/matching/result/result",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 15,
 					"name": "pages/matching/introduce/introduce",
 					"pathName": "pages/matching/introduce/introduce",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 16,
 					"name": "pages/matching/teacher/teacher",
 					"pathName": "pages/matching/teacher/teacher",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 17,
 					"name": "pages/decompress/heart/tree/tree",
 					"pathName": "pages/decompress/heart/tree/tree",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 18,
 					"name": "pages/display/video/video",
 					"pathName": "pages/display/video/video",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 19,
 					"name": "pages/dreamFactory/schoollist/schoollist",
 					"pathName": "pages/dreamFactory/schoollist/schoollist",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 20,
 					"name": "pages/index/index",
 					"pathName": "pages/index/index",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 21,
 					"name": "pages/display/video/video",
 					"pathName": "pages/display/video/video",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 22,
 					"name": "pages/display/classroom/classroom",
 					"pathName": "pages/display/classroom/classroom",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 23,
 					"name": "pages/my/myCollection/myCollection",
 					"pathName": "pages/my/myCollection/myCollection",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 24,
 					"name": "pages/decompress/heart/tree/establish/establish",
 					"pathName": "pages/decompress/heart/tree/establish/establish",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 25,
 					"name": "pages/decompress/heart/tree/detail/detail",
 					"pathName": "pages/decompress/heart/tree/detail/detail",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 26,
 					"name": "pages/dreamFactory/majorlist/majorlist",
 					"pathName": "pages/dreamFactory/majorlist/majorlist",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 27,
 					"name": "pages/decompress/heart/question/detail/detail",
 					"pathName": "pages/decompress/heart/question/detail/detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 28,
+					"name": "pages/join/join",
+					"pathName": "pages/join/join",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 29,
+					"name": "pages/manager/manager",
+					"pathName": "pages/manager/manager",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 30,
+					"name": "pages/manager/viewTeacher/viewTeacher",
+					"pathName": "pages/manager/viewTeacher/viewTeacher",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 31,
+					"name": "pages/manager/teacherMatch/teacherMatch",
+					"pathName": "pages/manager/teacherMatch/teacherMatch",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 32,
+					"name": "pages/join/myStudent/myStudent",
+					"pathName": "pages/join/myStudent/myStudent",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/join/studentDetail/studentDetail",
+					"pathName": "pages/join/studentDetail/studentDetail",
 					"scene": null
 				}
 			]
