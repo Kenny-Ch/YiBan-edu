@@ -27,8 +27,8 @@ exports.main = async (event, context) => {
   var len = 0
 
   var res = await db.collection('person').limit(TOTAL_LEN).where({
-    'perInfo.speciality': _.all([keys[0], keys[1], keys[2]]),
-    job: '老师',
+    speciality: _.all([keys[0], keys[1], keys[2]]),
+    job: 0,
     isMatchFull: false
   }).get()
   len = res.data.length
@@ -39,13 +39,13 @@ exports.main = async (event, context) => {
       ids.push(item.openid)
     }
     var res1 = await db.collection('person').limit(TOTAL_LEN-len).where({
-      'perInfo.speciality': _.or([
+      speciality: _.or([
         _.all([keys[0], keys[1]]),
         _.all([keys[0], keys[2]]),
         _.all([keys[1], keys[2]])
       ]),
       openid: _.nin(ids),
-      job: "老师",
+      job: 0,
       isMatchFull: false
     }).get()
     len = len + res1.data.length
@@ -55,13 +55,13 @@ exports.main = async (event, context) => {
         ids.push(item.openid)
       }
       var res2 = await db.collection('person').limit(TOTAL_LEN-len).where({
-        'perInfo.speciality': _.or([
+        speciality: _.or([
           _.all([keys[0]]),
           _.all([keys[1]]),
           _.all([keys[2]])
         ]),
         openid: _.nin(ids),
-        job: '老师',
+        job: 0,
         isMatchFull: false
       }).get()
 
