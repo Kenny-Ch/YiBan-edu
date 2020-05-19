@@ -181,6 +181,10 @@
     "site": "",                     //地点
     "introduction": ""              //院校介绍
     "speciality": ""                //特色专业
+    "contact": [{                   //师兄师姐联系方式
+      "name": ""
+      "wechat": ""
+    }]
 
 
     //或者

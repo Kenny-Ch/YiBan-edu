@@ -27,7 +27,7 @@ exports.main = async (event, context) => {
   var len = 0
 
   var res = await db.collection('person').limit(TOTAL_LEN).where({
-    speciality: _.all([keys[0], keys[1], keys[2]]),
+    'perInfo.speciality': _.all([keys[0], keys[1], keys[2]]),
     job: 0,
     isMatchFull: false
   }).get()
@@ -39,7 +39,7 @@ exports.main = async (event, context) => {
       ids.push(item.openid)
     }
     var res1 = await db.collection('person').limit(TOTAL_LEN-len).where({
-      speciality: _.or([
+      'perInfo.speciality': _.or([
         _.all([keys[0], keys[1]]),
         _.all([keys[0], keys[2]]),
         _.all([keys[1], keys[2]])
@@ -55,7 +55,7 @@ exports.main = async (event, context) => {
         ids.push(item.openid)
       }
       var res2 = await db.collection('person').limit(TOTAL_LEN-len).where({
-        speciality: _.or([
+        'perInfo.speciality': _.or([
           _.all([keys[0]]),
           _.all([keys[1]]),
           _.all([keys[2]])
