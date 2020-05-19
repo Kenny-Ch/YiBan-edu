@@ -6,15 +6,8 @@ Page({
    */
   data: {
     list: [],
-
   },
-  // showDianzan: function(e) {
-  //   var list = this.data.list;
-  //   list[e.currentTarget.dataset.id].isShowDian = !list[e.currentTarget.dataset.id].isShowDian;
-  //   this.setData({
-  //     list: list,
-  //   })
-  // },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -78,6 +71,7 @@ Page({
     let that = this
     const app = getApp()
     let data = e.currentTarget.dataset
+    console.log(data)
     const db = wx.cloud.database()
     if (data.like) {
       //取消点赞
@@ -87,15 +81,15 @@ Page({
           'userOpenid': app.globalData.openid
         })
         .remove()
-      .then(function(res){
-        console.log("【trees删除数据到数据库interaction】【flag: like】【取消点赞】", res)
-        let listLike = "list[" + data.index + "].isLike"
-        let listLikeNum = "list[" + data.index + "].dianzan"
-        that.setData({
-          [listLike]: false,
-          [listLikeNum]: that.data.list[data.index].dianzan - 1
+        .then(function(res) {
+          console.log("【tree删除数据到数据库interaction】【flag: like】【取消点赞】", res)
+          let listLike = "list[" + data.index + "].isLike"
+          let listLikeNum = "list[" + data.index + "].dianzan"
+          that.setData({
+            [listLike]: false,
+            [listLikeNum]: that.data.list[data.index].dianzan - 1
+          })
         })
-      })
     } else {
       // 点赞
       //此处如果用云函数，由于权限问题则取消点赞也需要写云函数，会导致速度慢，因此直接上传到数据库
@@ -115,6 +109,33 @@ Page({
         })
       })
     }
+  },
+
+  //更新点赞和评论数
+  onChangeData: function(data) {
+    console.log("【从detail返回到tree】",data)
+    let listLike = "list[" + data.index + "].isLike"
+    let listLikeNum = "list[" + data.index + "].dianzan"
+    let listCommentNum = "list[" + data.index + "].pinglun"
+    this.setData({
+      [listLikeNum]: data.likesLen,
+      [listCommentNum]: data.commentsLen
+    })
+    //因为get方法传过来的是string值，要转换成boolean值才能在前端进行if判断
+    if (Boolean(data.isLike) != this.data.list[data.index].isLike) {
+      this.setData({
+        [listLike]: !(this.data.list[data.index].isLike)
+      })
+    }
+  },
+
+  //更新列表
+  onChangeList: function(data) {
+    console.log("【从establish返回到tree】", data)
+    data.index = this.data.list.length
+    this.setData({
+      list: this.data.list.concat(data)
+    })
   }
 
 

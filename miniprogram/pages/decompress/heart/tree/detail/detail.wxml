@@ -1,6 +1,6 @@
 <!--miniprogram/pages/decompress/heart/tree/detail/detail.wxml-->
 <cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
-  <view slot="backText">返回</view>
+  <view slot="backText" bindtap="backToTree" >返回</view>
   <view slot="content">以伴edu</view>
 </cu-custom>
 <view class='title'>树洞详情</view>
@@ -17,10 +17,10 @@
     <view class='context'>{{detail.context}}</view>
     <view class='comments_num'>
       <view class='num'>{{detail.dianzan}}</view>
-      <view wx:if="{{detail.isShowDian}}" bindtap='showDianzan' >
+      <view wx:if="{{detail.isShowDian == 'true'}}" bindtap='changeLike' >
         <image src='../../../../../images/decompress/havedianzan.png' class='pinglun'></image>
       </view>
-      <view wx:else bindtap='showDianzan' >
+      <view wx:else bindtap='changeLike' >
         <image src='../../../../../images/decompress/dianzan.png' class='pinglun'></image>
       </view>  
       <view class='num'>{{detail.pinglun}}</view>
@@ -30,11 +30,11 @@
   <!--评论-->
   <view class='comment' wx:for="{{detail.comment}}">
     <view class='comment-top'>
-      <image src="{{item.img}}" class='comment-img'></image>
-      <view class="comment-name">{{item.name}}</view>
+      <image src="{{item.imgUrl}}" class='comment-img'></image>
+      <view class="comment-name">{{item.nickname}}</view>
       <view class='comment-time'>{{item.time}}</view>
     </view>
-    <view class="comment-context">{{item.context}}</view>
+    <view class="comment-context">{{item.comment}}</view>
   </view>
 </view>
 <!-- 底部功能 -->

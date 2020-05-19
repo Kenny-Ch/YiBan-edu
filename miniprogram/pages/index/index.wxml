@@ -27,7 +27,7 @@
             <view class="card-bigtitle">{{item.big_title}}</view>
             <view class="card-title">{{item.title}}</view>
             <view class="card-smalltitle">{{item.small_title}}</view>
-            <button class='cu-btn round card-button-text' style="width: 342rpx;min-height: 60rpx;background-color: rgba(254, 123, 111, 1);color: rgba(255, 255, 255, 1);" bindtap="jumpToMatch">{{item.button}}</button>
+            <navigator class='cu-btn round card-button-text' style="width: 342rpx;min-height: 60rpx;background-color: rgba(254, 123, 111, 1);color: rgba(255, 255, 255, 1);" url="{{item.url}}" hover-class="none">{{item.button}}</navigator>
           </view>
         </view>
       </swiper-item>

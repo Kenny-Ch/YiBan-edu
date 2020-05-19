@@ -128,27 +128,27 @@ Page({
           this.getDays(res.result[0].registerDate)
           app.globalData.userInfo = res.result[0]
           app.globalData.isNew = false
-          if (res.result[0].isMatchFull) {
+          if (res.result[0].matchInfo != null) {
             app.globalData.isMatch = true
+            app.globalData.matchInfo = res.result[0].matchInfo
           } else {
             app.globalData.isMatch = false
           }
-
-
+          app.globalData.name = res.result[0].name
 
           /**
            * 通过判断isMatch和isTeacher(是否已是志愿者老师)来决定顶部选项卡的显示
            */
-          var list=[];
-          
-          if(app.globalData.isMatch==true){
-            var item={};
-            item.id=0;
-            item.big_title="已提交匹配登记";
-            item.title="高考陪伴公益行";
-            item.small_title="对教育资源较为落后的四五线城市高中生进行“一对一高考陪伴”，助力高中生考上理想的大学院校！";
-            item.button= "查看登记";
-            item.url="../matching/matching";
+          var list = [];
+
+          if (app.globalData.isMatch == true) {
+            var item = {};
+            item.id = 0;
+            item.big_title = "已提交匹配登记";
+            item.title = "高考陪伴公益行";
+            item.small_title = "对教育资源较为落后的四五线城市高中生进行“一对一高考陪伴”，助力高中生考上理想的大学院校！";
+            item.button = "查看登记";
+            item.url = "../matching/result/result";
             list.push(item)
             var item1={};
             item1.id=1;
@@ -162,7 +162,7 @@ Page({
               swiperList:list,
             })
           }
-          else if(this.data.haveteacher==true){
+          else if(res.result[0].job == 0){
             var item1={};
             item1.id=2;
             item1.big_title="感谢您的志愿付出";
@@ -180,7 +180,7 @@ Page({
             item.url="../matching/introduce/introduce";
             list.push(item)
             that.setData({
-              swiperList:list,
+              swiperList: list,
             })
           }
           else{
@@ -209,23 +209,11 @@ Page({
             item2.url="../matching/introduce/introduce";
             list.push(item2)
             that.setData({
-              swiperList:list,
+              swiperList: list,
             })
           }
-
-
-
-
-
         }
-
-
-
-
-
       })
-
-
     }).catch(err => {
       console.log('appjs获取openid失败')
     })
@@ -275,29 +263,6 @@ Page({
       })
     }
   },
-
-  jumpToMatch: function() {
-    // if (app.globalData.isMatch) {
-    //   console.log('【index】用户已填写信息，跳转匹配界面')
-    //   wx.navigateTo({
-    //     url: '/pages/matching/result/result',
-    //     fail: (res) => {
-    //       console.log('【index页面跳转匹配界面失败】,res')
-    //     },
-    //     success: (result) => {},
-    //   })
-    // } else {
-    //   console.log('【index】用户未填写信息，跳转填写信息页面')
-      wx.navigateTo({
-        url: '/pages/matching/matching',
-        fail: (res) => {
-          console.log('【index页面跳转填写信息信息界面失败】,res')
-        },
-        success: (result) => {},
-      })
-    // }
-  },
-
 
   /**
    * 生命周期函数--监听页面初次渲染完成

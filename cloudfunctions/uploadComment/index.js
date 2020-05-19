@@ -9,6 +9,7 @@ const db = cloud.database()
     "openid": "",
     "name": "",                     //用户昵称
     "comment": "",                  //用户留言
+    "imgUrl": "",                   //用户头像
     "time": "Date()",               //留言时间
     "isAnonymous": true,            //是否匿名
 */
@@ -22,6 +23,7 @@ exports.main = async (event, context) => {
         openid: event.openid,
         name: event.name,
         comment: event.comment,
+        imgUrl: event.imgUrl,
         time: new Date(),
         isAnonymous: event.isAnonymous
       }

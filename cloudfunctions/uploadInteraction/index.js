@@ -45,6 +45,7 @@ exports.main = async (event, context) => {
           nickname: event.nickname,
           contextId: event.contextId,
           comment: event.comment,
+          time: new Date()
         }
       })
     } catch (e) {
@@ -73,6 +74,8 @@ exports.main = async (event, context) => {
           contextId: event.contextId,
           comment: event.comment,
           userOpenid: event.userOpenid,
+          type: event.type,
+          database: event.database
         }
       })
     } catch (e) {

@@ -9,26 +9,27 @@ Page({
       title: "文章",
     }, {
       title: "视频",
-    }
-    ],
+    }],
     i: 0,
     x: 0,
-    common: [{
-     title:'如何正确高效科学学习语文',
-     time:'2020/05/15',
-    }, {
-      title:'如何正确高效科学学习语文',
-     time:'2020/05/15',
-    }, {
-      title:'如何正确高效科学学习语文',
-     time:'2020/05/15',
-    }, {
-      title:'如何正确高效科学学习语文',
-     time:'2020/05/15',
-    }, {
-      title:'如何正确高效科学学习语文',
-      time:'2020/05/15',
-    }],
+    // common: [{
+    //   title: '如何正确高效科学学习语文',
+    //   time: '2020/05/15',
+    // }, {
+    //   title: '如何正确高效科学学习语文',
+    //   time: '2020/05/15',
+    // }, {
+    //   title: '如何正确高效科学学习语文',
+    //   time: '2020/05/15',
+    // }, {
+    //   title: '如何正确高效科学学习语文',
+    //   time: '2020/05/15',
+    // }, {
+    //   title: '如何正确高效科学学习语文',
+    //   time: '2020/05/15',
+    // }],
+    article: [],
+    video: []
   },
   changeSwipe: function(e) {
     console.log("目前在", e.detail.current);
@@ -65,6 +66,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    const app = getApp()
     var that = this;
     wx.getSystemInfo({
       success: function(res) {
@@ -76,6 +78,32 @@ Page({
         });
       }
     });
+
+    wx.cloud.callFunction({
+      name: 'getInteraction',
+      data: {
+        'comment': false,
+        'like': false,
+        'store': true,
+        'openid': app.globalData.openid,
+        'type': 0
+      }
+    }).then(function(res) {
+      console.log("【myCollection调用函数getInteraction】", res)
+      for(let item of res.result.stores){
+        if(item.type == 'article'){
+          that.setData({
+            article: that.data.article.concat(item)
+          })
+        }else{
+          that.setData({
+            video: that.data.video.concat(item)
+          })
+        }
+      }
+    }).catch(function(err) {
+      console.log(err)
+    })
   },
 
   /**

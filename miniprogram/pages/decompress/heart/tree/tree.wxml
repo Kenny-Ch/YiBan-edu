@@ -4,7 +4,7 @@
   <view slot="content">以伴edu</view>
 </cu-custom>
 <view class='plusBtn'>
-  <navigator url="" class="plusBtn">
+  <navigator url="establish/establish" class="plusBtn">
     <image src="../../../../images/decompress/jia.png" class='plusIcon'></image>
   </navigator>
 </view>
@@ -12,14 +12,16 @@
 <view class="line"></view>
 <view class="con1">
   <view class="card" wx:for='{{list}}'>
-    <view class="row top">
-      <image src='{{item.userimg}}' class='userimg'></image>
-      <view class='coloum  imgright'>
-        <view class="username">{{item.username}}</view>
-        <view class='time'>{{item.time}}</view>
+    <navigator url="detail/detail?id={{item._id}}&likesLen={{item.dianzan}}&isLike={{item.isLike}}&index={{item.index}}" hover-class="none">
+      <view class="row top">
+        <image src='{{item.userimg}}' class='userimg'></image>
+        <view class='coloum  imgright'>
+          <view class="username">{{item.username}}</view>
+          <view class='time'>{{item.time}}</view>
+        </view>
       </view>
-    </view>
-    <view class='liuyan'>{{item.liuyan}}</view>
+      <view class='liuyan'>{{item.liuyan}}</view>
+    </navigator>
     <view class="hh row">
       <view wx:if="{{item.isLike}}" data-_id='{{item._id}}' data-like="{{item.isLike}}" data-index="{{item.index}}" bindtap='changeLike'>
         <image src='../../../../images/decompress/havedianzan.png' class='dianzan'></image>
