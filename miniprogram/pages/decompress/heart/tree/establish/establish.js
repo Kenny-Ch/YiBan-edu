@@ -47,7 +47,7 @@ Page({
         wx.showToast({
           title: '发布成功！',
           icon: 'success',
-          duration: 1000,
+          duration: 1500,
           success: function() {
             setTimeout(function() {
               var pages = getCurrentPages(); //当前页面栈
@@ -67,12 +67,13 @@ Page({
                 data.time = date.getFullYear() + '-' + month + '-' + date.getDate()
                 data.userimg = ''
                 data.isAnonymous = true
+                data.isLike = false
                 beforePage.onChangeList(data); //触发父页面中的方法
                 wx.navigateBack({
                   delta: 1
-                })
+                }, 1000)
               }
-            }, 1000)
+            })
           }
         })
       } else {

@@ -71,6 +71,7 @@ Page({
     let that = this
     const app = getApp()
     let data = e.currentTarget.dataset
+    console.log(data)
     const db = wx.cloud.database()
     if (data.like) {
       //取消点赞
@@ -131,6 +132,7 @@ Page({
   //更新列表
   onChangeList: function(data) {
     console.log("【从establish返回到tree】", data)
+    data.index = this.data.list.length
     this.setData({
       list: this.data.list.concat(data)
     })
