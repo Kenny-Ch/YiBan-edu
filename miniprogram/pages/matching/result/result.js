@@ -5,31 +5,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list: [{
-        name: '小明',
-        perInfo:{
-          school: '华南师范大学',
-          major: '软件工程',
-          speciality: ['语文', '数学', '英语'],
-        }    
-      },
-      {
-        name: '小宏',
-        perInfo:{
-          school: '华南师范大学',
-          major: '英语',
-          speciality: ['语文', '政治', '英语'],
-        }  
-      },
-      {
-        name: '小东',
-        perInfo:{
-          school: '华南师范大学',
-          major: '应用数学',
-          speciality: ['数学', '物理', '英语'],
-        }
-        
-      }
+    list: [
+      // {
+      //   name: '小明',
+      //   perInfo:{
+      //     school: '华南师范大学',
+      //     major: '软件工程',
+      //     speciality: ['语文', '数学', '英语'],
+      //   }    
+      // },
+      // {
+      //   name: '小宏',
+      //   perInfo:{
+      //     school: '华南师范大学',
+      //     major: '英语',
+      //     speciality: ['语文', '政治', '英语'],
+      //   }  
+      // },
+      // {
+      //   name: '小东',
+      //   perInfo:{
+      //     school: '华南师范大学',
+      //     major: '应用数学',
+      //     speciality: ['数学', '物理', '英语'],
+      //   }
+      // }
     ]
   },
   /**
@@ -45,13 +45,49 @@ Page({
       }
     }).then(function(res) {
       console.log("matching/result调用函数matchTeacher", res)
+      for (let i in res.result)
+        for (let j in res.result[i].perInfo.speciality)
+        res.result[i].perInfo.speciality[j] = that.changeLanguage(res.result[i].perInfo.speciality[j])
       that.setData({
         list: res.result
       })
     }).catch(function(err) {
       console.log(err)
     })
+  },
 
+  //将数据库内科目的英文转成中文显示
+  changeLanguage: function(word) {
+    switch (word) {
+      case 'Chinese':
+        word = '语文'
+        break
+      case 'Mathematics':
+        word = '数学'
+        break
+      case 'English':
+        word = '英语'
+        break
+      case 'Physics':
+        word = '物理'
+        break
+      case 'Chemistry':
+        word = '化学'
+        break
+      case 'Biology':
+        word = '生物'
+        break
+      case 'Politics':
+        word = '政治'
+        break
+      case 'History':
+        word = '历史'
+        break
+      case 'Geography':
+        word = '地理'
+        break
+    }
+    return word
   },
 
   /**

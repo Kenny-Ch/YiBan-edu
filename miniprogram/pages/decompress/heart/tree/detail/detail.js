@@ -123,20 +123,23 @@ Page({
           wx.showToast({
             title: '发送成功',
             icon: 'none',
-            duration: 1500
+            duration: 1500,
+            success: function() {
+              let comment = "detail.comment"
+              let commentsLen = "detail.pinglun"
+              let item = {}
+              let date = new Date()
+              item.imgUrl = ''
+              item.nickname = ''
+              item.time = date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate()
+              item.comment = content
+              that.setData({
+                [comment]: that.data.detail.comment.concat(item),
+                [commentsLen]: that.data.detail.pinglun + 1
+              })
+            }
           })
-          let comment = "detail.comment"
-          let commentsLen = "detail.pinglun"
-          let item = {}
-          let date = new Date()
-          item.imgUrl = ''
-          item.nickname = ''
-          item.time = date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate(),
-            item.comment = content
-          that.setData({
-            [comment]: that.data.detail.comment.concat(item),
-            [commentsLen]: that.data.detail.pinglun + 1
-          })
+
         },
         fail: function(err) {
           console.log(err)

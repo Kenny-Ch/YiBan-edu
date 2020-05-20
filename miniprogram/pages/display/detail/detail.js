@@ -29,7 +29,6 @@ Page({
       text: "点赞",
       icon: "appreciate"
     },
-
     userInfo: {},
     commentId: "",
     placeholder: "评论...",
@@ -353,11 +352,17 @@ Page({
           wx.showToast({
             title: '发送成功',
             icon: 'none',
-            duration: 1500
-          })
-
-          wx.redirectTo({
-            url: 'detail?id=' + that.data.post._id + '&collection=' + that.data.post.collection,
+            duration: 1500,
+            success: function() {
+              let commentList = "post.commentList"
+              let item = {}
+              item.cAdvatarUrl = ''
+              item.cNickName = app.globalData.userInfo.name
+              item.comment = that.data.commentContent
+              that.setData({
+                [commentList]: that.data.post.commentList.concat(item)
+              })
+            }
           })
         },
         fail: function(err) {

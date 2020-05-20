@@ -71,9 +71,9 @@ Page({
                 beforePage.onChangeList(data); //触发父页面中的方法
                 wx.navigateBack({
                   delta: 1
-                }, 1000)
+                })
               }
-            })
+            }, 1500)
           }
         })
       } else {
