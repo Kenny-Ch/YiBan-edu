@@ -118,7 +118,7 @@ Page({
         })
       }
     } catch (err) {
-      console.info(err)
+      console.log(err)
     } finally {
       wx.hideLoading()
     }

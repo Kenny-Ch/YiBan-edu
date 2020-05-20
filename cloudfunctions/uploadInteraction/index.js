@@ -73,6 +73,7 @@ exports.main = async (event, context) => {
           flag: event.flag,
           contextId: event.contextId,
           comment: event.comment,
+          contextName: event.contextName,
           userOpenid: event.userOpenid,
           type: event.type,
           database: event.database

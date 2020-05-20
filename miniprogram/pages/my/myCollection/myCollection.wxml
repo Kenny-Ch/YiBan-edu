@@ -13,7 +13,7 @@
   <swiper-item>
     <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
       <view wx:for="{{article}}">
-        <navigator class='card' hover-class="none" url="../../display/detail/detail?id={{item._id}}&collection={{item.database}}">
+        <navigator class='card' hover-class="none" url="../../display/detail/detail?id={{item.contextId}}&collection={{item.database}}">
           <view class='shu'></view>
           <view class='title'>{{item.contextName}}</view>
           <view class='time'>{{item.time}}</view>
@@ -25,7 +25,7 @@
   <swiper-item>
     <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
       <view wx:for="{{video}}">
-        <navigator class='card' hover-class="none" url="../../display/video/video?id={{item._id}}&collection={{item.database}}">
+        <navigator class='card' hover-class="none" url="../../display/video/video?id={{item.contextId}}&collection={{item.database}}">
           <view class='shu'></view>
           <view class='title'>{{item.contextName}}</view>
           <view class='time'>{{item.time}}</view>
