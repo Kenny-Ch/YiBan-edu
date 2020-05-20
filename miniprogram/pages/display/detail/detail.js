@@ -17,10 +17,6 @@ Page({
         cAvatarUrl: '../../../images/display/plimg.jpg',
         cNickName: '清风自来',
         comment: '很棒！',
-        // childComment: [{
-        //   cNickName: '清风自来',
-        //   comment: '很棒！',
-        // }]
       }],
     },
     collection: {
@@ -447,6 +443,7 @@ Page({
           [_id]: res.data._id,
           [title]: res.data.title,
           [defaultImageUrl]: res.data.coverImgUrl,
+          
           [createTime]: res.data.time.getFullYear() + '年' + res.data.time.getMonth() + '月' + res.data.time.getDate() + '日',
           [collection]: res.data.collection,
           [viwerNum]: res.data.viwerNum
