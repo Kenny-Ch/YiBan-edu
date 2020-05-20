@@ -55,9 +55,9 @@ Page({
 
     const _ts = this;
 
-    this.getArtical(options)
+    await this.getArtical(options)
 
-    app.getText('https://mgt-1301264585.cos.ap-guangzhou.myqcloud.com/0005/0005.md', res => {
+    app.getText(this.data.post.articalUrl, res => {
       let obj = app.towxml(res.data, 'markdown', {
         theme: 'light',
         events: {
@@ -422,14 +422,6 @@ Page({
 
   // 获取文章详情
   async getArtical(options) {
-
-
-    // title: '以伴干货篇 | 学点好方法',
-    //   defaultImageUrl: 'https://7969-yiban-edu-1301806073.tcb.qcloud.la/xxxx/0005/0005.jpg?sign=8ab25e435f2084606c7f270feea8e401&t=1587129429',
-    //     createTime: '2020-02-05',
-    //       totalVisits: 292,
-    //         totalZans: 54,
-
     let that = this
     let db = wx.cloud.database()
     console.log("detail页面【传入参数】", options)
@@ -440,6 +432,7 @@ Page({
         let _id = "post._id"
         let title = "post.title"
         let defaultImageUrl = "post.defaultImageUrl"
+        let articalUrl = "post.articalUrl"
         let createTime = "post.createTime"
         let collection = "post.collection"
         let viwerNum = "post.totalVisits"
@@ -447,6 +440,7 @@ Page({
           [_id]: res.data._id,
           [title]: res.data.title,
           [defaultImageUrl]: res.data.coverImgUrl,
+          [articalUrl]: res.data.contextUrl,
           [createTime]: res.data.time.getFullYear() + '年' + res.data.time.getMonth() + '月' + res.data.time.getDate() + '日',
           [collection]: res.data.collection,
           [viwerNum]: res.data.viwerNum
