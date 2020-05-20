@@ -63,6 +63,7 @@ Page({
     toOpenId: "",
     nodata_str: "暂无评论，赶紧抢沙发吧",
     isShow: false,
+    isDisable: false
   },
 
   /**
@@ -313,6 +314,20 @@ Page({
    * 提交评论
    * @param {} e 
    */
+
+  timeOutSubmit: async function(e) {
+    let that = this
+    await this.setData({
+      isDisable: true
+    })
+    this.formSubmit(e)
+    setTimeout(function() {
+      that.setData({
+        isDisable: false
+      })
+    }, 3000);
+  },
+
   formSubmit: async function(e) {
     var that = this
     try {

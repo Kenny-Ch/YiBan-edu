@@ -44,6 +44,6 @@
       <open-data type="userAvatarUrl"></open-data>
     </view>
     <input class='solid-bottom' maxlength="600" cursor-spacing="10" confirm-type="send" bindinput='commentInput' name="inputComment" value="{{commentContent}}"  placeholder="{{placeholder}}" focus="{{focus}}" bindblur="onReplyBlur"></input>
-    <button class='cu-btn bg-orange shadow-blur' style="width: 162rpx;min-height: 50rpx;border-radius: 55rpx;" bindtap="formSubmit">发送</button>
+    <button class='cu-btn bg-orange shadow-blur' style="width: 162rpx;min-height: 50rpx;border-radius: 55rpx;" bindtap="timeOutSubmit" disabled="{{isDisable}}">发送</button>
   </view>
 </view>

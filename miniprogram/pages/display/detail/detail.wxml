@@ -11,28 +11,23 @@
         <view class="bg-img only-img" style="background-image:url({{post.defaultImageUrl}})" />
       </view>
       <view class='text-gray text-sm text-right padding'>
-        <text class="cuIcon-timefill" />
-        {{post.createTime}}
-        <text class="cuIcon-attentionfill" />
-        {{post.totalVisits}}
-        <text class="cuIcon-appreciatefill" />
-        {{post.totalZans}}
-        <text class="cuIcon-messagefill" />
-        {{post.commentList.length}}
+        <text class="cuIcon-timefill" /> {{post.createTime}}
+        <text class="cuIcon-attentionfill" /> {{post.totalVisits}}
+        <text class="cuIcon-appreciatefill" /> {{post.totalZans}}
+        <text class="cuIcon-messagefill" /> {{post.commentList.length}}
       </view>
     </view>
   </view>
   <view class="detail-body" style="height:{{hideArticle}}">
-     <towxml nodes="{{post.artical}}"/>
+    <towxml nodes="{{post.artical}}" />
   </view>
 </view>
 <!-- 评论列表 -->
-<import src ="../../template/template.wxml"/>
+<import src="../../template/template.wxml" />
 <view class="bg-white margin-top-xs">
   <view class="cu-bar bg-white">
     <view class='action'>
-      <text class='cuIcon-titles text-orange '></text>
-      共{{post.commentList.length}}条评论
+      <text class='cuIcon-titles text-orange '></text> 共{{post.commentList.length}}条评论
     </view>
   </view>
   <!-- 数据不存在 -->
@@ -71,17 +66,17 @@
 <view class="comment-fixed">
   <!-- <form catchsubmit="formSubmit" report-submit="true"> -->
   <view class="cu-bar input">
-    <view class="cu-avatar round yuan" >
+    <view class="cu-avatar round yuan">
       <open-data type="userAvatarUrl"></open-data>
     </view>
-    <view class='action' wx:if="{{isShow}}" bindtap='showMenuBox' >
-      <image  src="../../../images/jian.png" class='ic'></image>
+    <view class='action' wx:if="{{isShow}}" bindtap='showMenuBox'>
+      <image src="../../../images/jian.png" class='ic'></image>
     </view>
-    <view class='action' wx:else bindtap='showMenuBox' >
-      <image  src="../../../images/jia.png" class='ic'></image>
+    <view class='action' wx:else bindtap='showMenuBox'>
+      <image src="../../../images/jia.png" class='ic'></image>
     </view>
     <input class='solid-bottom' maxlength="300" cursor-spacing="10" confirm-type="send" bindinput='commentInput' name="inputComment" value="{{commentContent}}" placeholder="{{placeholder}}" focus="{{focus}}" bindblur="onReplyBlur"></input>
-    <button class='cu-btn bg-orange shadow-blur' style="width: 162rpx;min-height: 50rpx;border-radius: 55rpx;" bindtap="formSubmit">发送</button>
+    <button class='cu-btn bg-orange shadow-blur' style="width: 162rpx;min-height: 50rpx;border-radius: 55rpx;" bindtap="timeOutSubmit" disabled="{{isDisable}}">发送</button>
   </view>
 
   <!-- </form> -->
@@ -101,4 +96,3 @@
     </view>
   </view>
 </view>
-

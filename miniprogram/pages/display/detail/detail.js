@@ -37,6 +37,10 @@ Page({
     toOpenId: "",
     nodata_str: "暂无评论，赶紧抢沙发吧",
     isShow: false,
+    isDisable: false,
+    touchStartTime: 0,
+    touchEndTime: 0,
+    lastTapTime: 0
   },
 
   /**
@@ -320,13 +324,29 @@ Page({
    * 提交评论
    * @param {} e 
    */
+  // 防止重复点击
+
+
+  timeOutSubmit: async function(e) {
+    let that = this
+    await this.setData({
+      isDisable: true
+    })
+    this.formSubmit(e)
+    setTimeout(function() {
+      that.setData({
+        isDisable: false
+      })
+    }, 3000);
+  },
+
   formSubmit: function(e) {
     var that = this;
     try {
       let that = this;
       let commentPage = 1
       let content = that.data.commentContent;
-      console.info(content)
+      console.log(content)
       if (content == undefined || content.length == 0) {
         wx.showToast({
           title: '请输入内容',
