@@ -18,7 +18,7 @@
 }
 .card{
   width: 100%;
-	height: 208rpx;
+	min-height: 208rpx;
 	color: rgba(80, 80, 80, 1);
 	background-color: rgba(255, 255, 255, 1);
 	font-size: 28rpx;
@@ -41,6 +41,7 @@
   align-items: center;
   margin-left:40rpx ;
   margin-top:5rpx ;
+  margin-bottom: 8rpx;
 }
 .icon{
   width: 35rpx;
@@ -62,7 +63,6 @@
 }
 .text{
   width: 75%;
-  height: 118rpx;
   margin-right: 30rpx;
   display: flex;
   flex-direction: column;
@@ -70,7 +70,6 @@
 }
 .text-title{
   width: 100%;
-	height: 48rpx;
 	color: rgba(80, 80, 80, 1);
 	font-size: 32rpx;
 	line-height: 150%;

@@ -142,7 +142,7 @@
   height: 48rpx;
 }
 .title{
-  width: 80%;
+  width: 88%;
 	color: rgba(80, 80, 80, 1);
 	font-size: 40rpx;
 	line-height: 150%;

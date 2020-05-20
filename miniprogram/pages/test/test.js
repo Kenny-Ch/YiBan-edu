@@ -10,12 +10,32 @@ Page({
       customData: {
         customInfo: `iPhone OS 10.3.1 / 3.2.0.43 / 0`,
       }
-    }
+		},
+		isTiptrue: true,
+	},
+	closeGuide: function (e) {    
+    wx.setStorage({      
+      key: 'loadOpen',      
+      data: 'OpenTwo'    
+    })    
+    this.setData({ isTiptrue: false }) 
   },
+
+
+
 	onLoad: function () {
+		// onLoad中添加以下代码
+		let firstOpen = wx.getStorageSync("loadOpen")    
+		if (firstOpen == undefined || firstOpen == '') { // 根据缓存周期决定是否显示新手引导      
+			this.setData({ isTiptrue: true })    
+		} 
+		else {      
+			this.setData({ isTiptrue: false }) 
+		}
+		var myurl='https://mgt-1301264585.cos.ap-guangzhou.myqcloud.com/%E6%B5%8B%E8%AF%95.md';
 		const _ts = this;
 
-		app.getText('https://mgt-1301264585.cos.ap-guangzhou.myqcloud.com/Typora%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B.md',res => {
+		app.getText(myurl,res => {
 			let obj = app.towxml(res.data,'markdown',{
 				theme:'light',
 				events:{
