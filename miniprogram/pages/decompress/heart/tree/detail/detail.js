@@ -63,7 +63,8 @@ Page({
           time: '2020-04-19',
           comment: '没问题，你快去吧。我在小区门口等你。',
         },
-      ]
+      ],
+      isDisable:false
     },
     focus: false,
     isShowDian: false,
@@ -90,6 +91,19 @@ Page({
   //     detail: detail,
   //   })
   // },
+
+  timeOutSubmit: async function (e) {
+    let that = this
+    await this.setData({
+      isDisable: true
+    })
+    this.formSubmit(e)
+    setTimeout(function () {
+      that.setData({
+        isDisable: false
+      })
+    }, 3000);
+  },
 
   formSubmit: async function(e) {
     var that = this
