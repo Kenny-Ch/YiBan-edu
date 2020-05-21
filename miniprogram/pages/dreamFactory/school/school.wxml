@@ -35,13 +35,15 @@
 <view class='text'>
   {{school.speciality}}
 </view>
-<view class='row bb'>
-  <view class="shu"></view>
-  <view class='samll-title'>在校师兄师姐联系方式</view>
-</view>
-<view wx:for="{{school.contact}}" class='cc row'>
-  <image src="../../../images/display/contact.png" class='img'></image>
-  <view class="name">{{item.name}}</view>
-  <view class="wechat" bindtap='copyText' data-wechat="{{item.wechat}}">微信：{{item.wechat}}</view>
+<view wx:if="{{school.contact.length>0}}">
+  <view class='row bb'>
+    <view class="shu"></view>
+    <view class='samll-title'>在校师兄师姐联系方式</view>
+  </view>
+  <view wx:for="{{school.contact}}" class='cc row'>
+    <image src="../../../images/display/contact.png" class='img'></image>
+    <view class="name">{{item.name}}</view>
+    <view class="wechat" bindtap='copyText' data-wechat="{{item.wechat}}">微信：{{item.wechat}}</view>
+  </view>
 </view>
 <view class='block'></view>

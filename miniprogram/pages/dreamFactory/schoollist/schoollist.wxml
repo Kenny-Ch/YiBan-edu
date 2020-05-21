@@ -5,11 +5,9 @@
 </cu-custom>
 <view class='title'>名校介绍</view>
 <view class="line"></view>
-<view class='hh'></view>
 <view class='con'>
-  <view class='card' wx:for="{{schoollist}}">
-    <navigator url='../school/school?id={{item._id}}&collection={{item.collection}}' hover-class="none">
-      <view class="card row">
+    <navigator url='../school/school?id={{item._id}}&collection={{item.collection}}' hover-class="none" class='card' wx:for="{{schoollist}}">
+      <view class="row">
         <image src="{{item.schoolLogo}}" class='img'></image>
         <view class='cen'>
           <view class="name">{{item.name}}</view>
@@ -22,5 +20,5 @@
         <view class='rank'>全国排名：{{item.rank.alumni}}</view>
       </view>
     </navigator>
-  </view>
 </view>
+<view class='uu'></view>
