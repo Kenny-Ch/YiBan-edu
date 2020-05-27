@@ -64,7 +64,7 @@ Page({
           comment: '没问题，你快去吧。我在小区门口等你。',
         },
       ],
-      isDisable:false
+      isDisable: false
     },
     focus: false,
     isShowDian: false,
@@ -92,13 +92,13 @@ Page({
   //   })
   // },
 
-  timeOutSubmit: async function (e) {
+  timeOutSubmit: async function(e) {
     let that = this
     await this.setData({
       isDisable: true
     })
     this.formSubmit(e)
-    setTimeout(function () {
+    setTimeout(function() {
       that.setData({
         isDisable: false
       })
@@ -127,8 +127,8 @@ Page({
         data: {
           'flag': "comment",
           'userOpenid': app.globalData.openid,
-          'imgUrl': "",
-          'nickname': "",
+          'imgUrl': app.globalData.userInfo.avatarUrl,
+          'nickname': app.globalData.userInfo.name,
           'contextId': that.data._options.id,
           'comment': content
         },
@@ -141,11 +141,16 @@ Page({
             success: function() {
               let comment = "detail.comment"
               let commentsLen = "detail.pinglun"
-              let item = {}
+              let item = {
+                comment: {}
+              }
               let date = new Date()
-              item.imgUrl = ''
-              item.nickname = ''
-              item.time = date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate()
+              let month = date.getMonth() + 1
+              if (month <= 9)
+                month = '0' + month
+              item.imgUrl = app.globalData.userInfo.avatarUrl
+              item.nickname = app.globalData.userInfo.name
+              item.time = date.getFullYear() + '-' + month + '-' + date.getDate()
               item.comment = content
               that.setData({
                 [comment]: that.data.detail.comment.concat(item),

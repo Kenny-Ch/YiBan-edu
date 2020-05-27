@@ -33,7 +33,7 @@ Page({
         temp.userimg = '../../../../images/my/touxiang.jpg'
         temp.username = '匿名'
       } else {
-        temp.userimg = ''
+        temp.userimg = item.imgUrl
         temp.username = item.name
       }
       console.log(item)

@@ -8,9 +8,9 @@
 <view class='con'>
   <view class='card'>
     <view class='top'>
-      <image src='{{detail.userImg}}' class='userImg'></image>
+      <image src='{{detail.imgUrl}}' class='userImg'></image>
       <view class='card-nati'>
-        <view class='name'>{{detail.username}}</view>
+        <view class='name'>{{detail.nickname}}</view>
         <view class="time">{{detail.time}}</view>
       </view>
     </view>

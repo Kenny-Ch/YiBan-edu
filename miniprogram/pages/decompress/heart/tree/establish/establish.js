@@ -36,10 +36,10 @@ Page({
       name: 'uploadComment',
       data: {
         'openid': app.globalData.openid,
-        'name': app.globalData.name,
+        'imgUrl': app.globalData.userInfo.avatarUrl,
+        'name': app.globalData.userInfo.name,
         'comment': that.data.context,
-        'imgUrl': '',
-        'isAnonymous': true
+        'isAnonymous': false
       }
     }).then(function(res) {
       console.log("【tree/establish调用函数uploadComment】【上传树洞】", res)
@@ -56,6 +56,8 @@ Page({
                 let date = new Date()
                 //此方法返回的month从0开始计算月份，因此+1
                 let month = date.getMonth() + 1
+                if (month <= 9)
+                  month = '0' + month
                 let data = {}
                 data._id = res.result._id
                 data.openid = app.globalData.openid
@@ -65,8 +67,8 @@ Page({
                 data.pinglun = 0
                 data.contextId = res.result._id
                 data.time = date.getFullYear() + '-' + month + '-' + date.getDate()
-                data.userimg = ''
-                data.isAnonymous = true
+                data.userimg = app.globalData.userInfo.avatarUrl
+                data.isAnonymous = false
                 data.isLike = false
                 beforePage.onChangeList(data); //触发父页面中的方法
                 wx.navigateBack({
