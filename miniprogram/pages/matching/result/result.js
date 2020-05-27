@@ -105,13 +105,13 @@ Page({
           app.globalData.userInfo.matchWaitList.push(openid)
           let list = app.globalData.userInfo.matchWaitList
           wx.cloud.callFunction({
-            name: 'uploadMatchList',
+            name: 'requestTeaMatch',
             data: {
-              _id: app.globalData.userInfo._id,
-              matchWaitList: list
+              stuOpenid: app.globalData.userInfo.openid,
+              teaOpenid: openid
             }
           }).then(function(res) {
-            console.log("【matching/result调用函数uploadMatchList】", res)
+            console.log("【matching/result调用函数requestTeaMatch】", res)
             wx.navigateTo({
               url: '../teacher/teacher?id=' + openid
             })
