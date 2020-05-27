@@ -105,10 +105,10 @@
 	text-align: left;
 	margin-right:16rpx;
 }
-.info{
+.info1{
   width: 80%;
 }
-.icon{
+.icon1{
   width: 60rpx;
 	height: 60rpx;
 	font-size: 60rpx;

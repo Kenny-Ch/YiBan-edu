@@ -14,8 +14,8 @@
     </view> 
     </view>
     <view class="introduce">
-      <text>{{user.perInfo.introduction}}</text>
+      <view class="text2">{{user.perInfo.introduction}}</view>
     </view>
-    <image src="{{user.img}}" class='QR'></image>
+    <image src="{{user.QR}}" class='QR'></image>
   </view>
 </view>

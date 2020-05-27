@@ -71,7 +71,7 @@
   margin-bottom: 20rpx;
 }
 
-text {
+.text2 {
   width: 624rpx;
   font-size: 24rpx;
   line-height: 150%;

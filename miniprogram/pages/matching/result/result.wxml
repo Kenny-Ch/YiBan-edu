@@ -6,7 +6,7 @@
 <view class='title'>匹配登记</view>
 <view class="line"></view>
 <navigator class='card row' wx:for="{{list}}" hover-class="none" url="../teacher/teacher?id={{item._id}}">
-  <view class='coloum info'>
+  <view class='coloum info1'>
     <view class="row ii">
       <view class="shu"></view>
       <view class="name">{{item.name}}</view>
@@ -17,5 +17,5 @@
       <view class="text" wx:for="{{item.perInfo.speciality}}" wx:for-item="name">{{name}}</view>
     </view>
   </view>
-  <image src='../../../images/matching/xuanze.png' class='icon'></image>
+  <image src='../../../images/matching/xuanze.png' class='icon1'></image>
 </navigator>
