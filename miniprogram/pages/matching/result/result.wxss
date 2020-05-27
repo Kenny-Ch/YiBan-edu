@@ -103,7 +103,7 @@
 	font-size: 28rpx;
 	line-height: 150%;
 	text-align: left;
-	margin-right:16rpx ;
+	margin-right:16rpx;
 }
 .info{
   width: 80%;

@@ -5,7 +5,7 @@
 </cu-custom>
 <view class='title'>匹配登记</view>
 <view class="line"></view>
-<view class='card row' wx:for="{{list}}">
+<navigator class='card row' wx:for="{{list}}" hover-class="none" url="../teacher/teacher?id={{item._id}}">
   <view class='coloum info'>
     <view class="row ii">
       <view class="shu"></view>
@@ -13,7 +13,9 @@
       <view class="school">{{item.perInfo.school}}</view>
       <view class="major">{{item.perInfo.major}}专业</view>
     </view>
-    <view class='text1'>擅长科目：<view class="text" wx:for="{{item.perInfo.speciality}}" wx:for-item="name">{{name}}</view></view>
+    <view class='text1'>擅长科目：
+      <view class="text" wx:for="{{item.perInfo.speciality}}" wx:for-item="name">{{name}}</view>
+    </view>
   </view>
   <image src='../../../images/matching/xuanze.png' class='icon'></image>
-</view>
+</navigator>

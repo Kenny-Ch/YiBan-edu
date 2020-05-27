@@ -284,6 +284,25 @@
 					"id": -1,
 					"name": "pages/join/studentDetail/studentDetail",
 					"pathName": "pages/join/studentDetail/studentDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/manager/manager",
+					"pathName": "pages/manager/manager",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/manager/viewTeacher/viewTeacher",
+					"pathName": "pages/manager/viewTeacher/viewTeacher",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/manager/teacherMatch/teacherMatch",
+					"pathName": "pages/manager/teacherMatch/teacherMatch",
 					"scene": null
 				}
 			]
