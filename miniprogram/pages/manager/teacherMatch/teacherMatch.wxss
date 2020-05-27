@@ -125,3 +125,12 @@
 	flex-direction: row;
 	align-items: center;
 }
+.text1{
+  width: 100%;
+	height: 42rpx;
+  margin-top:15rpx ;
+	margin-left:30rpx ;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
