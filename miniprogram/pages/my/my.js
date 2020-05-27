@@ -49,7 +49,7 @@ Page({
     } else {
       console.log(app.globalData)
       let identity = ''
-      if (app.globalData.userInfo.job == 1) 
+      if (app.globalData.isTeacher == false) 
         identity = '学生'
       else
         identity = '老师'

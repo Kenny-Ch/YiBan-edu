@@ -1,4 +1,4 @@
-// miniprogram/pages/manager/viewTeacher/viewTeacher.js
+  // miniprogram/pages/manager/viewTeacher/viewTeacher.js
 Page({
 
   /**

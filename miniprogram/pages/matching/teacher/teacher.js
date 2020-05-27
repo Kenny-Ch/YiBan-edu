@@ -6,14 +6,14 @@ Page({
    */
   data: {
     user: {
-      img: '../../../images/my/touxiang.jpg',
-      name: '李桂明',
-      perInfo:{
-        school: '华南师范大学软件学院',
-        speciality: ['数学', '英语', '语文'],
-        introduction: '分享时机，在不同的时机分析用户是否有分享的意愿，提供给他们合适的分享内容，能让分享的效果更好。作为用户和产品之间的桥梁，社交分享在产品的发展过程中扮演了',
-      },
-      
+      // img: '../../../images/my/touxiang.jpg',
+      // name: '李桂明',
+      // perInfo:{
+      //   school: '华南师范大学软件学院',
+      //   speciality: ['数学', '英语', '语文'],
+      //   introduction: '分享时机，在不同的时机分析用户是否有分享的意愿，提供给他们合适的分享内容，能让分享的效果更好。作为用户和产品之间的桥梁，社交分享在产品的发展过程中扮演了',
+      // },
+
       QR: '../../../images/QR.jpg',
     },
   },
@@ -25,14 +25,16 @@ Page({
     console.log(options)
     let that = this
     const db = wx.cloud.database()
-    db.collection('person').doc(options.id)
+    db.collection('person').where({
+        openid: options.id
+      })
       .get()
       .then(function(res) {
-        console.log("【teacher查询数据库person】", res)
-        for (let i in res.data.perInfo.speciality)
-          res.data.perInfo.speciality[i] = that.changeLanguage(res.data.perInfo.speciality[i])
+        console.log("【teacher查询数据库person】", res.data[0].perInfo.speciality)
+        for (let i in res.data[0].perInfo.speciality)
+          res.data[0].perInfo.speciality[i] = that.changeLanguage(res.data[0].perInfo.speciality[i])
         that.setData({
-          user: res.data
+          user: res.data[0]
         })
       })
       .catch(function(err) {

@@ -4,7 +4,7 @@
   <view slot="content">以伴edu</view>
 </cu-custom>
 <view class="con1">
-  <image src='{{user.img}}' class="info"></image>
+  <image src='{{user.avatarUrl}}' class="info"></image>
   <view class='card'>
     <view class="name">{{user.name}}</view>
     <view class="school">{{user.perInfo.school}}</view>
@@ -16,10 +16,6 @@
     <view class="introduce">
       <view class="text2">{{user.perInfo.introduction}}</view>
     </view>
-<<<<<<< HEAD
     <image src="{{user.QR}}" class='QR'></image>
-=======
-    <image src="{{user.avatarUrl}}" class='QR'></image>
->>>>>>> cf688d3e16e881963f13e1bf8eb0e81cc07f8848
   </view>
 </view>
