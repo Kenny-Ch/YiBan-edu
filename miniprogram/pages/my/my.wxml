@@ -25,15 +25,6 @@
     </navigator>
   </view>
 
-  <view class='list-item'>
-    <navigator target="miniProgram" open-type="navigate" app-id="{{ appId }}" extra-data="{{ extraData }}" version="release" hover-class="none" class='nv'>
-      <image src="../../images/my/fankuiheyan.png" class='icon'></image>
-      <view class='title'>问题与反馈</view>
-      <text class="cuIcon-right lg text-gray "></text>
-    </navigator>
-  </view>
-
-
   <navigator url="myCollection/myCollection" hover-class="none">
     <view class='list-item'>
       <image src="../../images/my/shoucang.png" class='icon'></image>
@@ -42,5 +33,28 @@
     </view>
   </navigator>
 
+  <navigator url="myCollection/myCollection" hover-class="none">
+    <view class='list-item'>
+      <image src="../../images/my/shudong.svg" class='icon'></image>
+      <view class='title'>我的树洞</view>
+      <text class="cuIcon-right lg text-gray "></text>
+    </view>
+  </navigator>
+
+  <navigator url="../manager/viewTeacher/viewTeacher" hover-class="none">
+    <view class='list-item'>
+      <image src="../../images/my/manager.svg" class='icon'></image>
+      <view class='title'>管理后台</view>
+      <text class="cuIcon-right lg text-gray "></text>
+    </view>
+  </navigator>
+
+  <view class='list-item'>
+    <navigator target="miniProgram" open-type="navigate" app-id="{{ appId }}" extra-data="{{ extraData }}" version="release" hover-class="none" class='nv'>
+      <image src="../../images/my/fankuiheyan.png" class='icon'></image>
+      <view class='title'>问题与反馈</view>
+      <text class="cuIcon-right lg text-gray "></text>
+    </navigator>
+  </view>
 
 </view>
