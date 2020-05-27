@@ -35,7 +35,7 @@
     <view class='label'>邮箱：</view>
     <input type="text" class='contents' placeholder="请填写你的邮箱" name='email'></input>
   </view>
-  <button form-type="submit" open-type="getUserInfo" style="width: 650rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn'>注册并登录</button>
+  <button bindgetuserinfo="getInfo" form-type="submit" open-type="getUserInfo" style="width: 650rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn'>注册并登录</button>
 </form>
     
   

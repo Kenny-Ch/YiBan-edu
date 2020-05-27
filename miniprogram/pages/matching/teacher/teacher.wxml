@@ -16,6 +16,6 @@
     <view class="introduce">
       <text>{{user.perInfo.introduction}}</text>
     </view>
-    <image src="{{user.img}}" class='QR'></image>
+    <image src="{{user.avatarUrl}}" class='QR'></image>
   </view>
 </view>

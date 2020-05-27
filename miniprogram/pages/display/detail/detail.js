@@ -362,8 +362,8 @@ Page({
         data: {
           'flag': "comment",
           'userOpenid': app.globalData.openid,
-          'imgUrl': that.data.userInfo.avatarUrl,
-          'nickname': that.data.userInfo.nickName,
+          'imgUrl': app.globalData.userInfo.avatarUrl,
+          'nickname': app.globalData.userInfo.name,
           'contextId': that.data.post._id,
           'comment': content
         },
@@ -375,10 +375,12 @@ Page({
             duration: 1500,
             success: function() {
               let commentList = "post.commentList"
-              let item = {}
-              item.cAdvatarUrl = ''
-              item.cNickName = app.globalData.userInfo.name
-              item.comment = that.data.commentContent
+              let item = {
+                comment: {}
+              }
+              item.comment.imgUrl = app.globalData.userInfo.avatarUrl
+              item.comment.nickname = app.globalData.userInfo.name
+              item.comment.comment = that.data.commentContent
               that.setData({
                 [commentList]: that.data.post.commentList.concat(item)
               })
@@ -457,7 +459,7 @@ Page({
         let createTime = "post.createTime"
         let collection = "post.collection"
         let viwerNum = "post.totalVisits"
-        let month=res.data.time.getMonth()+1;
+        let month = res.data.time.getMonth() + 1;
         that.setData({
           [_id]: res.data._id,
           [title]: res.data.title,
@@ -473,9 +475,9 @@ Page({
       })
   },
 
-  getComment: function() {
+  getComment: async function() {
     var that = this;
-    wx.cloud.callFunction({
+    await wx.cloud.callFunction({
       name: 'getInteraction',
       data: {
         'comment': true,
@@ -489,12 +491,13 @@ Page({
       let comments = res.result.comments
       for (let item of comments) {
         let data = {}
-        data.comment = item.comment
+        data.comment = item
         let commentList = "post.commentList"
         that.setData({
           [commentList]: that.data.post.commentList.concat(data)
         })
       }
+      console.log(that.data.post.commentList)
     }).catch(function(err) {
       console.log(err)
     })

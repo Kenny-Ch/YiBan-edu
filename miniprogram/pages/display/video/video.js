@@ -349,8 +349,8 @@ Page({
         data: {
           'flag': "comment",
           'userOpenid': app.globalData.openid,
-          'imgUrl': "",
-          'nickname': "",
+          'imgUrl': app.globalData.userInfo.avatarUrl,
+          'nickname': app.globalData.userInfo.name,
           'contextId': that.data._options.id,
           'comment': content
         },
@@ -362,19 +362,16 @@ Page({
             duration: 1500
           })
           let comment = "video.commentList"
-          let item = {}
+          let item = {
+            comment: {}
+          }
           let date = new Date()
-          item.cAvatarUrl = ''
-          item.cNickName = ''
-          item.comment = content
+          item.comment.imgUrl = app.globalData.userInfo.avatarUrl
+          item.comment.nickname = app.globalData.userInfo.name
+          item.comment.comment = content
           that.setData({
             [comment]: that.data.video.commentList.concat(item)
           })
-
-          // wx.redirectTo({
-          //   url: 'video?id=' + that.data._options.id,
-
-          // })
         },
         fail: function(err) {
           console.log(err)
@@ -474,7 +471,7 @@ Page({
       let comments = res.result.comments
       for (let item of comments) {
         let data = {}
-        data.comment = item.comment
+        data.comment = item
         let commentList = "video.commentList"
         that.setData({
           [commentList]: that.data.video.commentList.concat(data)
