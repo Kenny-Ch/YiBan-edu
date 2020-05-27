@@ -7,11 +7,15 @@
   <image src='{{user.img}}' class="info"></image>
   <view class='card'>
     <view class="name">{{user.name}}</view>
-    <view class="school">{{user.school}}</view>
-    <view class='subject'>擅长科目：{{user.subject[0]}}、{{user.subject[1]}}、{{user.subject[2]}}</view>
-    <view class="introduce">
-      <text>{{user.introduce}}</text>
+    <view class="school">{{user.perInfo.school}}</view>
+    <view class="column">
+       <view class='text1'>擅长科目：
+      <view class="text" style="padding-right: 15rpx;" wx:for="{{user.perInfo.speciality}}" wx:for-item="name">{{name}}</view>
+    </view> 
     </view>
-    <image src="{{user.QR}}" class='QR'></image>
+    <view class="introduce">
+      <text>{{user.perInfo.introduction}}</text>
+    </view>
+    <image src="{{user.img}}" class='QR'></image>
   </view>
 </view>

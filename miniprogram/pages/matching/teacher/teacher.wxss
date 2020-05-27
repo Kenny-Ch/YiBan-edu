@@ -1,76 +1,96 @@
 /* miniprogram/pages/matching/teacher/teacher.wxss */
-.con1{
+
+.con1 {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.card{
+
+.card {
   width: 680rpx;
-	height: 982rpx;
-	color: rgba(80, 80, 80, 1);
-	background-color: rgba(255, 255, 255, 1);
-	border-radius: 33rpx;
-	font-size: 28rpx;
-	line-height: 150%;
-	box-shadow: 0rpx 7rpx 23rpx 0rpx rgba(0, 0, 0, 0.12);
+  height: 982rpx;
+  color: rgba(80, 80, 80, 1);
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 33rpx;
+  font-size: 28rpx;
+  line-height: 150%;
+  box-shadow: 0rpx 7rpx 23rpx 0rpx rgba(0, 0, 0, 0.12);
   text-align: center;
-  margin-top:138rpx ;
+  margin-top: 138rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.info{
+
+.info {
   width: 200rpx;
   height: 200rpx;
   position: fixed;
-	top: 174rpx;
-	border-radius: 101rpx;
+  top: 174rpx;
+  border-radius: 101rpx;
 }
-.name{
+
+.name {
   width: 100%;
-	height: 84rpx;
-	color: rgba(80, 80, 80, 1);
-	font-size: 56rpx;
-	line-height: 150%;
-	text-align: center;
+  height: 84rpx;
+  color: rgba(80, 80, 80, 1);
+  font-size: 56rpx;
+  line-height: 150%;
+  text-align: center;
   font-weight: bold;
-  margin-top:120rpx ;
+  margin-top: 120rpx;
 }
-.school{
+
+.school {
   width: 100%;
-	height: 42rpx;
-	color: rgba(80, 80, 80, 1);
-	font-size: 28rpx;
-	line-height: 150%;
-	text-align: center;
+  height: 42rpx;
+  color: rgba(80, 80, 80, 1);
+  font-size: 28rpx;
+  line-height: 150%;
+  text-align: center;
 }
-.subject{
+
+.subject {
   width: 100%;
-	height: 42rpx;
-	color: rgba(166, 166, 166, 1);
-	font-size: 28rpx;
-	line-height: 150%;
-	text-align: center;
+  height: 42rpx;
+  color: rgba(166, 166, 166, 1);
+  font-size: 28rpx;
+  line-height: 150%;
+  text-align: center;
 }
-.introduce{
+
+.introduce {
   width: 100%;
-	height: 114rpx;
+  height: 114rpx;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top:20rpx ;
-  margin-bottom:20rpx ;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
 }
-text{
+
+text {
   width: 624rpx;
   font-size: 24rpx;
-	line-height: 150%;
+  line-height: 150%;
   text-align: center;
   color: rgba(80, 80, 80, 1);
 }
-.QR{
+
+.QR {
   width: 509rpx;
-	height: 509rpx;
+  height: 509rpx;
+}
+
+.text1 {
+  width: 100%;
+  height: 42rpx;
+  margin-top: 15rpx;
+  margin-left: 0 auto;
+  margin-right: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
