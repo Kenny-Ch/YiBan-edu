@@ -12,14 +12,32 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var that = this;
-    wx.cloud.callFunction({
-      name: 'getComments',
-      success: function(res) {
-        console.log("【tree调用函数getComments】", res.result)
-        that.setList(res.result[0])
-      }
-    })
+    var that = this
+    const db = wx.cloud.database()
+    const app = getApp()
+    console.log("options", options)
+    if (options.status == 'person') {
+      wx.cloud.callFunction({
+        name: 'getComments',
+        data: {
+          openid: app.globalData.userInfo.openid
+        },
+        success: function(res) {
+          console.log("【tree调用函数getComments】", res.result)
+          that.setList(res.result[0])
+        }
+      })
+    } else {
+      wx.cloud.callFunction({
+        name: 'getComments',
+        success: function(res) {
+          console.log("【tree调用函数getComments】", res.result)
+          that.setList(res.result[0])
+        }
+      })
+    }
+
+
 
   },
 
@@ -113,7 +131,7 @@ Page({
 
   //更新点赞和评论数
   onChangeData: function(data) {
-    console.log("【从detail返回到tree】",data)
+    console.log("【从detail返回到tree】", data)
     let listLike = "list[" + data.index + "].isLike"
     let listLikeNum = "list[" + data.index + "].dianzan"
     let listCommentNum = "list[" + data.index + "].pinglun"
