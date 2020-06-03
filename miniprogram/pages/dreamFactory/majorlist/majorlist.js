@@ -70,6 +70,7 @@ Page({
           name: '$name'
         }),
       })
+      .limit(100)
       .end()
       .then(function(res) {
         console.log("【majorlist查询数据库collegeInfo】", res)

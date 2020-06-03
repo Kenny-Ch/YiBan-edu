@@ -18,6 +18,6 @@
       <view class="text" style="margin-right: 15rpx;" wx:for="{{item.perInfo.speciality}}" wx:for-item="name">{{name}}</view>
     </view>
     </navigator>
-    <image src="../.../../../../images/manager/delete.svg" class="right" bindtap="delete" data-id="{{item.id}}"></image>   
+    <image src="../.../../../../images/manager/delete.svg" class="right" bindtap="delete" data-index="{{index}}" data-id="{{item._id}}"></image>   
   </view>
 </view>

@@ -5,36 +5,56 @@
      * 页面的初始数据
      */
     data: {
-      teacher: [{
-          id: 1,
-          name: '李桂明',
-          school: '华南师范大学',
-          major: '软件工程',
-          subject: ['语文', '数学', '英语'],
-        },
-        {
-          id: 2,
-          name: '李桂明',
-          school: '华南师范大学',
-          major: '软件工程',
-          subject: ['语文', '数学', '英语'],
-        },
-        {
-          id: 3,
-          name: '李桂明',
-          school: '华南师范大学',
-          major: '软件工程',
-          subject: ['语文', '数学', '英语'],
-        }
-      ],
+      // teacher: [{
+      //     id: 1,
+      //     name: '李桂明',
+      //     school: '华南师范大学',
+      //     major: '软件工程',
+      //     subject: ['语文', '数学', '英语'],
+      //   },
+      //   {
+      //     id: 2,
+      //     name: '李桂明',
+      //     school: '华南师范大学',
+      //     major: '软件工程',
+      //     subject: ['语文', '数学', '英语'],
+      //   },
+      //   {
+      //     id: 3,
+      //     name: '李桂明',
+      //     school: '华南师范大学',
+      //     major: '软件工程',
+      //     subject: ['语文', '数学', '英语'],
+      //   }
+      // ],
     },
     delete: function(e) {
+      let id = e.currentTarget.dataset.id
+      let index = e.currentTarget.dataset.index
+
+      let that = this
+
       wx.showModal({
         title: '提示',
         content: '确认要删除该志愿者教师?',
         success: function(res) {
           if (res.confirm) {
             console.log('用户点击确定')
+            wx.cloud.callFunction({
+              name: 'deleteTeacher',
+              data: {
+                _id: id
+              }
+            }).then(function(res) {
+              console.log("【viewTeacher调用函数deleteTeacher】", res)
+              let list = that.data.teacher.splice(index, index)
+              console.log(list)
+              that.setData({
+                teacher: list
+              })
+            }).catch(function(err) {
+              console.log(err)
+            })
           } else if (res.cancel) {
             console.log('用户点击取消')
           }
@@ -52,7 +72,7 @@
           job: 1
         }).get()
         .then(function(res) {
-          console.log("【manager/viewTeacher查询数据库persion】", res)
+          console.log("【manager/viewTeacher查询数据库person】", res)
           for (let i in res.data)
             for (let j in res.data[i].perInfo.speciality)
               res.data[i].perInfo.speciality[j] = that.changeLanguage(res.data[i].perInfo.speciality[j])
@@ -64,7 +84,7 @@
         })
     },
 
-    changeLanguage: function (word) {
+    changeLanguage: function(word) {
       switch (word) {
         case 'Chinese':
           word = '语文'
