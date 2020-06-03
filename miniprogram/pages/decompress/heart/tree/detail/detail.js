@@ -13,57 +13,12 @@ Page({
       // dianzan: 21,
       // pinglun: 5,
       // isShowDian: false,
-      comment: [
-        // {
-        //   img: '../../../../../images/my/touxiang.jpg',
-        //   name: '桂明',
-        //   time: '2020-04-19',
-        //   context: '没问题，你快去吧。我在小区门口等你。实打实实打实打算大苏打',
-        // },
-        // {
-        //   img: '../../../../../images/my/touxiang.jpg',
-        //   name: '桂明',
-        //   time: '2020-04-19',
-        //   context: '没问题，你快去吧。我在小区门口等你。',
-        // },
-        // {
-        //   img: '../../../../../images/my/touxiang.jpg',
-        //   name: '桂明',
-        //   time: '2020-04-19',
-        //   context: '没问题，你快去吧。我在小区门口等你。',
-        // },
-        // {
-        //   img: '../../../../../images/my/touxiang.jpg',
-        //   name: '桂明',
-        //   time: '2020-04-19',
-        //   context: '没问题，你快去吧。我在小区门口等你。',
-        // },
-        // {
-        //   img: '../../../../../images/my/touxiang.jpg',
-        //   name: '桂明',
-        //   time: '2020-04-19',
-        //   context: '没问题，你快去吧。我在小区门口等你。实打实实打实打算大苏打',
-        // },
-        // {
-        //   img: '../../../../../images/my/touxiang.jpg',
-        //   name: '桂明',
-        //   time: '2020-04-19',
-        //   context: '没问题，你快去吧。我在小区门口等你。',
-        // },
-        // {
-        //   img: '../../../../../images/my/touxiang.jpg',
-        //   name: '桂明',
-        //   time: '2020-04-19',
-        //   context: '没问题，你快去吧。我在小区门口等你。',
-        // },
-        // {
-        {
-          imgUrl: '../../../../../images/my/touxiang.jpg',
-          nickname: '桂明',
-          time: '2020-04-19',
-          comment: '没问题，你快去吧。我在小区门口等你。',
-        },
-      ],
+      comment: [{
+        imgUrl: '../../../../../images/my/touxiang.jpg',
+        nickname: '桂明',
+        time: '2020-04-19',
+        comment: '没问题，你快去吧。我在小区门口等你。',
+      }, ],
       isDisable: false
     },
     focus: false,
@@ -178,6 +133,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log("options", options)
     let that = this
     const db = wx.cloud.database()
     db.collection('comments').doc(options.id)
@@ -187,6 +143,7 @@ Page({
         let _id = "detail._id"
         let context = "detail.context"
         let username = "detail.username"
+        let imgUrl = "detail.imgUrl"
         let time = "detail.time"
         let likesLen = "detail.dianzan"
         let isLike = "detail.isShowDian"
@@ -197,8 +154,9 @@ Page({
           [isLike]: options.isLike,
           [likesLen]: parseInt(options.likesLen),
           [_id]: res.data._id,
+          [imgUrl]: res.data.imgUrl,
           [context]: res.data.comment,
-          [username]: res.data.username,
+          [username]: res.data.name,
           [time]: res.data.time.getFullYear() + '年' + month + '月' + res.data.time.getDate() + '日',
         })
       })

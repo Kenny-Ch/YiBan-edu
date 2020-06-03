@@ -6,7 +6,7 @@ cloud.init({
 const db = cloud.database()
 
 /*  参数表：
-    "flag": 0/1                     //判断老师还是学生，1是学生，0是老师
+    "flag": 0/1                     //判断老师还是学生，0是学生，1是老师
     "openid": ""                    //openid
     "registerDate": Date()          //注册日期
     "job": "",                      //职业

@@ -47,13 +47,14 @@ Page({
       console.log("matching/result调用函数matchTeacher", res)
       for (let i in res.result)
         for (let j in res.result[i].perInfo.speciality)
-        res.result[i].perInfo.speciality[j] = that.changeLanguage(res.result[i].perInfo.speciality[j])
+          res.result[i].perInfo.speciality[j] = that.changeLanguage(res.result[i].perInfo.speciality[j])
       that.setData({
         list: res.result
       })
     }).catch(function(err) {
       console.log(err)
     })
+
   },
 
   //将数据库内科目的英文转成中文显示
@@ -88,6 +89,38 @@ Page({
         break
     }
     return word
+  },
+
+  teacherDetail: function(e) {
+    let that = this
+    const db = wx.cloud.database()
+    const app = getApp()
+    let openid = e.currentTarget.dataset.openid
+    console.log(e.currentTarget.dataset.openid)
+    wx.showModal({
+      title: '确认选择该老师？',
+      content: '一旦确认，无法修改。',
+      success: function(res) {
+        if (res.confirm) {
+          app.globalData.userInfo.matchWaitList.push(openid)
+          let list = app.globalData.userInfo.matchWaitList
+          wx.cloud.callFunction({
+            name: 'requestTeaMatch',
+            data: {
+              stuOpenid: app.globalData.userInfo.openid,
+              teaOpenid: openid
+            }
+          }).then(function(res) {
+            console.log("【matching/result调用函数requestTeaMatch】", res)
+            wx.navigateTo({
+              url: '../teacher/teacher?id=' + openid
+            })
+          }).catch(function(err) {
+            console.log(err)
+          })
+        }
+      }
+    })
   },
 
   /**

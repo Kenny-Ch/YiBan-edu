@@ -4,7 +4,7 @@
   <view slot="content">以伴edu</view>
 </cu-custom>
 <view class="con1">
-  <image src='{{user.img}}' class="info"></image>
+  <image src='{{user.avatarUrl}}' class="info"></image>
   <view class='card'>
     <view class="name">{{user.name}}</view>
     <view class="school">{{user.perInfo.school}}</view>

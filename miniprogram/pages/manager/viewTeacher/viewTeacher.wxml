@@ -7,16 +7,16 @@
 <view class="line"></view>
 <view class="con">
   <view class="card" wx:for="{{teacher}}">
-    <navigator class="left" url="../teacherMatch/teacherMatch" hover-class="none">
+    <navigator class="left" url="../teacherMatch/teacherMatch?id={{item._id}}" hover-class="none">
       <view class='top'>
         <view class="shu"></view>
         <view class='name'>{{item.name}}</view>
         <view class='school'>{{item.school}}</view>
         <view class="major">{{item.major}}</view>
       </view>
-      <view class="bottom">
-        <view class="subject">擅长科目：{{item.subject[0]}}、{{item.subject[1]}}、{{item.subject[2]}}</view>
-      </view>
+      <view class='text1'>擅长科目：
+      <view class="text" style="margin-right: 15rpx;" wx:for="{{item.perInfo.speciality}}" wx:for-item="name">{{name}}</view>
+    </view>
     </navigator>
     <image src="../.../../../../images/manager/delete.svg" class="right" bindtap="delete" data-id="{{item.id}}"></image>   
   </view>

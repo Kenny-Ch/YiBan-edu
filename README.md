@@ -18,7 +18,7 @@
 //person(存储个人信息及匹配信息)
 {
     "openid": "",                   //openid
-    "job": "",                      //职业
+    "job": "",                      //职业 0是学生 1是老师
     "name": "",                     //姓名
     "registerDate": "",             //注册日期
     "matchList": [],                //匹配的名单列表（openid）

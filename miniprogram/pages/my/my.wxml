@@ -33,7 +33,7 @@
     </view>
   </navigator>
 
-  <navigator url="myCollection/myCollection" hover-class="none">
+  <navigator url="../decompress/heart/tree/tree?status=person" hover-class="none">
     <view class='list-item'>
       <image src="../../images/my/shudong.svg" class='icon'></image>
       <view class='title'>我的树洞</view>

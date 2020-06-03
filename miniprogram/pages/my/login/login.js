@@ -70,7 +70,7 @@ Page({
             openid: app.globalData.openid,
             registerDate: new Date(),
             avatarUrl: app.globalData.avatarUrl,
-            job: 1,
+            job: 0,
             name: input.uname,
             isMatchFull: false,
             matchList: [],

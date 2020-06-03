@@ -5,7 +5,7 @@
 </cu-custom>
 <view class='title'>匹配登记</view>
 <view class="line"></view>
-<navigator class='card row' wx:for="{{list}}" hover-class="none" url="../teacher/teacher?id={{item._id}}">
+<view class='card row' wx:for="{{list}}" hover-class="none" bindtap="teacherDetail" data-openid="{{item.openid}}">
   <view class='coloum info1'>
     <view class="row ii">
       <view class="shu"></view>
@@ -18,4 +18,4 @@
     </view>
   </view>
   <image src='../../../images/matching/xuanze.png' class='icon1'></image>
-</navigator>
+</view>
