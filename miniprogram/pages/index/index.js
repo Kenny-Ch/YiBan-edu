@@ -42,7 +42,7 @@ Page({
       image: "../../images/LearningMaterials.png",
       left: "高校资讯",
     }, {
-      url: "../display/artical/artical",
+      url: "../dreamFactory/majorlist/majorlist",
       image: "../../images/experienceSharing.png",
       left: "专业了解",
     }],

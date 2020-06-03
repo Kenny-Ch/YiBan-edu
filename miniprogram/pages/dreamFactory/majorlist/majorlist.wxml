@@ -7,11 +7,11 @@
 <view class="line"></view>
 <view class='con'>
   <view class='block' wx:for="{{majorlist}}" wx:for-item="item">
-    <view class='leibie'>{{item.classAlias}}</view>
+    <view class='leibie'>{{item._id}}</view>
     <view class='items'>
-      <view class='smallcard' wx:for="{{item.majors}}" wx:for-item="smallcard" data-id="{{smallcard.majorId}}" bindtap="jumpDetail">
+      <navigator hover-class="none" url="../major/major?majorId={{smallcard.majorId}}" class='smallcard' wx:for="{{item.majors}}" wx:for-item="smallcard">
         <view class='name'>{{smallcard.name}}</view>
-      </view>
+      </navigator>
     </view>
   </view>
 </view>
