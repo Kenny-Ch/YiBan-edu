@@ -5,49 +5,49 @@ Page({
    * 页面的初始数据
    */
   data: {
-    majorlist: [{
-        classAlias: '经济学',
-        majors: [{
-            majorId: 101,
-            name: '金融工程',
-          }, {
-            majorId: 102,
-            name: '经济学',
-          }, {
-            majorId: 103,
-            name: '金融学',
-          }, {
-            majorId: 104,
-            name: '国际经济与贸易',
-          },
-          {
-            majorId: 104,
-            name: '国际经济与贸易',
-          },
-        ],
-      },
-      {
-        classAlias: '经济学',
-        majors: [{
-            majorId: 101,
-            name: '金融工程',
-          }, {
-            majorId: 102,
-            name: '经济学',
-          }, {
-            majorId: 103,
-            name: '金融学',
-          }, {
-            majorId: 104,
-            name: '国际经济与贸易',
-          },
-          {
-            majorId: 104,
-            name: '国际经济与贸易',
-          },
-        ],
-      },
-    ]
+    // majorlist: [{
+    //     classAlias: '经济学',
+    //     majors: [{
+    //         majorId: 101,
+    //         name: '金融工程',
+    //       }, {
+    //         majorId: 102,
+    //         name: '经济学',
+    //       }, {
+    //         majorId: 103,
+    //         name: '金融学',
+    //       }, {
+    //         majorId: 104,
+    //         name: '国际经济与贸易',
+    //       },
+    //       {
+    //         majorId: 104,
+    //         name: '国际经济与贸易',
+    //       },
+    //     ],
+    //   },
+    //   {
+    //     classAlias: '经济学',
+    //     majors: [{
+    //         majorId: 101,
+    //         name: '金融工程',
+    //       }, {
+    //         majorId: 102,
+    //         name: '经济学',
+    //       }, {
+    //         majorId: 103,
+    //         name: '金融学',
+    //       }, {
+    //         majorId: 104,
+    //         name: '国际经济与贸易',
+    //       },
+    //       {
+    //         majorId: 104,
+    //         name: '国际经济与贸易',
+    //       },
+    //     ],
+    //   },
+    // ]
   },
   jumpDetail: function(e) {
     console.log(e)
