@@ -194,7 +194,15 @@
     "type": "",                     //类别
     "name": "",                     //专业名
     "coverImgUrl": "",              //封面
-    "contextUrl": "",               //内容链接
+    "average_salary":"",            //应届平均薪酬
+    "rate_of_employment": "",       //就业率
+    "industry": "",                 //最多就业方向
+    "city":"",                      //最多就业城市
+    "introduce":"",                //专业介绍
+    "contact": [{                   //师兄师姐联系方式
+      "name": ""
+      "wechat": ""
+    }],
 }
 
 

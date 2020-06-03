@@ -8,16 +8,6 @@ Page({
    */
   data: {
     post: {
-      title: '以伴干货篇 | 学点好方法',
-      defaultImageUrl: 'https://7969-yiban-edu-1301806073.tcb.qcloud.la/xxxx/0005/0005.jpg?sign=8ab25e435f2084606c7f270feea8e401&t=1587129429',
-      createTime: '2020-02-05',
-      totalVisits: 292,
-      totalZans: 54,
-      commentList: [{
-        cAvatarUrl: '../../../images/display/plimg.jpg',
-        cNickName: '清风自来',
-        comment: '很棒！',
-      }],
     },
     collection: {
       status: false,
