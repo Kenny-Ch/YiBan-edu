@@ -59,9 +59,14 @@ Page({
     this.setData({
       title: options.name,
     })
+    wx.showLoading({
+      title: '加载中',
+    })
     this.getArtical(options).then(function(res) {
       console.log("artical加载成功")
+      wx.hideLoading()
     });
+    
   },
 
   /**
@@ -114,6 +119,7 @@ Page({
   },
 
   async getArtical(options) {
+    
     var that = this
     let dataList;
     console.log(options.name)
@@ -126,6 +132,7 @@ Page({
     }).then(res => {
       console.log("【artical调用函数getContext】", res)
       dataList = res.result;
+
     }).catch(err => {
       console.error(options.name, '获取失败', err)
     })

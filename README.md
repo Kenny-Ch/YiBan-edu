@@ -91,7 +91,7 @@
     "officialAnswer": "",           //官方答案
     "answer": [],                   //答案
     "advisor": [],                  //回答者
-    "tag": "",                      //分类标签
+    "tag": "",                      //分类标签  normal、study、method、life、family、society
 },
 
 

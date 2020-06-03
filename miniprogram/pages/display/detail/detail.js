@@ -37,7 +37,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: async function(options) {
-
+    wx.showLoading({
+      title: '加载中',
+    })
     this.setData({
       _options: options
     })
@@ -67,6 +69,7 @@ Page({
     this.getZanStatus()
     this.getCollectionStatus()
     this.getLikeNum(options)
+    wx.hideLoading()
   },
 
   /**

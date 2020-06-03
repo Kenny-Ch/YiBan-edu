@@ -25,7 +25,9 @@
           </view>
         </navigator>
       </view>
+      <view class='bott'>{{bottomtext}}</view>
     </scroll-view>
+
   </swiper-item>
   <!-- 学习 -->
   <swiper-item>
@@ -43,6 +45,7 @@
           </view>
         </navigator>
       </view>
+      <view class='bott'>{{bottomtext}}</view>
     </scroll-view>
   </swiper-item>
   <!-- 方法 -->
@@ -61,6 +64,7 @@
           </view>
         </navigator>
       </view>
+      <view class='bott'>{{bottomtext}}</view>
     </scroll-view>
   </swiper-item>
   <!-- 作息 -->
@@ -79,6 +83,7 @@
           </view>
         </navigator>
       </view>
+      <view class='bott'>{{bottomtext}}</view>
     </scroll-view>
   </swiper-item>
   <!-- 家庭 -->
@@ -97,6 +102,7 @@
           </view>
         </navigator>
       </view>
+      <view class='bott'>{{bottomtext}}</view>
     </scroll-view>
   </swiper-item>
   <!-- 社交 -->
@@ -115,6 +121,7 @@
           </view>
         </navigator>
       </view>
+      <view class='bott'>{{bottomtext}}</view>
     </scroll-view>
   </swiper-item>
 </swiper>

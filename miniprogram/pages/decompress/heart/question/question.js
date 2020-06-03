@@ -26,27 +26,7 @@ Page({
     }],
     i: 0,
     x: 0,
-    common: [{
-      question: '熬夜学习是否效率更高？',
-      abstract_answer: '调查研究表明87%的高中生都有熬夜学习的习惯，他们认为夜深人静更利于思考问题，思维更开阔，记忆力比较深刻，比白天学习更容易吸收。 其实熬夜学习并没有白天学……',
-      common: 18,
-    }, {
-      question: '应该连续学一个科目，还是多学科切换？',
-      abstract_answer: '这个问题表面上看是一个非此即彼的回答，要么就只学一个科目，要么就连续多个科目切换。我看其他回答都建议你多个学科切换着学。但我要说的是，在不同层面上，不……',
-      common: 16,
-    }, {
-      question: '高考到底怎样选科最科学?',
-      abstract_answer: '新考高已经在浙江、上海、山东、天津、海南、广东六个省市铺开，很多人讲新高考选科的方法，都只是从选科组合未来能报专业（潜在）多少这一个点出发，这不是很严……',
-      common: 15,
-    }, {
-      question: '偏科很严重，有些功课拉分很厉害怎么办？',
-      abstract_answer: '对高考来说，强科保持以前的学习方法，确立自己的竞争优势；弱科多花点时间，回归教科书，抓基础，只要抓好了基础，就不会被拉分。',
-      common: 3,
-    }, {
-      question: '制定的目标达不到，计划总是完不成怎么办？',
-      abstract_answer: '一般来说，制定了十个计划，可以完成八个；制定八个计划，只能完成六个；制定六个最多能完成四个。有时计划赶不上变化，所以计划并不是非要拿来全部实现的，而是可……',
-      common: 4,
-    }],
+    bottomtext:'------到底啦------',
   },
   changeSwipe: function(e) {
     var adress = (e.detail.current == 0) ? "知识储备站" : ((e.detail.current == 1) ? "升学梦工厂" : "以伴课堂");
@@ -100,6 +80,9 @@ Page({
   },
 
   getQuestions: async function() {
+    wx.showLoading({
+      title: '加载中',
+    })
     var that = this
     await wx.cloud.callFunction({
       name: 'getQuestions',
@@ -110,10 +93,17 @@ Page({
         console.log("【question页面调用函数getQuestions】", res.result)
         var qa = [];
         for (let returndata of res.result) {
+          var hh="";
+          if(returndata.officialAnswer.length>78){
+            hh=returndata.officialAnswer.substring(0, 78)+"……";
+          }
+          else{
+            hh=returndata.officialAnswer;
+          }
           qa.push({
             '_id': returndata._id,
             'question': returndata.question,
-            'abstract_answer': returndata.officialAnswer,
+            'abstract_answer': hh,
             'common': returndata.answer.length + 1,
             'tag': returndata.tag
           });
@@ -121,6 +111,7 @@ Page({
         that.setData({
           common: qa
         })
+        wx.hideLoading()
       },
       fail: console.error
     })

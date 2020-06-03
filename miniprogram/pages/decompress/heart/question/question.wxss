@@ -41,7 +41,7 @@
  }
  .card{
 	width: 710rpx;
-	height: 229rpx;
+	min-height: 229rpx;
 	left: 10rpx;
 	top: 107rpx;
 	color: rgba(80, 80, 80, 1);
@@ -58,7 +58,7 @@
    width: 95%;
   display: flex;
   flex-direction:row;
-  align-items:center;
+  align-items:top;
   margin-top:28rpx ;
  }
  .front{
@@ -72,7 +72,6 @@
  }
  .card-title{
   width: 100%rpx;
-	height: 48rpx;
 	color: rgba(80, 80, 80, 1);
 	font-size: 32rpx;
 	line-height: 150%;
@@ -111,5 +110,14 @@
 	line-height: 150%;
   text-align: left;
   margin-left: 8rpx;
+ }
+ .bott{
+	width: 100%rpx;
+	color: rgba(80, 80, 80, 1);
+	font-size: 24rpx;
+	line-height: 150%;
+	text-align: center;
+	margin-left:20rpx ;
+	margin-right: 20rpx;
  }
  

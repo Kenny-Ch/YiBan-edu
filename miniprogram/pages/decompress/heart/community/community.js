@@ -51,6 +51,9 @@ Page({
   },
 
   getCommunities: function() {
+    wx.showLoading({
+      title: '加载中',
+    })
     var that = this
     wx.cloud.callFunction({
       name: 'getCommunities',
@@ -71,6 +74,7 @@ Page({
         that.setData({
           community: com
         })
+        wx.hideLoading()
       },
       fail: console.error
     })

@@ -14,7 +14,7 @@
       </view>
     </view>
     <view class='open' wx:if="{{item.open}}">
-      <image src="{{item.icon}}" class='QR' ></image>
+      <image src="{{item.QR_code}}" class='QR' ></image>
     </view>
     <view class='close' wx:else></view>
   </view>

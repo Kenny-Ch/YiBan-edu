@@ -34,12 +34,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+    })
     console.log('【classroom页面】传入参数：', options)
     this.setData({
       title: options.name,
     })
     this.getVideo(options).then(function(res) {
       console.log("【classroom页面】video list加载成功")
+      wx.hideLoading()
     });
   },
 
