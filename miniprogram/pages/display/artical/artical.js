@@ -7,50 +7,50 @@ Page({
   data: {
     title: '学科学习法',
     articals: [
-    //   {
-    //   title: '语文快速提分方法',
-    //   introduction: '语文成绩一直是考生又爱又恨的一门科目，即使花很多时间在短时间内也不会有大幅度提高，想……',
-    //   coverImgUrl: 'https://7969-yiban-edu-1301806073.tcb.qcloud.la/xxxx/0001/img.png?sign=73b287c9fecaad7746f1fedffd8cbc4d&t=1587107921',
-    //   time: '2019年4月16日',
-    //   praisePoints: 30,
-    //   browseVolume: 30,
-    //   comment: 5,
-    // }, {
-    //   title: '2分钟梳理三年数学知识',
-    //   introduction: '数学复习要紧紧抓住课本，反复吃透课本是搞好数学复习的第一条生命线，要把课本中的基本概……',
-    //   coverImgUrl: 'https://7969-yiban-edu-1301806073.tcb.qcloud.la/xxxx/0002/img.png?sign=44baffa7fc9c267220bebbbb526731d9&t=1587106425',
-    //   time: '2019年4月14日',
-    //   praisePoints: 30,
-    //   browseVolume: 30,
-    //   comment: 10,
-    // }, {
-    //   title: '物理压轴大题解题思路',
-    //   introduction: '一份试卷的压轴题，难度大，分值也大，是用来鉴别考生掌握知识与综合应用能力高下的分档题……',
-    //   coverImgUrl: 'https://7969-yiban-edu-1301806073.tcb.qcloud.la/xxxx/0003/img.png?sign=4c76d44994ab58bcbc7a66b92545a7d2&t=1587107934',
-    //   time: '2019年4月12日',
-    //   praisePoints: 30,
-    //   browseVolume: 30,
-    //   comment: 20,
-    // }, {
-    //   title: '错题集怎么做',
-    //   introdution: '“人人都说错题集，可它到底怎么做”',
-    //   coverImgUrl: 'https://7969-yiban-edu-1301806073.tcb.qcloud.la/xxxx/0004/img.jpg?sign=4cf7e64356f764b29cc583afdf0bb67b&t=1587109077',
-    //   time: '2019年4月10日',
-    //   praisePoints: 40,
-    //   browseVolume: 30,
-    //   comment: 20,
-    // }, {
-    //   title: '学点好方法',
-    //   introduction: '学习学的好不好，关键还要看方法！',
-    //   coverImgUrl: 'https://7969-yiban-edu-1301806073.tcb.qcloud.la/xxxx/0005/img.png?sign=b400738e96d3f5120b34243ab1966924&t=1587109221',
-    //   time: '2019年4月8日',
-    //   praisePoints: 30,
-    //   browseVolume: 30,
-    //   comment: 30,
-    // }
+      //   {
+      //   title: '语文快速提分方法',
+      //   introduction: '语文成绩一直是考生又爱又恨的一门科目，即使花很多时间在短时间内也不会有大幅度提高，想……',
+      //   coverImgUrl: 'https://7969-yiban-edu-1301806073.tcb.qcloud.la/xxxx/0001/img.png?sign=73b287c9fecaad7746f1fedffd8cbc4d&t=1587107921',
+      //   time: '2019年4月16日',
+      //   praisePoints: 30,
+      //   browseVolume: 30,
+      //   comment: 5,
+      // }, {
+      //   title: '2分钟梳理三年数学知识',
+      //   introduction: '数学复习要紧紧抓住课本，反复吃透课本是搞好数学复习的第一条生命线，要把课本中的基本概……',
+      //   coverImgUrl: 'https://7969-yiban-edu-1301806073.tcb.qcloud.la/xxxx/0002/img.png?sign=44baffa7fc9c267220bebbbb526731d9&t=1587106425',
+      //   time: '2019年4月14日',
+      //   praisePoints: 30,
+      //   browseVolume: 30,
+      //   comment: 10,
+      // }, {
+      //   title: '物理压轴大题解题思路',
+      //   introduction: '一份试卷的压轴题，难度大，分值也大，是用来鉴别考生掌握知识与综合应用能力高下的分档题……',
+      //   coverImgUrl: 'https://7969-yiban-edu-1301806073.tcb.qcloud.la/xxxx/0003/img.png?sign=4c76d44994ab58bcbc7a66b92545a7d2&t=1587107934',
+      //   time: '2019年4月12日',
+      //   praisePoints: 30,
+      //   browseVolume: 30,
+      //   comment: 20,
+      // }, {
+      //   title: '错题集怎么做',
+      //   introdution: '“人人都说错题集，可它到底怎么做”',
+      //   coverImgUrl: 'https://7969-yiban-edu-1301806073.tcb.qcloud.la/xxxx/0004/img.jpg?sign=4cf7e64356f764b29cc583afdf0bb67b&t=1587109077',
+      //   time: '2019年4月10日',
+      //   praisePoints: 40,
+      //   browseVolume: 30,
+      //   comment: 20,
+      // }, {
+      //   title: '学点好方法',
+      //   introduction: '学习学的好不好，关键还要看方法！',
+      //   coverImgUrl: 'https://7969-yiban-edu-1301806073.tcb.qcloud.la/xxxx/0005/img.png?sign=b400738e96d3f5120b34243ab1966924&t=1587109221',
+      //   time: '2019年4月8日',
+      //   praisePoints: 30,
+      //   browseVolume: 30,
+      //   comment: 30,
+      // }
     ],
-    Anartical:"../detail/detail",
-    Anvideo:"../video/video",
+    Anartical: "../detail/detail",
+    Anvideo: "../video/video",
   },
 
   /**
@@ -68,7 +68,16 @@ Page({
       console.log("artical加载成功")
       wx.hideLoading()
     });
-    
+
+  },
+
+  uploadViewNum: function(e) {
+    let index = e.currentTarget.dataset.index
+    let num = 'articals[' + index + '].viwerNum'
+    this.setData({
+      [num]: this.data.articals[index].viwerNum + 1
+    })
+    console.log("【artical浏览量增加】")
   },
 
   /**
@@ -121,7 +130,7 @@ Page({
   },
 
   async getArtical(options) {
-    
+
     var that = this
     let dataList;
     console.log(options.name)
@@ -141,17 +150,16 @@ Page({
     this.getData(dataList);
   },
 
-  async getData(dataList){
-    for(let item of dataList){
+  async getData(dataList) {
+    for (let item of dataList) {
       item.time = item.time.substring(0, 10);
-      if(item.introdution.length>42){
-        item.introdution=item.introdution.substring(0, 42)+"……"
+      if (item.introdution.length > 42) {
+        item.introdution = item.introdution.substring(0, 42) + "……"
       }
-      if(item.isArticle==false){
-        item.nav=this.data.Anvideo
-      }
-      else{
-        item.nav=this.data.Anartical
+      if (item.isArticle == false) {
+        item.nav = this.data.Anvideo
+      } else {
+        item.nav = this.data.Anartical
       }
       //获取留言数
       await this.getInteraction(item);
@@ -175,6 +183,6 @@ Page({
     this.setData({
       articals: this.data.articals.concat(item)
     })
-   console.log(this.data.articals)
+    console.log(this.data.articals)
   }
 })

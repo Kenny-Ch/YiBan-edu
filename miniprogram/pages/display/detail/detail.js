@@ -71,6 +71,7 @@ Page({
     await this.getZanStatus()
     await this.getCollectionStatus()
     await this.getLikeNum(options)
+    this.uploadViewNum()
     wx.hideLoading()
 
   },
@@ -461,7 +462,7 @@ Page({
           [articalUrl]: res.data.contextUrl,
           [createTime]: res.data.time.getFullYear() + '年' + month + '月' + res.data.time.getDate() + '日',
           [collection]: res.data.collection,
-          [viwerNum]: res.data.viwerNum
+          [viwerNum]: res.data.viwerNum + 1
         })
         console.log('成功')
       }).catch(function(err) {
@@ -485,7 +486,7 @@ Page({
       let comments = res.result.comments
       let commentList = "post.commentList"
       that.setData({
-        [commentList]:res.result.comments
+        [commentList]: res.result.comments
       })
     }).catch(function(err) {
       console.log(err)
@@ -508,6 +509,21 @@ Page({
       that.setData({
         [like]: res.result.likesLen
       })
+    })
+  },
+
+  uploadViewNum: function() {
+    let that = this
+    wx.cloud.callFunction({
+      name: 'uploadViewNum',
+      data: {
+        collection: that.data._options.collection,
+        _id: that.data._options.id
+      }
+    }).then(function(res) {
+      console.log("【detail调用函数uploadViewNum】", res)
+    }).catch(function(err) {
+      console.log(err)
     })
   }
 
