@@ -69,13 +69,16 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: async function(options) {
     wx.showLoading({
       title: '加载中',
     })
     console.log("video传入参数", options)
-    this.data._options = options
-    this.getVideo(options)
+    this.setData({
+      _options : options
+    })
+    await this.getVideo(options)
+    this.getRecommend(options)
     this.getZanStatus()
     this.getCollectionStatus()
     wx.hideLoading()
@@ -435,24 +438,19 @@ Page({
   async getVideo(options) {
     let that = this
     const db = wx.cloud.database()
-    await db.collection('inClass').doc(options.id)
+    await db.collection(options.collection).doc(options.id)
       .get()
       .then(function(res) {
         console.log("【video获取数据库inClass数据】", res)
-        let title = "video.title"
-        let time = "video.time"
-        let introduction = "video.introduction"
-        let img = "video.img"
-        let _id = "video._id"
-        //此方法返回的month从0开始计算月份，因此+1
-        let month = res.data.time.getMonth()
         that.setData({
-          [title]: res.data.title,
-          [teacher_name]:res.data.author,
-          [time]: res.data.time.getFullYear() + '年' + month + '月' + res.data.time.getDate() + '日',
-          [introduction]: res.data.introduction,
-          [img]: res.data.coverImgUrl,
-          [_id]: res.data.contextUrl
+          video: {
+            _id: res.data._id,
+            title: res.data.title,
+            time: res.data.time.substring(0, 10),
+            vid: res.data.contextUrl,
+            introduction: res.data.subtitle,
+            teacher_name: res.data.author,
+          }
         })
         that.getComment(res.data.contextUrl)
       }).catch(function(err) {
@@ -485,6 +483,35 @@ Page({
     }).catch(function(err) {
       console.log(err)
     })
+  },
+
+  getRecommend: function(options) {
+    let that = this
+    const db = wx.cloud.database()
+    const _ = db.command
+    db.collection(options.collection)
+      .aggregate()
+      .match({
+        flag: _.or('pickData', 'course', 'speech')
+      })
+      .sample({
+        size: 4
+      })
+      .project({
+        _id: true,
+        img: '$coverImgUrl',
+        title: '$title'
+      })
+      .end()
+      .then(function(res) {
+        console.log("【随机获取推荐信息】", res)
+        let recommend = 'video.recommend'
+        that.setData({
+          [recommend]: res.list
+        })
+      }).catch(function(err) {
+        console.log(err)
+      })
   },
 
   /**
