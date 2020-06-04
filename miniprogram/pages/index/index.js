@@ -185,7 +185,7 @@ Page({
             item1.title = "一起迈向公益之路";
             item1.small_title = "只要你有足够的热情，想为公益事业做出一份自己的贡献，都可以申请成为以伴志愿者！";
             item1.button = "查看我的学生";
-            item1.url = "../matching/introduce/introduce";
+            item1.url = "../join/myStudent/myStudent";
             list.push(item1)
             var item = {};
             item.id = 1;
@@ -221,7 +221,7 @@ Page({
             item2.title = "一起迈向公益之路";
             item2.small_title = "只要你有足够的热情，想为公益事业做出一份自己的贡献，都可以申请成为以伴志愿者！";
             item2.button = "加入我们";
-            item2.url = "../matching/introduce/introduce";
+            item2.url = "../join/join";
             list.push(item2)
             that.setData({
               swiperList: list,

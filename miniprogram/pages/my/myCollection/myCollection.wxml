@@ -16,7 +16,7 @@
         <navigator class='card' hover-class="none" url="../../display/detail/detail?id={{item.contextId}}&collection={{item.database}}">
           <view class='shu'></view>
           <view class='title'>{{item.contextName}}</view>
-          <view class='time'>{{item.time}}</view>
+          <!--<view class='time'>{{item.time}}</view>-->
         </navigator>
       </view>
     </scroll-view>
@@ -28,7 +28,7 @@
         <navigator class='card' hover-class="none" url="../../display/video/video?id={{item.contextId}}&collection={{item.database}}">
           <view class='shu'></view>
           <view class='title'>{{item.contextName}}</view>
-          <view class='time'>{{item.time}}</view>
+          <!--<view class='time'>{{item.time}}</view>-->
         </navigator>
       </view>
     </scroll-view>
