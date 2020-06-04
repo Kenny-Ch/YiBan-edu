@@ -157,6 +157,10 @@ Page({
   onChangeList: function(data) {
     console.log("【从establish返回到tree】", data)
     data.index = this.data.list.length
+    if (data.isAnonymous) {
+      data.userimg = '../../../../images/my/touxiang.jpg'
+      data.username = '匿名'
+    }
     this.setData({
       list: this.data.list.concat(data)
     })

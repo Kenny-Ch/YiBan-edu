@@ -8,7 +8,6 @@ Page({
     context: '',
     placeholder: '这一刻的想法......',
     check:false,
-
   },
   radiocon:function(e){  
     this.setData({
@@ -46,7 +45,7 @@ Page({
         'imgUrl': app.globalData.userInfo.avatarUrl,
         'name': app.globalData.userInfo.name,
         'comment': that.data.context,
-        'isAnonymous': false
+        'isAnonymous': that.data.check
       }
     }).then(function(res) {
       console.log("【tree/establish调用函数uploadComment】【上传树洞】", res)
@@ -75,7 +74,7 @@ Page({
                 data.contextId = res.result._id
                 data.time = date.getFullYear() + '-' + month + '-' + date.getDate()
                 data.userimg = app.globalData.userInfo.avatarUrl
-                data.isAnonymous = false
+                data.isAnonymous = that.data.check
                 data.isLike = false
                 beforePage.onChangeList(data); //触发父页面中的方法
                 wx.navigateBack({

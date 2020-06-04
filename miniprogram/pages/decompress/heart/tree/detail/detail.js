@@ -13,12 +13,14 @@ Page({
       // dianzan: 21,
       // pinglun: 5,
       // isShowDian: false,
-      comment: [{
-        imgUrl: '../../../../../images/my/touxiang.jpg',
-        nickname: '桂明',
-        time: '2020-04-19',
-        comment: '没问题，你快去吧。我在小区门口等你。',
-      }, ],
+      comment: [
+      //   {
+      //   imgUrl: '../../../../../images/my/touxiang.jpg',
+      //   nickname: '桂明',
+      //   time: '2020-04-19',
+      //   comment: '没问题，你快去吧。我在小区门口等你。',
+      // },
+       ],
       isDisable: false
     },
     focus: false,
