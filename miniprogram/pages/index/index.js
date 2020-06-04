@@ -153,17 +153,17 @@ Page({
               //是学生的情况
               if (app.globalData.userInfo.matchWaitList.length != 0) {
                 //这里跳转待审核界面
-                item.url = "";
+                item.url = "../matching/teacher/teacher?status=false&id=" + app.globalData.userInfo.matchWaitList[0];
               } else if (app.globalData.userInfo.matchList.length != 0) {
                 //这里跳转已审核界面
-                item.url = "../matching/teacher/teacher?id=" + app.globalData.userInfo.matchList[0];
+                item.url = "../matching/teacher/teacher?status=true&id=" + app.globalData.userInfo.matchList[0];
               } else {
                 //这里跳转匹配界面
                 item.url = "../matching/result/result";
               }
             } else {
               //是老师的情况
-              item.url = "../manager/teacherMatch/teacherMatch?id="+app.globalData.userInfo._id;
+              item.url = "../manager/teacherMatch/teacherMatch?id=" + app.globalData.userInfo._id;
             }
 
             list.push(item)

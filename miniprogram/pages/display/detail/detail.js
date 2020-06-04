@@ -525,6 +525,13 @@ Page({
     }).catch(function(err) {
       console.log(err)
     })
-  }
+  },
+
+  back: function() {
+    var pages = getCurrentPages();
+    var beforePage = pages[pages.length - 2];
+    var currentPage = pages[pages.length - 1];
+    beforePage.uploadViewNum(this.data._options)
+  },
 
 })

@@ -72,7 +72,7 @@ Page({
   },
 
   uploadViewNum: function(e) {
-    let index = e.currentTarget.dataset.index
+    let index = e.index
     let num = 'articals[' + index + '].viwerNum'
     this.setData({
       [num]: this.data.articals[index].viwerNum + 1

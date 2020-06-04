@@ -81,6 +81,7 @@ Page({
     this.getRecommend(options)
     this.getZanStatus()
     this.getCollectionStatus()
+    this.uploadViewNum()
     wx.hideLoading()
   },
 
@@ -458,25 +459,6 @@ Page({
 
   async getComment() {
     let that = this
-    // await wx.cloud.callFunction({
-    //   name: 'getInteraction',
-    //   data: {
-    //     'comment': true,
-    //     'like': false,
-    //     'store': false,
-    //     'type': 1,
-    //     'id': that.data._options.id
-    //   }
-    // }).then(function(res) {
-    //   console.log("【video调用函数getInteraction】【flag：comment（获取评论）】", res)
-    //   let comments = res.result.comments
-    //   let commentList = "video.commentList"
-    //   that.setData({
-    //     [commentList]: res.result.comments
-    //   })
-    // }).catch(function(err) {
-    //   console.log(err)
-    // })
     const db = wx.cloud.database()
     db.collection('interaction').where({
         contextId: that.data._options.id,
@@ -518,6 +500,28 @@ Page({
       }).catch(function(err) {
         console.log(err)
       })
+  },
+
+  uploadViewNum: function () {
+    let that = this
+    wx.cloud.callFunction({
+      name: 'uploadViewNum',
+      data: {
+        collection: that.data._options.collection,
+        _id: that.data._options.id
+      }
+    }).then(function (res) {
+      console.log("【detail调用函数uploadViewNum】", res)
+    }).catch(function (err) {
+      console.log(err)
+    })
+  },
+
+  back: function() {
+    var pages = getCurrentPages();
+    var beforePage = pages[pages.length - 2];
+    var currentPage = pages[pages.length - 1];
+    beforePage.uploadViewNum(this.data._options)
   },
 
   /**

@@ -1,6 +1,6 @@
 <!--miniprogram/pages/display/video/video.wxml-->
 <cu-custom bgColor="bg-gradual-orange" isBack="{{true}}" >
-  <view slot="backText">返回</view>
+  <view slot="backText" bindtap="back" data-index="{{_options.index}}">返回</view>
   <view slot="content">以伴edu</view>
 </cu-custom>
 <view class='ww'>

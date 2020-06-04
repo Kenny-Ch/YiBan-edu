@@ -18,5 +18,5 @@
     </view>
     <image src="{{user.QR}}" class='QR'></image>
   </view>
-  <view class='card-bottom'>{{result}}</view>
+  <view class='card-bottom'>{{result?'审核通过':'正在审核中'}}</view>
 </view>
