@@ -156,3 +156,10 @@
   overflow:hidden;
   display: block;
 }
+.nodata{
+  width: 100%;
+	color: rgba(56, 56, 56, 1);
+	font-size: 32rpx;
+	line-height: 150%;
+	text-align: center;
+}

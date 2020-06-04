@@ -44,7 +44,7 @@
   margin-bottom: 8rpx;
 }
 .icon{
-  width: 35rpx;
+  width: 37rpx;
 	height: 35rpx;
 	font-size: 30rpx;
 	color: rgba(128, 128, 128, 1);
@@ -86,7 +86,7 @@
   margin-top:8rpx ;
 }
 .num{
-  width:118rpx;
+  width:78rpx;
 	color: rgba(128, 128, 128, 1);
 	font-size: 22rpx;
 	line-height: 150%;
@@ -101,6 +101,6 @@
 	font-size: 22rpx;
 	line-height: 150%;
   text-align: right;
-  margin-left:35rpx ;
+  margin-left:32rpx ;
   margin-top:5rpx ;
 }

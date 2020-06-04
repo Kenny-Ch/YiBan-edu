@@ -31,31 +31,19 @@
     </view>
   </view>
   <!-- 数据不存在 -->
-  <view wx:if="{{video.commentList.length==0?true:false}}">
+  <view wx:if="{{post.commentList.length==0?true:false}}" style="margin-bottom:40rpx">
     <template is="nodata" data="{{ nodata_str }}" />
   </view>
   <view class="cu-list menu menu-avatar comment solids-top">
     <view class="cu-item" wx:for="{{post.commentList}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
-      <image class="cu-avatar round" src="{{item.comment.imgUrl}}"></image>
+      <image class="cu-avatar round" src="{{item.imgUrl}}"></image>
       <view class='content'>
-        <view class='text-grey' data-id="{{item._id}}" data-name="{{item.nickame}}" data-openid="{{item.cOpenId}}" bindtap="focusComment">
-          {{item.comment.nickname}}
+        <view class='text-grey' data-id="{{item._id}}" data-name="{{item.nickame}}" data-openid="{{item.userOpenId}}" bindtap="focusComment">
+          {{item.nickname}}
         </view>
-        <view class='text-gray text-content text-df'>{{item.comment.comment}}</view>
-        <view class='padding-sm radius  text-sm text-gray'>
-          <view class="flex" wx:for="{{item.childComment}}" wx:key="id" wx:for-index="id" wx:for-item="childItem">
-            <view data-id="{{item._id}}" data-name="{{childItem.cNickName}}" data-openid="{{childItem.cOpenId}}" bindtap="focusComment">
-              <view class='text-grey'>{{childItem.nickname}}：</view>
-            </view>
-            <view class='flex-sub'>{{childItem.comment}}</view>
-          </view>
-        </view>
+        <view class='text-gray text-content text-df'>{{item.comment}}</view>
         <view class='flex justify-between'>
           <view class='text-gray text-df'></view>
-          <!-- <view>
-            <text class="cuIcon-messagefill text-gray margin-left-sm"></text>
-            <text class="text-gray margin-left-xs">{{item.childComment.length}}</text>
-          </view> -->
         </view>
       </view>
     </view>
