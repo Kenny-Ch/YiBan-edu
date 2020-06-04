@@ -75,7 +75,7 @@ Page({
     })
     console.log("video传入参数", options)
     this.setData({
-      _options : options
+      _options: options
     })
     await this.getVideo(options)
     this.getRecommend(options)
@@ -452,7 +452,7 @@ Page({
             teacher_name: res.data.author,
           }
         })
-        that.getComment(res.data.contextUrl)
+        that.getComment()
       }).catch(function(err) {
         console.log(err)
       })
@@ -460,29 +460,37 @@ Page({
 
   async getComment() {
     let that = this
-    await wx.cloud.callFunction({
-      name: 'getInteraction',
-      data: {
-        'comment': true,
-        'like': false,
-        'store': false,
-        'type': 1,
-        'id': that.data._options.id
-      }
-    }).then(function(res) {
-      console.log("【video调用函数getInteraction】【flag：comment（获取评论）】", res)
-      let comments = res.result.comments
-      for (let item of comments) {
-        let data = {}
-        data.comment = item
+    // await wx.cloud.callFunction({
+    //   name: 'getInteraction',
+    //   data: {
+    //     'comment': true,
+    //     'like': false,
+    //     'store': false,
+    //     'type': 1,
+    //     'id': that.data._options.id
+    //   }
+    // }).then(function(res) {
+    //   console.log("【video调用函数getInteraction】【flag：comment（获取评论）】", res)
+    //   let comments = res.result.comments
+    //   let commentList = "video.commentList"
+    //   that.setData({
+    //     [commentList]: res.result.comments
+    //   })
+    // }).catch(function(err) {
+    //   console.log(err)
+    // })
+    const db = wx.cloud.database()
+    db.collection('interaction').where({
+        contextId: that.data._options.id,
+        flag: 'comment'
+      }).get()
+      .then(function(res) {
+        console.log("【video查询数据库Interaction】", res)
         let commentList = "video.commentList"
         that.setData({
-          [commentList]: that.data.video.commentList.concat(data)
+          [commentList]: res.data
         })
-      }
-    }).catch(function(err) {
-      console.log(err)
-    })
+      })
   },
 
   getRecommend: function(options) {
