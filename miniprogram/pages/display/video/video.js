@@ -369,13 +369,11 @@ Page({
             duration: 1500
           })
           let comment = "video.commentList"
-          let item = {
-            comment: {}
-          }
+          let item = {}
           let date = new Date()
-          item.comment.imgUrl = app.globalData.userInfo.avatarUrl
-          item.comment.nickname = app.globalData.userInfo.name
-          item.comment.comment = content
+          item.imgUrl = app.globalData.userInfo.avatarUrl
+          item.nickname = app.globalData.userInfo.name
+          item.comment = content
           that.setData({
             [comment]: that.data.video.commentList.concat(item)
           })

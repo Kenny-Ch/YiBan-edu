@@ -8,6 +8,7 @@ Page({
    */
   data: {
     post: {
+      commentList: {}
     },
     collection: {
       status: false,
@@ -62,7 +63,7 @@ Page({
       _ts.setData({
         post: list,
       });
-      
+
     });
 
     //获取文章所有评论
@@ -71,7 +72,7 @@ Page({
     await this.getCollectionStatus()
     await this.getLikeNum(options)
     wx.hideLoading()
-    
+
   },
 
   /**
@@ -370,12 +371,10 @@ Page({
             duration: 1500,
             success: function() {
               let commentList = "post.commentList"
-              let item = {
-                comment: {}
-              }
-              item.comment.imgUrl = app.globalData.userInfo.avatarUrl
-              item.comment.nickname = app.globalData.userInfo.name
-              item.comment.comment = that.data.commentContent
+              let item = {}
+              item.imgUrl = app.globalData.userInfo.avatarUrl
+              item.nickname = app.globalData.userInfo.name
+              item.comment = that.data.commentContent
               that.setData({
                 [commentList]: that.data.post.commentList.concat(item)
               })
@@ -484,15 +483,10 @@ Page({
     }).then(function(res) {
       console.log("【detail调用函数getInteraction】", res)
       let comments = res.result.comments
-      for (let item of comments) {
-        let data = {}
-        data.comment = item
-        let commentList = "post.commentList"
-        that.setData({
-          [commentList]: that.data.post.commentList.concat(data)
-        })
-      }
-      console.log(that.data.post.commentList)
+      let commentList = "post.commentList"
+      that.setData({
+        [commentList]:res.result.comments
+      })
     }).catch(function(err) {
       console.log(err)
     })
