@@ -220,6 +220,13 @@ Page({
     let that = this
     let app = getApp();
     if (!that.data.collection.status) {
+      that.setData({
+        collection: {
+          status: true,
+          text: "已收藏",
+          icon: "favorfill"
+        }
+      })
       await wx.cloud.callFunction({
         name: 'uploadInteraction',
         data: {
@@ -232,15 +239,18 @@ Page({
         }
       }).then(function(res) {
         console.log("【detail调用函数uploadInteraction】【收藏成功】", res)
+      }).catch(function(err) {
+        console.log(err)
+        wx.showToast({
+          title: '收藏失败',
+        })
         that.setData({
           collection: {
             status: true,
-            text: "已收藏",
-            icon: "favorfill"
+            text: "收藏",
+            icon: "favor"
           }
         })
-      }).catch(function(err) {
-        console.log(err)
       })
     }
   },
@@ -254,6 +264,13 @@ Page({
     //若点过赞，则不能多次点赞，增加数据库负担
     //暂时不实现该功能
     if (!that.data.zan.status) {
+      that.setData({
+        zan: {
+          status: true,
+          text: "已赞",
+          icon: "appreciatefill"
+        }
+      })
       await wx.cloud.callFunction({
         name: 'uploadInteraction',
         data: {
@@ -263,16 +280,18 @@ Page({
         }
       }).then(function(res) {
         console.log("【detail调用函数uploadInteraction】【点赞成功】", res)
-        let collection = "comment."
+      }).catch(function(err) {
+        console.log(err)
+        wx.showToast({
+          title: '点赞失败',
+        })
         that.setData({
           zan: {
             status: true,
-            text: "已赞",
-            icon: "appreciatefill"
+            text: "点赞",
+            icon: "appreciate"
           }
         })
-      }).catch(function(err) {
-        console.log(err)
       })
     }
   },

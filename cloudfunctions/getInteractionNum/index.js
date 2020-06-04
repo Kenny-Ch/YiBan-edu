@@ -45,6 +45,16 @@ exports.main = async (event, context) => {
     data.likesLen = likesLen
   }
 
+  if(event.store){
+    var countResult = await db.collection('interaction').where({
+      flag: 'store',
+      contextId: event.id
+    }).count()
+    storesLen = countResult.total
+
+    data.storesLen = storesLen
+  }
+
   if (event.selfLike) {
     var res = await db.collection('interaction').where({
       flag: 'like',
@@ -66,3 +76,4 @@ exports.main = async (event, context) => {
 // commentsLen: ,评论长度
 // likesLen: ,点赞人数
 // isLike: bool,是否自己点赞
+//storesLen ,收藏人数

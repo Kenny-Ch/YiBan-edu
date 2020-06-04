@@ -174,13 +174,15 @@ Page({
       data: {
         'comment': true,
         'like': true,
+        'store': true,
         'selfLike': false,
         'id': item._id
       }
     }).then(function(res) {
       console.log("【artical调用函数getInteractionNum】", res);
-      item.praisePoints = res.result.likesLen;
-      item.comment = res.result.commentsLen;
+      item.praisePoints = res.result.likesLen
+      item.comment = res.result.commentsLen
+      item.storeNum = res.result.storesLen
     })
     this.setData({
       articals: this.data.articals.concat(item)

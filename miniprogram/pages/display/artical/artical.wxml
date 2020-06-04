@@ -16,11 +16,11 @@
       </view>
       <view class="bottom">
         <image src='../../../images/dianzan.png' class='icon'></image>
-        <text class='num'>{{item.praisePoints}}</text>
+        <text class='num'>{{item.storeNum}}</text>
         <image src='../../../images/icon-.png' class='icon'></image>
         <text class='num'>{{item.viwerNum}}</text>
         <image src='../../../images/decompress/dianzan.png' class='icon'></image>
-        <text class='num'>{{item.totalZans}}</text>
+        <text class='num'>{{item.praisePoints}}</text>
         <image src='../../../images/pinglun.png' class='icon1'></image>
         <text class='num'>{{item.comment}}</text>
         <view class='time'>{{item.time}}</view>
