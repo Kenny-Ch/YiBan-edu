@@ -8,13 +8,13 @@
     <txv-video vid="{{video.vid}}"   playerid="{{video.vid}}" autoplay="{{true}}"> </txv-video>
   </view>
   <view class='con'>
-    <view class="title">{{title}}</view>
+    <view class="title">{{vedio.title}}</view>
     <view class='row li'>
       <image src="{{video.img}}" class='img'></image>
-      <view class='teacher_name'>{{teacher_name}}</view>
+      <view class='teacher_name'>{{vedio.teacher_name}}</view>
       <view class='time'>{{time}}</view>
     </view>
-    <view class='introduction'>{{introduction}}</view>
+    <view class='introduction'>{{vedio.introduction}}</view>
   </view>
 </view>
 
