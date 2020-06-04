@@ -65,6 +65,9 @@ Page({
   },
 
   getSchoolList: function(options) {
+    wx.showLoading({
+      title: '加载中',
+    })
     let that = this
     wx.cloud.callFunction({
       name: 'getContext',
@@ -76,6 +79,7 @@ Page({
       that.setData({
         schoollist: res.result
       })
+      wx.hideLoading()
     })
   },
 })

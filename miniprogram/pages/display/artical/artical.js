@@ -49,6 +49,8 @@ Page({
     //   comment: 30,
     // }
     ],
+    Anartical:"../detail/detail",
+    Anvideo:"../video/video",
   },
 
   /**
@@ -142,6 +144,15 @@ Page({
   async getData(dataList){
     for(let item of dataList){
       item.time = item.time.substring(0, 10);
+      if(item.introdution.length>42){
+        item.introdution=item.introdution.substring(0, 42)+"……"
+      }
+      if(item.isArticle==false){
+        item.nav=this.data.Anvideo
+      }
+      else{
+        item.nav=this.data.Anartical
+      }
       //获取留言数
       await this.getInteraction(item);
     }

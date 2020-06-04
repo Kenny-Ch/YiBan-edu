@@ -47,6 +47,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    wx.showLoading({
+      title: '加载中',
+    })
     const db = wx.cloud.database()
     let that = this
     db.collection('collegeInfo').doc(options.majorId)
@@ -56,9 +59,12 @@ Page({
         that.setData({
           major: res.data
         })
+        wx.hideLoading()
       }).catch(function(err) {
         console.log(err)
+        wx.hideLoading()
       })
+      
   },
 
   /**

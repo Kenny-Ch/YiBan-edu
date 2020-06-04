@@ -95,6 +95,9 @@ Page({
   },
 
   getSchoolDetail: async function(options) {
+    wx.showLoading({
+      title: '加载中',
+    })
     let that = this
     const db = wx.cloud.database()
     db.collection(options.collection).doc(options.id)
@@ -104,6 +107,7 @@ Page({
         that.setData({
           school: res.data
         })
+        wx.hideLoading()
       })
   }
 })

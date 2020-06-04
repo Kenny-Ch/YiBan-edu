@@ -448,6 +448,7 @@ Page({
         let month = res.data.time.getMonth()
         that.setData({
           [title]: res.data.title,
+          [teacher_name]:res.data.author,
           [time]: res.data.time.getFullYear() + '年' + month + '月' + res.data.time.getDate() + '日',
           [introduction]: res.data.introduction,
           [img]: res.data.coverImgUrl,

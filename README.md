@@ -160,7 +160,7 @@
     "title": "",                    //标题
     "subtitle": "",                 //副标题
     "coverImgUrl": "",              //封面
-    "time": "Date()",               //时间
+    "time": "new Date('2020-05-26 22:06:55')",               //时间
     "author": "",                   //作者
     "isArticle": true,              //是文章嘛
     "contextUrl": "",               //内容链接（可能是文章，可能是视频）

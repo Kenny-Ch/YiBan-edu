@@ -59,6 +59,9 @@ Page({
     const db = wx.cloud.database()
     const $ = db.command.aggregate
     let that = this
+    wx.showLoading({
+      title: '加载中',
+    })
     db.collection('collegeInfo').aggregate()
       .match({
         flag: 'major'
@@ -77,8 +80,10 @@ Page({
         that.setData({
           majorlist: res.list
         })
+        wx.hideLoading()
       }).catch(function(err) {
         console.log(err)
+        wx.hideLoading()
       })
   },
 

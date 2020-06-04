@@ -48,7 +48,7 @@ Page({
 
     await this.getArtical(options)
 
-    app.getText(this.data.post.articalUrl, res => {
+    await app.getText(this.data.post.articalUrl, res => {
       let obj = app.towxml(res.data, 'markdown', {
         theme: 'light',
         events: {
@@ -62,14 +62,16 @@ Page({
       _ts.setData({
         post: list,
       });
+      
     });
 
     //获取文章所有评论
-    this.getComment()
-    this.getZanStatus()
-    this.getCollectionStatus()
-    this.getLikeNum(options)
+    await this.getComment()
+    await this.getZanStatus()
+    await this.getCollectionStatus()
+    await this.getLikeNum(options)
     wx.hideLoading()
+    
   },
 
   /**

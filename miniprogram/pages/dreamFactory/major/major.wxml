@@ -3,7 +3,7 @@
   <view slot="backText">返回</view>
   <view slot="content">以伴edu</view>
 </cu-custom>
-<image src="{{major.img}}" class='img1'></image>
+<image src="{{major.coverImgUrl}}" class='img1'></image>
 <view class='row'>
   <view class='title'>{{major.name}}</view>
 </view>
