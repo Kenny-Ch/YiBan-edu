@@ -448,7 +448,7 @@ Page({
             title: res.data.title,
             time: res.data.time.substring(0, 10),
             vid: res.data.contextUrl,
-            introduction: res.data.subtitle,
+            introduction: res.data.introdution,
             teacher_name: res.data.author,
           }
         })

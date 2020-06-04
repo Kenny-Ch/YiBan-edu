@@ -90,14 +90,15 @@ page{
 .bb{
 	margin-top:35rpx ;
 }
-.text{
+.text1{
 	width: 684rpx;
+	min-height: 100rpx;
 	color: rgba(80, 80, 80, 1);
 	font-size: 28rpx;
-	line-height: 150%;
 	text-align: left;
 	margin-left:35rpx ;
 	margin-top:10rpx ;
+	white-space:pre-wrap;
 }
 .block{
 	width: 100%;

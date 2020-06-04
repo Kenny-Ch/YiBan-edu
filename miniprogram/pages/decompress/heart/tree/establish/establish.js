@@ -6,9 +6,16 @@ Page({
    */
   data: {
     context: '',
-    placeholder: '这一刻的想法......'
-  },
+    placeholder: '这一刻的想法......',
+    check:false,
 
+  },
+  radiocon:function(e){  
+    this.setData({
+     check: !this.data.check
+     })
+    console.log("是否匿名发布 ",this.data.check)
+   },
   /**
    * 生命周期函数--监听页面加载
    */

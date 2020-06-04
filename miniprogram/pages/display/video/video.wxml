@@ -14,7 +14,7 @@
       <view class='teacher_name'>{{video.teacher_name}}</view>
       <view class='time'>{{video.time}}</view>
     </view>
-    <view class='introduction'>{{video.introduction}}</view>
+    <view class='introduction' style='white-space: pre-wrap;'>{{video.introduction}}</view>
   </view>
 </view>
 

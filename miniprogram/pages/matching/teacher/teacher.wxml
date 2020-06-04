@@ -18,4 +18,5 @@
     </view>
     <image src="{{user.QR}}" class='QR'></image>
   </view>
+  <view class='card-bottom'>{{result}}</view>
 </view>

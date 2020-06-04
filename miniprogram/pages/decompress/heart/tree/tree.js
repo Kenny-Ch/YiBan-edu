@@ -12,6 +12,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    wx.showLoading({
+      title: '加载中',
+    })
     var that = this
     const db = wx.cloud.database()
     const app = getApp()
@@ -25,6 +28,7 @@ Page({
         success: function(res) {
           console.log("【tree调用函数getComments】", res.result)
           that.setList(res.result[0])
+          wx.hideLoading()
         }
       })
     } else {
@@ -33,6 +37,7 @@ Page({
         success: function(res) {
           console.log("【tree调用函数getComments】", res.result)
           that.setList(res.result[0])
+          wx.hideLoading()
         }
       })
     }
@@ -62,6 +67,7 @@ Page({
       i++
       await that.getInteraction(temp)
     }
+    
   },
 
   async getInteraction(temp) {

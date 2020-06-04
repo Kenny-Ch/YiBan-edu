@@ -50,3 +50,36 @@ button{
   font-weight: bold;
   margin-top:64rpx ;
 }
+radio .wx-radio-input{
+	width: 32rpx;
+	height: 32rpx;
+	border-radius:0% ;
+	border-color:rgba(250, 173, 20, 1) ;
+}
+radio .wx-radio-input.wx-radio-input-checked{
+	width: 32rpx; 
+	height: 32rpx; 
+	background:white!important;
+	border-color:rgba(250, 173, 20, 1)!important;
+}
+radio .wx-radio-input.wx-radio-input-checked::before{
+	width: 32rpx; 
+	height: 32rpx; 
+	line-height: 32rpx;
+	text-align: center;
+	font-size:32rpx; 
+	color:rgba(250, 173, 20, 1); 
+	background: white;
+	transform:translate(-50%, -50%) scale(1);
+	-webkit-transform:translate(-50%, -50%) scale(1);
+}
+.niming{
+	color: rgba(56, 56, 56, 1);
+	font-size: 28rpx;
+	line-height: 150%;
+	text-align: left;
+	margin-top: 12rpx;
+}
+.nini{
+	margin-top: 20rpx;
+}

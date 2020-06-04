@@ -144,14 +144,15 @@ Page({
   async getData(dataList){
     for(let item of dataList){
       item.time = item.time.substring(0, 10);
-      if(item.introdution.length>42){
-        item.introdution=item.introdution.substring(0, 42)+"……"
-      }
       if(item.isArticle==false){
         item.nav=this.data.Anvideo
+        item.introdution=item.subtitle
       }
       else{
         item.nav=this.data.Anartical
+      }
+      if(item.introdution.length>42){
+        item.introdution=item.introdution.substring(0, 42)+"……"
       }
       //获取留言数
       await this.getInteraction(item);

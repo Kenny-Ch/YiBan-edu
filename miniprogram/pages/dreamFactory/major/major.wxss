@@ -99,6 +99,7 @@ page{
 	text-align: left;
 	margin-left:35rpx ;
 	margin-top:10rpx ;
+	
 }
 .block{
 	width: 100%;

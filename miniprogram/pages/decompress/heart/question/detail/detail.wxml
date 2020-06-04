@@ -9,9 +9,7 @@
     <view class="question-context">{{context}}</view>
   </view>
   <view class="answer">
-    <view class="detail">
-      {{officialAnswer}}
-    </view>
+    <view class="detail">{{officialAnswer}}</view>
   </view>
   <view class='answer' wx:for="{{answer}}">
     <view class='detail'>{{item}}</view>

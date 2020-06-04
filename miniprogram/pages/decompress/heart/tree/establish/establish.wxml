@@ -7,5 +7,8 @@
 <view class="line"></view>
 <form class="con" bindsubmit="submitTree">
   <textarea name='thinking' maxlength='-1' placeholder="这一刻的想法……" auto-focus value="{{context}}" bindblur="onReplyBlur" />
+  <view class='nini'>
+    <radio checked='{{check}}' id="radios" bindtap='radiocon'></radio><label class='niming'>匿名发布</label>
+  </view>
   <button form-type="submit" style="width: 342rpx;min-height:50rpx;border-radius: 55rpx;" >发布到树洞</button>
 </form>
