@@ -106,8 +106,7 @@ Page({
         app.globalData.avatarUrl = res.userInfo.avatarUrl
       }
     })
-
-
+    console.log("global",app.globalData)
     /**
      * 获取openid并存入全局变量中，同时查询个人信息是否存在
      * 存在则放入全局变量中，并设置isNew为false

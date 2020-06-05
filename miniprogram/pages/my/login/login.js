@@ -60,6 +60,7 @@ Page({
         duration: 1500
       })
     } else {
+      console.log("global", app.globalData)
       if (this.data.job == 1) {
         wx.cloud.callFunction({
           // 要调用的云函数名称
@@ -70,7 +71,7 @@ Page({
             openid: app.globalData.openid,
             registerDate: new Date(),
             avatarUrl: app.globalData.avatarUrl,
-            job: 0,
+            job: 1,
             name: input.uname,
             isMatchFull: false,
             matchList: [],
