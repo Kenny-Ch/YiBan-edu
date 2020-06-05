@@ -161,7 +161,6 @@ Page({
 
     var that = this
     let dataList;
-    console.log(options.name)
     await wx.cloud.callFunction({
       // 要调用的云函数名称
       name: 'getContext',
@@ -214,6 +213,5 @@ Page({
     this.setData({
       articals: this.data.articals.concat(item)
     })
-    console.log(this.data.articals)
   }
 })

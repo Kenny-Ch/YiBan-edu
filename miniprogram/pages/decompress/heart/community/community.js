@@ -59,10 +59,10 @@ Page({
       name: 'getCommunities',
       data: {},
       success: function(res) {
-        console.log("【community界面调用函数getCommunities】",res.result)
+        console.log("【community界面调用函数getCommunities】", res.result)
         let com = []
-        for(let i = 0; i<res.result.length; i++){
-          var temp ={}
+        for (let i = 0; i < res.result.length; i++) {
+          var temp = {}
           temp.id = i
           temp.open = false
           temp.icon = '../../../../images/decompress/qq.png'
@@ -79,7 +79,7 @@ Page({
       fail: console.error
     })
   },
-  previewImage: function (e) {
+  previewImage: function(e) {
     wx.previewImage({
       urls: e.target.dataset.url.split(',')
       // 需要预览的图片http链接  使用split把字符串转数组。不然会报错
@@ -89,9 +89,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    const app = getApp()
+    if (app.globalData.isNew) {
+      wx.showToast({
+        title: '请先注册！',
+        icon: 'none',
+        duration: 1500,
+        success: function() {
+          wx.redirectTo({
+            url: '../../../my/login/login',
+          })
+        }
+      })
 
-    this.getCommunities();
-
+      return
+    } else {
+      this.getCommunities();
+    }
 
   },
 

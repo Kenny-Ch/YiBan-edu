@@ -139,7 +139,7 @@ Page({
    * @param {} e 
    */
   getUserInfo: function(e) {
-    console.log(e.detail.userInfo)
+    console.log("test", e.detail.userInfo)
     if (e.detail.userInfo) {
       app.globalData.userInfo = e.detail.userInfo
       this.setData({
@@ -219,6 +219,19 @@ Page({
   postCollection: async function() {
     let that = this
     let app = getApp();
+    if (app.globalData.isNew) {
+      wx.showToast({
+        title: '请先注册！',
+        icon: 'none',
+        duration: 1500
+      })
+      setTimeout(function() {
+        wx.redirectTo({
+          url: '../../my/login/login',
+        })
+      }, 1500)
+      return
+    }
     if (!that.data.collection.status) {
       that.setData({
         collection: {
@@ -266,6 +279,19 @@ Page({
     //此处按照逻辑需要判断是否曾经点过赞
     //若点过赞，则不能多次点赞，增加数据库负担
     //暂时不实现该功能
+    if (app.globalData.isNew) {
+      wx.showToast({
+        title: '请先注册！',
+        icon: 'none',
+        duration: 1500
+      })
+      setTimeout(function() {
+        wx.redirectTo({
+          url: '../../my/login/login',
+        })
+      }, 1500)
+      return
+    }
     if (!that.data.zan.status) {
       that.setData({
         zan: {
@@ -342,6 +368,29 @@ Page({
     })
   },
 
+  bindGetUserInfo: function(res) {
+    console.log("【用户授权信息】", res)
+    const app = getApp()
+    let that = this
+    let _res = res
+    wx.getSetting({
+      success: function(res) {
+        if (!res.authSetting['scope.userInfo']) {
+          wx.showToast({
+            title: '请先授权！',
+            icon: 'none',
+            duration: 1500
+          })
+          return
+        } else {
+          app.globalData.wxname = _res.detail.userInfo.nickName
+          app.globalData.avatarUrl = _res.detail.userInfo.avatarUrl
+          that.timeOutSubmit()
+        }
+      }
+    })
+  },
+
   /**
    * 提交评论
    * @param {} e 
@@ -349,12 +398,12 @@ Page({
   // 防止重复点击
 
 
-  timeOutSubmit: async function(e) {
+  timeOutSubmit: async function() {
     let that = this
-    await this.setData({
+    await that.setData({
       isDisable: true
     })
-    this.formSubmit(e)
+    that.formSubmit()
     setTimeout(function() {
       that.setData({
         isDisable: false
@@ -362,13 +411,12 @@ Page({
     }, 3000);
   },
 
-  formSubmit: function(e) {
+  formSubmit: function() {
     var that = this;
     try {
       let that = this;
       let commentPage = 1
       let content = that.data.commentContent;
-      console.log(content)
       if (content == undefined || content.length == 0) {
         wx.showToast({
           title: '请输入内容',
@@ -377,14 +425,27 @@ Page({
         })
         return
       }
-
       const app = getApp()
+      if (app.globalData.isNew) {
+        wx.showToast({
+          title: '请先注册！',
+          icon: 'none',
+          duration: 1500
+        })
+        setTimeout(function() {
+          wx.redirectTo({
+            url: '../../my/login/login',
+          })
+        }, 1500)
+        return
+      }
+
       wx.cloud.callFunction({
         name: 'uploadInteraction',
         data: {
           'flag': "comment",
           'userOpenid': app.globalData.openid,
-          'imgUrl': app.globalData.userInfo.avatarUrl,
+          'imgUrl': app.globalData.avatarUrl,
           'nickname': app.globalData.wxname,
           'contextId': that.data.post._id,
           'comment': content
@@ -398,7 +459,7 @@ Page({
             success: function() {
               let commentList = "post.commentList"
               let item = {}
-              item.imgUrl = app.globalData.userInfo.avatarUrl
+              item.imgUrl = app.globalData.avatarUrl
               item.nickname = app.globalData.wxname
               item.comment = that.data.commentContent
               that.setData({
@@ -421,7 +482,7 @@ Page({
         icon: 'none',
         duration: 1500
       })
-      console.info(err)
+      console.log(err)
       wx.hideLoading()
     }
   },
@@ -561,5 +622,23 @@ Page({
     var currentPage = pages[pages.length - 1];
     beforePage.uploadViewNum(this.data._options)
   },
+
+  getInfo: async function() {
+    let that = this
+    await wx.getSetting({
+      success: function(res) {
+        if (!res.authSetting['scope.userInfo']) {
+          wx.showToast({
+            title: '您还没有授权！',
+            icon: 'none',
+            duration: 1500
+          })
+          return
+        } else {
+          that.timeOutSubmit()
+        }
+      }
+    })
+  }
 
 })

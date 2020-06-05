@@ -45,131 +45,159 @@ Page({
    */
 
   getInfo: function(e) {
-    console.log("【授权后获取用户信息】", e.detail.userInfo)
-    app.globalData.avatarUrl = e.detail.userInfo.avatarUrl
+    wx.getSetting({
+      success: function(res) {
+        if (res.authSetting['scope.userInfo']) {
+          console.log("【授权后获取用户信息】", e.detail.userInfo)
+          app.globalData.avatarUrl = e.detail.userInfo.avatarUrl
+        }
+      }
+    })
   },
 
   formSubmit: function(e) {
-    console.log('【注册界面提交表单信息】', e.detail.value, this.data.region, this.data.gender, this.data.grade)
-    var input = e.detail.value
-    var pick = this.data
-    if (input.uname == "" || input.school == "" || input.qq == "" || input.email == "" || input.tel == "" || pick.region.length == 0 || pick.gender == undefined || pick.grade == undefined) {
-      wx.showToast({
-        title: '信息填写不完整~',
-        icon: 'none',
-        duration: 1500
-      })
-    } else {
-      console.log("global", app.globalData)
-      if (this.data.job == 1) {
-        wx.cloud.callFunction({
-          // 要调用的云函数名称
-          name: 'uploadBasicInfo',
-          // 传递给云函数的event参数
-          data: {
-            flag: this.data.job,
-            openid: app.globalData.openid,
-            registerDate: new Date(),
-            avatarUrl: app.globalData.avatarUrl,
-            job: 1,
-            name: input.uname,
-            isMatchFull: false,
-            matchList: [],
-            perInfo: {
-              gender: pick.gender,
-              school: input.school,
-              grade: pick.grade,
-              area: pick.region,
-              qq: input.qq,
-              tel: input.tel,
-              email: input.email
-            }
-          }
-        }).then(res => {
-          app.globalData.userInfo = {
-            openid: app.globalData.openid,
-            registerDate: new Date(),
-            job: input.job,
-            avatarUrl: app.globalData.avatarUrl,
-            name: input.uname,
-            perInfo: {
-              gender: pick.gender,
-              school: input.school,
-              grade: pick.grade,
-              area: pick.region,
-              qq: input.qq,
-              tel: input.tel,
-              email: input.email
-            }
-          }
-          app.globalData.isNew = false
-          wx.redirectTo({
-            url: '/pages/my/my',
-            complete: (res) => {},
-            fail: (res) => {},
-            success: (res) => {},
+    let that = this
+    wx.getSetting({
+      success: function(res) {
+        if (!res.authSetting['scope.userInfo']) {
+          wx.showToast({
+            title: '请先授权！',
+            icon: 'none',
+            duration: 1500
           })
-        }).catch(err => {
-          console.log('uploadBasicInfo上传基本信息错误', err)
-        })
+          return
+        } else {
+          wx.getUserInfo({
+            success: function(res) {
+              console.log(res)
+              console.log("【授权后获取用户信息】", res.userInfo)
+              app.globalData.avatarUrl = res.userInfo.avatarUrl
+            }
+          })
+          console.log('【注册界面提交表单信息】', e.detail.value, that.data.region, that.data.gender, that.data.grade)
+          var input = e.detail.value
+          var pick = that.data
+          if (input.uname == "" || input.school == "" || input.qq == "" || input.email == "" || input.tel == "" || pick.region.length == 0 || pick.gender == undefined || pick.grade == undefined) {
+            wx.showToast({
+              title: '信息填写不完整~',
+              icon: 'none',
+              duration: 1500
+            })
+          } else {
+            console.log("global", app.globalData)
+            if (that.data.job == 1) {
+              wx.cloud.callFunction({
+                // 要调用的云函数名称
+                name: 'uploadBasicInfo',
+                // 传递给云函数的event参数
+                data: {
+                  flag: that.data.job,
+                  openid: app.globalData.openid,
+                  registerDate: new Date(),
+                  avatarUrl: app.globalData.avatarUrl,
+                  job: 1,
+                  name: input.uname,
+                  isMatchFull: false,
+                  matchList: [],
+                  perInfo: {
+                    gender: pick.gender,
+                    school: input.school,
+                    grade: pick.grade,
+                    area: pick.region,
+                    qq: input.qq,
+                    tel: input.tel,
+                    email: input.email
+                  }
+                }
+              }).then(res => {
+                app.globalData.userInfo = {
+                  openid: app.globalData.openid,
+                  registerDate: new Date(),
+                  job: input.job,
+                  avatarUrl: app.globalData.avatarUrl,
+                  name: input.uname,
+                  perInfo: {
+                    gender: pick.gender,
+                    school: input.school,
+                    grade: pick.grade,
+                    area: pick.region,
+                    qq: input.qq,
+                    tel: input.tel,
+                    email: input.email
+                  }
+                }
+                app.globalData.isNew = false
+                wx.redirectTo({
+                  url: '/pages/my/my',
+                  complete: (res) => {},
+                  fail: (res) => {},
+                  success: (res) => {},
+                })
+              }).catch(err => {
+                console.log('uploadBasicInfo上传基本信息错误', err)
+              })
 
-      } else if (this.data.job == 0) {
-        wx.cloud.callFunction({
-          // 要调用的云函数名称
-          name: 'uploadBasicInfo',
-          // 传递给云函数的event参数
-          data: {
-            flag: this.data.job,
-            openid: app.globalData.openid,
-            registerDate: new Date(),
-            job: 0,
-            name: input.uname,
-            isMatchFull: false,
-            matchList: [],
-            perInfo: {
-              gender: pick.gender,
-              school: input.school,
-              grade: pick.grade,
-              major: input.major,
-              speciality: pick.speciality,
-              introduction: input.introduction,
-              wechat: input.wechat,
-              tel: input.tel,
-              stuNum: input.stuNum
+            } else if (that.data.job == 0) {
+              wx.cloud.callFunction({
+                // 要调用的云函数名称
+                name: 'uploadBasicInfo',
+                // 传递给云函数的event参数
+                data: {
+                  flag: that.data.job,
+                  openid: app.globalData.openid,
+                  registerDate: new Date(),
+                  job: 0,
+                  name: input.uname,
+                  isMatchFull: false,
+                  matchList: [],
+                  perInfo: {
+                    gender: pick.gender,
+                    school: input.school,
+                    grade: pick.grade,
+                    major: input.major,
+                    speciality: pick.speciality,
+                    introduction: input.introduction,
+                    wechat: input.wechat,
+                    tel: input.tel,
+                    stuNum: input.stuNum
+                  }
+                }
+              }).then(res => {
+                app.globalData.userInfo = {
+                  openid: app.globalData.openid,
+                  registerDate: new Date(),
+                  job: input.job,
+                  name: input.uname,
+                  perInfo: {
+                    gender: pick.gender,
+                    school: input.school,
+                    grade: pick.grade,
+                    major: input.major,
+                    speciality: pick.speciality,
+                    introduction: input.introduction,
+                    wechat: input.wechat,
+                    tel: input.tel,
+                    stuNum: input.stuNum
+                  }
+                }
+                app.globalData.isNew = false
+
+                wx.redirectTo({
+                  url: '/pages/index/index',
+                  complete: (res) => {},
+                  fail: (res) => {},
+                  success: (res) => {},
+                })
+              }).catch(err => {
+                console.log('uploadBasicInfo上传基本信息错误', err)
+              })
+            } else {
+              console.log('云函数上传基本信息错误，职业有误')
             }
           }
-        }).then(res => {
-          app.globalData.userInfo = {
-            openid: app.globalData.openid,
-            registerDate: new Date(),
-            job: input.job,
-            name: input.uname,
-            perInfo: {
-              gender: pick.gender,
-              school: input.school,
-              grade: pick.grade,
-              major: input.major,
-              speciality: pick.speciality,
-              introduction: input.introduction,
-              wechat: input.wechat,
-              tel: input.tel,
-              stuNum: input.stuNum
-            }
-          }
-          app.globalData.isNew = false
-          wx.redirectTo({
-            url: '/pages/my/my',
-            complete: (res) => {},
-            fail: (res) => {},
-            success: (res) => {},
-          })
-        }).catch(err => {
-          console.log('uploadBasicInfo上传基本信息错误', err)
-        })
-      } else {
-        console.log('云函数上传基本信息错误，职业有误')
+        }
       }
-    }
+    })
   },
 
   /**

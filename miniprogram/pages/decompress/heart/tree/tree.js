@@ -6,6 +6,7 @@ Page({
    */
   data: {
     list: [],
+    isNew: true
   },
 
   /**
@@ -18,28 +19,46 @@ Page({
     var that = this
     const db = wx.cloud.database()
     const app = getApp()
-    console.log("options", options)
-    if (options.status == 'person') {
-      wx.cloud.callFunction({
-        name: 'getComments',
-        data: {
-          openid: app.globalData.userInfo.openid
-        },
-        success: function(res) {
-          console.log("【tree调用函数getComments】", res.result)
-          that.setList(res.result[0])
-          wx.hideLoading()
+
+    if (app.globalData.isNew) {
+      wx.showToast({
+        title: '请先注册！',
+        icon: 'none',
+        duration: 1500,
+        success: function() {
+          wx.redirectTo({
+            url: '../../../my/login/login',
+          })
         }
       })
+      return
     } else {
-      wx.cloud.callFunction({
-        name: 'getComments',
-        success: function(res) {
-          console.log("【tree调用函数getComments】", res.result)
-          that.setList(res.result[0])
-          wx.hideLoading()
-        }
+      that.setData({
+        isNew: false
       })
+      console.log("options", options)
+      if (options.status == 'person') {
+        wx.cloud.callFunction({
+          name: 'getComments',
+          data: {
+            openid: app.globalData.userInfo.openid
+          },
+          success: function(res) {
+            console.log("【tree调用函数getComments】", res.result)
+            that.setList(res.result[0])
+            wx.hideLoading()
+          }
+        })
+      } else {
+        wx.cloud.callFunction({
+          name: 'getComments',
+          success: function(res) {
+            console.log("【tree调用函数getComments】", res.result)
+            that.setList(res.result[0])
+            wx.hideLoading()
+          }
+        })
+      }
     }
   },
 
@@ -64,7 +83,7 @@ Page({
       i++
       await that.getInteraction(temp)
     }
-    
+
   },
 
   async getInteraction(temp) {

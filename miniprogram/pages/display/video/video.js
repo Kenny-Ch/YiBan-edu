@@ -378,6 +378,20 @@ Page({
         return
       }
       const app = getApp()
+      if (app.globalData.isNew) {
+        wx.showToast({
+          title: '请先注册！',
+          icon: 'none',
+          duration: 1500
+        })
+        setTimeout(function() {
+          wx.redirectTo({
+            url: '../../my/login/login',
+          })
+        }, 1500)
+        return
+      }
+
       await wx.cloud.callFunction({
         name: 'uploadInteraction',
         data: {
@@ -555,6 +569,24 @@ Page({
     var beforePage = pages[pages.length - 2];
     var currentPage = pages[pages.length - 1];
     beforePage.uploadViewNum(this.data._options)
+  },
+
+  getInfo: async function() {
+    let that = this
+    await wx.getSetting({
+      success: function(res) {
+        if (!res.authSetting['scope.userInfo']) {
+          wx.showToast({
+            title: '您还没有授权！',
+            icon: 'none',
+            duration: 1500
+          })
+          return
+        } else {
+          that.timeOutSubmit()
+        }
+      }
+    })
   },
 
   /**

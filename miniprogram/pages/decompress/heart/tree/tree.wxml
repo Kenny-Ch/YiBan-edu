@@ -3,7 +3,7 @@
   <view slot="backText">返回</view>
   <view slot="content">以伴edu</view>
 </cu-custom>
-<view class='plusBtn'>
+<view class='plusBtn' wx:if="{{!isNew}}">
   <navigator url="establish/establish" class="plusBtn">
     <image src="../../../../images/decompress/jia.png" class='plusIcon'></image>
   </navigator>

@@ -5,32 +5,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list:[
-    ],
+    list: [],
     three: [{
-      title: "语文",  //Chinese
+      title: "语文", //Chinese
     }, {
-      title: "数学",  //Math
+      title: "数学", //Math
     }, {
-      title: "英语",  //English
+      title: "英语", //English
     }, {
-      title: "物理",  //Physics
+      title: "物理", //Physics
     }, {
-      title: "生物",  //Biology
+      title: "生物", //Biology
     }, {
-      title: "化学",  //Chemistry
+      title: "化学", //Chemistry
     }, {
-      title: "政治",  //Politics
+      title: "政治", //Politics
     }, {
-      title: "历史",  //History
+      title: "历史", //History
     }, {
-      title: "地理",  //Geography
+      title: "地理", //Geography
     }],
     i: 0,
     x: 0,
   },
   changeSwipe: function(e) {
-    var adress =this.data.three[e.detail.current].title;
+    var adress = this.data.three[e.detail.current].title;
     console.log("目前在", adress);
     var type = e.detail.current;
     this.setData({
@@ -55,7 +54,7 @@ Page({
     })
   },
   bindChange: function(e) {
-    var adress =this.data.three[e.detail.current].title;
+    var adress = this.data.three[e.detail.current].title;
     console.log("目前在", adress);
     var that = this;
     that.setData({
@@ -68,80 +67,106 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    wx.showLoading({
-      title: '加载中',
-    })
-    var that = this;
-    wx.getSystemInfo({
-      success: function(res) {
-        var Client = wx.getMenuButtonBoundingClientRect();
-        var height = res.windowHeight - (res.statusBarHeight + Client.height + (Client.top - res.statusBarHeight) * 2)
-        that.setData({
-          clientHeight: res.windowHeight,
-          height_sys: height - 80,
-        });
-      }
-    });
-    console.log('【classroom页面】传入参数：', options)
-    this.setData({
-      title: options.name,
-    })
-    this.getVideo(options).then(function(res) {
-      console.log("【classroom页面】video list加载成功")
-      wx.hideLoading()
-    });
+  onLoad: async function(options) {
+    const app = getApp()
+    if (app.globalData.isNew) {
+      await wx.showToast({
+        title: '请先注册！',
+        icon: 'none',
+        duration: 1500,
+        success: function() {
+          wx.redirectTo({
+            url: '../../my/login/login',
+          })
+          return
+        }
+      })
+    } else if (!app.globalData.isMatch) {
+      console.log("err")
+      await wx.showToast({
+        title: '还未匹配成功，暂时无法进入',
+        icon: 'none',
+        duration: 1500,
+        success: function() {
+          wx.navigateBack({})
+          return
+        }
+      })
+    } else {
+      wx.showLoading({
+        title: '加载中',
+      })
+      var that = this;
+      wx.getSystemInfo({
+        success: function(res) {
+          var Client = wx.getMenuButtonBoundingClientRect();
+          var height = res.windowHeight - (res.statusBarHeight + Client.height + (Client.top - res.statusBarHeight) * 2)
+          that.setData({
+            clientHeight: res.windowHeight,
+            height_sys: height - 80,
+          });
+        }
+      });
+      console.log('【classroom页面】传入参数：', options)
+      this.setData({
+        title: options.name,
+      })
+      this.getVideo(options).then(function(res) {
+        console.log("【classroom页面】video list加载成功")
+        wx.hideLoading()
+      });
+    }
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
-  
+
   async getVideo(options) {
     var that = this
     let dataList;
@@ -160,15 +185,15 @@ Page({
     this.getData(dataList);
   },
 
-  async getData(dataList){
-    for(let item of dataList){
+  async getData(dataList) {
+    for (let item of dataList) {
       var data = {}
       data.time = item.videoTime;
       data.name = item.author
       data.img = item.authorImg
       data.title = item.title
       data._id = item._id
-      data.type=item.subtitle;
+      data.type = item.subtitle;
       this.setData({
         list: this.data.list.concat(data)
       })
@@ -176,16 +201,16 @@ Page({
   },
 
   //仅用于video界面不报错
-  uploadViewNum: function () {
+  uploadViewNum: function() {
 
   },
-  uploadLikeNum: function () {
+  uploadLikeNum: function() {
 
   },
-  uploadCommentNum: function () {
+  uploadCommentNum: function() {
 
   },
-  uploadStoreNum: function () {
+  uploadStoreNum: function() {
 
   },
 })
