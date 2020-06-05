@@ -117,6 +117,7 @@ page{
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-top: 12rpx;
 }
 .comment-img{
   width: 36rpx;
@@ -148,7 +149,7 @@ page{
 	line-height: 150%;
   text-align: left;
   margin-left:76rpx ;
-  margin-bottom:28rpx ;
+  margin-bottom:16rpx ;
 }
 .yuan{
   overflow:hidden;

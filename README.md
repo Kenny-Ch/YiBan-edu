@@ -180,8 +180,9 @@
         "QS": 0,                        //QS排名
     }, 
     "site": "",                     //地点
-    "introduction": ""              //院校介绍
-    "speciality": ""                //特色专业
+    "introduction": "",              //院校介绍
+    "speciality": "",               //特色专业
+    "vid":"",                        //以伴大学说
     "contact": [{                   //师兄师姐联系方式
       "name": ""
       "wechat": ""
@@ -211,12 +212,13 @@
     //(精品课堂)
     "flag": "course",
     "title": "",                    //标题
-    "subtitle": "",                 //副标题
+    "subtitle": "",                 //类别
+    "authorImg":"",                 //作者头像
     "coverImgUrl": "",              //封面
     "time": "Date()",               //时间
     "videoTime": "",                //视频时长
     "author": "",                   //作者
-    "contextUrl": "",               //内容链接
+    "contextUrl": "",               //视频vid
     "introdution": "",              //视频介绍
     "viwerNum": "",                 //浏览量
 
