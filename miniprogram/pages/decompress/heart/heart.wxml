@@ -16,7 +16,7 @@
   </view>
 </navigator>
 <!--寻找匿名社区-->
-<navigator url="./community/community" hover-class="none">
+<view bindtap="jump" data-url="./community/community" hover-class="none">
   <view class='card' style="background-image: linear-gradient( 90deg, #7E9CFE 10%, #6554E9 100%);">
     <view class='text'>
       <view class="text-title">寻找匿名社区</view>
@@ -24,9 +24,9 @@
     </view>
     <image src='../../../images/decompress/community.png' class='img'></image>
   </view>
-</navigator>
+</view>
 <!--心情树洞-->
-<navigator url="./tree/tree" hover-class="none">
+<view bindtap="jump" data-url="./tree/tree" hover-class="none">
   <view class='card' style="background-image: linear-gradient( 90deg, #FFC805 10%, #FF8855 100%);">
     <view class='text'>
       <view class="text-title">心情树洞</view>
@@ -34,4 +34,4 @@
     </view>
     <image src='../../../images/decompress/emotion.png' class='img'></image>
   </view>
-</navigator>
+</view>

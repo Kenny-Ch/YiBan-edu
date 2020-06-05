@@ -103,7 +103,7 @@
       <swiper-item>
         <scroll-view scroll-y="{{true}}" style="height:920rpx">
           <view class='three-block' wx:for="{{companionClass}}">
-            <navigator url="{{item.url}}?name={{item.left}}" hover-class="none">
+            <view bindtap="jumpToVideo" data-url="{{item.url}}?name={{item.left}}">
               <view class='three-card'>
                 <image src="{{item.image}}" class='three-card-image'></image>
                 <view class='three-card-text'>
@@ -114,7 +114,7 @@
                   </view>
                 </view>
               </view>
-            </navigator>
+            </view>
           </view>
         </scroll-view>
       </swiper-item>

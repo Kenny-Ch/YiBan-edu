@@ -223,16 +223,15 @@ Page({
       wx.showToast({
         title: '请先注册！',
         icon: 'none',
-        duration: 1500
+        duration: 1500,
+        success: function() {
+          wx.redirectTo({
+            url: '../../my/login/login',
+          })
+          return
+        }
       })
-      setTimeout(function() {
-        wx.redirectTo({
-          url: '../../my/login/login',
-        })
-      }, 1500)
-      return
-    }
-    if (!that.data.collection.status) {
+    } else if (!that.data.collection.status) {
       that.setData({
         collection: {
           status: true,
@@ -283,48 +282,49 @@ Page({
       wx.showToast({
         title: '请先注册！',
         icon: 'none',
-        duration: 1500
-      })
-      setTimeout(function() {
-        wx.redirectTo({
-          url: '../../my/login/login',
-        })
-      }, 1500)
-      return
-    }
-    if (!that.data.zan.status) {
-      that.setData({
-        zan: {
-          status: true,
-          text: "已赞",
-          icon: "appreciatefill"
+        duration: 1500,
+        success: function() {
+          wx.redirectTo({
+            url: '../../my/login/login',
+          })
+          return
         }
       })
-      await wx.cloud.callFunction({
-        name: 'uploadInteraction',
-        data: {
-          'flag': 'like',
-          'userOpenid': app.globalData.openid,
-          'contextId': that.data.post._id
-        }
-      }).then(function(res) {
-        console.log("【detail调用函数uploadInteraction】【点赞成功】", res)
-        var pages = getCurrentPages();
-        var beforePage = pages[pages.length - 2];
-        beforePage.uploadLikeNum(that.data._options)
-      }).catch(function(err) {
-        console.log(err)
-        wx.showToast({
-          title: '点赞失败',
-        })
+    } else {
+      if (!that.data.zan.status) {
         that.setData({
           zan: {
             status: true,
-            text: "点赞",
-            icon: "appreciate"
+            text: "已赞",
+            icon: "appreciatefill"
           }
         })
-      })
+        await wx.cloud.callFunction({
+          name: 'uploadInteraction',
+          data: {
+            'flag': 'like',
+            'userOpenid': app.globalData.openid,
+            'contextId': that.data.post._id
+          }
+        }).then(function(res) {
+          console.log("【detail调用函数uploadInteraction】【点赞成功】", res)
+          var pages = getCurrentPages();
+          var beforePage = pages[pages.length - 2];
+          beforePage.uploadLikeNum(that.data._options)
+        }).catch(function(err) {
+          console.log(err)
+          wx.showToast({
+            title: '点赞失败',
+          })
+          that.setData({
+            zan: {
+              status: true,
+              text: "点赞",
+              icon: "appreciate"
+            }
+          })
+        })
+      }
     }
   },
 
@@ -385,7 +385,18 @@ Page({
         } else {
           app.globalData.wxname = _res.detail.userInfo.nickName
           app.globalData.avatarUrl = _res.detail.userInfo.avatarUrl
-          that.timeOutSubmit()
+          let bindtap = _res.currentTarget.dataset.bindtap
+          switch (bindtap) {
+            case 'timeOutSubmit':
+              that.timeOutSubmit()
+              break
+            case 'postZan':
+              that.postZan()
+              break
+            case 'postCollection':
+              that.postCollection()
+              break
+          }
         }
       }
     })
@@ -430,16 +441,16 @@ Page({
         wx.showToast({
           title: '请先注册！',
           icon: 'none',
-          duration: 1500
+          duration: 1500,
+          success: function() {
+            wx.redirectTo({
+              url: '../../my/login/login',
+            })
+            return
+          }
         })
-        setTimeout(function() {
-          wx.redirectTo({
-            url: '../../my/login/login',
-          })
-        }, 1500)
-        return
-      }
 
+      }
       wx.cloud.callFunction({
         name: 'uploadInteraction',
         data: {
@@ -622,23 +633,4 @@ Page({
     var currentPage = pages[pages.length - 1];
     beforePage.uploadViewNum(this.data._options)
   },
-
-  getInfo: async function() {
-    let that = this
-    await wx.getSetting({
-      success: function(res) {
-        if (!res.authSetting['scope.userInfo']) {
-          wx.showToast({
-            title: '您还没有授权！',
-            icon: 'none',
-            duration: 1500
-          })
-          return
-        } else {
-          that.timeOutSubmit()
-        }
-      }
-    })
-  }
-
 })

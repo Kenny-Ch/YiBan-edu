@@ -69,53 +69,29 @@ Page({
    */
   onLoad: async function(options) {
     const app = getApp()
-    if (app.globalData.isNew) {
-      await wx.showToast({
-        title: '请先注册！',
-        icon: 'none',
-        duration: 1500,
-        success: function() {
-          wx.redirectTo({
-            url: '../../my/login/login',
-          })
-          return
-        }
-      })
-    } else if (!app.globalData.isMatch) {
-      console.log("err")
-      await wx.showToast({
-        title: '还未匹配成功，暂时无法进入',
-        icon: 'none',
-        duration: 1500,
-        success: function() {
-          wx.navigateBack({})
-          return
-        }
-      })
-    } else {
-      wx.showLoading({
-        title: '加载中',
-      })
-      var that = this;
-      wx.getSystemInfo({
-        success: function(res) {
-          var Client = wx.getMenuButtonBoundingClientRect();
-          var height = res.windowHeight - (res.statusBarHeight + Client.height + (Client.top - res.statusBarHeight) * 2)
-          that.setData({
-            clientHeight: res.windowHeight,
-            height_sys: height - 80,
-          });
-        }
-      });
-      console.log('【classroom页面】传入参数：', options)
-      this.setData({
-        title: options.name,
-      })
-      this.getVideo(options).then(function(res) {
-        console.log("【classroom页面】video list加载成功")
-        wx.hideLoading()
-      });
-    }
+    wx.showLoading({
+      title: '加载中',
+    })
+    var that = this;
+    wx.getSystemInfo({
+      success: function(res) {
+        var Client = wx.getMenuButtonBoundingClientRect();
+        var height = res.windowHeight - (res.statusBarHeight + Client.height + (Client.top - res.statusBarHeight) * 2)
+        that.setData({
+          clientHeight: res.windowHeight,
+          height_sys: height - 80,
+        });
+      }
+    });
+    console.log('【classroom页面】传入参数：', options)
+    this.setData({
+      title: options.name,
+    })
+    this.getVideo(options).then(function(res) {
+      console.log("【classroom页面】video list加载成功")
+      wx.hideLoading()
+    });
+
   },
 
   /**
@@ -186,7 +162,7 @@ Page({
   },
 
   async getData(dataList) {
-    for (let item of dataList) {
+    for (let item of dataList.reverse()) {
       var data = {}
       data.time = item.videoTime;
       data.name = item.author

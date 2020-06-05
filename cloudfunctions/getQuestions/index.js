@@ -34,7 +34,8 @@ exports.main = async (event, context) => {
     for (let i = 0; i < batchTimes; i++) {
       var res = await db.collection('question').skip(i * MAX_LIMIT).limit(MAX_LIMIT).where({
         flag: event.flag
-      }).get()
+      })
+      .get()
       questions.push(res.data)
     }
 

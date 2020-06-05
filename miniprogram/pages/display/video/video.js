@@ -343,6 +343,39 @@ Page({
       commentContent: e.detail.value
     })
   },
+  bindGetUserInfo: function(res) {
+    console.log("【用户授权信息】", res)
+    const app = getApp()
+    let that = this
+    let _res = res
+    wx.getSetting({
+      success: function(res) {
+        if (!res.authSetting['scope.userInfo']) {
+          wx.showToast({
+            title: '请先授权！',
+            icon: 'none',
+            duration: 1500
+          })
+          return
+        } else {
+          app.globalData.wxname = _res.detail.userInfo.nickName
+          app.globalData.avatarUrl = _res.detail.userInfo.avatarUrl
+          let bindtap = _res.currentTarget.dataset.bindtap
+          switch (bindtap) {
+            case 'timeOutSubmit':
+              that.timeOutSubmit()
+              break
+            case 'postZan':
+              that.postZan()
+              break
+            case 'postCollection':
+              that.postCollection()
+              break
+          }
+        }
+      }
+    })
+  },
 
   /**
    * 提交评论
@@ -569,24 +602,6 @@ Page({
     var beforePage = pages[pages.length - 2];
     var currentPage = pages[pages.length - 1];
     beforePage.uploadViewNum(this.data._options)
-  },
-
-  getInfo: async function() {
-    let that = this
-    await wx.getSetting({
-      success: function(res) {
-        if (!res.authSetting['scope.userInfo']) {
-          wx.showToast({
-            title: '您还没有授权！',
-            icon: 'none',
-            duration: 1500
-          })
-          return
-        } else {
-          that.timeOutSubmit()
-        }
-      }
-    })
   },
 
   /**

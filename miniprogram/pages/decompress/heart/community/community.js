@@ -89,24 +89,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    const app = getApp()
-    if (app.globalData.isNew) {
-      wx.showToast({
-        title: '请先注册！',
-        icon: 'none',
-        duration: 1500,
-        success: function() {
-          wx.redirectTo({
-            url: '../../../my/login/login',
-          })
-        }
-      })
-
-      return
-    } else {
-      this.getCommunities();
-    }
-
+    this.getCommunities();
   },
 
   /**

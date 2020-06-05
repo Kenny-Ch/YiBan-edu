@@ -19,53 +19,38 @@ Page({
     var that = this
     const db = wx.cloud.database()
     const app = getApp()
-
-    if (app.globalData.isNew) {
-      wx.showToast({
-        title: '请先注册！',
-        icon: 'none',
-        duration: 1500,
-        success: function() {
-          wx.redirectTo({
-            url: '../../../my/login/login',
-          })
+    that.setData({
+      isNew: false
+    })
+    console.log("options", options)
+    if (options.status == 'person') {
+      wx.cloud.callFunction({
+        name: 'getComments',
+        data: {
+          openid: app.globalData.userInfo.openid
+        },
+        success: function(res) {
+          console.log("【tree调用函数getComments】", res.result)
+          that.setList(res.result[0])
+          wx.hideLoading()
         }
       })
-      return
     } else {
-      that.setData({
-        isNew: false
+      wx.cloud.callFunction({
+        name: 'getComments',
+        success: function(res) {
+          console.log("【tree调用函数getComments】", res.result)
+          that.setList(res.result[0])
+          wx.hideLoading()
+        }
       })
-      console.log("options", options)
-      if (options.status == 'person') {
-        wx.cloud.callFunction({
-          name: 'getComments',
-          data: {
-            openid: app.globalData.userInfo.openid
-          },
-          success: function(res) {
-            console.log("【tree调用函数getComments】", res.result)
-            that.setList(res.result[0])
-            wx.hideLoading()
-          }
-        })
-      } else {
-        wx.cloud.callFunction({
-          name: 'getComments',
-          success: function(res) {
-            console.log("【tree调用函数getComments】", res.result)
-            that.setList(res.result[0])
-            wx.hideLoading()
-          }
-        })
-      }
     }
   },
 
   async setList(result) {
     var that = this
     let i = 0;
-    for (let item of result) {
+    for (let item of result.reverse()) {
       var temp = {}
       temp._id = item._id
       if (item.isAnonymous) {

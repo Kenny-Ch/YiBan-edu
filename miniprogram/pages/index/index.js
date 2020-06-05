@@ -283,6 +283,40 @@ Page({
     }
   },
 
+  jumpToVideo: function(e) {
+    console.log(e)
+    let url = e.currentTarget.dataset.url
+    const app = getApp()
+    if (app.globalData.isNew) {
+      wx.showToast({
+        title: '请先注册！',
+        icon: 'none',
+        duration: 1500,
+        success: function() {
+          wx.navigateTo({
+            url: '../my/login/login',
+          })
+          return
+        }
+      })
+    } else if (!app.globalData.isMatch) {
+      console.log("err")
+      wx.showToast({
+        title: '还未匹配成功，暂时无法进入',
+        icon: 'none',
+        duration: 1500,
+        success: function() {
+          wx.navigateBack({})
+          return
+        }
+      })
+    } else {
+      wx.navigateTo({
+        url: url
+      })
+    }
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

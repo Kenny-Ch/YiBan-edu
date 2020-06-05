@@ -170,7 +170,6 @@ Page({
     }).then(res => {
       console.log("【artical调用函数getContext】", res)
       dataList = res.result;
-
     }).catch(err => {
       console.error(options.name, '获取失败', err)
     })
@@ -178,7 +177,7 @@ Page({
   },
 
   async getData(dataList) {
-    for (let item of dataList) {
+    for (let item of dataList.reverse()) {
       item.time = item.time.substring(0, 10);
       if (item.isArticle == false) {
         item.nav = this.data.Anvideo
