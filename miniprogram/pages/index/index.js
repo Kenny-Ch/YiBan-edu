@@ -99,6 +99,13 @@ Page({
       }
     });
 
+    wx.getUserInfo({
+      success: function(res) {
+        console.log("【index获取UserInfo】", res)
+        app.globalData.wxname = res.userInfo.nickName
+      }
+    })
+
 
     /**
      * 获取openid并存入全局变量中，同时查询个人信息是否存在
@@ -232,8 +239,6 @@ Page({
     }).catch(err => {
       console.log('appjs获取openid失败')
     })
-
-
   },
 
   //计算相隔天数

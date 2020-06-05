@@ -385,7 +385,7 @@ Page({
           'flag': "comment",
           'userOpenid': app.globalData.openid,
           'imgUrl': app.globalData.userInfo.avatarUrl,
-          'nickname': app.globalData.userInfo.name,
+          'nickname': app.globalData.wxname,
           'contextId': that.data.post._id,
           'comment': content
         },
@@ -399,7 +399,7 @@ Page({
               let commentList = "post.commentList"
               let item = {}
               item.imgUrl = app.globalData.userInfo.avatarUrl
-              item.nickname = app.globalData.userInfo.name
+              item.nickname = app.globalData.wxname
               item.comment = that.data.commentContent
               that.setData({
                 [commentList]: that.data.post.commentList.concat(item)

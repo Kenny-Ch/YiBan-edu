@@ -43,7 +43,7 @@ Page({
       data: {
         'openid': app.globalData.openid,
         'imgUrl': app.globalData.userInfo.avatarUrl,
-        'name': app.globalData.userInfo.name,
+        'name': app.globalData.wxname,
         'comment': that.data.context,
         'isAnonymous': that.data.check
       }
@@ -70,7 +70,7 @@ Page({
                 let data = {}
                 data._id = res.result._id
                 data.openid = app.globalData.openid
-                data.username = app.globalData.name
+                data.username = app.globalData.wxname
                 data.liuyan = that.data.context
                 data.dianzan = 0
                 data.pinglun = 0
