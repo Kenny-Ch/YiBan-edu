@@ -15,8 +15,8 @@
           <view class='top'>
             <view class="shu"></view>
             <view class='name'>{{item.name}}</view>
-            <view class='school'>{{item.school}}</view>
-            <view class="major">{{item.grade}}</view>
+            <view class='school'>{{item.perInfo.school}}</view>
+            <view class="major">{{item.perInfo.grade}}</view>
           </view>
           <view class='text1'>希望被辅导科目：
             <view class="text" style="margin-right:10rpx" wx:for="{{item.subject}}">{{item}}</view>
@@ -35,8 +35,8 @@
           <view class='top'>
             <view class="shu"></view>
             <view class='name'>{{item.name}}</view>
-            <view class='school'>{{item.school}}</view>
-            <view class="major">{{item.grade}}</view>
+            <view class='school'>{{item.perInfo.school}}</view>
+            <view class="major">{{item.perInfo.grade}}</view>
           </view>
           <view class='text1'>希望被辅导科目：
             <view class="text" style="margin-right:10rpx" wx:for="{{item.subject}}">{{item}}</view>
