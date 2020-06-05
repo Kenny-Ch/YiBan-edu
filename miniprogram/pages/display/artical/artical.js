@@ -80,6 +80,34 @@ Page({
     console.log("【artical浏览量增加】")
   },
 
+  uploadLikeNum: function(e) {
+    let index = e.index
+    let num = 'articals[' + index + '].praisePoints'
+    this.setData({
+      [num]: this.data.articals[index].praisePoints + 1
+    })
+    console.log("【artical点赞数增加】")
+  },
+
+  uploadCommentNum: function (e) {
+    let index = e.index
+    let num = 'articals[' + index + '].comment'
+    this.setData({
+      [num]: this.data.articals[index].comment + 1
+    })
+    console.log("【artical评论数增加】")
+  },
+
+  uploadStoreNum: function (e) {
+    let index = e.index
+    let num = 'articals[' + index + '].storeNum'
+    this.setData({
+      [num]: this.data.articals[index].storeNum + 1
+    })
+    console.log("【artical收藏数增加】")
+  },
+
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -153,15 +181,14 @@ Page({
   async getData(dataList) {
     for (let item of dataList) {
       item.time = item.time.substring(0, 10);
-      if(item.isArticle==false){
-        item.nav=this.data.Anvideo
-        item.introdution=item.subtitle
-      }
-      else {
+      if (item.isArticle == false) {
+        item.nav = this.data.Anvideo
+        item.introdution = item.subtitle
+      } else {
         item.nav = this.data.Anartical
       }
-      if(item.introdution.length>42){
-        item.introdution=item.introdution.substring(0, 42)+"……"
+      if (item.introdution.length > 42) {
+        item.introdution = item.introdution.substring(0, 42) + "……"
       }
       //获取留言数
       await this.getInteraction(item);

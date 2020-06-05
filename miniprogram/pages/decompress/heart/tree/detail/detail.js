@@ -14,13 +14,13 @@ Page({
       // pinglun: 5,
       // isShowDian: false,
       comment: [
-      //   {
-      //   imgUrl: '../../../../../images/my/touxiang.jpg',
-      //   nickname: '桂明',
-      //   time: '2020-04-19',
-      //   comment: '没问题，你快去吧。我在小区门口等你。',
-      // },
-       ],
+        //   {
+        //   imgUrl: '../../../../../images/my/touxiang.jpg',
+        //   nickname: '桂明',
+        //   time: '2020-04-19',
+        //   comment: '没问题，你快去吧。我在小区门口等你。',
+        // },
+      ],
       isDisable: false
     },
     focus: false,
@@ -151,6 +151,10 @@ Page({
         let isLike = "detail.isShowDian"
         //此方法返回的month从0开始计算月份，因此+1
         let month = res.data.time.getMonth() + 1
+        if (res.data.isAnonymous) {
+          username = '匿名',
+            imgUrl = '../../../../images/my/touxiang.jpg'
+        }
         that.setData({
           '_options': options,
           [isLike]: options.isLike,

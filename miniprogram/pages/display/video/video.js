@@ -245,6 +245,9 @@ Page({
         }
       }).then(function(res) {
         console.log("【video调用函数uploadInteraction】【收藏成功】", res)
+        var pages = getCurrentPages();
+        var beforePage = pages[pages.length - 2];
+        beforePage.uploadStoreNum(that.data._options)
       }).catch(function(err) {
         console.log(err)
         wx.showToast({
@@ -283,6 +286,9 @@ Page({
         }
       }).then(function(res) {
         console.log("【video调用函数uploadInteraction】【点赞成功】", res)
+        var pages = getCurrentPages();
+        var beforePage = pages[pages.length - 2];
+        beforePage.uploadLikeNum(that.data._options)
       }).catch(function(err) {
         console.log(err)
         wx.showToast({
@@ -398,6 +404,9 @@ Page({
           that.setData({
             [comment]: that.data.video.commentList.concat(item)
           })
+          var pages = getCurrentPages();
+          var beforePage = pages[pages.length - 2];
+          beforePage.uploadCommentNum(that.data._options)
         },
         fail: function(err) {
           console.log(err)
@@ -493,6 +502,9 @@ Page({
       })
   },
 
+  /*
+  获取推荐
+  */
   getRecommend: function(options) {
     let that = this
     const db = wx.cloud.database()
@@ -500,7 +512,8 @@ Page({
     db.collection(options.collection)
       .aggregate()
       .match({
-        flag: _.or('pickData', 'course', 'speech')
+        flag: _.or('pickData', 'course', 'speech'),
+        _id: _.not(_.eq(that.data._options.id))
       })
       .sample({
         size: 4
@@ -522,7 +535,7 @@ Page({
       })
   },
 
-  uploadViewNum: function () {
+  uploadViewNum: function() {
     let that = this
     wx.cloud.callFunction({
       name: 'uploadViewNum',
@@ -530,9 +543,9 @@ Page({
         collection: that.data._options.collection,
         _id: that.data._options.id
       }
-    }).then(function (res) {
+    }).then(function(res) {
       console.log("【detail调用函数uploadViewNum】", res)
-    }).catch(function (err) {
+    }).catch(function(err) {
       console.log(err)
     })
   },

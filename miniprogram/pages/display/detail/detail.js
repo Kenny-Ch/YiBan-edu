@@ -239,6 +239,9 @@ Page({
         }
       }).then(function(res) {
         console.log("【detail调用函数uploadInteraction】【收藏成功】", res)
+        var pages = getCurrentPages();
+        var beforePage = pages[pages.length - 2];
+        beforePage.uploadStoreNum(that.data._options)
       }).catch(function(err) {
         console.log(err)
         wx.showToast({
@@ -280,6 +283,9 @@ Page({
         }
       }).then(function(res) {
         console.log("【detail调用函数uploadInteraction】【点赞成功】", res)
+        var pages = getCurrentPages();
+        var beforePage = pages[pages.length - 2];
+        beforePage.uploadLikeNum(that.data._options)
       }).catch(function(err) {
         console.log(err)
         wx.showToast({
@@ -398,6 +404,9 @@ Page({
               that.setData({
                 [commentList]: that.data.post.commentList.concat(item)
               })
+              var pages = getCurrentPages();
+              var beforePage = pages[pages.length - 2];
+              beforePage.uploadCommentNum(that.data._options)
             }
           })
         },
