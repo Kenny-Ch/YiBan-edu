@@ -141,6 +141,9 @@ Page({
     console.log("options", options)
     let that = this
     const db = wx.cloud.database()
+    that.setData({
+      _options: options
+    })
     db.collection('comments').doc(options.id)
       .get()
       .then(function(res) {
@@ -161,7 +164,6 @@ Page({
           img = res.data.imgUrl
         }
         that.setData({
-          '_options': options,
           [isLike]: options.isLike,
           [likesLen]: parseInt(options.likesLen),
           [_id]: res.data._id,
@@ -175,6 +177,7 @@ Page({
         console.log(err)
       })
     this.getInteraction(options)
+    this.getZanStatus()
   },
 
 
@@ -204,6 +207,30 @@ Page({
       console.log(err)
     })
 
+  },
+  /*
+  获取点赞状态
+  */
+  getZanStatus() {
+    const db = wx.cloud.database()
+    const app = getApp()
+    let that = this
+    db.collection('interaction').where({
+        userOpenid: app.globalData.openid,
+        contextId: that.data._options.id,
+        flag: 'like'
+      })
+      .get()
+      .then(function(res) {
+        console.log("【detail获取数据库interaction数据】【flag: 'like'】", res)
+        if (res.data.length != 0) {
+          that.setData({
+            isShowDian: true
+          })
+        }
+      }).catch(function(err) {
+        console.log(err)
+      })
   },
 
 
@@ -252,26 +279,21 @@ Page({
 
   backToTree: function() {
     var pages = getCurrentPages(); //当前页面栈
-
-    if (pages.length > 1) {
-
-      var beforePage = pages[pages.length - 2]; //获取上一个页面实例对象
-
-      let data = {}
-      data.index = this.data._options.index
-      data.commentsLen = this.data.detail.pinglun
-      data.isLike = this.data.detail.isShowDian
-      data.likesLen = this.data.detail.dianzan
-      let date = new Date()
-      let month = date.getMonth() + 1
-      let day = date.getDate()
-      if (month <= 9)
-        month = '0' + month
-      if (day <= 9)
-        day = '0' + day
-      data.time = date.getFullYear() + '-' + month + '-' + day
-      beforePage.onChangeData(data); //触发父页面中的方法
-    }
+    var beforePage = pages[pages.length - 2]; //获取上一个页面实例对象
+    let data = {}
+    data.index = this.data._options.index
+    data.commentsLen = this.data.detail.pinglun
+    data.isLike = this.data.detail.isShowDian
+    data.likesLen = this.data.detail.dianzan
+    let date = new Date()
+    let month = date.getMonth() + 1
+    let day = date.getDate()
+    if (month <= 9)
+      month = '0' + month
+    if (day <= 9)
+      day = '0' + day
+    data.time = date.getFullYear() + '-' + month + '-' + day
+    beforePage.onChangeData(data); //触发父页面中的方法
   },
 
 
