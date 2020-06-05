@@ -45,24 +45,6 @@ exports.main = async (event, context) => {
 
   switch(flag){
     //老师
-    case 0:
-      try {
-        return await db.collection('person').add({
-          // data 字段表示需新增的 JSON 数据
-          data: {
-            openid: event.openid,
-            registerDate: new Date(),
-            job: event.job,
-            name: event.name,
-            perInfo:event.perInfo,
-          }
-        })
-      } catch (e) {
-        console.error(e)
-      }
-      break;
-
-    //学生
     case 1:
       try {
         return await db.collection('person').add({
@@ -72,6 +54,26 @@ exports.main = async (event, context) => {
             registerDate: new Date(),
             job: event.job,
             name: event.name,
+            avatarUrl: event.avatarUrl,
+            perInfo:event.perInfo,
+          }
+        })
+      } catch (e) {
+        console.error(e)
+      }
+      break;
+
+    //学生
+    case 0:
+      try {
+        return await db.collection('person').add({
+          // data 字段表示需新增的 JSON 数据
+          data: {
+            openid: event.openid,
+            registerDate: new Date(),
+            job: event.job,
+            name: event.name,
+            avatarUrl: event.avatarUrl,
             perInfo: event.perInfo
           }
         })
