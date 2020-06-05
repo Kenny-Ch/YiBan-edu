@@ -14,7 +14,7 @@
       </view>
     </view>
     <view class='open' wx:if="{{item.open}}">
-      <image src="{{item.QR_code}}" class='QR' ></image>
+      <image src="{{item.QR_code}}" class='QR' data-url="{{item.QR_code}}" bindtap="previewImage"></image>
     </view>
     <view class='close' wx:else></view>
   </view>

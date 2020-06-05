@@ -79,7 +79,12 @@ Page({
       fail: console.error
     })
   },
-
+  previewImage: function (e) {
+    wx.previewImage({
+      urls: e.target.dataset.url.split(',')
+      // 需要预览的图片http链接  使用split把字符串转数组。不然会报错
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
