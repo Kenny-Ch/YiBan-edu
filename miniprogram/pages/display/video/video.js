@@ -384,7 +384,7 @@ Page({
           'flag': "comment",
           'userOpenid': app.globalData.openid,
           'imgUrl': app.globalData.userInfo.avatarUrl,
-          'nickname': app.globalData.userInfo.name,
+          'nickname': app.globalData.wxname,
           'contextId': that.data._options.id,
           'comment': content
         },
@@ -399,7 +399,7 @@ Page({
           let item = {}
           let date = new Date()
           item.imgUrl = app.globalData.userInfo.avatarUrl
-          item.nickname = app.globalData.userInfo.name
+          item.nickname = app.globalData.wxname
           item.comment = content
           that.setData({
             [comment]: that.data.video.commentList.concat(item)
