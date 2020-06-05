@@ -126,5 +126,19 @@ Page({
         list: this.data.list.concat(data)
       })
     }
-  }
+  },
+
+  //仅用于video界面不报错
+  uploadViewNum: function () {
+
+  },
+  uploadLikeNum: function () {
+
+  },
+  uploadCommentNum: function () {
+
+  },
+  uploadStoreNum: function () {
+
+  },
 })

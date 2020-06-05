@@ -41,9 +41,6 @@ Page({
         }
       })
     }
-
-
-
   },
 
   async setList(result) {
@@ -165,6 +162,4 @@ Page({
       list: this.data.list.concat(data)
     })
   }
-
-
 })

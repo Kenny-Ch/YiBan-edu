@@ -103,11 +103,14 @@ Page({
               }
               let date = new Date()
               let month = date.getMonth() + 1
+              let day = date.getDate()
               if (month <= 9)
                 month = '0' + month
+              if (day <= 9)
+                day = '0' + day
+              item.time = date.getFullYear() + '-' + month + '-' + day
               item.imgUrl = app.globalData.userInfo.avatarUrl
               item.nickname = app.globalData.userInfo.name
-              item.time = date.getFullYear() + '-' + month + '-' + date.getDate()
               item.comment = content
               that.setData({
                 [comment]: that.data.detail.comment.concat(item),
@@ -127,7 +130,7 @@ Page({
         icon: 'none',
         duration: 1500
       })
-      console.info(err)
+      console.log(err)
       wx.hideLoading()
     }
   },
@@ -151,27 +154,26 @@ Page({
         let isLike = "detail.isShowDian"
         //此方法返回的month从0开始计算月份，因此+1
         let month = res.data.time.getMonth() + 1
-        if (res.data.isAnonymous) {
-          username = '匿名',
-            imgUrl = '../../../../images/my/touxiang.jpg'
+        let name = '匿名'
+        let img = '../../../../../images/my/touxiang.jpg'
+        if (!res.data.isAnonymous) {
+          name = res.data.name
+          img = res.data.imgUrl
         }
         that.setData({
           '_options': options,
           [isLike]: options.isLike,
           [likesLen]: parseInt(options.likesLen),
           [_id]: res.data._id,
-          [imgUrl]: res.data.imgUrl,
+          [imgUrl]: img,
           [context]: res.data.comment,
-          [username]: res.data.name,
+          [username]: name,
           [time]: res.data.time.getFullYear() + '年' + month + '月' + res.data.time.getDate() + '日',
         })
       })
       .catch(function(err) {
         console.log(err)
       })
-
-    console.log(this.data.detail.isShowDian)
-
     this.getInteraction(options)
   },
 
@@ -260,10 +262,19 @@ Page({
       data.commentsLen = this.data.detail.pinglun
       data.isLike = this.data.detail.isShowDian
       data.likesLen = this.data.detail.dianzan
+      let date = new Date()
+      let month = date.getMonth() + 1
+      let day = date.getDate()
+      if (month <= 9)
+        month = '0' + month
+      if (day <= 9)
+        day = '0' + day
+      data.time = date.getFullYear() + '-' + month + '-' + day
       beforePage.onChangeData(data); //触发父页面中的方法
-
     }
   },
+
+
 
 
   /**

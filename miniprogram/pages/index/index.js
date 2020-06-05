@@ -143,7 +143,6 @@ Page({
         var list = [];
 
         if (app.globalData.isMatch == true) {
-          console.log("if")
           var item = {};
           item.id = 0;
           item.big_title = "已提交匹配登记";
@@ -180,7 +179,6 @@ Page({
             swiperList: list,
           })
         } else if (app.globalData.isTeacher == 0) {
-          console.log("else if")
           var item1 = {};
           item1.id = 2;
           item1.big_title = "感谢您的志愿付出";
@@ -201,7 +199,6 @@ Page({
             swiperList: list,
           })
         } else {
-          console.log("else")
           var item = {};
           item.id = 0;
           item.big_title = "寻找你的以伴老师";
