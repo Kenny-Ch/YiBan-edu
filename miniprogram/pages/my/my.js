@@ -7,9 +7,7 @@ Page({
    */
   data: {
     userinfo: {
-      url: '../../images/my/touxiang.jpg',
-      name: '小明',
-      identity: '学生',
+      
     },
     // list:[{
     //   icon:'../../images/my/tongxunlu.png',

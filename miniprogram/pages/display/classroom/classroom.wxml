@@ -6,25 +6,208 @@
 <view class='title'>{{title}}</view>
 <view class="line"></view>
 <view class='con'>
-  <view wx:for="{{list}}" class='card'>
-    <navigator url="../video/video?id={{item._id}}&collection=inClass" hover-class="none">
-      <view class='row ii'>
-        <view class='shu'></view>
-        <view class='card-title'>{{item.title}}</view>
-      </view>
-      <view class='row ii'>
-        <image src="{{item.img}}" class='img'></image>
-        <view class='card-name'>{{item.name}}</view>
-        <!-- <image src="../../../images/display/shijian.png" class='shijian'></image>
-        <view class='card-have'>{{item.have}}</view> -->
-      </view>
-      <view class='row ii'>
-        <view class='card-time'>{{item.time}}</view>
-
-        <view class='chakan'>点击观看视频</view>
-        <text class="cuIcon-right text-gray size"></text>
-
-      </view>
-    </navigator>
-  </view>
+  <!--九大科目-->
+  <scroll-view scroll-x class='three-nav' scroll-left='{{x}}' scroll-with-animation='true' bindtap='tabSelect'>
+    <text wx:for='{{three}}' wx:key='{{index}}' class='item-nav {{i==index ? "active" : ""}}' data-i='{{index}}'>{{item.title}}</text>
+  </scroll-view>
+  <swiper current="{{i}}" class="swiper-box" duration="300" style="height:{{height_sys}}px" bindchange="bindChange">
+    <!--语文-->
+    <swiper-item>
+      <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
+        <view wx:for="{{list}}" class='card' wx:if="{{item.type == 'Chinese'}}">
+          <navigator url="../video/video?id={{item._id}}&collection=inClass" hover-class="none">
+            <view class='row ii'>
+              <view class='shu'></view>
+              <view class='card-title'>{{item.title}}</view>
+            </view>
+            <view class='row ii'>
+              <image src="{{item.img}}" class='img'></image>
+              <view class='card-name'>{{item.name}}</view>
+            </view>
+            <view class='row ii'>
+              <view class='card-time'>{{item.time}}</view>
+              <view class='chakan'>点击观看视频</view>
+              <text class="cuIcon-right text-gray size"></text>
+            </view>
+          </navigator>
+        </view>  
+      </scroll-view>
+    </swiper-item>
+    <!-- 数学 -->
+    <swiper-item>
+      <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
+        <view wx:for="{{list}}" class='card' wx:if="{{item.type == 'Math'}}">
+          <navigator url="../video/video?id={{item._id}}&collection=inClass" hover-class="none">
+            <view class='row ii'>
+              <view class='shu'></view>
+              <view class='card-title'>{{item.title}}</view>
+            </view>
+            <view class='row ii'>
+              <image src="{{item.img}}" class='img'></image>
+              <view class='card-name'>{{item.name}}</view>
+            </view>
+            <view class='row ii'>
+              <view class='card-time'>{{item.time}}</view>
+              <view class='chakan'>点击观看视频</view>
+              <text class="cuIcon-right text-gray size"></text>
+            </view>
+          </navigator>
+        </view>  
+      </scroll-view>
+    </swiper-item>
+    <!-- 英语 -->
+    <swiper-item>
+      <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
+        <view wx:for="{{list}}" class='card' wx:if="{{item.type == 'English'}}">
+          <navigator url="../video/video?id={{item._id}}&collection=inClass" hover-class="none">
+            <view class='row ii'>
+              <view class='shu'></view>
+              <view class='card-title'>{{item.title}}</view>
+            </view>
+            <view class='row ii'>
+              <image src="{{item.img}}" class='img'></image>
+              <view class='card-name'>{{item.name}}</view>
+            </view>
+            <view class='row ii'>
+              <view class='card-time'>{{item.time}}</view>
+              <view class='chakan'>点击观看视频</view>
+              <text class="cuIcon-right text-gray size"></text>
+            </view>
+          </navigator>
+        </view>  
+      </scroll-view>
+    </swiper-item>
+    <!-- 物理 -->
+    <swiper-item>
+      <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
+        <view wx:for="{{list}}" class='card' wx:if="{{item.type == 'Physics'}}">
+          <navigator url="../video/video?id={{item._id}}&collection=inClass" hover-class="none">
+            <view class='row ii'>
+              <view class='shu'></view>
+              <view class='card-title'>{{item.title}}</view>
+            </view>
+            <view class='row ii'>
+              <image src="{{item.img}}" class='img'></image>
+              <view class='card-name'>{{item.name}}</view>
+            </view>
+            <view class='row ii'>
+              <view class='card-time'>{{item.time}}</view>
+              <view class='chakan'>点击观看视频</view>
+              <text class="cuIcon-right text-gray size"></text>
+            </view>
+          </navigator>
+        </view>  
+      </scroll-view>
+    </swiper-item>
+     <!-- 生物 -->
+    <swiper-item>
+      <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
+        <view wx:for="{{list}}" class='card' wx:if="{{item.type == 'Biology'}}">
+          <navigator url="../video/video?id={{item._id}}&collection=inClass" hover-class="none">
+            <view class='row ii'>
+              <view class='shu'></view>
+              <view class='card-title'>{{item.title}}</view>
+            </view>
+            <view class='row ii'>
+              <image src="{{item.img}}" class='img'></image>
+              <view class='card-name'>{{item.name}}</view>
+            </view>
+            <view class='row ii'>
+              <view class='card-time'>{{item.time}}</view>
+              <view class='chakan'>点击观看视频</view>
+              <text class="cuIcon-right text-gray size"></text>
+            </view>
+          </navigator>
+        </view>  
+      </scroll-view>
+    </swiper-item>
+     <!-- 化学 -->
+    <swiper-item>
+      <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
+        <view wx:for="{{list}}" class='card' wx:if="{{item.type == 'Chemistry'}}">
+          <navigator url="../video/video?id={{item._id}}&collection=inClass" hover-class="none">
+            <view class='row ii'>
+              <view class='shu'></view>
+              <view class='card-title'>{{item.title}}</view>
+            </view>
+            <view class='row ii'>
+              <image src="{{item.img}}" class='img'></image>
+              <view class='card-name'>{{item.name}}</view>
+            </view>
+            <view class='row ii'>
+              <view class='card-time'>{{item.time}}</view>
+              <view class='chakan'>点击观看视频</view>
+              <text class="cuIcon-right text-gray size"></text>
+            </view>
+          </navigator>
+        </view>  
+      </scroll-view>
+    </swiper-item>
+    <!-- 政治 -->
+    <swiper-item>
+      <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
+        <view wx:for="{{list}}" class='card' wx:if="{{item.type == 'Politics'}}">
+          <navigator url="../video/video?id={{item._id}}&collection=inClass" hover-class="none">
+            <view class='row ii'>
+              <view class='shu'></view>
+              <view class='card-title'>{{item.title}}</view>
+            </view>
+            <view class='row ii'>
+              <image src="{{item.img}}" class='img'></image>
+              <view class='card-name'>{{item.name}}</view>
+            </view>
+            <view class='row ii'>
+              <view class='card-time'>{{item.time}}</view>
+              <view class='chakan'>点击观看视频</view>
+              <text class="cuIcon-right text-gray size"></text>
+            </view>
+          </navigator>
+        </view>  
+      </scroll-view>
+    </swiper-item>
+    <!-- 历史 -->
+    <swiper-item>
+      <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
+        <view wx:for="{{list}}" class='card' wx:if="{{item.type == 'History'}}">
+          <navigator url="../video/video?id={{item._id}}&collection=inClass" hover-class="none">
+            <view class='row ii'>
+              <view class='shu'></view>
+              <view class='card-title'>{{item.title}}</view>
+            </view>
+            <view class='row ii'>
+              <image src="{{item.img}}" class='img'></image>
+              <view class='card-name'>{{item.name}}</view>
+            </view>
+            <view class='row ii'>
+              <view class='card-time'>{{item.time}}</view>
+              <view class='chakan'>点击观看视频</view>
+              <text class="cuIcon-right text-gray size"></text>
+            </view>
+          </navigator>
+        </view>  
+      </scroll-view>
+    </swiper-item>
+   <!-- 地理 -->
+    <swiper-item>
+      <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
+        <view wx:for="{{list}}" class='card' wx:if="{{item.type == 'Geography'}}">
+          <navigator url="../video/video?id={{item._id}}&collection=inClass" hover-class="none">
+            <view class='row ii'>
+              <view class='shu'></view>
+              <view class='card-title'>{{item.title}}</view>
+            </view>
+            <view class='row ii'>
+              <image src="{{item.img}}" class='img'></image>
+              <view class='card-name'>{{item.name}}</view>
+            </view>
+            <view class='row ii'>
+              <view class='card-time'>{{item.time}}</view>
+              <view class='chakan'>点击观看视频</view>
+              <text class="cuIcon-right text-gray size"></text>
+            </view>
+          </navigator>
+        </view>  
+      </scroll-view>
+    </swiper-item>
+  </swiper> 
 </view>

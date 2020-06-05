@@ -6,29 +6,64 @@ Page({
    */
   data: {
     list:[
-    //   {
-    //   title:'历史课堂1：高中历史选择题技巧',
-    //   img:'cloud://yiban-edu.7969-yiban-edu-1301806073/teacher.png',
-    //   name:'以伴团队',
-    //   time:'13:41',
-    //   have:'未观看',
-    // },
-    // {
-    //   title:'语文课堂1：高考病句破题技巧',
-    //   img:'cloud://yiban-edu.7969-yiban-edu-1301806073/teacher.png',
-    //   name:'以伴团队',
-    //   time:'17:30',
-    //   have:'未观看',
-    // },
-    // {
-    //   title:'数学课堂1：求参数的取值范围',
-    //   img:'cloud://yiban-edu.7969-yiban-edu-1301806073/teacher.png',
-    //   name:'以伴团队',
-    //   time:'18:51',
-    //   have:'未观看',
-    // }
-  ]
+    ],
+    three: [{
+      title: "语文",  //Chinese
+    }, {
+      title: "数学",  //Math
+    }, {
+      title: "英语",  //English
+    }, {
+      title: "物理",  //Physics
+    }, {
+      title: "生物",  //Biology
+    }, {
+      title: "化学",  //Chemistry
+    }, {
+      title: "政治",  //Politics
+    }, {
+      title: "历史",  //History
+    }, {
+      title: "地理",  //Geography
+    }],
+    i: 0,
+    x: 0,
   },
+  changeSwipe: function(e) {
+    var adress =this.data.three[e.detail.current].title;
+    console.log("目前在", adress);
+    var type = e.detail.current;
+    this.setData({
+      i: type
+    });
+  },
+  tabSelect: function(e) {
+    console.log(e.target.dataset.i)
+    /*获取可视窗口宽度*/
+    　
+    var w = wx.getSystemInfoSync().windowWidth;　
+    var leng = this.data.three.length;　
+    var i = e.target.dataset.i;　
+    var disX = (i - 2) * w / leng;　
+    if (i != this.data.i) {　　
+      this.setData({　　
+        i: e.target.dataset.i　　
+      })　
+    }　
+    this.setData({　　
+      x: disX　
+    })
+  },
+  bindChange: function(e) {
+    var adress =this.data.three[e.detail.current].title;
+    console.log("目前在", adress);
+    var that = this;
+    that.setData({
+      i: e.detail.current
+    });
+  },
+
+
 
   /**
    * 生命周期函数--监听页面加载
@@ -37,6 +72,17 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
+    var that = this;
+    wx.getSystemInfo({
+      success: function(res) {
+        var Client = wx.getMenuButtonBoundingClientRect();
+        var height = res.windowHeight - (res.statusBarHeight + Client.height + (Client.top - res.statusBarHeight) * 2)
+        that.setData({
+          clientHeight: res.windowHeight,
+          height_sys: height - 80,
+        });
+      }
+    });
     console.log('【classroom页面】传入参数：', options)
     this.setData({
       title: options.name,
@@ -119,9 +165,10 @@ Page({
       var data = {}
       data.time = item.videoTime;
       data.name = item.author
-      data.img = item.coverImgUrl
+      data.img = item.authorImg
       data.title = item.title
       data._id = item._id
+      data.type=item.subtitle;
       this.setData({
         list: this.data.list.concat(data)
       })

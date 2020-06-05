@@ -31,6 +31,16 @@
   <view class='samll-title'>特色专业</view>
 </view>
 <view class='text1'>{{school.speciality}}</view>
+<view wx:if='{{school.vid.length>0}}'>
+  <view class='row bb'>
+    <view class="shu"></view>
+    <view class='samll-title'>以伴大学说</view>
+  </view>
+  <view class='vs'>
+    <txv-video vid="{{school.vid}}"   playerid="{{school.vid}}" autoplay="{{false}}"> </txv-video>
+  </view>
+  <view class='vsb'></view>
+</view>
 <view wx:if="{{school.contact.length>0}}">
   <view class='row bb'>
     <view class="shu"></view>
