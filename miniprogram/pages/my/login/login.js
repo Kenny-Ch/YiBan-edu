@@ -90,6 +90,7 @@ Page({
             openid: app.globalData.openid,
             registerDate: new Date(),
             job: input.job,
+            avatarUrl: app.globalData.avatarUrl,
             name: input.uname,
             perInfo: {
               gender: pick.gender,
