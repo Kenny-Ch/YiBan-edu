@@ -103,6 +103,7 @@ Page({
       success: function(res) {
         console.log("【index获取UserInfo】", res)
         app.globalData.wxname = res.userInfo.nickName
+        app.globalData.avatarUrl = res.userInfo.avatarUrl
       }
     })
 

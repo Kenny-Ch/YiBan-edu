@@ -11,8 +11,8 @@
       <view class='top'>
         <view class="shu"></view>
         <view class='name'>{{item.name}}</view>
-        <view class='school'>{{item.school}}</view>
-        <view class="major">{{item.major}}</view>
+        <view class='school'>{{item.perInfo.school}}</view>
+        <view class="major">{{item.perInfo.major}}</view>
       </view>
       <view class='text1'>擅长科目：
       <view class="text" style="margin-right: 15rpx;" wx:for="{{item.perInfo.speciality}}" wx:for-item="name">{{name}}</view>
