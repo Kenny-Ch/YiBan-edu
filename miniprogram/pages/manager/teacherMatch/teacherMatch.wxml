@@ -10,7 +10,7 @@
   <view wx:if='{{teacher.student.length>0}}'>
     <view class="smalltitle">待审核</view>
     <view class="card" wx:for="{{teacher.student}}">
-      <navigator class='bottom_card' url="../../join/studentDetail/studentDetail?status=false&type=manager&id={{item._id}}" hover-class="none">
+      <navigator class='bottom_card' url="../../join/studentDetail/studentDetail?status=false&type=manager&id={{item._id}}&openid={{teacher.openid}}" hover-class="none">
         <view class="left">
           <view class='top'>
             <view class="shu"></view>

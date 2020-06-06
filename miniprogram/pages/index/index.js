@@ -149,13 +149,14 @@ Page({
         var list = [];
 
         if (app.globalData.isMatch == true) {
-          var item = {};
-          item.id = 0;
-          item.big_title = "已提交匹配登记";
-          item.title = "高考陪伴公益行";
-          item.small_title = "对教育资源较为落后的四五线城市高中生进行“一对一高考陪伴”，助力高中生考上理想的大学院校！";
-          item.button = "查看登记";
+
           if (app.globalData.isTeacher == 0) {
+            var item = {};
+            item.id = 0;
+            item.big_title = "已提交匹配登记";
+            item.title = "高考陪伴公益行";
+            item.small_title = "对教育资源较为落后的四五线城市高中生进行“一对一高考陪伴”，助力高中生考上理想的大学院校！";
+            item.button = "查看登记";
             //是学生的情况
             if (app.globalData.userInfo.matchWaitList.length != 0) {
               //这里跳转待审核界面
@@ -167,7 +168,18 @@ Page({
               //这里跳转匹配界面
               item.url = "../matching/result/result";
             }
-          } 
+          } else {
+            //是老师的情况
+            var item = {};
+            item.id = 0;
+            item.big_title = "感谢您的志愿付出";
+            item.title = "一起迈向公益之路";
+            item.small_title = "只要你有足够的热情，想为公益事业做出一份自己的贡献，都可以申请成为以伴志愿者！";
+            item.button = "查看我的学生";
+            item.url = "../join/myStudent/myStudent";
+            list.push(item)
+            item.url = "../join/myStudent/myStudent?id=" + app.globalData.userInfo._id;
+          }
 
           list.push(item)
           var item1 = {};

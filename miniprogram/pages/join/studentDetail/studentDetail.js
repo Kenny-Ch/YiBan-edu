@@ -39,6 +39,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    // console.log(options)
     let that = this
     const db = wx.cloud.database()
     db.collection('person').doc(options.id)
@@ -59,11 +60,14 @@ Page({
         that.setData({
           student: res.data
         })
-        if (options.type == 'manager' && options.status == 'false') {
+        if (options.status == 'false') {
           that.setData({
             ['student.isAdopt']: false
           })
         }
+        that.setData({
+          _options: options
+        })
       }).catch(function(err) {
         console.log(err)
       })
@@ -100,6 +104,42 @@ Page({
         break
     }
     return word
+  },
+
+  checkMatch: function(e) {
+    const app = getApp()
+    let that = this
+    let status = e.currentTarget.dataset.status
+    let teaOpenid = ''
+    if (that.data._options.type == 'teacher') {
+      teaOpenid = app.globalData.userInfo.openid
+    } else {
+      teaOpenid = that.data._options.openid
+    }
+    console.log(teaOpenid)
+    wx.cloud.callFunction({
+      name: 'chooseStuMatch',
+      data: {
+        teaOpenid: teaOpenid,
+        stuOpenid: that.data.student.openid,
+        res: status == 'true' ? 1 : 0
+      }
+    }).then(function(res) {
+      console.log("【studentDetail调用函数chooseStuMatch】", res)
+      wx.showToast({
+        title: res.result,
+        icon: 'none',
+        duration: 1500,
+        mask: true,
+        success: function() {
+          that.setData({
+            ['student.isAdopt']: true
+          })
+        }
+      })
+    }).catch(function(err) {
+      console.log(err)
+    })
   },
 
   /**

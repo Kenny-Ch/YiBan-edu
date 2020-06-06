@@ -70,7 +70,8 @@ Page({
           teacher: {
             name: res.result.list[0].name,
             student: matchWaitList,
-            studentAdopt: matchList
+            studentAdopt: matchList,
+            openid: options.openid
           }
         })
       })

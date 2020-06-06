@@ -7,7 +7,7 @@
 <view class="line"></view>
 <view class="con">
   <view class="card" wx:for="{{teacher}}">
-    <navigator class="left" url="../teacherMatch/teacherMatch?id={{item._id}}" hover-class="none">
+    <navigator class="left" url="../teacherMatch/teacherMatch?id={{item._id}}&openid={{item.openid}}" hover-class="none">
       <view class='top'>
         <view class="shu"></view>
         <view class='name'>{{item.name}}</view>

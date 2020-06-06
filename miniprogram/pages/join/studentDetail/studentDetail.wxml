@@ -56,7 +56,7 @@
   </view>
 </view>
 <view class='rr' wx:if="{{student.isAdopt==false}}">
-  <button style="width: 284rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn'>通过审核</button>
-  <button style="width: 284rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn'>退回申请</button>
+  <button bindtap="checkMatch" data-status="true" style="width: 284rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn'>通过审核</button>
+  <button bindtap="checkMatch" data-status="false" style="width: 284rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn'>退回申请</button>
 </view>
 <view class="hh"></view>
