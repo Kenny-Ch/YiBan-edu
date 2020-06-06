@@ -167,10 +167,7 @@ Page({
               //这里跳转匹配界面
               item.url = "../matching/result/result";
             }
-          } else {
-            //是老师的情况
-            item.url = "../join/myStudent/myStudent?id=" + app.globalData.userInfo._id;
-          }
+          } 
 
           list.push(item)
           var item1 = {};
