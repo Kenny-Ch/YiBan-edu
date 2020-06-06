@@ -6,6 +6,7 @@ Page({
    */
   data: {
     schoollist: [],
+    bottomtext:'------到底啦------',
   },
 
   /**

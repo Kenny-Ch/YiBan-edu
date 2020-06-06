@@ -51,6 +51,7 @@ Page({
     ],
     Anartical: "../detail/detail",
     Anvideo: "../video/video",
+    bottomtext:'------到底啦------',
   },
 
   /**

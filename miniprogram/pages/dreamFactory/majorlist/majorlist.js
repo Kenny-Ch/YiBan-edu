@@ -48,6 +48,7 @@ Page({
     //     ],
     //   },
     // ]
+    bottomtext:'------到底啦------',
   },
   jumpDetail: function(e) {
     console.log(e)

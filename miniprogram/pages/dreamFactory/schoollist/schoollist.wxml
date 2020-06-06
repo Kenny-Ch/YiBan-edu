@@ -20,5 +20,6 @@
         <view class='rank'>全国排名：{{item.rank.alumni}}</view>
       </view>
     </navigator>
+    <view class='uu'></view>
 </view>
-<view class='uu'></view>
+<view class='bott'>{{bottomtext}}</view>

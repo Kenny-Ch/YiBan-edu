@@ -104,3 +104,11 @@
   margin-left:32rpx ;
   margin-top:5rpx ;
 }
+.bott{
+	width: 100%rpx;
+	color: rgba(80, 80, 80, 1);
+	font-size: 24rpx;
+	line-height: 150%;
+	text-align: center;
+	margin:20rpx ;
+ }

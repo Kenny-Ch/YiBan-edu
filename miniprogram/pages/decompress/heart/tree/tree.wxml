@@ -34,4 +34,5 @@
       <view class='num'>{{item.pinglun}}</view>
     </view>
   </view>
+  <view class='bott'>{{bottomtext}}</view>
 </view>

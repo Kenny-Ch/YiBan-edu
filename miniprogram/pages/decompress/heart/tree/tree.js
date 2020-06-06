@@ -6,7 +6,8 @@ Page({
    */
   data: {
     list: [],
-    isNew: true
+    isNew: true,
+    bottomtext:'------到底啦------',
   },
 
   /**
