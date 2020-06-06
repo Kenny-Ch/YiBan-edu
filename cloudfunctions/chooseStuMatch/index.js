@@ -95,7 +95,8 @@ exports.main = async(event, context) => {
         })
         .update({
           data: {
-            matchWaitList: stuAftWaitList
+            matchWaitList: stuAftWaitList,
+            matchReject: true
           },
         })
     } catch (e) {

@@ -158,7 +158,10 @@ Page({
             item.small_title = "对教育资源较为落后的四五线城市高中生进行“一对一高考陪伴”，助力高中生考上理想的大学院校！";
             item.button = "查看登记";
             //是学生的情况
-            if (app.globalData.userInfo.matchWaitList.length != 0) {
+            if (app.globalData.userInfo.matchReject) {
+              //匹配失败
+              item.url = "../matching/matching"
+            } else if (app.globalData.userInfo.matchWaitList.length != 0) {
               //这里跳转待审核界面
               item.url = "../matching/teacher/teacher?status=false&id=" + app.globalData.userInfo.matchWaitList[0];
             } else if (app.globalData.userInfo.matchList.length != 0) {
@@ -341,6 +344,23 @@ Page({
                 url: '../my/login/login',
               })
             }, 1500)
+          }
+        })
+      } else if (app.globalData.userInfo.matchReject) {
+        wx.showModal({
+          title: '匹配失败！',
+          content: '可能是信息填写错误导致，请重新填写信息~',
+          showCancel: true,
+          confirmText: '重新填写',
+          success: function(res) {
+            if (res.confirm) {
+              console.log('用户点击确定')
+              wx.navigateTo({
+                url: '../matching/matching',
+              })
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+            }
           }
         })
       } else {
