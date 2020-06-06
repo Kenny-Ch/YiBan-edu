@@ -3,3 +3,35 @@
   <view slot="backText">返回</view>
   <view slot="content">以伴edu</view>
 </cu-custom>
+<view class="title">管理后台</view>
+<view class='title-bottom'>管理员可在这里对用户的评论进行审核以及查看老师与学生的匹配情况。</view>
+<!--用户评论审核-->
+<navigator url="" hover-class="none">
+  <view class='card' style="background-image: linear-gradient( 90deg, #FFAA85 10%, #B3315F 100%);">
+    <view class='text'>
+      <view class="text-title">用户评论审核</view>
+      <view class='text-titlebottom'>为避免用户发表不当言论，审核需谨慎哦</view>
+    </view>
+    <image src='../../images/manager/pinglun.png' class='img'></image>
+  </view>
+</navigator>
+<!--师生匹配情况-->
+<view bindtap="jump" data-url="./viewTeacher/viewTeacher" hover-class="none">
+  <view class='card' style="background-image: linear-gradient( 90deg, #97ABFF 10%, #123597 100%);">
+    <view class='text'>
+      <view class="text-title">师生匹配情况</view>
+      <view class='text-titlebottom'>这里可以查看老师与学生的匹配情况</view>
+    </view>
+    <image src='../../images/manager/pipeifangshi.png' class='img'></image>
+  </view>
+</view>
+<!--志愿者老师审核-->
+<view bindtap="jump" data-url="" hover-class="none">
+  <view class='card' style="background-image: linear-gradient( 90deg, #FF7AF5 10%, #513162 100%);">
+    <view class='text'>
+      <view class="text-title">志愿者老师审核</view>
+      <view class='text-titlebottom'>对志愿者进行严格审核，保证伴学服务质量</view>
+    </view>
+    <image src='../../images/manager/shenhe.png' class='img'></image>
+  </view>
+</view>
