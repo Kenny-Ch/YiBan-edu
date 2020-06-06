@@ -10,19 +10,19 @@
   <view wx:if='{{teacher.student.length>0}}'>
     <view class="smalltitle">待审核</view>
     <view class="card" wx:for="{{teacher.student}}">
-      <navigator class='bottom_card' url="" hover-class="none">
+      <navigator class='bottom_card' url="../studentDetail/studentDetail?status=false&type=teacher&id={{item._id}}" hover-class="none">
         <view class="left">
           <view class='top'>
             <view class="shu"></view>
             <view class='name'>{{item.name}}</view>
-            <view class='school'>{{item.school}}</view>
-            <view class="major">{{item.grade}}</view>
+            <view class='school'>{{item.perInfo.school}}</view>
+            <view class="major">{{item.perInfo.grade}}</view>
           </view>
-          <view class="bottom">
-            <view class="subject">希望被辅导科目：{{item.subject[0]}}、{{item.subject[1]}}、{{item.subject[2]}}</view>
+          <view class='text1'>希望被辅导科目：
+            <view class="text" style="margin-right:10rpx" wx:for="{{item.subject}}">{{item}}</view>
           </view>
         </view>
-        <image src="../.../../../../images/manager/toBeReviewed.svg" class="right"  data-id="{{item.id}}"></image>   
+        <image src="../.../../../../images/manager/toBeReviewed.svg" class="right" data-id="{{item.id}}"></image>
       </navigator>
     </view>
   </view>
@@ -30,19 +30,19 @@
   <view wx:if='{{teacher.studentAdopt.length>0}}'>
     <view class="smalltitle">已通过</view>
     <view class="card" wx:for="{{teacher.studentAdopt}}">
-      <navigator class='bottom_card' url="" hover-class="none">
+      <navigator class='bottom_card' url="../studentDetail/studentDetail?status=true&type=teacher&id={{item._id}}" hover-class="none">
         <view class="left">
           <view class='top'>
             <view class="shu"></view>
             <view class='name'>{{item.name}}</view>
-            <view class='school'>{{item.school}}</view>
-            <view class="major">{{item.grade}}</view>
+            <view class='school'>{{item.perInfo.school}}</view>
+            <view class="major">{{item.perInfo.grade}}</view>
           </view>
-          <view class="bottom">
-            <view class="subject">希望被辅导科目：{{item.subject[0]}}、{{item.subject[1]}}、{{item.subject[2]}}</view>
+          <view class='text1'>希望被辅导科目：
+            <view class="text" style="margin-right:10rpx" wx:for="{{item.subject}}">{{item}}</view>
           </view>
         </view>
-        <image src="../.../../../../images/manager/haveBeReviewed.svg" class="right"  data-id="{{item.id}}"></image>   
+        <image src="../.../../../../images/manager/haveBeReviewed.svg" class="right" data-id="{{item.id}}"></image>
       </navigator>
     </view>
   </view>

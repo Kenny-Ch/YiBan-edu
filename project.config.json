@@ -307,6 +307,13 @@
 					"pathName": "pages/manager/teacherMatch/teacherMatch",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": 37,
+					"name": "pages/join/studentDetail/studentDetail",
+					"pathName": "pages/join/studentDetail/studentDetail",
+					"query": "id=37e26adb5ec29bfb00f9357627ee1f29",
+					"scene": null
 				}
 			]
 		}

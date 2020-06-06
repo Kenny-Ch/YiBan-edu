@@ -169,7 +169,7 @@ Page({
             }
           } else {
             //是老师的情况
-            item.url = "../manager/teacherMatch/teacherMatch?id=" + app.globalData.userInfo._id;
+            item.url = "../join/myStudent/myStudent?id=" + app.globalData.userInfo._id;
           }
 
           list.push(item)

@@ -48,11 +48,11 @@
   </view>
   <view class="cu-form-group">
     <view class="title wd">学习习惯</view>
-    <view class='tex'>{{student.learning}}</view>
+    <view class='tex'>{{student.matchInfo.habitAndPlan}}</view>
   </view>
   <view class="cu-form-group">
     <view class="title wd">对老师期望</view>
-    <view class="tex">{{student.expectationForTeacher}}</view>
+    <view class="tex">{{student.matchInfo.expectation}}</view>
   </view>
 </view>
 <view class='rr' wx:if="{{student.isAdopt==false}}">
