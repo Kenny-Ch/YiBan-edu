@@ -37,8 +37,8 @@
     </view>
   </radio-group>
   <view class='text_title'>学习习惯与学习计划：</view>
-  <textarea name='leaning' auto-height class='leaning' bindinput="getCustom" />
+  <textarea name='leaning' auto-height class='leaning' bindinput="getCustom" value="{{custom}}" />
   <view class='text_title'>对老师的期望：</view>
-  <textarea name='teacher' auto-height class='leaning' bindinput="getWilling" />
+  <textarea name='teacher' auto-height class='leaning' bindinput="getWilling" value="{{willing}}" />
   <button form-type="submit" style="width: 342rpx;min-height: 50rpx;border-radius: 55rpx;" bindtap="uploadMatchInfo">提交登记</button>
 </form>

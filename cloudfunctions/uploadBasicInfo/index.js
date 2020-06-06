@@ -77,6 +77,7 @@ exports.main = async(event, context) => {
             name: event.name,
             avatarUrl: event.avatarUrl,
             perInfo: event.perInfo,
+            matchReject: false,
             matchList: [],
             matchWaitList: []
           }

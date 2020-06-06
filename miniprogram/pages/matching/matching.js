@@ -189,7 +189,81 @@ Page({
    * 生命周期函数--监听页面加载3
    */
   onLoad: function(options) {
-
+    const app = getApp()
+    if (app.globalData.matchInfo != undefined) {
+      let info = app.globalData.matchInfo
+      this.setData({
+        subject: [{
+          id: 1,
+          name: '语文',
+          en: 'Chinese',
+          checked: info.weakSubject['Chinese'] != undefined ? true : false,
+          score: info.weakSubject['Chinese'],
+        }, {
+          id: 2,
+          name: '数学',
+          en: 'Mathematics',
+          checked: info.weakSubject['Mathematics'] != undefined ? true : false,
+          score: info.weakSubject['Mathematics'],
+        }, {
+          id: 3,
+          name: '英语',
+          en: 'English',
+          checked: info.weakSubject['English'] != undefined ? true : false,
+          score: info.weakSubject['English'],
+        }, {
+          id: 4,
+          name: '物理',
+          en: 'Physics',
+          checked: info.weakSubject['Physics'] != undefined ? true : false,
+          score: info.weakSubject['Physics'],
+        }, {
+          id: 5,
+          name: '化学',
+          en: 'Chemistry',
+          checked: info.weakSubject['Chemistry'] != undefined ? true : false,
+          score: info.weakSubject['Chemistry'],
+        }, {
+          id: 6,
+          name: '生物',
+          en: 'Biology',
+          checked: info.weakSubject['Biology'] != undefined ? true : false,
+          score: info.weakSubject['Biology'],
+        }, {
+          id: 7,
+          name: '政治',
+          en: 'Politics',
+          checked: info.weakSubject['Politics'] != undefined ? true : false,
+          score: info.weakSubject['Politics'],
+        }, {
+          id: 8,
+          name: '历史',
+          en: 'History',
+          checked: info.weakSubject['History'] != undefined ? true : false,
+          score: info.weakSubject['History'],
+        }, {
+          id: 9,
+          name: '地理',
+          en: 'Geography',
+          checked: info.weakSubject['Geography'] != undefined ? true : false,
+          score: info.weakSubject['Geography'],
+        }],
+        judge: [{
+          name: '是',
+          checked: true,
+          value: true
+        }, {
+          name: '否',
+          checked: false,
+          value: false
+        }],
+        punch: info.willCheckIn,
+        class: info.willMeeting,
+        getAlong: info.willGetAlong,
+        custom: info.habitAndPlan,
+        willing: info.expectation,
+      })
+    }
   },
 
   /**
