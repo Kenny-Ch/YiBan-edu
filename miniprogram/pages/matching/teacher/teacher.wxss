@@ -41,7 +41,7 @@
 .info {
   width: 200rpx;
   height: 200rpx;
-  position: fixed;
+  position: absolute;
   top: 174rpx;
   border-radius: 101rpx;
 }
