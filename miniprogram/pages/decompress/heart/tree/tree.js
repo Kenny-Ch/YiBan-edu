@@ -61,7 +61,9 @@ Page({
         temp.username = item.name
       }
       console.log(item)
-      temp.time = item.time.substring(0, 10)
+      
+      var util = require('../../../template/unit.js');  
+      temp.time =util.formatTime(new Date(item.time));
       temp.liuyan = item.comment
       temp.contextId = item._id
       temp.index = i
@@ -162,8 +164,10 @@ Page({
       data.userimg = '../../../../images/my/touxiang.jpg'
       data.username = '匿名'
     }
+    let list=[];
+    list.push(data);
     this.setData({
-      list: this.data.list.concat(data)
+      list: list.concat(this.data.list)
     })
   }
 })

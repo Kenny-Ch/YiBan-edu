@@ -84,13 +84,7 @@ Page({
               if (pages.length > 1) {
                 var beforePage = pages[pages.length - 2] //获取上一个页面实例对象
                 let date = new Date()
-                //此方法返回的month从0开始计算月份，因此+1
-                let month = date.getMonth() + 1
-                let day = date.getDate()
-                if (month <= 9)
-                  month = '0' + month
-                if (day <= 9)
-                  day = '0' + day
+                var util = require('../../../../template/unit.js');  
                 let data = {}
                 data._id = res.result._id
                 data.openid = app.globalData.openid
@@ -99,7 +93,7 @@ Page({
                 data.dianzan = 0
                 data.pinglun = 0
                 data.contextId = res.result._id
-                data.time = date.getFullYear() + '-' + month + '-' + day
+                data.time = util.formatTime(date);
                 data.userimg = app.globalData.userInfo.avatarUrl
                 data.isAnonymous = that.data.check
                 data.isLike = false
