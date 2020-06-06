@@ -55,7 +55,6 @@ Page({
     }).catch(function(err) {
       console.log(err)
     })
-
   },
 
   //将数据库内科目的英文转成中文显示
@@ -114,7 +113,7 @@ Page({
           }).then(function(res) {
             console.log("【matching/result调用函数requestTeaMatch】", res)
             wx.navigateTo({
-              url: '../teacher/teacher?id=' + openid
+              url: '../teacher/teacher?status=false&id=' + openid
             })
           }).catch(function(err) {
             console.log(err)

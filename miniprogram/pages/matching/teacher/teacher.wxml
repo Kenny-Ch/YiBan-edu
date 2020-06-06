@@ -18,5 +18,5 @@
     </view>
     <image src="{{user.QR}}" class='QR' data-url="{{user.QR}}" bindtap="previewImage"></image>
   </view>
-  <view class='card-bottom'>{{result?'审核通过':'正在审核中'}}</view>
+  <view class='card-bottom'>{{result=='true'?'审核通过':'正在审核中'}}</view>
 </view>

@@ -16,7 +16,7 @@ Page({
 
       QR: '../../../images/QR.jpg',
     },
-    result: '审核通过', //或'正在审核中'
+    result: false, //或'正在审核中'
   },
   previewImage: function (e) {
     wx.previewImage({
