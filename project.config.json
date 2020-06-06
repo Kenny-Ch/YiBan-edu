@@ -128,8 +128,8 @@
 				},
 				{
 					"id": 11,
-					"name": "pages/display/classroom/classrooom",
-					"pathName": "pages/display/classroom/classrooom",
+					"name": "pages/display/classroom/classroom",
+					"pathName": "pages/display/classroom/classroom",
 					"query": "",
 					"scene": null
 				},
@@ -291,18 +291,21 @@
 					"id": -1,
 					"name": "pages/manager/manager",
 					"pathName": "pages/manager/manager",
+					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "pages/manager/viewTeacher/viewTeacher",
 					"pathName": "pages/manager/viewTeacher/viewTeacher",
+					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "pages/manager/teacherMatch/teacherMatch",
 					"pathName": "pages/manager/teacherMatch/teacherMatch",
+					"query": "",
 					"scene": null
 				}
 			]

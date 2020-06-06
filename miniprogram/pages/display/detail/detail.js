@@ -224,11 +224,14 @@ Page({
         title: '请先注册！',
         icon: 'none',
         duration: 1500,
+        mask: true,
         success: function() {
-          wx.redirectTo({
-            url: '../../my/login/login',
-          })
-          return
+          setTimeout(function() {
+            wx.navigateTo({
+              url: '../../my/login/login',
+            })
+            return
+          }, 1500)
         }
       })
     } else if (!that.data.collection.status) {
@@ -284,10 +287,12 @@ Page({
         icon: 'none',
         duration: 1500,
         success: function() {
-          wx.redirectTo({
-            url: '../../my/login/login',
-          })
-          return
+          setTimeout(function() {
+            wx.navigateTo({
+              url: '../my/login/login',
+            })
+            return
+          }, 1500)
         }
       })
     } else {
@@ -379,7 +384,8 @@ Page({
           wx.showToast({
             title: '请先授权！',
             icon: 'none',
-            duration: 1500
+            duration: 1500,
+            mask: true
           })
           return
         } else {
@@ -442,51 +448,55 @@ Page({
           title: '请先注册！',
           icon: 'none',
           duration: 1500,
+          mask: true,
           success: function() {
-            wx.redirectTo({
-              url: '../../my/login/login',
-            })
-            return
+            setTimeout(function() {
+              wx.navigateTo({
+                url: '../../my/login/login',
+              })
+              return
+            }, 1500)
           }
         })
 
-      }
-      wx.cloud.callFunction({
-        name: 'uploadInteraction',
-        data: {
-          'flag': "comment",
-          'userOpenid': app.globalData.openid,
-          'imgUrl': app.globalData.avatarUrl,
-          'nickname': app.globalData.wxname,
-          'contextId': that.data.post._id,
-          'comment': content
-        },
-        success: function(res) {
-          console.log("【detail调用函数uploadInteraction】【flag: 'comment'】", res)
-          wx.showToast({
-            title: '发送成功',
-            icon: 'none',
-            duration: 1500,
-            success: function() {
-              let commentList = "post.commentList"
-              let item = {}
-              item.imgUrl = app.globalData.avatarUrl
-              item.nickname = app.globalData.wxname
-              item.comment = that.data.commentContent
-              that.setData({
-                [commentList]: that.data.post.commentList.concat(item)
-              })
-              var pages = getCurrentPages();
-              var beforePage = pages[pages.length - 2];
-              beforePage.uploadCommentNum(that.data._options)
-            }
-          })
-        },
-        fail: function(err) {
-          console.log(err)
-        }
-      })
+      } else {
 
+        wx.cloud.callFunction({
+          name: 'uploadInteraction',
+          data: {
+            'flag': "comment",
+            'userOpenid': app.globalData.openid,
+            'imgUrl': app.globalData.avatarUrl,
+            'nickname': app.globalData.wxname,
+            'contextId': that.data.post._id,
+            'comment': content
+          },
+          success: function(res) {
+            console.log("【detail调用函数uploadInteraction】【flag: 'comment'】", res)
+            wx.showToast({
+              title: '发送成功',
+              icon: 'none',
+              duration: 1500,
+              success: function() {
+                let commentList = "post.commentList"
+                let item = {}
+                item.imgUrl = app.globalData.avatarUrl
+                item.nickname = app.globalData.wxname
+                item.comment = that.data.commentContent
+                that.setData({
+                  [commentList]: that.data.post.commentList.concat(item)
+                })
+                var pages = getCurrentPages();
+                var beforePage = pages[pages.length - 2];
+                beforePage.uploadCommentNum(that.data._options)
+              }
+            })
+          },
+          fail: function(err) {
+            console.log(err)
+          }
+        })
+      }
     } catch (err) {
       wx.showToast({
         title: '程序有一点点小异常，操作失败啦',
@@ -496,6 +506,7 @@ Page({
       console.log(err)
       wx.hideLoading()
     }
+
   },
   /**
    * 点击评论内容回复

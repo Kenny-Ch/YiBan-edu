@@ -38,22 +38,23 @@ Page({
   onLoad: function(options) {
     var that = this
     const app = getApp()
-    wx.cloud.callFunction({
-      name: 'matchTeacher',
-      data: {
-        weakSubject: app.globalData.matchInfo.weakSubject
-      }
-    }).then(function(res) {
-      console.log("matching/result调用函数matchTeacher", res)
-      for (let i in res.result)
-        for (let j in res.result[i].perInfo.speciality)
-          res.result[i].perInfo.speciality[j] = that.changeLanguage(res.result[i].perInfo.speciality[j])
-      that.setData({
-        list: res.result
-      })
-    }).catch(function(err) {
-      console.log(err)
-    })
+    console.log(app.globalData)
+    // wx.cloud.callFunction({
+    //   name: 'matchTeacher',
+    //   data: {
+    //     weakSubject: app.globalData.matchInfo.weakSubject
+    //   }
+    // }).then(function(res) {
+    //   console.log("matching/result调用函数matchTeacher", res)
+    //   for (let i in res.result)
+    //     for (let j in res.result[i].perInfo.speciality)
+    //       res.result[i].perInfo.speciality[j] = that.changeLanguage(res.result[i].perInfo.speciality[j])
+    //   that.setData({
+    //     list: res.result
+    //   })
+    // }).catch(function(err) {
+    //   console.log(err)
+    // })
 
   },
 
@@ -121,6 +122,12 @@ Page({
         }
       }
     })
+  },
+
+  back: function() {
+    var pages = getCurrentPages()
+    var beforePage = pages[pages.length - 2]
+    beforePage.onLoad()
   },
 
   /**

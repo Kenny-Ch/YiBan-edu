@@ -354,7 +354,7 @@ Page({
           wx.showToast({
             title: '请先授权！',
             icon: 'none',
-            duration: 1500
+            duration: 1500,
           })
           return
         } else {
@@ -415,50 +415,58 @@ Page({
         wx.showToast({
           title: '请先注册！',
           icon: 'none',
-          duration: 1500
+          duration: 1500,
+          mask: true,
+          success: function() {
+            setTimeout(function() {
+              wx.redirectTo({
+                url: '../../my/login/login',
+              })
+              return
+            }, 1500)
+          }
         })
-        setTimeout(function() {
-          wx.redirectTo({
-            url: '../../my/login/login',
-          })
-        }, 1500)
-        return
-      }
+      } else {
 
-      await wx.cloud.callFunction({
-        name: 'uploadInteraction',
-        data: {
-          'flag': "comment",
-          'userOpenid': app.globalData.openid,
-          'imgUrl': app.globalData.userInfo.avatarUrl,
-          'nickname': app.globalData.wxname,
-          'contextId': that.data._options.id,
-          'comment': content
-        },
-        success: function(res) {
-          console.log("【detail调用函数uploadInteraction】【flag: 'comment'（上传评论）】", res)
-          wx.showToast({
-            title: '发送成功',
-            icon: 'none',
-            duration: 1500
-          })
-          let comment = "video.commentList"
-          let item = {}
-          let date = new Date()
-          item.imgUrl = app.globalData.userInfo.avatarUrl
-          item.nickname = app.globalData.wxname
-          item.comment = content
-          that.setData({
-            [comment]: that.data.video.commentList.concat(item)
-          })
-          var pages = getCurrentPages();
-          var beforePage = pages[pages.length - 2];
-          beforePage.uploadCommentNum(that.data._options)
-        },
-        fail: function(err) {
-          console.log(err)
-        }
-      })
+
+
+        await wx.cloud.callFunction({
+          name: 'uploadInteraction',
+          data: {
+            'flag': "comment",
+            'userOpenid': app.globalData.openid,
+            'imgUrl': app.globalData.userInfo.avatarUrl,
+            'nickname': app.globalData.wxname,
+            'contextId': that.data._options.id,
+            'comment': content
+          },
+          success: function(res) {
+            console.log("【detail调用函数uploadInteraction】【flag: 'comment'（上传评论）】", res)
+            wx.showToast({
+              title: '发送成功',
+              icon: 'none',
+              duration: 1500,
+              success: function() {
+                let comment = "video.commentList"
+                let item = {}
+                let date = new Date()
+                item.imgUrl = app.globalData.userInfo.avatarUrl
+                item.nickname = app.globalData.wxname
+                item.comment = content
+                that.setData({
+                  [comment]: that.data.video.commentList.concat(item)
+                })
+                var pages = getCurrentPages();
+                var beforePage = pages[pages.length - 2];
+                beforePage.uploadCommentNum(that.data._options)
+              }
+            })
+          },
+          fail: function(err) {
+            console.log(err)
+          }
+        })
+      }
     } catch (err) {
       wx.showToast({
         title: '程序有一点点小异常，操作失败啦',

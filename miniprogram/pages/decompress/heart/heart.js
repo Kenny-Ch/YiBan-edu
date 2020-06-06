@@ -14,10 +14,14 @@ Page({
         title: '请先注册！',
         icon: 'none',
         duration: 1500,
-        success: function () {
-          wx.redirectTo({
-            url: '../../my/login/login',
-          })
+        mask: true,
+        success: function() {
+          setTimeout(function() {
+            wx.redirectTo({
+              url: '../../my/login/login',
+            })
+            return
+          }, 1500)
         }
       })
       return
