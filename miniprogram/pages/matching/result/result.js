@@ -38,7 +38,6 @@ Page({
   onLoad: function(options) {
     var that = this
     const app = getApp()
-    console.log(app.globalData)
     wx.cloud.callFunction({
       name: 'matchTeacher',
       data: {

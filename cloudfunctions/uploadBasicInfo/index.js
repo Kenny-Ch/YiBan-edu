@@ -38,12 +38,12 @@ const db = cloud.database()
 */
 
 // 云函数入口函数
-exports.main = async (event, context) => {
-  console.log('传入参数：',event)
+exports.main = async(event, context) => {
+  console.log('传入参数：', event)
   //flag看是学生还是老师
   var flag = event.flag
 
-  switch(flag){
+  switch (flag) {
     //老师
     case 1:
       try {
@@ -55,7 +55,9 @@ exports.main = async (event, context) => {
             job: event.job,
             name: event.name,
             avatarUrl: event.avatarUrl,
-            perInfo:event.perInfo,
+            perInfo: event.perInfo,
+            matchList: [],
+            matchWaitList: []
           }
         })
       } catch (e) {
@@ -63,7 +65,7 @@ exports.main = async (event, context) => {
       }
       break;
 
-    //学生
+      //学生
     case 0:
       try {
         return await db.collection('person').add({
@@ -74,7 +76,9 @@ exports.main = async (event, context) => {
             job: event.job,
             name: event.name,
             avatarUrl: event.avatarUrl,
-            perInfo: event.perInfo
+            perInfo: event.perInfo,
+            matchList: [],
+            matchWaitList: []
           }
         })
       } catch (e) {

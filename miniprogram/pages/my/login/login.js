@@ -17,7 +17,7 @@ Page({
     }],
     picker: ['高一', '高二', '高三'],
     region: [],
-    job: 1 //0是老师，1是学生
+    job: 0 //1是老师，0是学生
   },
   RegionChange: function(e) {
     console.log('地区选择：', e.detail.value)
@@ -84,7 +84,6 @@ Page({
               duration: 1500
             })
           } else {
-            console.log("global", app.globalData)
             if (that.data.job == 1) {
               wx.cloud.callFunction({
                 // 要调用的云函数名称
@@ -106,7 +105,9 @@ Page({
                     area: pick.region,
                     qq: input.qq,
                     tel: input.tel,
-                    email: input.email
+                    email: input.email,
+                    matchList: [],
+                    matchWaitList: []
                   }
                 }
               }).then(res => {
@@ -123,7 +124,9 @@ Page({
                     area: pick.region,
                     qq: input.qq,
                     tel: input.tel,
-                    email: input.email
+                    email: input.email,
+                    matchList: [],
+                    matchWaitList: []
                   }
                 }
                 app.globalData.isNew = false
@@ -159,7 +162,9 @@ Page({
                     introduction: input.introduction,
                     wechat: input.wechat,
                     tel: input.tel,
-                    stuNum: input.stuNum
+                    stuNum: input.stuNum,
+                    matchList: [],
+                    matchWaitList: []
                   }
                 }
               }).then(res => {
@@ -177,16 +182,18 @@ Page({
                     introduction: input.introduction,
                     wechat: input.wechat,
                     tel: input.tel,
-                    stuNum: input.stuNum
+                    stuNum: input.stuNum,
+                    matchList: [],
+                    matchWaitList: []
                   }
                 }
                 app.globalData.isNew = false
-
                 wx.redirectTo({
                   url: '/pages/index/index',
-                  complete: (res) => {},
-                  fail: (res) => {},
-                  success: (res) => {},
+                  // success: function(){
+                  //   var pages = getCurrentPages
+                  //   var beforePage = pages[pages.length - 2]
+                  // }
                 })
               }).catch(err => {
                 console.log('uploadBasicInfo上传基本信息错误', err)
