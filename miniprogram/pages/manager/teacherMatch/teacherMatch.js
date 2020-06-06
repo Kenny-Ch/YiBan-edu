@@ -43,6 +43,9 @@ Page({
     const app = getApp()
     const db = wx.cloud.database()
     let that = this
+    that.setData({
+      _options: options
+    })
     wx.cloud.callFunction({
         name: 'aggregatePerson',
         data: {

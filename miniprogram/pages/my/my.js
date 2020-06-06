@@ -43,9 +43,7 @@ Page({
       this.setData({
         jumpUrl: 'login/login'
       })
-
     } else {
-      console.log(app.globalData)
       let identity = ''
       if (app.globalData.isTeacher == false) 
         identity = '学生'

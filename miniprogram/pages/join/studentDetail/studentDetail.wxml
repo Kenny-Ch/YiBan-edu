@@ -1,6 +1,6 @@
 <!--miniprogram/pages/join/studentDetail/studentDetail.wxml-->
 <cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
-  <view slot="backText">返回</view>
+  <view slot="backText" bindtap="back">返回</view>
   <view slot="content">以伴edu</view>
 </cu-custom>
 <!--个人信息-->

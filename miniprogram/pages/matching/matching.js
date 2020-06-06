@@ -169,8 +169,9 @@ Page({
           mask: true,
           success: function() {
             app.globalData.matchInfo = data
-            app.globalData.matchList = {}
-            app.globalData.matchWaitList = {}
+            app.globalData.matchList = []
+            app.globalData.matchWaitList = []
+            app.globalData.userInfo.matchReject = false
             setTimeout(function() {
               wx.redirectTo({
                 url: './result/result',

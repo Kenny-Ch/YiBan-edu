@@ -111,7 +111,7 @@ Page({
             }
           }).then(function(res) {
             console.log("【matching/result调用函数requestTeaMatch】", res)
-            wx.navigateTo({
+            wx.redirectTo({
               url: '../teacher/teacher?status=false&id=' + openid
             })
           }).catch(function(err) {

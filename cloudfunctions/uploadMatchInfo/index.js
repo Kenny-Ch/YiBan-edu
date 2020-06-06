@@ -34,7 +34,8 @@ exports.main = async (event, context) => {
               expectation: event.expectation
             },
             matchList:[],
-            matchWaitList:[]
+            matchWaitList:[],
+            matchReject: false
           },
         })
     } catch (e) {
