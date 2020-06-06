@@ -38,10 +38,10 @@ exports.main = async(event, context) => {
     matchList: true,
     isMatchFull: true
   }).get()
-  if (teaPreInfo.data.isMatchFull) {
+  if (teaPreInfo.data[0].isMatchFull) {
     teaAftWaitList = []
   } else {
-    for (let item of teaPreInfo.data.matchWaitList) {
+    for (let item of teaPreInfo.data[0].matchWaitList) {
       if (item == event.stuOpenid)
         continue
       else
