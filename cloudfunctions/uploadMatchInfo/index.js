@@ -32,7 +32,9 @@ exports.main = async (event, context) => {
               willGetAlong: event.willGetAlong,
               habitAndPlan: event.habitAndPlan,
               expectation: event.expectation
-            }
+            },
+            matchList:[],
+            matchWaitList:[]
           },
         })
     } catch (e) {

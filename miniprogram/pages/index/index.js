@@ -169,7 +169,7 @@ Page({
             }
           } else {
             //是老师的情况
-            item.url = "../manager/teacherMatch/teacherMatch?id=" + app.globalData.userInfo._id;
+            item.url = "../join/myStudent/myStudent?id=" + app.globalData.userInfo._id;
           }
 
           list.push(item)
@@ -184,7 +184,7 @@ Page({
           that.setData({
             swiperList: list,
           })
-        } else if (app.globalData.isTeacher == 0) {
+        } else if (app.globalData.isTeacher == 1) {
           var item1 = {};
           item1.id = 2;
           item1.big_title = "感谢您的志愿付出";
@@ -292,11 +292,14 @@ Page({
         title: '请先注册！',
         icon: 'none',
         duration: 1500,
+        mask: true,
         success: function() {
-          wx.navigateTo({
-            url: '../my/login/login',
-          })
-          return
+          setTimeout(function() {
+            wx.navigateTo({
+              url: '../my/login/login',
+            })
+            return
+          }, 1500)
         }
       })
     } else if (!app.globalData.isMatch) {
@@ -305,11 +308,37 @@ Page({
         title: '还未匹配成功，暂时无法进入',
         icon: 'none',
         duration: 1500,
-        success: function() {
-          wx.navigateBack({})
-          return
-        }
+        mask: true
       })
+    } else {
+      wx.navigateTo({
+        url: url
+      })
+    }
+  },
+
+  jumpSwiper: function(e) {
+    let url = e.currentTarget.dataset.url
+    if (url == '../matching/matching') {
+      if (app.globalData.isNew) {
+        wx.showToast({
+          title: '请先注册！',
+          icon: 'none',
+          duration: 1500,
+          mask: true,
+          success: function() {
+            setTimeout(function() {
+              wx.navigateTo({
+                url: '../my/login/login',
+              })
+            }, 1500)
+          }
+        })
+      } else {
+        wx.navigateTo({
+          url: '../matching/matching'
+        })
+      }
     } else {
       wx.navigateTo({
         url: url

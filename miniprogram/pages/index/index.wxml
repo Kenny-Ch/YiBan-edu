@@ -10,9 +10,7 @@
     <text class="underTitle">以伴已陪伴你度过{{day}}天了</text>
   </view>
   <view class='head-right'>
-
     <image src="../../images/user.png" class='head-right-icon' bindtap="jumpToMyPage"></image>
-
   </view>
 </view>
 <image src="../../images/head.png" class='head-under'></image>
@@ -27,7 +25,7 @@
             <view class="card-bigtitle">{{item.big_title}}</view>
             <view class="card-title">{{item.title}}</view>
             <view class="card-smalltitle">{{item.small_title}}</view>
-            <navigator class='cu-btn round card-button-text' style="width: 342rpx;min-height: 60rpx;background-color: rgba(254, 123, 111, 1);color: rgba(255, 255, 255, 1);" url="{{item.url}}" hover-class="none">{{item.button}}</navigator>
+            <button open-type="getUserInfo" bindgetuserinfo="jumpSwiper" class='cu-btn round card-button-text' style="width: 342rpx;min-height: 60rpx;background-color: rgba(254, 123, 111, 1);color: rgba(255, 255, 255, 1);" data-url="{{item.url}}" hover-class="none">{{item.button}}</button>
           </view>
         </view>
       </swiper-item>

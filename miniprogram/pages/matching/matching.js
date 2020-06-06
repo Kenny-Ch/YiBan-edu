@@ -148,27 +148,37 @@ Page({
     else {
       var that = this
       const app = getApp()
+      let data = {
+        'openid': app.globalData.openid,
+        'weakSubject': weakSubject,
+        'willCheckIn': that.data.punch,
+        'willMeeting': that.data.class,
+        'willGetAlong': that.data.getAlong,
+        'habitAndPlan': that.data.custom,
+        'expectation': that.data.willing
+      }
       wx.cloud.callFunction({
         name: 'uploadMatchInfo',
-        data: {
-          'openid': app.globalData.openid,
-          'weakSubject': weakSubject,
-          'willCheckIn': that.data.punch,
-          'willMeeting': that.data.class,
-          'willGetAlong': that.data.getAlong,
-          'habitAndPlan': that.data.custom,
-          'expectation': that.data.willing
-        },
+        data: data,
       }).then(function(res) {
         console.log("【matching调用函数uploadMatchInfo】")
         console.log('匹配信息添加成功！', res)
         wx.showToast({
           title: '登记成功！',
-          icon: 'success'
+          icon: 'success',
+          mask: true,
+          success: function() {
+            app.globalData.matchInfo = data
+            app.globalData.matchList = {}
+            app.globalData.matchWaitList = {}
+            setTimeout(function() {
+              wx.redirectTo({
+                url: './result/result',
+              })
+            }, 1500)
+          }
         })
-        wx.redirectTo({
-          url: './result/result',
-        })
+
       }).catch(function(err) {
         console.log('匹配信息添加失败!', err)
       })

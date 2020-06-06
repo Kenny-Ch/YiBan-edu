@@ -6,32 +6,32 @@ Page({
    */
   data: {
     teacher: {
-      name: '李桂明',
-      student: [ //待审核的学生
-        {
-          id: 1,
-          name: '李桂明',
-          school: '广州中学',
-          grade: '高二',
-          subject: ['语文', '数学', '英语'],
-        },
-      ],
-      studentAdopt: [ //已通过的学生
-        {
-          id: 2,
-          name: '李桂明',
-          school: '广州中学',
-          grade: '高二',
-          subject: ['语文', '数学', '英语'],
-        },
-        {
-          id: 3,
-          name: '李桂明',
-          school: '广州中学',
-          grade: '高二',
-          subject: ['语文', '数学', '英语'],
-        }
-      ],
+      // name: '李桂明',
+      // student: [ //待审核的学生
+      //   {
+      //     id: 1,
+      //     name: '李桂明',
+      //     school: '广州中学',
+      //     grade: '高二',
+      //     subject: ['语文', '数学', '英语'],
+      //   },
+      // ],
+      // studentAdopt: [ //已通过的学生
+      //   {
+      //     id: 2,
+      //     name: '李桂明',
+      //     school: '广州中学',
+      //     grade: '高二',
+      //     subject: ['语文', '数学', '英语'],
+      //   },
+      //   {
+      //     id: 3,
+      //     name: '李桂明',
+      //     school: '广州中学',
+      //     grade: '高二',
+      //     subject: ['语文', '数学', '英语'],
+      //   }
+      // ],
     },
 
   },
@@ -43,7 +43,6 @@ Page({
     const app = getApp()
     const db = wx.cloud.database()
     let that = this
-    console.log(options.id)
     wx.cloud.callFunction({
         name: 'aggregatePerson',
         data: {
@@ -74,12 +73,6 @@ Page({
             studentAdopt: matchList
           }
         })
-
-        // that.setData({
-        //   teacher: {
-        //     student: matchWaitList
-        //   }
-        // })
       })
       .catch(function(err) {
         console.log(err)

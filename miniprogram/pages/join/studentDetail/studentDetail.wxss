@@ -3,7 +3,7 @@
   width: 100%;
 }
 .wd{
-  width: 180rpx;
+  width: 190rpx;
 }
 .title1{
   width: 300rpx;

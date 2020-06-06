@@ -38,6 +38,7 @@ Page({
   onLoad: function(options) {
     var that = this
     const app = getApp()
+    console.log(app.globalData)
     wx.cloud.callFunction({
       name: 'matchTeacher',
       data: {
@@ -54,7 +55,6 @@ Page({
     }).catch(function(err) {
       console.log(err)
     })
-
   },
 
   //将数据库内科目的英文转成中文显示
@@ -113,7 +113,7 @@ Page({
           }).then(function(res) {
             console.log("【matching/result调用函数requestTeaMatch】", res)
             wx.navigateTo({
-              url: '../teacher/teacher?id=' + openid
+              url: '../teacher/teacher?status=false&id=' + openid
             })
           }).catch(function(err) {
             console.log(err)
@@ -121,6 +121,12 @@ Page({
         }
       }
     })
+  },
+
+  back: function() {
+    var pages = getCurrentPages()
+    var beforePage = pages[pages.length - 2]
+    beforePage.onLoad()
   },
 
   /**

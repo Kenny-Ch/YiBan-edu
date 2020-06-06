@@ -35,7 +35,30 @@ Page({
     })
   },
 
-  submitTree: function(e) {
+  bindGetUserInfo: function(res) {
+    console.log("【用户授权信息】", res)
+    const app = getApp()
+    let that = this
+    let _res = res
+    wx.getSetting({
+      success: function(res) {
+        if (!res.authSetting['scope.userInfo']) {
+          wx.showToast({
+            title: '请先授权！',
+            icon: 'none',
+            duration: 1500,
+          })
+          return
+        } else {
+          app.globalData.wxname = _res.detail.userInfo.nickName
+          app.globalData.avatarUrl = _res.detail.userInfo.avatarUrl
+          that.submitTree()
+        }
+      }
+    })
+  },
+
+  submitTree: function() {
     const app = getApp()
     let that = this
     wx.cloud.callFunction({
@@ -54,11 +77,12 @@ Page({
           title: '发布成功！',
           icon: 'success',
           duration: 1500,
+          mask: true,
           success: function() {
             setTimeout(function() {
-              var pages = getCurrentPages(); //当前页面栈
+              var pages = getCurrentPages() //当前页面栈
               if (pages.length > 1) {
-                var beforePage = pages[pages.length - 2]; //获取上一个页面实例对象
+                var beforePage = pages[pages.length - 2] //获取上一个页面实例对象
                 let date = new Date()
                 //此方法返回的month从0开始计算月份，因此+1
                 let month = date.getMonth() + 1
@@ -81,9 +105,7 @@ Page({
                 data.isLike = false
 
                 beforePage.onChangeList(data); //触发父页面中的方法
-                wx.navigateBack({
-                  delta: 1
-                })
+                wx.navigateBack({})
               }
             }, 1500)
           }
