@@ -17,6 +17,7 @@ Page({
       // QR: '../../../images/QR.jpg',
     },
     result: false, //或'正在审核中'
+    shuoming:'请尽快添加老师微信，以便快速通过审核。',
   },
   previewImage: function(e) {
     wx.previewImage({

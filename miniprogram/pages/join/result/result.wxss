@@ -1,0 +1,65 @@
+/* miniprogram/pages/join/result/result.wxss */
+page{
+  width: 100%;
+  background: linear-gradient(90deg, #f7d7ba, #d140f5);
+}
+.con{
+  display: flex;
+  flex-direction: column;
+	align-items: center;
+}
+.toptitle{
+  width: 650rpx;
+	height: 84rpx;
+	color: rgba(80, 80, 80, 1);
+	font-size: 56rpx;
+	line-height: 150%;
+	text-align: left;
+  font-weight: bold;
+  margin-top:40rpx ;
+}
+.card {
+  width: 680rpx;
+  height: 628rpx;
+  color: rgba(80, 80, 80, 1);
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 0rpx 0rpx 33rpx 33rpx;
+  font-size: 28rpx;
+  line-height: 150%;
+  box-shadow: 0rpx 7rpx 23rpx 0rpx rgba(0, 0, 0, 0.12);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 80rpx;
+  padding-bottom: 32rpx;
+  padding-top:32rpx ;
+}
+.card-top{
+  width:680rpx;
+  height: 96rpx;
+  color: white;
+  background-color:#faad14;
+  border-radius: 33rpx 33rpx 0rpx 0rpx;
+  font-size: 36rpx;
+  line-height: 150%;
+  box-shadow: 0rpx 7rpx 23rpx 0rpx rgba(0, 0, 0, 0.12);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 88rpx;
+}
+.QR {
+  width: 509rpx;
+  height: 509rpx;
+}
+.text2 {
+  width: 624rpx;
+  font-size: 28rpx;
+  line-height: 150%;
+  text-align: center;
+  color: rgba(80, 80, 80, 1);
+  margin-top: 24rpx;
+}

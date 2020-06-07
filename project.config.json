@@ -342,6 +342,13 @@
 					"pathName": "pages/join/workingAbility/workingAbility",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/join/result/result",
+					"pathName": "pages/join/result/result",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

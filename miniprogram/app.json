@@ -34,7 +34,8 @@
     "pages/manager/reviewComments/reviewComments",
     "pages/join/oldMember/oldMember",
     "pages/join/newMember/newMember",
-    "pages/join/workingAbility/workingAbility"
+    "pages/join/workingAbility/workingAbility",
+    "pages/join/result/result"
   ],
   "window": {
     "navigationStyle": "custom",

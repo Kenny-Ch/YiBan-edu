@@ -1,0 +1,13 @@
+<!--miniprogram/pages/join/result/result.wxml-->
+<cu-custom bgColor="bg-gradual-purple" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">以伴edu</view>
+</cu-custom>
+<view class="con">
+  <view class='toptitle'>加入以伴</view>
+  <view class='card-top'>{{result=='true'?'审核通过':'正在审核中'}}</view>
+  <view class='card'>
+    <image src="{{QR}}" class='QR' data-url="{{QR}}" bindtap="previewImage"></image>
+    <view class="text2">{{shuoming}}</view>
+  </view>
+</view>
