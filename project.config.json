@@ -314,6 +314,13 @@
 					"pathName": "pages/join/studentDetail/studentDetail",
 					"query": "id=37e26adb5ec29bfb00f9357627ee1f29&status=false&type=teacher",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/manager/reviewComments/reviewComments",
+					"pathName": "pages/manager/reviewComments/reviewComments",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

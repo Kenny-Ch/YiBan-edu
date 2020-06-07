@@ -1,0 +1,136 @@
+/* miniprogram/pages/manager/reviewComments/reviewComments.wxss */
+.three-nav{
+	width: 90%;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+  margin-top:48rpx ;
+  margin-left:30rpx ;
+}
+
+.three-nav .item-nav{
+	position: relative;
+	padding-right: 32rpx;
+	color: rgba(80, 80, 80, 1);
+	font-size: 28rpx;
+	cursor: pointer;
+	display: inline-block
+}
+.three-nav .active{
+	height: 60rpx;
+	color: rgba(80, 80, 80, 1);
+	font-size: 34rpx;
+	line-height: 150%;
+	text-align: left;
+	font-weight: bold;
+}
+.three-nav .active::after{
+	content:'';
+	position: absolute;
+	left: 0rpx;
+	right: 50rpx;
+	height:0;
+	bottom: 8rpx;
+	margin-bottom: 20rpx;
+}
+ .swiper-box {
+	display: block;
+	height: 100%;
+	width: 100%;
+  overflow: hidden;
+  margin-left:20rpx ;
+  margin-top:20rpx ;
+ }
+ .smalltitle{
+  width: 128rpx;
+	color: rgba(250, 173, 20, 1);
+	font-size: 28rpx;
+	text-align: left;
+  font-weight: bold;
+  margin-left:30rpx ;
+ }
+ .card{
+	width: 682rpx;
+	color: rgba(80, 80, 80, 1);
+	background-color: rgba(255, 255, 255, 1);
+	border-radius: 16rpx;
+	font-size: 28rpx;
+	line-height: 150%;
+	box-shadow: 0rpx 7rpx 14rpx 0rpx rgba(0, 0, 0, 0.12);
+	text-align: center;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  margin-left:16rpx ;
+  margin-bottom: 32rpx;
+  margin-top:16rpx ;
+}
+.right{
+	width: 40rpx;
+	height: 40rpx;
+	font-size: 40rpx;
+	color: rgba(250, 173, 20, 1);
+}
+.right1{
+	width: 36rpx;
+	height: 36rpx;
+	font-size: 36rpx;
+	color: rgba(250, 173, 20, 1);
+}
+.top{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.shu{
+	width: 12rpx;
+	height: 45rpx;
+	color: rgba(80, 80, 80, 1);
+	background-color: rgba(255, 163, 50, 1);
+	font-size: 28rpx;
+	line-height: 150%;
+	text-align: center;
+}
+.nametime{
+  width:612rpx;
+  display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.name{
+  width: auto;
+	color: rgba(80, 80, 80, 1);
+	font-size: 32rpx;
+	line-height: 150%;
+	text-align: left;
+	font-weight: bold;
+	margin-left: 16rpx;
+}
+.time{
+  width: 256rpx;
+	height: 36rpx;
+	color: rgba(80, 80, 80, 1);
+	font-size: 24rpx;
+	line-height: 150%;
+  text-align: left;
+  margin-top:20rpx ;
+  margin-left:20rpx ;
+}
+.common{
+  width: 638rpx;
+	color: rgba(166, 166, 166, 1);
+	font-size: 28rpx;
+	line-height: 150%;
+  text-align: left;
+  margin-left:28rpx ;
+  margin-top:12rpx ;
+}
+ .bott{
+	width: 100%rpx;
+	color: rgba(80, 80, 80, 1);
+	font-size: 24rpx;
+	line-height: 150%;
+	text-align: center;
+	margin:20rpx ;
+ }

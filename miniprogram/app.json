@@ -30,7 +30,8 @@
     "pages/manager/viewTeacher/viewTeacher",
     "pages/manager/teacherMatch/teacherMatch",
     "pages/join/myStudent/myStudent",
-    "pages/join/studentDetail/studentDetail"
+    "pages/join/studentDetail/studentDetail",
+    "pages/manager/reviewComments/reviewComments"
   ],
   "window": {
     "navigationStyle": "custom",

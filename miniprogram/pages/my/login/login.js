@@ -17,8 +17,35 @@ Page({
     }],
     picker: ['高一', '高二', '高三'],
     region: [],
-    job: 0 //1是老师，0是学生
+    job: 0, //1是老师，0是学生
+    img:"../../../images/my/tupianimgyulan.png"
   },
+  upload_picture: function(name) {
+    var that = this
+    //让用户选择或拍摄一张照片
+    wx.chooseImage({
+      count: 1,	
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success(res) {
+      //选择完成会先返回一个临时地址保存备用
+        const tempFilePaths = res.tempFilePaths
+        //将照片上传至云端需要刚才存储的临时地址
+        wx.cloud.uploadFile({
+          cloudPath: 'supporting_materials/'+app.globalData.openid+'.jpg',
+          filePath: tempFilePaths[0],
+          success(res) {
+          //上传成功后会返回永久地址
+            that.setData({
+              img:res.fileID         //图片存储到云存储的fileID
+            })
+            console.log(res.fileID) 
+          }
+        })
+      }
+    })
+  },
+
   RegionChange: function(e) {
     console.log('地区选择：', e.detail.value)
     this.setData({

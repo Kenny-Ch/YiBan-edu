@@ -34,6 +34,11 @@
     <input type="number" class='contents' placeholder="请填写你的手机号码" name='tel'></input>
     <view class='label'>邮箱：</view>
     <input type="text" class='contents' placeholder="请填写你的邮箱" name='email'></input>
+    <view class='label'>证明材料(上传校园卡或其他身份证明材料)：</view>
+    <view class='pic_address'>
+      <image src="{{img}}" class='pic' bindtap="upload_picture"></image>
+    </view>
+
   </view>
   <button bindgetuserinfo="getInfo" form-type="submit" open-type="getUserInfo" style="width: 650rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn'>注册并登录</button>
 </form>
