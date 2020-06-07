@@ -5,6 +5,11 @@
 </cu-custom>
 <view class='title'>{{teacher.name}}的学生</view>
 <view class="line"></view>
+<view class='plusBtn'>
+  <navigator url="../teacherDeatail/teacherDeatail" class="plusBtn">
+    <image src="../../../images/manager/xinxi-.png" class='plusIcon'></image>
+  </navigator> 
+</view>
 <view class="con">
   <!--待审核-->
   <view wx:if='{{teacher.student.length>0}}'>
