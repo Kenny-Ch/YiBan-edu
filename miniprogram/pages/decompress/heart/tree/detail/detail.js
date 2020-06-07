@@ -68,7 +68,6 @@ Page({
       let that = this;
       let commentPage = 1
       let content = that.data.commentContent;
-      console.info(content)
       if (content == undefined || content.length == 0) {
         wx.showToast({
           title: '请输入内容',
@@ -76,54 +75,73 @@ Page({
           duration: 1500
         })
         return
-      }
-      const app = getApp()
-      console.log(this.data.detail)
-      await wx.cloud.callFunction({
-        name: 'uploadInteraction',
-        data: {
-          'flag': "comment",
-          'userOpenid': app.globalData.openid,
-          'imgUrl': app.globalData.userInfo.avatarUrl,
-          'nickname': app.globalData.wxname,
-          'contextId': that.data._options.id,
-          'comment': content
-        },
-        success: function(res) {
-          console.log("【detail调用函数uploadInteraction】【flag: 'comment'（上传评论）】", res)
-          wx.showToast({
-            title: '发送成功',
-            icon: 'none',
-            duration: 1500,
-            success: function() {
-              let comment = "detail.comment"
-              let commentsLen = "detail.pinglun"
-              let item = {
-                comment: {}
+      } else {
+        wx.cloud.callFunction({
+          name: 'msgSecCheck',
+          data: {
+            content: content
+          }
+        }).then(function(res) {
+          console.log("【敏感信息检测】", res.result)
+          if (res.result.errCode == 0) {
+            const app = getApp()
+            wx.cloud.callFunction({
+              name: 'uploadInteraction',
+              data: {
+                'flag': "comment",
+                'userOpenid': app.globalData.openid,
+                'imgUrl': app.globalData.userInfo.avatarUrl,
+                'nickname': app.globalData.wxname,
+                'contextId': that.data._options.id,
+                'comment': content
+              },
+              success: function(res) {
+                console.log("【detail调用函数uploadInteraction】【flag: 'comment'（上传评论）】", res)
+                wx.showToast({
+                  title: '发送成功',
+                  icon: 'none',
+                  duration: 1500,
+                  success: function() {
+                    let comment = "detail.comment"
+                    let commentsLen = "detail.pinglun"
+                    let item = {
+                      comment: {}
+                    }
+                    let date = new Date()
+                    let month = date.getMonth() + 1
+                    let day = date.getDate()
+                    if (month <= 9)
+                      month = '0' + month
+                    if (day <= 9)
+                      day = '0' + day
+                    item.time = date.getFullYear() + '-' + month + '-' + day
+                    item.imgUrl = app.globalData.userInfo.avatarUrl
+                    item.nickname = app.globalData.wxname
+                    item.comment = content
+                    that.setData({
+                      [comment]: that.data.detail.comment.concat(item),
+                      [commentsLen]: that.data.detail.pinglun + 1
+                    })
+                  }
+                })
+              },
+              fail: function(err) {
+                console.log(err)
               }
-              let date = new Date()
-              let month = date.getMonth() + 1
-              let day = date.getDate()
-              if (month <= 9)
-                month = '0' + month
-              if (day <= 9)
-                day = '0' + day
-              item.time = date.getFullYear() + '-' + month + '-' + day
-              item.imgUrl = app.globalData.userInfo.avatarUrl
-              item.nickname = app.globalData.wxname
-              item.comment = content
-              that.setData({
-                [comment]: that.data.detail.comment.concat(item),
-                [commentsLen]: that.data.detail.pinglun + 1
-              })
-            }
-          })
-
-        },
-        fail: function(err) {
+            })
+          } else {
+            wx.showToast({
+              title: '发送失败！涉及敏感信息',
+              icon: 'none',
+              duration: 1500,
+              mask: true
+            })
+          }
+        }).catch(function(err) {
           console.log(err)
-        }
-      })
+        })
+      }
+
     } catch (err) {
       wx.showToast({
         title: '程序有一点点小异常，操作失败啦',

@@ -427,43 +427,57 @@ Page({
           }
         })
       } else {
-
-
-
-        await wx.cloud.callFunction({
-          name: 'uploadInteraction',
+        wx.cloud.callFunction({
+          name: 'msgSecCheck',
           data: {
-            'flag': "comment",
-            'userOpenid': app.globalData.openid,
-            'imgUrl': app.globalData.userInfo.avatarUrl,
-            'nickname': app.globalData.wxname,
-            'contextId': that.data._options.id,
-            'comment': content
-          },
-          success: function(res) {
-            console.log("【detail调用函数uploadInteraction】【flag: 'comment'（上传评论）】", res)
-            wx.showToast({
-              title: '发送成功',
-              icon: 'none',
-              duration: 1500,
-              success: function() {
-                let comment = "video.commentList"
-                let item = {}
-                let date = new Date()
-                item.imgUrl = app.globalData.userInfo.avatarUrl
-                item.nickname = app.globalData.wxname
-                item.comment = content
-                that.setData({
-                  [comment]: that.data.video.commentList.concat(item)
+            content: content
+          }
+        }).then(function(res) {
+          console.log("【敏感信息检测】", res.result)
+          if (res.result.errCode == 0) {
+            wx.cloud.callFunction({
+              name: 'uploadInteraction',
+              data: {
+                'flag': "comment",
+                'userOpenid': app.globalData.openid,
+                'imgUrl': app.globalData.userInfo.avatarUrl,
+                'nickname': app.globalData.wxname,
+                'contextId': that.data._options.id,
+                'comment': content
+              },
+              success: function(res) {
+                console.log("【detail调用函数uploadInteraction】【flag: 'comment'（上传评论）】", res)
+                wx.showToast({
+                  title: '发送成功',
+                  icon: 'none',
+                  duration: 1500,
+                  success: function() {
+                    let comment = "video.commentList"
+                    let item = {}
+                    let date = new Date()
+                    item.imgUrl = app.globalData.userInfo.avatarUrl
+                    item.nickname = app.globalData.wxname
+                    item.comment = content
+                    that.setData({
+                      [comment]: that.data.video.commentList.concat(item)
+                    })
+                    var pages = getCurrentPages();
+                    var beforePage = pages[pages.length - 2];
+                    beforePage.uploadCommentNum(that.data._options)
+                  }
                 })
-                var pages = getCurrentPages();
-                var beforePage = pages[pages.length - 2];
-                beforePage.uploadCommentNum(that.data._options)
+              },
+              fail: function(err) {
+                console.log(err)
               }
             })
-          },
-          fail: function(err) {
-            console.log(err)
+          } else {
+            wx.showToast({
+              title: '发送失败！涉及敏感信息',
+              icon: 'none',
+              duration: 1500,
+              mask: true
+            })
           }
         })
       }

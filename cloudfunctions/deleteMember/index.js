@@ -54,6 +54,8 @@ exports.main = async (event, context) => {
     } catch(e) {
       console.error(e)
     }
+
+    return '删除学生成功'
   } 
   else if (event.type == "tea") { //删除老师信息
     var res = await db.collection('person').where({
@@ -93,6 +95,8 @@ exports.main = async (event, context) => {
     } catch(e) {
       console.error(e)
     }
+
+    return '删除教师成功'
   }
   
 }

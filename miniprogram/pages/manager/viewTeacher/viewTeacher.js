@@ -29,7 +29,7 @@
       // ],
     },
     delete: function(e) {
-      let id = e.currentTarget.dataset.id
+      let openid = e.currentTarget.dataset.openid
       let index = e.currentTarget.dataset.index
 
       let that = this
@@ -41,12 +41,13 @@
           if (res.confirm) {
             console.log('用户点击确定')
             wx.cloud.callFunction({
-              name: 'deleteTeacher',
+              name: 'deleteMember',
               data: {
-                _id: id
+                teaOpenid: openid,
+                type: 'tea'
               }
             }).then(function(res) {
-              console.log("【viewTeacher调用函数deleteTeacher】", res)
+              console.log("【viewTeacher调用函数deleteMember】", res)
               let list = that.data.teacher.splice(index, index)
               console.log(list)
               that.setData({
