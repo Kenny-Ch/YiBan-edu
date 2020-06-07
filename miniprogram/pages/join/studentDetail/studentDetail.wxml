@@ -38,6 +38,12 @@
     <view class="title wd">邮箱</view>
     <input type='text' value="{{student.perInfo.email}}" disabled="true"></input>
   </view>
+  <view class="cu-form-group">
+    <view class="title wd">证明材料</view>
+    <view class='pic'>
+      <image src="{{student.perInfo.prove}}" class='img' data-url="{{student.perInfo.prove}}" bindtap="previewImage"></image>
+    </view>
+  </view>
 </view>
 <!--登记信息-->
 <view class="title1">登记信息</view>

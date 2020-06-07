@@ -15,6 +15,7 @@ Page({
       //   grade: '高一',
       //   qq: '82718271',
       //   email: '9921212@qq.com',
+      //   prove:'cloud://yiban-edu.7969-yiban-edu-1301806073/supporting_materials/opGQO5IzOz43A0kDcranTPwEjwbw.jpg'
       // },
       // subject: [{
       //     name: '语文',
@@ -33,8 +34,14 @@ Page({
       // expectationForTeacher: '希望老师能给我出多一些题目 希望老师能给我出多一些题目希望老师能给我出多一些题目',
       // isAdopt: false, //是否已通过
     },
+    
   },
-
+  previewImage: function(e) {
+    wx.previewImage({
+      urls: e.target.dataset.url.split(',')
+      // 需要预览的图片http链接  使用split把字符串转数组。不然会报错
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

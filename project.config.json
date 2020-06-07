@@ -349,6 +349,12 @@
 					"pathName": "pages/join/result/result",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/manager/teacherDeatail/teacherDeatail",
+					"pathName": "pages/manager/teacherDeatail/teacherDeatail",
+					"scene": null
 				}
 			]
 		}

@@ -6,6 +6,7 @@ Page({
    */
   data: {
     picker: ['语文', '数学', '英语','物理','化学','生物','政治','历史','地理'],
+    picker1:[1,2,3,4,5],
     judge: [{
       name: '是',
       checked: true,
@@ -21,6 +22,14 @@ Page({
     console.log('新学期的课程安排是否紧凑:', e.detail.value)
     this.setData({
       punch: e.detail.value,
+    })
+  },
+  PickerChange4(e) {
+    var grade = this.data.picker1[e.detail.value];
+    console.log('可同时辅导几个学生：', grade)
+    this.setData({
+      index4: e.detail.value,
+      grade4: grade       //学生人数
     })
   },
   PickerChange1(e) {
