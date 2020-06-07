@@ -134,3 +134,20 @@
 	flex-direction: row;
 	align-items: center;
 }
+.plusBtn{
+  position: fixed;
+  z-index: 100;
+  bottom: 70rpx;
+  right: 32rpx;
+  background-color: #FFA332;
+  border-radius: 140rpx;
+  width: 140rpx;
+  height: 140rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+}
+.plusIcon{
+  width: 80rpx;
+	height: 80rpx;
+}

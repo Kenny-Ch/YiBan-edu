@@ -281,28 +281,28 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 33,
 					"name": "pages/join/studentDetail/studentDetail",
 					"pathName": "pages/join/studentDetail/studentDetail",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 34,
 					"name": "pages/manager/manager",
 					"pathName": "pages/manager/manager",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 35,
 					"name": "pages/manager/viewTeacher/viewTeacher",
 					"pathName": "pages/manager/viewTeacher/viewTeacher",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 36,
 					"name": "pages/manager/teacherMatch/teacherMatch",
 					"pathName": "pages/manager/teacherMatch/teacherMatch",
 					"query": "",
@@ -316,28 +316,28 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 38,
 					"name": "pages/join/oldMember/oldMember",
 					"pathName": "pages/join/oldMember/oldMember",
 					"query": "id=37e26adb5ec29bfb00f9357627ee1f29&status=false&type=teacher",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 39,
 					"name": "pages/join/newMember/newMember",
 					"pathName": "pages/join/newMember/newMember",
 					"query": "id=37e26adb5ec29bfb00f9357627ee1f29&status=false&type=teacher",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 40,
 					"name": "pages/join/workingAbility/workingAbility",
 					"pathName": "pages/join/workingAbility/workingAbility",
 					"query": "id=37e26adb5ec29bfb00f9357627ee1f29&status=false&type=teacher",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 41,
 					"name": "pages/manager/teacherDeatail/teacherDeatail",
 					"pathName": "pages/manager/teacherDeatail/teacherDeatail",
 					"scene": null

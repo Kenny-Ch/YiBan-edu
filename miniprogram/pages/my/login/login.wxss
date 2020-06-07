@@ -59,7 +59,7 @@ radio{
   border-radius: 50%;
   height: 32rpx; 
   width: 32rpx;
-  border:3rpx solid rgba(74, 144, 226, 1);
+  border:3rpx solid #fd6b67;
   margin-left:30rpx ;
   display: flex;
   flex-direction: row;
@@ -82,7 +82,7 @@ radio .wx-radio-input.wx-radio-input-checked::before{
   border-radius: 50%;
   width: 24rpx; 
   height: 24rpx;
-  background-color: rgba(74, 144, 226, 1);
+  background-color:#fd6b67;
   font-size:0rpx; /* 对勾大小 去掉 */
   margin-bottom:8rpx ;
 }
