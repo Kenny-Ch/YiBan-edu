@@ -21,14 +21,14 @@ exports.main = async(event, context) => {
   }).field({
     matchWaitList: true
   }).get()
-  for (let item in stuPreWaitList.data.matchWaitList) {
+  for (let item of stuPreWaitList.data[0].matchWaitList) {
     if (item == event.teaOpenid)
       continue
     else
       stuAftWaitList.push(item)
   }
 
-  //老师带匹配列表更新
+  //老师待匹配列表更新
   var teaIsFull = false
   var teaAftWaitList = []
   var teaPreInfo = await db.collection('person').where({
@@ -38,10 +38,10 @@ exports.main = async(event, context) => {
     matchList: true,
     isMatchFull: true
   }).get()
-  if (teaPreInfo.data.isMatchFull) {
+  if (teaPreInfo.data[0].isMatchFull) {
     teaAftWaitList = []
   } else {
-    for (let item of teaPreInfo.data.matchWaitList) {
+    for (let item of teaPreInfo.data[0].matchWaitList) {
       if (item == event.stuOpenid)
         continue
       else
@@ -64,7 +64,8 @@ exports.main = async(event, context) => {
           data: {
             matchList: _.push([event.teaOpenid]),
             matchWaitList: stuAftWaitList,
-            isMatchFull: true
+            isMatchFull: true,
+            matchReject: false
           },
         })
     } catch (e) {

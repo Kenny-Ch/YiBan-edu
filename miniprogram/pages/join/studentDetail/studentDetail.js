@@ -142,6 +142,16 @@ Page({
     })
   },
 
+  back: function() {
+    let data = {
+      id: this.data._options.beforeid,
+      openid: this.data._options.openid
+    }
+    let pages = getCurrentPages()
+    let beforePage = pages[pages.length - 2]
+    beforePage.onLoad(data)
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
