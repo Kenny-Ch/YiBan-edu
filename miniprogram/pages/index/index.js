@@ -183,8 +183,15 @@ Page({
           if (app.globalData.userInfo.otherInfo == undefined) {
             //第二次注册未完成
             item.url = '../join/workingAbility/workingAbility'
-          } else {
+          } else if (app.globalData.userInfo.isCheck == 0) {
+            //第二次注册已完成但是未审核
+            item.url = '../join/result/result'
+          } else if (app.globalData.userInfo.isCheck == 1) {
+            //后台审核通过
             item.url = "../join/myStudent/myStudent?id=" + app.globalData.userInfo._id;
+          } else {
+            //后台审核未通过
+            item.url = 'error'
           }
           list.push(item)
         } else {
@@ -205,25 +212,35 @@ Page({
         item1.button = "具体介绍";
         item1.url = "../matching/introduce/introduce";
         list.push(item1)
-        that.setData({
-          swiperList: list,
-        })
-        var item2 = {};
-        item2.id = 2;
-        item2.big_title = "成为伴学志愿者";
-        item2.title = "一起迈向公益之路";
-        item2.small_title = "只要你有足够的热情，想为公益事业做出一份自己的贡献，都可以申请成为以伴志愿者！";
-        item2.button = "加入我们";
-        if (app.globalData.userInfo.otherInfo == undefined) {
-          //第二次注册未完成
-          item2.url = '../join/workingAbility/workingAbility'
+
+        //老师注册成功，则不显示第三个swiper
+        if (app.globalData.userInfo.isCheck == 1) {
+          that.setData({
+            swiperList: list,
+          })
         } else {
-          item2.url = "../join/join";
+          var item2 = {};
+          item2.id = 2;
+          item2.big_title = "成为伴学志愿者";
+          item2.title = "一起迈向公益之路";
+          item2.small_title = "只要你有足够的热情，想为公益事业做出一份自己的贡献，都可以申请成为以伴志愿者！";
+          item2.button = "加入我们";
+          if (app.globalData.userInfo.otherInfo == undefined) {
+            //第二次注册未完成
+            item2.url = '../join/workingAbility/workingAbility'
+          } else if (app.globalData.userInfo.isCheck == 0) {
+            //第二次注册已完成但是未审核
+            item2.url = '../join/result/result'
+          } else {
+            item2.url = "../join/join";
+          }
+          list.push(item2)
+
+          that.setData({
+            swiperList: list,
+          })
         }
-        list.push(item2)
-        that.setData({
-          swiperList: list,
-        })
+
         console.log("【app.globalData】", app.globalData)
       })
     }).catch(err => {
@@ -354,6 +371,24 @@ Page({
     } else if (!app.globalData.isNew && app.globalData.userInfo.matchList.length != 0) {
       wx.navigateTo({
         url: '../matching/teacher/teacher?status=true&id=' + app.globalData.userInfo.matchList[0],
+      })
+    } else if (url == 'error') {
+      //老师注册后台审核未通过
+      wx.showModal({
+        title: '审核未通过！',
+        content: '可能是信息填写错误导致，请重新填写信息~',
+        showCancel: true,
+        confirmText: '重新填写',
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+            wx.navigateTo({
+              url: '../join/join',
+            })
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
       })
     } else {
       wx.navigateTo({

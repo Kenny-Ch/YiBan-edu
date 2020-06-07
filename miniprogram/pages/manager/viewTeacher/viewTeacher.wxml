@@ -7,7 +7,7 @@
 <view class="line"></view>
 <view class="con">
   <view class="card" wx:for="{{teacher}}">
-    <navigator class="left" url="../teacherMatch/teacherMatch?id={{item._id}}&openid={{item.openid}}" hover-class="none">
+    <view class="left" bindtap="jump" data-index="{{index}}" hover-class="none">
       <view class='top'>
         <view class="shu"></view>
         <view class='name'>{{item.name}}</view>
@@ -17,7 +17,7 @@
       <view class='text1'>擅长科目：
       <view class="text" style="margin-right: 15rpx;" wx:for="{{item.perInfo.speciality}}" wx:for-item="name">{{name}}</view>
     </view>
-    </navigator>
+    </view>
     <image src="../.../../../../images/manager/delete.svg" class="right" bindtap="delete" data-index="{{index}}" data-openid="{{item.openid}}"></image>   
   </view>
 </view>
