@@ -7,6 +7,7 @@ Page({
   data: {
     A: '问题A：假如你发现自己的学生不理睬你或者不愿向你汇报学习情况，你会怎么做？',
     B: '问题B：假如你发现学生问的问题经常不是你的强项，你会怎么做？',
+    fileID: ''
   },
   previewImage: function(e) {
     wx.previewImage({
@@ -17,16 +18,18 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: async function(options) {
     const app = getApp()
     const db = wx.cloud.database()
     let that = this
-    db.collection('person').doc(options.id)
+    await db.collection('person').doc(options.id)
       .get()
       .then(function(res) {
         console.log("【teacherDetail查询数据库person】", res)
+        let fileID = "cloud://yiban-edu.7969-yiban-edu-1301806073/supporting_materials/" + res.data.openid + ".jpg"
         that.setData({
-          teacher: res.data
+          teacher: res.data,
+          fileID:fileID
         })
       }).catch(function(err) {
         console.log(err)

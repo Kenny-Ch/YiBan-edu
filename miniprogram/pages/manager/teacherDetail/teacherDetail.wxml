@@ -46,7 +46,7 @@
   <view class="cu-form-group">
     <view class="title wd">证明材料</view>
     <view class='pic'>
-      <image src="{{teacher.perInfo.prove}}" class='img' data-url="{{teacher.perInfo.prove}}" bindtap="previewImage"></image>
+      <image lazy-load="true" src="{{fileID}}" class='img' data-url="{{fileID}}" bindtap="previewImage"></image>
     </view>
   </view>
 </view>
@@ -68,7 +68,7 @@
     <view class='tex'>{{teacher.otherInfo.collegeExamScore.English}}</view>
   </view>
   <view class="cu-form-group">
-    <view class="title wd">高考英语</view>
+    <view class="title wd">高考综合</view>
     <view class='tex'>{{teacher.otherInfo.collegeExamScore.Integration}}</view>
   </view>
   <view class="cu-form-group">

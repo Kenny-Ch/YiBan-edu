@@ -129,7 +129,7 @@ Page({
             perInfo.speciality = [that.changeLanguage(pick.grade1), that.changeLanguage(pick.grade2), that.changeLanguage(pick.grade3)]
             perInfo.stuNum = that.data.grade4
             app.globalData.userInfo.perInfo = perInfo
-            console.log(app.globalData)
+            console.log(input)
             wx.cloud.callFunction({
               name: 'uploadCV',
               data: {

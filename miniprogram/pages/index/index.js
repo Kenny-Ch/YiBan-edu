@@ -204,6 +204,7 @@ Page({
           item.url = "../matching/matching";
           list.push(item)
         }
+
         var item1 = {};
         item1.id = 1;
         item1.big_title = "伴学服务介绍";
@@ -214,7 +215,7 @@ Page({
         list.push(item1)
 
         //老师注册成功，则不显示第三个swiper
-        if (app.globalData.userInfo.isCheck == 1) {
+        if (app.globalData.isNew == false && (app.globalData.userInfo.isCheck == 1 || app.globalData.isTeacher == 0)) {
           that.setData({
             swiperList: list,
           })
@@ -225,7 +226,9 @@ Page({
           item2.title = "一起迈向公益之路";
           item2.small_title = "只要你有足够的热情，想为公益事业做出一份自己的贡献，都可以申请成为以伴志愿者！";
           item2.button = "加入我们";
-          if (app.globalData.userInfo.otherInfo == undefined) {
+          if (app.globalData.isNew == true) {
+            item2.url = "../join/join";
+          } else if (app.globalData.userInfo.otherInfo == undefined) {
             //第二次注册未完成
             item2.url = '../join/workingAbility/workingAbility'
           } else if (app.globalData.userInfo.isCheck == 0) {
@@ -379,7 +382,7 @@ Page({
         content: '可能是信息填写错误导致，请重新填写信息~',
         showCancel: true,
         confirmText: '重新填写',
-        success: function (res) {
+        success: function(res) {
           if (res.confirm) {
             console.log('用户点击确定')
             wx.navigateTo({

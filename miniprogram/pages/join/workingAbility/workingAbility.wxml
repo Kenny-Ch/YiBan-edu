@@ -17,7 +17,7 @@
       <view class='ll'>英语:</view>
       <input type="text" class='contents1' name='English'></input>
       <view class='ll'>综合:</view>
-      <input type="text" class='contents1' name='zonghe'></input>
+      <input type="text" class='contents1' name='Integration'></input>
     </view>
     <view class='label'>比较擅长的三个科目：</view>
     <view class='row'>
@@ -44,15 +44,15 @@
       </view>
     </picker>
     <view class='label'>个人简介(不超过150个字)：</view>
-    <textarea name='introduce' auto-height class='leaning' value="{{introduce}}" />
+    <textarea name='introduction' auto-height class='leaning' value="{{introduce}}" />
     <view class='label'>对以伴服务的了解：</view>
-    <textarea name='understand' auto-height class='leaning' value="{{understand}}" />
+    <textarea name='comprehend' auto-height class='leaning' value="{{understand}}" />
     <view class='label'>你的学生干部经历：</view>
      <textarea name='experience' auto-height class='leaning' value="{{experience}}" />
     <view class='label'>你的个人荣誉：</view>
      <textarea name='honor' auto-height class='leaning' value="{{honor}}" />
     <view class='label'>你的兴趣爱好：</view>
-    <textarea name='honor' auto-height class='leaning' value="{{honor}}" />
+    <textarea name='interest' auto-height class='leaning' value="{{honor}}" />
     <view class='label'>新学期的课程安排是否紧凑：</view>
     <radio-group class='row1 ii' bindchange="punch_Change">
       <view class='row1' wx:for="{{judge}}">
