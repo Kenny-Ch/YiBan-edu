@@ -6,7 +6,7 @@
 <view class="title">管理后台</view>
 <view class='title-bottom'>管理员可在这里对用户的评论进行审核以及查看老师与学生的匹配情况。</view>
 <!--用户评论审核-->
-<navigator url="" hover-class="none">
+<navigator url="./reviewComments/reviewComments" hover-class="none">
   <view class='card' style="background-image: linear-gradient( 90deg, #FFAA85 10%, #B3315F 100%);">
     <view class='text'>
       <view class="text-title">用户评论审核</view>
