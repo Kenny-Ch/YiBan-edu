@@ -24,6 +24,8 @@ const db = cloud.database()
         "wechat": "",               //微信号
         "tel": "",                  //电话号码
         "stuNum": 0,                //最多可辅导的学生数量
+        "email":"                   //email
+        "area":""                   //地区
         
         //或者
         //学生

@@ -12,8 +12,6 @@ const db = cloud.database()
         "speciality": [],           //擅长科目
         "introduction": "",         //个人简介
         "stuNum": 0,                //最多可辅导的学生数量
-        "email":"                   //email
-        "area":""                   //地区
     },
     //简历模块
     "otherInfo": {
@@ -50,8 +48,6 @@ exports.main = async (event, context) => {
         'perInfo.speciality': event.perInfo.speciality,
         'perInfo.introduction': event.perInfo.introduction,
         'perInfo.stuNum': event.perInfo.stuNum,
-        'perInfo.email':event.perInfo.email,
-        'perInfo.area':event.perInfo.area,
         otherInfo: event.otherInfo,
         isCheck: event.isCheck,
         isWeChatReg: event.isWeChatReg,
