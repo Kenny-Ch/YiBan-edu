@@ -443,24 +443,25 @@ Page({
                 'imgUrl': app.globalData.userInfo.avatarUrl,
                 'nickname': app.globalData.wxname,
                 'contextId': that.data._options.id,
-                'comment': content
+                'comment': content,
+                'type': 'video'
               },
               success: function(res) {
                 console.log("【detail调用函数uploadInteraction】【flag: 'comment'（上传评论）】", res)
                 wx.showToast({
-                  title: '发送成功',
+                  title: '发送成功！显示还需要等后台管理员通过~',
                   icon: 'none',
-                  duration: 1500,
+                  duration: 3000,
                   success: function() {
-                    let comment = "video.commentList"
-                    let item = {}
-                    let date = new Date()
-                    item.imgUrl = app.globalData.userInfo.avatarUrl
-                    item.nickname = app.globalData.wxname
-                    item.comment = content
-                    that.setData({
-                      [comment]: that.data.video.commentList.concat(item)
-                    })
+                    // let comment = "video.commentList"
+                    // let item = {}
+                    // let date = new Date()
+                    // item.imgUrl = app.globalData.userInfo.avatarUrl
+                    // item.nickname = app.globalData.wxname
+                    // item.comment = content
+                    // that.setData({
+                    //   [comment]: that.data.video.commentList.concat(item)
+                    // })
                     var pages = getCurrentPages();
                     var beforePage = pages[pages.length - 2];
                     beforePage.uploadCommentNum(that.data._options)

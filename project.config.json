@@ -317,37 +317,23 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/manager/reviewComments/reviewComments",
-					"pathName": "pages/manager/reviewComments/reviewComments",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "pages/join/oldMember/oldMember",
 					"pathName": "pages/join/oldMember/oldMember",
-					"query": "",
+					"query": "id=37e26adb5ec29bfb00f9357627ee1f29&status=false&type=teacher",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "pages/join/newMember/newMember",
 					"pathName": "pages/join/newMember/newMember",
-					"query": "",
+					"query": "id=37e26adb5ec29bfb00f9357627ee1f29&status=false&type=teacher",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "pages/join/workingAbility/workingAbility",
 					"pathName": "pages/join/workingAbility/workingAbility",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/join/result/result",
-					"pathName": "pages/join/result/result",
-					"query": "",
+					"query": "id=37e26adb5ec29bfb00f9357627ee1f29&status=false&type=teacher",
 					"scene": null
 				}
 			]
