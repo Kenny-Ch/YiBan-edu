@@ -14,7 +14,7 @@ const MAX_LIMIT = 100
       id: string            //如果是文章视频，则填写该字段
       openid: string        //如果是用户，则填写该字段
 
-      type: 0/1             //0代表是用户要获得该数据，1代表是文章/视频获得该数据
+      type: 0/1/2             //0代表是用户要获得该数据，1代表是文章/视频获得该数据，2代表是获得所有评论（要多附加两个参数：获得页码位数：page，每一页的总条数num。例子：第二页，每一页10条，则会返回第11-20条数据）
     }
 */
 
@@ -162,13 +162,39 @@ exports.main = async (event, context) => {
 
       data.stores = stores
     }
+  } else if (event.type == 2) {
+    if (event.comment) {
+      var res = await db.collection('interaction').skip((event.page - 1) * event.num).limit(event.num).where({
+        flag: 'comment',
+      }).get()
+
+      data.comments = res.data
+    }
+
+    if (event.like) {
+      var res = await db.collection('interaction').skip((event.page - 1) * event.num).limit(event.num).where({
+        flag: 'like',
+      }).get()
+
+      data.likes = res.data
+    }
+
+    if (event.store) {
+      var res = await db.collection('interaction').skip((event.page - 1) * event.num).limit(event.num).where({
+        flag: 'store',
+      }).get()
+
+      data.stores = res.data
+    }
   }
+
+
   return data
 
 }
 //返回值：
 
-  //以下三种不一定全都有，取决于参数的传入情况
-  // comments: [],
-  // likes: [],
-  // stores: [],
+//以下三种不一定全都有，取决于参数的传入情况
+// comments: [],
+// likes: [],
+// stores: [],

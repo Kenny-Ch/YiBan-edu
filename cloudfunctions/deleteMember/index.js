@@ -7,96 +7,52 @@ const db = cloud.database()
 const _ = db.command
 
 /*  参数表：
-    //老师学生二选一
-    teaOpenid:"",               //老师的openid 
-    stuOpenid:"",               //学生的openid  
-    type : ""  stu或tea         //stu是学生，tea是老师
+    openid:"",               //被删除成员的openid  
 */
 
 // 云函数入口函数
 exports.main = async (event, context) => {
+  console.log("传入参数", event)
 
-  if(event.type == "stu") { //删除学生信息
     var res = await db.collection('person').where({
-      openid: event.stuOpenid
+      openid: event.openid
     }).field({
       matchList: true,
       matchWaitList: true
     }).get()
+    console.log("删除成员的信息", res.data[0])
 
     if(res.data[0].matchWaitList.length != 0){
-      for(let openid in res.data[0].matchWaitList){
+      for(let i=0; i<res.data[0].matchWaitList.length; i++){
         cloud.callFunction({
           name: 'dropRelation',
           data: {
-            selfOpenid: openid,
-            dropOpenid: event.stuOpenid
+            selfOpenid: res.data[0].matchWaitList[i],
+            dropOpenid: event.openid
           }
         })
       }
     }
     if(res.data[0].matchList.length != 0){
-      for(let openid in res.data[0].matchList){
+      for(let i=0; i<res.data[0].matchList.length; i++){
         cloud.callFunction({
           name: 'dropRelation',
           data: {
-            selfOpenid: openid,
-            dropOpenid: event.stuOpenid
+            selfOpenid: res.data[0].matchList[i],
+            dropOpenid: event.openid
           }
         })
       }
     }
     
     try {
-      return await db.collection('person').where({
-        openid: event.stuOpenid
+      await db.collection('person').where({
+        openid: event.openid
       }).remove()
+      return "删除成功（不保证关联的其他成员相关信息删除成功）"
     } catch(e) {
       console.error(e)
+      return {msg:'删除失败',errMsg:e}
     }
-
-    return '删除学生成功'
-  } 
-  else if (event.type == "tea") { //删除老师信息
-    var res = await db.collection('person').where({
-      openid: event.teaOpenid
-    }).field({
-      matchList: true,
-      matchWaitList: true
-    }).get()
-
-    if(res.data[0].matchWaitList.length != 0){
-      for(let openid in res.data[0].matchWaitList){
-        cloud.callFunction({
-          name: 'dropRelation',
-          data: {
-            selfOpenid: openid,
-            dropOpenid: event.teaOpenid
-          }
-        })
-      }
-    }
-    if(res.data[0].matchList.length != 0){
-      for(let openid in res.data[0].matchList){
-        cloud.callFunction({
-          name: 'dropRelation',
-          data: {
-            selfOpenid: openid,
-            dropOpenid: event.teaOpenid
-          }
-        })
-      }
-    }
-    
-    try {
-      return await db.collection('person').where({
-        openid: event.teaOpenid
-      }).remove()
-    } catch(e) {
-      console.error(e)
-    }
-
-    return '删除教师成功'
-  }
   
 }
