@@ -92,7 +92,7 @@ Page({
             duration: 1500,
           })
           return
-        } else if (input.name == "" || input.major == "" || input.school == "" || input.wechat == "" || input.tel == "" || input.email == "" || pick.grade == undefined || pick.fileID == undefined) {
+        } else if (input.name == "" || input.major == "" || input.school == "" || input.wechat == "" || input.tel == "" || input.email == "" || pick.grade == undefined || pick.fileID == undefined || pick.region == undefined) {
           wx.showToast({
             title: '信息填写不完整~',
             icon: 'none',
@@ -115,6 +115,7 @@ Page({
                 gender: pick.gender,
                 school: input.school,
                 grade: pick.grade,
+                area: pick.region,
                 major: input.major,
                 wechat: input.wechat,
                 tel: input.tel,
