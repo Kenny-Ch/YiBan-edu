@@ -46,7 +46,8 @@ exports.main = async(event, context) => {
           contextId: event.contextId,
           comment: event.comment,
           time: new Date(),
-          type: event.type
+          type: event.type,
+          isCheck: 0
         }
       })
     } catch (e) {

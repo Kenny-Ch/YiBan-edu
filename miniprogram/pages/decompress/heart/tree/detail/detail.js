@@ -93,35 +93,36 @@ Page({
                 'imgUrl': app.globalData.userInfo.avatarUrl,
                 'nickname': app.globalData.wxname,
                 'contextId': that.data._options.id,
-                'comment': content
+                'comment': content,
+                'type': 'tree'
               },
               success: function(res) {
                 console.log("【detail调用函数uploadInteraction】【flag: 'comment'（上传评论）】", res)
                 wx.showToast({
-                  title: '发送成功',
+                  title: '发送成功！显示还需要等后台管理员通过~',
                   icon: 'none',
-                  duration: 1500,
+                  duration: 3000,
                   success: function() {
-                    let comment = "detail.comment"
-                    let commentsLen = "detail.pinglun"
-                    let item = {
-                      comment: {}
-                    }
-                    let date = new Date()
-                    let month = date.getMonth() + 1
-                    let day = date.getDate()
-                    if (month <= 9)
-                      month = '0' + month
-                    if (day <= 9)
-                      day = '0' + day
-                    item.time = date.getFullYear() + '-' + month + '-' + day
-                    item.imgUrl = app.globalData.userInfo.avatarUrl
-                    item.nickname = app.globalData.wxname
-                    item.comment = content
-                    that.setData({
-                      [comment]: that.data.detail.comment.concat(item),
-                      [commentsLen]: that.data.detail.pinglun + 1
-                    })
+                    // let comment = "detail.comment"
+                    // let commentsLen = "detail.pinglun"
+                    // let item = {
+                    //   comment: {}
+                    // }
+                    // let date = new Date()
+                    // let month = date.getMonth() + 1
+                    // let day = date.getDate()
+                    // if (month <= 9)
+                    //   month = '0' + month
+                    // if (day <= 9)
+                    //   day = '0' + day
+                    // item.time = date.getFullYear() + '-' + month + '-' + day
+                    // item.imgUrl = app.globalData.userInfo.avatarUrl
+                    // item.nickname = app.globalData.wxname
+                    // item.comment = content
+                    // that.setData({
+                    //   [comment]: that.data.detail.comment.concat(item),
+                    //   [commentsLen]: that.data.detail.pinglun + 1
+                    // })
                   }
                 })
               },

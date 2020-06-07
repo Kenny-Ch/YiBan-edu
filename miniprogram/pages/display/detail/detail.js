@@ -473,23 +473,24 @@ Page({
                 'imgUrl': app.globalData.avatarUrl,
                 'nickname': app.globalData.wxname,
                 'contextId': that.data.post._id,
-                'comment': content
+                'comment': content,
+                'type': 'artical'
               },
               success: function(res) {
                 console.log("【detail调用函数uploadInteraction】【flag: 'comment'】", res)
                 wx.showToast({
-                  title: '发送成功',
+                  title: '发送成功！显示还需要等后台管理员通过~',
                   icon: 'none',
-                  duration: 1500,
+                  duration: 3000,
                   success: function() {
-                    let commentList = "post.commentList"
-                    let item = {}
-                    item.imgUrl = app.globalData.avatarUrl
-                    item.nickname = app.globalData.wxname
-                    item.comment = that.data.commentContent
-                    that.setData({
-                      [commentList]: that.data.post.commentList.concat(item)
-                    })
+                    // let commentList = "post.commentList"
+                    // let item = {}
+                    // item.imgUrl = app.globalData.avatarUrl
+                    // item.nickname = app.globalData.wxname
+                    // item.comment = that.data.commentContent
+                    // that.setData({
+                    //   [commentList]: that.data.post.commentList.concat(item)
+                    // })
                     var pages = getCurrentPages();
                     var beforePage = pages[pages.length - 2];
                     beforePage.uploadCommentNum(that.data._options)

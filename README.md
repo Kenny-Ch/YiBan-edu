@@ -50,8 +50,28 @@
         "email": "",                //邮箱（选填）
 
     },
-    
-    
+
+    //只有在小程序端注册的老师才有
+    "otherInfo": {
+      "collegeExamScore":{    //高考成绩
+        "Chinese": number
+        "Math": number
+        "English": number
+        "Integration" :number
+      }
+      comprehend: string      //对以伴服务的了解
+      experience: string      //你的学生干部经历
+      honor: string           //你的个人荣誉
+      interest: string        //你的兴趣爱好
+      arrange: boolean        //新学期课程安排是否紧凑
+      questionA: string       //问题1
+      questionB: string       //问题2
+    },
+
+    isCheck: number           //0代表未审核、1代表审核通过、2代表审核未通过
+
+    //该字段只针对老师
+    isWeChatReg: boolean       //true代表老师是微信端注册，false代表是绑定的老师
 
     //学生提供匹配所需要的信息
     "matchInfo": {
@@ -248,7 +268,8 @@
     "contextId": "",
     "comment": "",
     "time": Date,
-    "type": ""        //tree为树洞，artical为文章，video为视频
+    "type": ""           //tree为树洞，artical为文章，video为视频
+    "isCheck": number    //0代表未审核、1代表审核通过、2代表审核未通过
     
 
     //或者
