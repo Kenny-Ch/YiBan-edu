@@ -32,6 +32,7 @@
         "gender": "",               //性别
         "school": "",               //所在学校
         "grade": "",                //年级
+        "area": [],                 //地区
         "major": "",                //专业
         "speciality": [],           //擅长科目
         "introduction": "",         //个人简介

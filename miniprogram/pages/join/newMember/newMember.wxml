@@ -7,9 +7,9 @@
   <view class='toptitle'>基本信息</view>
   <view class='card'>
     <view class='label'>姓名：</view>
-    <input type="text" class='contents' placeholder="请填写你的真实姓名" name='qq'></input>
+    <input type="text" class='contents' placeholder="请填写你的真实姓名" name='name'></input>
     <view class='label'>现读学校：</view>
-    <input type="text" class='contents' placeholder="请填写你所在的大学名称" name='shouquan'></input>
+    <input type="text" class='contents' placeholder="请填写你所在的大学名称" name='school'></input>
     <view class='label'>年级：</view>
     <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}" class='top'>
       <view class="contents">
