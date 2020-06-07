@@ -31,10 +31,10 @@ const db = cloud.database()
 */
 
 // 云函数入口函数
-exports.main = async (event, context) => {
+exports.main = async(event, context) => {
   console.log("传入参数：", event)
   var flag = event.flag
-  if(flag == 'comment'){
+  if (flag == 'comment') {
     try {
       return await db.collection('interaction').add({
         // data 字段表示需新增的 JSON 数据
@@ -45,13 +45,14 @@ exports.main = async (event, context) => {
           nickname: event.nickname,
           contextId: event.contextId,
           comment: event.comment,
-          time: new Date()
+          time: new Date(),
+          type: event.type
         }
       })
     } catch (e) {
       console.error(e)
     }
-  } else if(flag == 'like'){
+  } else if (flag == 'like') {
     try {
       return await db.collection('interaction').add({
         // data 字段表示需新增的 JSON 数据
@@ -65,7 +66,7 @@ exports.main = async (event, context) => {
     } catch (e) {
       console.error(e)
     }
-  } else if(flag == 'store') {
+  } else if (flag == 'store') {
     try {
       return await db.collection('interaction').add({
         // data 字段表示需新增的 JSON 数据
@@ -83,5 +84,5 @@ exports.main = async (event, context) => {
       console.error(e)
     }
   }
-  
+
 }

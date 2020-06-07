@@ -43,8 +43,7 @@
             wx.cloud.callFunction({
               name: 'deleteMember',
               data: {
-                teaOpenid: openid,
-                type: 'tea'
+                openid: openid,
               }
             }).then(function(res) {
               console.log("【viewTeacher调用函数deleteMember】", res)

@@ -374,7 +374,7 @@ Page({
       })
     } else if (!app.globalData.isNew && app.globalData.userInfo.matchList.length != 0) {
       wx.navigateTo({
-        url: '../ matching/teacher/teacher?status=true&id=' + app.globalData.userInfo.matchList[0],
+        url: '../matching/teacher/teacher?status=true&id=' + app.globalData.userInfo.matchList[0],
       })
     } else {
       wx.navigateTo({
