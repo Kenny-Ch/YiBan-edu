@@ -23,6 +23,7 @@
     "registerDate": "",             //注册日期
     "matchList": [],                //匹配的名单列表（openid）
     "matchWaitList":[],             //申请的/待匹配的名单（openid）
+    "matchReject": boolean          //true为被拒绝，false为没被拒绝
     "isMatchFull": false,           //匹配是否已经满了
 
     //个人信息模块
@@ -246,7 +247,8 @@
     "nickname": "",
     "contextId": "",
     "comment": "",
-    "time": Date
+    "time": Date,
+    "type": ""        //tree为树洞，artical为文章，video为视频
     
 
     //或者

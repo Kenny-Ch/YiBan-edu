@@ -62,56 +62,72 @@ Page({
     const app = getApp()
     let that = this
     wx.cloud.callFunction({
-      name: 'uploadComment',
+      name: 'msgSecCheck',
       data: {
-        'openid': app.globalData.openid,
-        'imgUrl': app.globalData.userInfo.avatarUrl,
-        'name': app.globalData.wxname,
-        'comment': that.data.context,
-        'isAnonymous': that.data.check
+        content: that.data.context
       }
     }).then(function(res) {
-      console.log("【tree/establish调用函数uploadComment】【上传树洞】", res)
-      if (res.result != null) {
-        wx.showToast({
-          title: '发布成功！',
-          icon: 'success',
-          duration: 1500,
-          mask: true,
-          success: function() {
-            setTimeout(function() {
-              var pages = getCurrentPages() //当前页面栈
-              if (pages.length > 1) {
-                var beforePage = pages[pages.length - 2] //获取上一个页面实例对象
-                let date = new Date()
-                var util = require('../../../../template/unit.js');  
-                let data = {}
-                data._id = res.result._id
-                data.openid = app.globalData.openid
-                data.username = app.globalData.wxname
-                data.liuyan = that.data.context
-                data.dianzan = 0
-                data.pinglun = 0
-                data.contextId = res.result._id
-                data.time = util.formatTime(date);
-                data.userimg = app.globalData.userInfo.avatarUrl
-                data.isAnonymous = that.data.check
-                data.isLike = false
+      console.log("【敏感信息检测】", res.result)
+      if (res.result.errCode == 0) {
+        wx.cloud.callFunction({
+          name: 'uploadComment',
+          data: {
+            'openid': app.globalData.openid,
+            'imgUrl': app.globalData.userInfo.avatarUrl,
+            'name': app.globalData.wxname,
+            'comment': that.data.context,
+            'isAnonymous': that.data.check
+          }
+        }).then(function(res) {
+          console.log("【tree/establish调用函数uploadComment】【上传树洞】", res)
+          if (res.result != null) {
+            wx.showToast({
+              title: '发布成功！',
+              icon: 'success',
+              duration: 1500,
+              mask: true,
+              success: function() {
+                setTimeout(function() {
+                  var pages = getCurrentPages() //当前页面栈
+                  if (pages.length > 1) {
+                    var beforePage = pages[pages.length - 2] //获取上一个页面实例对象
+                    let date = new Date()
+                    var util = require('../../../../template/unit.js');
+                    let data = {}
+                    data._id = res.result._id
+                    data.openid = app.globalData.openid
+                    data.username = app.globalData.wxname
+                    data.liuyan = that.data.context
+                    data.dianzan = 0
+                    data.pinglun = 0
+                    data.contextId = res.result._id
+                    data.time = util.formatTime(date);
+                    data.userimg = app.globalData.userInfo.avatarUrl
+                    data.isAnonymous = that.data.check
+                    data.isLike = false
 
-                beforePage.onChangeList(data); //触发父页面中的方法
-                wx.navigateBack({})
+                    beforePage.onChangeList(data); //触发父页面中的方法
+                    wx.navigateBack({})
+                  }
+                }, 1500)
               }
-            }, 1500)
+            })
+          } else {
+            wx.showToast({
+              title: '发布失败，请重试',
+              icon: 'fail',
+              duration: 1000
+            })
           }
         })
       } else {
         wx.showToast({
-          title: '发布失败，请重试',
-          icon: 'fail',
-          duration: 1000
+          title: '发送失败！涉及敏感信息',
+          icon: 'none',
+          duration: 1500,
+          mask: true
         })
       }
-
 
     }).catch(function(err) {
       console.log(err)

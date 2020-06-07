@@ -13,12 +13,14 @@ const _ = db.command
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  var res = db.collection('person').where({
+  console.log('传入参数', event)
+  var res = await db.collection('person').where({
     openid: event.selfOpenid
   }).field({
     matchList: true,
     matchWaitList: true
   }).get()
+  console.log('主用户：', res.data)
 
   var list = []
   var waitList = []
@@ -31,8 +33,9 @@ exports.main = async (event, context) => {
     if(res.data[0].matchWaitList[i] != event.dropOpenid)
       waitList.push(res.data[0].matchWaitList[i])
   }
+  console.log('修改后的两列表：',list, waitList)
 
-  return await db.collection('person').where({
+  await db.collection('person').where({
     openid: event.selfOpenid
   }).update({
     data:{
