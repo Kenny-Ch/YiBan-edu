@@ -1,0 +1,111 @@
+<!--miniprogram/pages/manager/teacherDeatail/teacherDeatail.wxml-->
+<!--miniprogram/pages/join/studentDetail/studentDetail.wxml-->
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+  <view slot="backText" bindtap="back">返回</view>
+  <view slot="content">以伴edu</view>
+</cu-custom>
+<!--个人信息-->
+<view class="title1">个人信息</view>
+<view class="block">
+  <view class="cu-form-group margin-top">
+    <view class="title wd">姓名</view>
+    <input type='text' value="{{teacher.name}}" disabled="true"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">性别</view>
+    <input type='text' value="{{teacher.perInfo.gender}}" disabled="true"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">联系方式</view>
+    <input type='number' value="{{teacher.perInfo.tel}}" disabled="true"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">所在地区</view>
+    <input type='text' value="{{teacher.perInfo.area[0] + teacher.perInfo.area[1] + teacher.perInfo.area[2]}}" disabled="true"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">在读学校</view>
+    <input type='text' value="{{teacher.perInfo.school}}" disabled="true"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">在读年级</view>
+    <input type='text' value="{{teacher.perInfo.grade}}" disabled="true"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">在读专业</view>
+    <input type='text' value="{{teacher.perInfo.major}}" disabled="true"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">微信</view>
+    <input type='number' value="{{teacher.perInfo.wechat}}" disabled="true"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">邮箱</view>
+    <input type='text' value="{{teacher.perInfo.email}}" disabled="true"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">证明材料</view>
+    <view class='pic'>
+      <image src="{{teacher.perInfo.prove}}" class='img' data-url="{{teacher.perInfo.prove}}" bindtap="previewImage"></image>
+    </view>
+  </view>
+</view>
+<!--登记信息-->
+<view class="title1">简历信息</view>
+<view class='text2'>{{A}}</view>
+<view class='text2'>{{B}}</view>
+<view class="block margin-top">
+  <view class="cu-form-group">
+    <view class="title wd">高考语文</view>
+    <view class='tex'>{{teacher.otherInfo.collegeExamScore.Chinese}}</view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">高考数学</view>
+    <view class='tex'>{{teacher.otherInfo.collegeExamScore.Math}}</view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">高考英语</view>
+    <view class='tex'>{{teacher.otherInfo.collegeExamScore.English}}</view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">高考英语</view>
+    <view class='tex'>{{teacher.otherInfo.collegeExamScore.Integration}}</view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">个人简介</view>
+    <view class='tex'>{{teacher.otherInfo.comprehend}}</view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">了解以伴</view>
+    <view class='tex'>{{teacher.otherInfo.comprehend}}</view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">干部经历</view>
+    <view class='tex'>{{teacher.otherInfo.experience}}</view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">个人荣誉</view>
+    <view class='tex'>{{teacher.otherInfo.honor}}</view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">兴趣爱好</view>
+    <view class='tex'>{{teacher.otherInfo.interest}}</view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">课程安排</view>
+    <view class="tex">{{teacher.otherInfo.arrange==true?'紧凑':'不紧凑'}}</view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">问题A</view>
+    <view class="tex">{{teacher.otherInfo.questionA}}</view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title wd">问题B</view>
+    <view class="tex">{{teacher.otherInfo.questionB}}</view>
+  </view>
+</view>
+<view class='rr' wx:if="{{teacher.isAdopt==false}}">
+  <button bindtap="checkMatch" data-status="true" style="width: 284rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn'>通过审核</button>
+  <button bindtap="checkMatch" data-status="false" style="width: 284rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn'>退回申请</button>
+</view>
+<view class="hh"></view>

@@ -18,28 +18,28 @@ Page({
     picker: ['高一', '高二', '高三'],
     region: [],
     job: 0, //1是老师，0是学生
-    img:"../../../images/my/tupianimgyulan.png"
+    img: "../../../images/my/tupianimgyulan.png"
   },
   upload_picture: function(name) {
     var that = this
     //让用户选择或拍摄一张照片
     wx.chooseImage({
-      count: 1,	
+      count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success(res) {
-      //选择完成会先返回一个临时地址保存备用
+        //选择完成会先返回一个临时地址保存备用
         const tempFilePaths = res.tempFilePaths
         //将照片上传至云端需要刚才存储的临时地址
         wx.cloud.uploadFile({
-          cloudPath: 'supporting_materials/'+app.globalData.openid+'.jpg',
+          cloudPath: 'supporting_materials/' + app.globalData.openid + '.jpg',
           filePath: tempFilePaths[0],
           success(res) {
-          //上传成功后会返回永久地址
+            //上传成功后会返回永久地址
             that.setData({
-              img:res.fileID         //图片存储到云存储的fileID
+              fileID: res.fileID //图片存储到云存储的fileID
             })
-            console.log(res.fileID) 
+            console.log(res.fileID)
           }
         })
       }
@@ -104,7 +104,7 @@ Page({
           console.log('【注册界面提交表单信息】', e.detail.value, that.data.region, that.data.gender, that.data.grade)
           var input = e.detail.value
           var pick = that.data
-          if (input.uname == "" || input.school == "" || input.qq == "" || input.email == "" || input.tel == "" || pick.region.length == 0 || pick.gender == undefined || pick.grade == undefined) {
+          if (input.uname == "" || input.school == "" || input.qq == "" || input.email == "" || input.tel == "" || pick.region.length == 0 || pick.gender == undefined || pick.grade == undefined || pick.fileID == undefined) {
             wx.showToast({
               title: '信息填写不完整~',
               icon: 'none',

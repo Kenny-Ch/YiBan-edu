@@ -148,10 +148,10 @@ Page({
          */
         var list = [];
 
-        if (app.globalData.isMatch == true) {
-
-          if (app.globalData.isTeacher == 0) {
-            var item = {};
+        //已经匹配
+        if (app.globalData.isTeacher == 0) {
+          if (app.globalData.isMatch == true) {
+            let item = {};
             item.id = 0;
             item.big_title = "已提交匹配登记";
             item.title = "高考陪伴公益行";
@@ -171,53 +171,24 @@ Page({
               //这里跳转匹配界面
               item.url = "../matching/result/result";
             }
+          }
+        } else if (app.globalData.isTeacher == 1) {
+          //是老师的情况
+          let item = {};
+          item.id = 0;
+          item.big_title = "感谢您的志愿付出";
+          item.title = "一起迈向公益之路";
+          item.small_title = "只要你有足够的热情，想为公益事业做出一份自己的贡献，都可以申请成为以伴志愿者！";
+          item.button = "查看我的学生";
+          if (app.globalData.userInfo.otherInfo == undefined) {
+            //第二次注册未完成
+            item.url = '../join/workingAbility/workingAbility'
           } else {
-            //是老师的情况
-            var item = {};
-            item.id = 0;
-            item.big_title = "感谢您的志愿付出";
-            item.title = "一起迈向公益之路";
-            item.small_title = "只要你有足够的热情，想为公益事业做出一份自己的贡献，都可以申请成为以伴志愿者！";
-            item.button = "查看我的学生";
-            item.url = "../join/myStudent/myStudent";
-            list.push(item)
             item.url = "../join/myStudent/myStudent?id=" + app.globalData.userInfo._id;
           }
-
           list.push(item)
-          var item1 = {};
-          item1.id = 1;
-          item1.big_title = "伴学服务介绍";
-          item1.title = "服务介绍细则";
-          item1.small_title = "一对一高考陪伴”服务有着明确的服务对象，如您对伴学服务感兴趣，可查看具体介绍";
-          item1.button = "具体介绍";
-          item1.url = "../matching/introduce/introduce";
-          list.push(item1)
-          that.setData({
-            swiperList: list,
-          })
-        } else if (app.globalData.isTeacher == 1) {
-          var item1 = {};
-          item1.id = 2;
-          item1.big_title = "感谢您的志愿付出";
-          item1.title = "一起迈向公益之路";
-          item1.small_title = "只要你有足够的热情，想为公益事业做出一份自己的贡献，都可以申请成为以伴志愿者！";
-          item1.button = "查看我的学生";
-          item1.url = "../join/myStudent/myStudent";
-          list.push(item1)
-          var item = {};
-          item.id = 1;
-          item.big_title = "伴学服务介绍";
-          item.title = "服务介绍细则";
-          item.small_title = "“一对一高考陪伴”服务有着明确的服务对象，如您对伴学服务感兴趣，可查看具体介绍";
-          item.button = "具体介绍";
-          item.url = "../matching/introduce/introduce";
-          list.push(item)
-          that.setData({
-            swiperList: list,
-          })
         } else {
-          var item = {};
+          let item = {};
           item.id = 0;
           item.big_title = "寻找你的以伴老师";
           item.title = "高考陪伴公益行";
@@ -225,26 +196,34 @@ Page({
           item.button = "开始匹配";
           item.url = "../matching/matching";
           list.push(item)
-          var item1 = {};
-          item1.id = 1;
-          item1.big_title = "伴学服务介绍";
-          item1.title = "服务介绍细则";
-          item1.small_title = "“一对一高考陪伴”服务有着明确的服务对象，如您对伴学服务感兴趣，可查看具体介绍";
-          item1.button = "具体介绍";
-          item1.url = "../matching/introduce/introduce";
-          list.push(item1)
-          var item2 = {};
-          item2.id = 2;
-          item2.big_title = "成为伴学志愿者";
-          item2.title = "一起迈向公益之路";
-          item2.small_title = "只要你有足够的热情，想为公益事业做出一份自己的贡献，都可以申请成为以伴志愿者！";
-          item2.button = "加入我们";
-          item2.url = "../join/join";
-          list.push(item2)
-          that.setData({
-            swiperList: list,
-          })
         }
+        var item1 = {};
+        item1.id = 1;
+        item1.big_title = "伴学服务介绍";
+        item1.title = "服务介绍细则";
+        item1.small_title = "一对一高考陪伴”服务有着明确的服务对象，如您对伴学服务感兴趣，可查看具体介绍";
+        item1.button = "具体介绍";
+        item1.url = "../matching/introduce/introduce";
+        list.push(item1)
+        that.setData({
+          swiperList: list,
+        })
+        var item2 = {};
+        item2.id = 2;
+        item2.big_title = "成为伴学志愿者";
+        item2.title = "一起迈向公益之路";
+        item2.small_title = "只要你有足够的热情，想为公益事业做出一份自己的贡献，都可以申请成为以伴志愿者！";
+        item2.button = "加入我们";
+        if (app.globalData.userInfo.otherInfo == undefined) {
+          //第二次注册未完成
+          item2.url = '../join/workingAbility/workingAbility'
+        } else {
+          item2.url = "../join/join";
+        }
+        list.push(item2)
+        that.setData({
+          swiperList: list,
+        })
         console.log("【app.globalData】", app.globalData)
       })
     }).catch(err => {
