@@ -1,4 +1,4 @@
-/* miniprogram/pages/join/studentDetail/studentDetail.wxss */
+/* miniprogram/pages/manager/teacherDeatail/teacherDeatail.wxss */
 .block{
   width: 100%;
 }
@@ -54,4 +54,13 @@
   width: 80%;
   margin-top:20rpx ;
   margin-bottom:20rpx ;
+}
+.text2 {
+  width: 680rpx;
+  font-size: 28rpx;
+  line-height: 150%;
+  text-align: left;
+  color: rgba(80, 80, 80, 1);
+  margin-top: 24rpx;
+  margin-left:24rpx ;
 }

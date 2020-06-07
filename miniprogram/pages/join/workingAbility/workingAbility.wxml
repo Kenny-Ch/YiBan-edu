@@ -37,6 +37,14 @@
         </view>
       </picker>
     </view>
+    <view class='label'>最多可同时辅导几个学生：</view>
+    <picker bindchange="PickerChange4" value="{{index4}}" range="{{picker1}}" class='top'>
+      <view class="contents2">
+        {{index4?picker1[index4]:''}}
+      </view>
+    </picker>
+    <view class='label'>个人简介(不超过150个字)：</view>
+    <textarea name='introduce' auto-height class='leaning' value="{{introduce}}" />
     <view class='label'>对以伴服务的了解：</view>
     <textarea name='understand' auto-height class='leaning' value="{{understand}}" />
     <view class='label'>你的学生干部经历：</view>

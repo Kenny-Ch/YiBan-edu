@@ -8,9 +8,21 @@
   <view class='card'>
     <view class='label'>姓名：</view>
     <input type="text" class='contents' placeholder="请填写你的真实姓名" name='name'></input>
-    <view class='label'>现读学校：</view>
+    <view class='label'>性别：</view>
+    <radio-group class='row1 ii' bindchange="sex_Change">
+      <view class='row1' wx:for="{{judge}}">
+        <radio value="{{item.value}}" checked="{{item.checked}}" color='#fff' /> <view class='text_name'>{{item.name}}</view>
+      </view>
+    </radio-group>
+    <view class='label'>所在地区：</view>
+    <picker mode="region" bindchange="RegionChange" value="{{region}}" custom-item="{{customItem}}" class='top'>
+      <view class="contents">
+        {{region.length==0?'请选择你所在的地区':region}}
+      </view>
+    </picker>
+    <view class='label'>在读学校：</view>
     <input type="text" class='contents' placeholder="请填写你所在的大学名称" name='school'></input>
-    <view class='label'>年级：</view>
+    <view class='label'>在读年级：</view>
     <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}" class='top'>
       <view class="contents">
         {{index?picker[index]:'请选择你的年级'}}

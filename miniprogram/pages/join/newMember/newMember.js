@@ -6,9 +6,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-    picker: ['大一', '大二', '大三', '大四'],
-    shuoming: '说明：请将学生证上包含照片、姓名、院系、专业等信息的照片上传。若拍摄时无法拍成一张，请用ps、画图等软件合并到一张图中。',
-    img: "../../../images/my/tupianimgyulan.png",
+    judge: [{
+      name: '男',
+      checked: false,
+      value: '男',
+    }, {
+      name: '女',
+      checked: false,
+      value: '女',
+    }],
+    region:[],
+    picker: ['大一', '大二', '大三','大四'],
+    shuoming:'说明：请将学生证上包含照片、姓名、院系、专业等信息的照片上传。若拍摄时无法拍成一张，请用ps、画图等软件合并到一张图中。',
+    img:"../../../images/my/tupianimgyulan.png",
+  },
+  RegionChange: function(e) {
+    console.log('地区选择：', e.detail.value)
+    this.setData({
+      region: e.detail.value
+    })
+  },
+  sex_Change: function(e) {
+    console.log('性别：', e.detail.value)
+    this.setData({
+      gender: e.detail.value,
+    })
   },
   upload_picture: function(name) {
     var that = this

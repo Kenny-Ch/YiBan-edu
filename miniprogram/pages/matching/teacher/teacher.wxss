@@ -9,7 +9,6 @@
 
 .card {
   width: 680rpx;
-  height: 1026rpx;
   color: rgba(80, 80, 80, 1);
   background-color: rgba(255, 255, 255, 1);
   border-radius: 33rpx 33rpx 0rpx 0rpx;
@@ -21,6 +20,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top:30rpx ;
+  padding-bottom:30rpx ;
 }
 .card-bottom{
   width: 680rpx;
