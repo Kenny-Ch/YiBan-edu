@@ -122,8 +122,7 @@ radio .wx-radio-input.wx-radio-input-checked::before{
   justify-content: left;
 }
 .pic{
-  width: 280rpx;
-  height: 280rpx;
-  color: rgb(165, 165, 165);
-  
+  width: 320rpx;
+  height: 320rpx;
+  color: rgb(165, 165, 165);  
 }

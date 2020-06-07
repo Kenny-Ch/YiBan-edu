@@ -1,0 +1,62 @@
+<!--miniprogram/pages/join/workingAbility/workingAbility.wxml-->
+<cu-custom bgColor="bg-gradual-purple" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">以伴edu</view>
+</cu-custom>
+<form class='con' bindsubmit="formSubmit">
+  <view class='toptitle'>简历</view>
+  <view class='card'>
+    <view class='label'>高考成绩：</view>
+    <view class='row'>
+      <view class='ll'>语文:</view>
+      <input type="text" class='contents1' name='Chinese'></input>
+      <view class='ll'>数学:</view>
+      <input type="text" class='contents1' name='Math'></input>
+    </view>
+    <view class='row'>
+      <view class='ll'>英语:</view>
+      <input type="text" class='contents1' name='English'></input>
+      <view class='ll'>综合:</view>
+      <input type="text" class='contents1' name='zonghe'></input>
+    </view>
+    <view class='label'>比较擅长的三个科目：</view>
+    <view class='row'>
+      <picker bindchange="PickerChange1" value="{{index1}}" range="{{picker}}" class='top'>
+        <view class="contents1">
+          {{index1?picker[index1]:''}}
+        </view>
+      </picker>
+      <picker bindchange="PickerChange2" value="{{index2}}" range="{{picker}}" class='top'>
+        <view class="contents1">
+          {{index2?picker[index2]:''}}
+        </view>
+      </picker>
+      <picker bindchange="PickerChange3" value="{{index3}}" range="{{picker}}" class='top'>
+        <view class="contents1">
+          {{index3?picker[index3]:''}}
+        </view>
+      </picker>
+    </view>
+    <view class='label'>对以伴服务的了解：</view>
+    <textarea name='understand' auto-height class='leaning' value="{{understand}}" />
+    <view class='label'>你的学生干部经历：</view>
+     <textarea name='experience' auto-height class='leaning' value="{{experience}}" />
+    <view class='label'>你的个人荣誉：</view>
+     <textarea name='honor' auto-height class='leaning' value="{{honor}}" />
+    <view class='label'>你的兴趣爱好：</view>
+    <textarea name='honor' auto-height class='leaning' value="{{honor}}" />
+    <view class='label'>新学期的课程安排是否紧凑：</view>
+    <radio-group class='row1 ii' bindchange="punch_Change">
+      <view class='row1' wx:for="{{judge}}">
+        <radio value="{{item.value}}" checked="{{item.checked}}" color='#fff' />
+        <view class='text_name'>{{item.name}}</view>
+      </view>
+    </radio-group>
+    <view class='label'>假如你发现自己的学生不理睬你或者不愿向你汇报学习情况，你会怎么做？</view>
+    <textarea name='situation1' auto-height class='leaning' value="{{situation1}}" />
+    <view class='label'>假如你发现学生问的问题经常不是你的强项，你会怎么做？</view>
+    <textarea name='situation2' auto-height class='leaning' value="{{situation2}}" />
+  </view>
+  <button bindgetuserinfo="getInfo" form-type="submit" open-type="getUserInfo" style="width: 650rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn'>提交</button>
+</form>
+

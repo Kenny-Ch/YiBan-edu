@@ -31,7 +31,10 @@
     "pages/manager/teacherMatch/teacherMatch",
     "pages/join/myStudent/myStudent",
     "pages/join/studentDetail/studentDetail",
-    "pages/manager/reviewComments/reviewComments"
+    "pages/manager/reviewComments/reviewComments",
+    "pages/join/oldMember/oldMember",
+    "pages/join/newMember/newMember",
+    "pages/join/workingAbility/workingAbility"
   ],
   "window": {
     "navigationStyle": "custom",

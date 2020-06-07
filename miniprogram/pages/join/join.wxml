@@ -6,10 +6,10 @@
 <view class="title">志愿者登录</view>
 <view class='title-bottom'>如果您已经是以伴志愿者，请从第二个入口进入，否则请从第一个入口进入！</view>
 <view class="con">
-  <view class="first">
+  <navigator class="first" url="./newMember/newMember" hover-class="none">
     <view class='text'>我想加入以伴</view>
-  </view>
-  <view class="second">
+  </navigator>
+  <navigator class="second" url="./oldMember/oldMember" hover-class="none">
     <view class='text'>已经是志愿者</view>
-  </view>
+  </navigator>
 </view>

@@ -321,6 +321,27 @@
 					"pathName": "pages/manager/reviewComments/reviewComments",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/join/oldMember/oldMember",
+					"pathName": "pages/join/oldMember/oldMember",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/join/newMember/newMember",
+					"pathName": "pages/join/newMember/newMember",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/join/workingAbility/workingAbility",
+					"pathName": "pages/join/workingAbility/workingAbility",
+					"query": "",
+					"scene": null
 				}
 			]
 		}
