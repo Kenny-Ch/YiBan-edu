@@ -15,30 +15,29 @@ Page({
     }, {
       //method
       title: "视频评论",
-    }
-  ],
+    }],
     i: 0,
     x: 0,
-    bottomtext:'------到底啦------',
-    toBeReviewed:[{
-      name:'李桂明',
-      time:'2020-06-07 11:12:13',
-      pinglun:'所以监听用户的截图操作，提示用户进行分享，既缩短了以前分享截图的操作路径，避免了在之前长路径中的行为流失（比如截图完成后忘记分享或觉得麻烦放弃分享等等），也让用户觉得更加贴心。用户分享内容到社交媒体或好友。',
+    bottomtext: '------到底啦------',
+    toBeReviewed: [{
+      name: '李桂明',
+      time: '2020-06-07 11:12:13',
+      pinglun: '所以监听用户的截图操作，提示用户进行分享，既缩短了以前分享截图的操作路径，避免了在之前长路径中的行为流失（比如截图完成后忘记分享或觉得麻烦放弃分享等等），也让用户觉得更加贴心。用户分享内容到社交媒体或好友。',
     }],
-    haveReviewed:[{
-      name:'李桂明',
-      time:'2020-06-07 11:12:13',
-      pinglun:'所以监听用户的截图操作，提示用户进行分享，既缩短了以前分享截图的操作路径，避免了在之前长路径中的行为流失（比如截图完成后忘记分享或觉得麻烦放弃分享等等），也让用户觉得更加贴心。用户分享内容到社交媒体或好友。',
-      adopt:true,    //已通过
-    },{
-      name:'李桂明',
-      time:'2020-06-07 11:12:13',
-      pinglun:'所以监听用户的截图操作，提示用户进行分享，既缩短了以前分享截图的操作路径，避免了在之前长路径中的行为流失（比如截图完成后忘记分享或觉得麻烦放弃分享等等），也让用户觉得更加贴心。用户分享内容到社交媒体或好友。',
-      adopt:false,    //不通过
+    haveReviewed: [{
+      name: '李桂明',
+      time: '2020-06-07 11:12:13',
+      pinglun: '所以监听用户的截图操作，提示用户进行分享，既缩短了以前分享截图的操作路径，避免了在之前长路径中的行为流失（比如截图完成后忘记分享或觉得麻烦放弃分享等等），也让用户觉得更加贴心。用户分享内容到社交媒体或好友。',
+      adopt: true, //已通过
+    }, {
+      name: '李桂明',
+      time: '2020-06-07 11:12:13',
+      pinglun: '所以监听用户的截图操作，提示用户进行分享，既缩短了以前分享截图的操作路径，避免了在之前长路径中的行为流失（比如截图完成后忘记分享或觉得麻烦放弃分享等等），也让用户觉得更加贴心。用户分享内容到社交媒体或好友。',
+      adopt: false, //不通过
     }],
   },
   changeSwipe: function(e) {
-    var adress = this.data.three[e.detail.current].title; 
+    var adress = this.data.three[e.detail.current].title;
     console.log("目前在", adress);
     var type = e.detail.current;
     this.setData({
@@ -84,57 +83,72 @@ Page({
         });
       }
     });
-    
-
+    wx.cloud.callFunction({
+      name: 'getInteraction',
+      data: {
+        comment: true,
+        like: false,
+        store: false,
+        type: 2,
+        inteType: 'artical',
+        check: 0,
+        page: 1,
+        num: 20
+      }
+    }).then(function(res) {
+      console.log(res)
+    }).catch(function(err) {
+      console.log(err)
+    })
   },
 
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })
