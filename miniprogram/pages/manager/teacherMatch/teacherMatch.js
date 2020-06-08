@@ -116,6 +116,13 @@ Page({
     return word
   },
 
+  jumpToTeacherDetail: function(ooptions) {
+    let id = options.currentTarget.database.id
+    wx.navigateTo({
+      url: './teacherDetail/teacherDetail?id=' + id
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

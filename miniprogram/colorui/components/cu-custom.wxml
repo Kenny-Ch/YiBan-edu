@@ -4,7 +4,7 @@
       <text class="cuIcon-back"></text>
       <slot name="backText"></slot>
     </view>
-    <view class="action" wx:if="!{{isBack}}" bindtap="toHome" class="action">
+    <view class="action" wx:if="{{!isBack}}" bindtap="toHome" class="action">
       <text class="cuIcon-back"></text>
       <slot name="toHome"></slot>
     </view>

@@ -148,8 +148,9 @@ Page({
          */
         var list = [];
 
-        //已经匹配
+
         if (app.globalData.isTeacher == 0) {
+          //已经匹配
           if (app.globalData.isMatch == true) {
             let item = {};
             item.id = 0;
@@ -171,6 +172,16 @@ Page({
               //这里跳转匹配界面
               item.url = "../matching/result/result";
             }
+            list.push(item)
+          } else {
+            let item = {};
+            item.id = 0;
+            item.big_title = "寻找你的以伴老师";
+            item.title = "高考陪伴公益行";
+            item.small_title = "对教育资源较为落后的四五线城市高中生进行“一对一高考陪伴”，助力高中生考上理想的大学院校！";
+            item.button = "开始匹配";
+            item.url = "../matching/matching";
+            list.push(item)
           }
         } else if (app.globalData.isTeacher == 1) {
           //是老师的情况

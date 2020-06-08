@@ -7,7 +7,7 @@ Page({
   data: {
     A: '问题A：假如你发现自己的学生不理睬你或者不愿向你汇报学习情况，你会怎么做？',
     B: '问题B：假如你发现学生问的问题经常不是你的强项，你会怎么做？',
-    fileID: ''
+    fileID: 'cloud://yiban-edu.7969-yiban-edu-1301806073/teacher_supporting_materials/undefined.jpg'
   },
   previewImage: function(e) {
     wx.previewImage({

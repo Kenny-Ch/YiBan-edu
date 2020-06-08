@@ -33,8 +33,9 @@ Page({
       // learning: '喜欢晚上学习',
       // expectationForTeacher: '希望老师能给我出多一些题目 希望老师能给我出多一些题目希望老师能给我出多一些题目',
       // isAdopt: false, //是否已通过
+      fileID: "cloud://yiban-edu.7969-yiban-edu-1301806073/teacher_supporting_materials/undefined.jpg	"
     },
-    
+
   },
   previewImage: function(e) {
     wx.previewImage({
@@ -64,8 +65,10 @@ Page({
           subject.push(item)
         }
         res.data.subject = subject
+        let fileID = "cloud://yiban-edu.7969-yiban-edu-1301806073/teacher_supporting_materials/" + res.data.openid + ".jpg"
         that.setData({
-          student: res.data
+          student: res.data,
+          fileID: fileID
         })
         if (options.status == 'false') {
           that.setData({
