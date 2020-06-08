@@ -1,5 +1,6 @@
 <!--miniprogram/pages/join/workingAbility/workingAbility.wxml-->
-<cu-custom bgColor="bg-gradual-purple" isBack="{{true}}">
+<cu-custom bgColor="bg-gradual-purple" isBack="{{jumpMethod!='continue'?true:false}}">
+  <view slot="toHome">返回</view>
   <view slot="backText">返回</view>
   <view slot="content">以伴edu</view>
 </cu-custom>

@@ -161,7 +161,7 @@ Page({
             app.globalData.isNew = false
             console.log(app.globalData)
             wx.redirectTo({
-              url: '../workingAbility/workingAbility',
+              url: '../workingAbility/workingAbility?method=continue',
             })
           }).catch(function(err) {
             console.log(err)

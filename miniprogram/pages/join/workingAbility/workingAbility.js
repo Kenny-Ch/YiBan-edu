@@ -17,6 +17,7 @@ Page({
       value: false
     }],
     punch: true,
+    jumpMethod: 'redirect'
   },
   punch_Change: function(e) {
     console.log('新学期的课程安排是否紧凑:', e.detail.value)
@@ -182,7 +183,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    const app = getApp()
+    //从第一次注册进入
+    if (options.method != undefined) {
+      this.setData({
+        jumpMethod: 'continue'
+      })
+    }
   },
 
   /**
