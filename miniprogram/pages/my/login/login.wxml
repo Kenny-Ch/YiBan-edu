@@ -3,7 +3,7 @@
   <view slot="backText">返回</view>
   <view slot="content">以伴edu</view>
 </cu-custom>
-<view class='title'>登陆</view> 
+<view class='title'>学生登陆</view> 
 <form bindsubmit="formSubmit">
   <view class='card'>
     <view class='label'>姓名：</view>
