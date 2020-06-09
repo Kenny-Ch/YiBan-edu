@@ -18,7 +18,8 @@ exports.main = async (event, context) => {
     openid: event.selfOpenid
   }).field({
     matchList: true,
-    matchWaitList: true
+    matchWaitList: true,
+    name: true
   }).get()
   console.log('主用户：', res.data)
 
@@ -26,8 +27,31 @@ exports.main = async (event, context) => {
   var waitList = []
   
   for(var i=0; i<res.data[0].matchList.length; i++) {
-    if(res.data[0].matchList[i] != event.dropOpenid)
+    if(res.data[0].matchList[i] != event.dropOpenid){
       list.push(res.data[0].matchList[i])
+    } else {
+      cloud.callFunction({
+        name: "recordTimeNode",
+        data: {
+          flag: "matchEnd",
+          isNew: false,
+          otherOpenid: event.selfOpenid,
+          otherName: res.data[0].name,
+          openid: event.dropOpenid
+        }
+      })
+      cloud.callFunction({
+        name: "recordTimeNode",
+        data: {
+          flag: "matchBegin",
+          isNew: false,
+          otherOpenid: event.dropOpenid,
+          otherName: "",
+          openid: event.selfOpenid
+        }
+      })
+    }
+      
   }
   for(var i=0; i<res.data[0].matchWaitList.length; i++) {
     if(res.data[0].matchWaitList[i] != event.dropOpenid)

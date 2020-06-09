@@ -19,64 +19,134 @@ const TOTAL_LEN = 3
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  console.log('传入参数：',event)
+  console.log('传入参数：', event)
   var keys = []
-  for(var key in event.weakSubject){
+  for (var key in event.weakSubject) {
     keys.push(key)
   }
   var len = 0
+  var markDate = new Date(new Date().getTime() - 10 * 24 * 60 * 60 * 1000)
+  var result = []
 
-  var res = await db.collection('person').limit(TOTAL_LEN).where({
-    'perInfo.speciality': _.all([keys[0], keys[1], keys[2]]),
+  //超过十天未匹配、全匹配
+  var res = await db.collection('person').limit(TOTAL_LEN - len).where({
     job: 1,
-    isMatchFull: false
-  }).get()
+    isCheck: 1,
+    matchList: _.size(0),
+    registerDate: _.lt(markDate),
+    'perInfo.speciality': _.all([keys[0], keys[1], keys[2]])
+  }, ).get()
   len = res.data.length
+  result = result.concat(res.data)
+  console.log('第一类匹配情况：',res.data,'ids(未添加本次的id)',ids, '匹配总人数：', len)
 
-  if(len < 3){
-    var ids =[]
-    for(var item of res.data){
+  if (len < 3) {
+    //超过十天未匹配，部分匹配
+    var ids = []
+    for (var item of res.data) {
       ids.push(item.openid)
     }
-    var res1 = await db.collection('person').limit(TOTAL_LEN-len).where({
+
+    var res1 = await db.collection('person').limit(TOTAL_LEN - len).where({
+      job: 1,
+      isCheck: 1,
+      matchList: _.size(0),
+      registerDate: _.lt(markDate),
+      openid: _.nin(ids),
       'perInfo.speciality': _.or([
         _.all([keys[0], keys[1]]),
         _.all([keys[0], keys[2]]),
         _.all([keys[1], keys[2]])
-      ]),
-      openid: _.nin(ids),
-      job: 1,
-      isMatchFull: false
-    }).get()
+      ])
+    }, ).get()
     len = len + res1.data.length
+    result = result.concat(res1.data)
+    console.log('第二类匹配情况：',res1.data,'ids(未添加本次的id)',ids, '匹配总人数：', len)
 
-    if(len < 3){
-      for(var item of res1.data){
+    if (len < 3) {
+      for (var item of res1.data) {
         ids.push(item.openid)
       }
-      var res2 = await db.collection('person').limit(TOTAL_LEN-len).where({
+
+      //超过十天未匹配，单个匹配
+      var res2 = await db.collection('person').limit(TOTAL_LEN - len).where({
+        job: 1,
+        isCheck: 1,
+        matchList: _.size(0),
+        registerDate: _.lt(markDate),
+        openid: _.nin(ids),
         'perInfo.speciality': _.or([
           _.all([keys[0]]),
           _.all([keys[1]]),
           _.all([keys[2]])
-        ]),
-        openid: _.nin(ids),
-        job: 1,
-        isMatchFull: false
-      }).get()
-
-      var result = res.data.concat(res1.data)
+        ])
+      }, ).get()
+      len = len + res2.data.length
       result = result.concat(res2.data)
-      return result
+      console.log('第三类匹配情况：',res2.data,'ids(未添加本次的id)',ids, '匹配总人数：', len)
 
-    } else {
-      var result = res.data.concat(res1.data)
-      return result
+      if (len < 3) {
+        for (var item of res2.data) {
+          ids.push(item.openid)
+        }
+
+        //未超过十天匹配成功，全匹配
+        var res3 = await db.collection('person').limit(TOTAL_LEN).where({
+          'perInfo.speciality': _.all([keys[0], keys[1], keys[2]]),
+          job: 1,
+          isCheck: 1,
+          openid: _.nin(ids),
+          isMatchFull: false
+        }).get()
+        len = len + res3.data.length
+        result = result.concat(res3.data)
+        console.log('第四类匹配情况：',res3.data,'ids(未添加本次的id)',ids, '匹配总人数：', len)
+
+        if (len < 3) {
+          for (var item of res3.data) {
+            ids.push(item.openid)
+          }
+          //未超过十天匹配成功，部分匹配
+          var res4 = await db.collection('person').limit(TOTAL_LEN - len).where({
+            'perInfo.speciality': _.or([
+              _.all([keys[0], keys[1]]),
+              _.all([keys[0], keys[2]]),
+              _.all([keys[1], keys[2]])
+            ]),
+            isCheck: 1,
+            openid: _.nin(ids),
+            job: 1,
+            isMatchFull: false
+          }).get()
+          len = len + res4.data.length
+          result = result.concat(res4.data)
+          console.log('第五类匹配情况：',res4.data,'ids(未添加本次的id)',ids, '匹配总人数：', len)
+
+          if (len < 3) {
+            for (var item of res4.data) {
+              ids.push(item.openid)
+            }
+            //未超过十天匹配成功，仅匹配一项
+            var res5 = await db.collection('person').limit(TOTAL_LEN - len).where({
+              'perInfo.speciality': _.or([
+                _.all([keys[0]]),
+                _.all([keys[1]]),
+                _.all([keys[2]])
+              ]),
+              openid: _.nin(ids),
+              job: 1,
+              isCheck: 1,
+              isMatchFull: false
+            }).get()
+            result = result.concat(res5.data)
+            console.log('第六类匹配情况：',res5.data,'ids(未添加本次的id)',ids, '匹配总人数：', len+res5.data.length)
+          } 
+        } 
+      }
     }
-  } else {
-    return res.data
   }
-  
+
+  return result
 }
 /*
 返回值：：
