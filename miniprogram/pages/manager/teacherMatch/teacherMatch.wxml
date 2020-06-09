@@ -6,7 +6,7 @@
 <view class='title'>{{teacher.name}}的学生</view>
 <view class="line"></view>
 <view class='plusBtn'>
-  <navigator url="../teacherDeatail/teacherDeatail" class="plusBtn">
+  <navigator url="../teacherDetail/teacherDetail?id={{_options.id}}&openid={{_options.openid}}" class="plusBtn">
     <image src="../../../images/manager/xinxi-.png" class='plusIcon'></image>
   </navigator> 
 </view>

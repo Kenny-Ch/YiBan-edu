@@ -31,9 +31,7 @@
     delete: function(e) {
       let openid = e.currentTarget.dataset.openid
       let index = e.currentTarget.dataset.index
-
       let that = this
-
       wx.showModal({
         title: '提示',
         content: '确认要删除该志愿者教师?',
@@ -68,6 +66,9 @@
       const app = getApp()
       const db = wx.cloud.database()
       let that = this
+      that.setData({
+        type: options.type
+      })
       db.collection('person').where({
           job: 1
         }).get()
@@ -115,6 +116,19 @@
           break
       }
       return word
+    },
+
+    jump: function(e) {
+      let index = e.currentTarget.dataset.index
+      if(this.data.type == 'match'){
+        wx.navigateTo({
+          url: '../teacherMatch/teacherMatch?id=' + this.data.teacher[index]._id + '&openid=' + this.data.teacher[index].openid,
+        })
+      }else{
+        wx.navigateTo({
+          url: '../teacherDetail/teacherDetail?id=' + this.data.teacher[index]._id + '&openid=' + this.data.teacher[index].openid,
+        })
+      }
     },
 
     /**

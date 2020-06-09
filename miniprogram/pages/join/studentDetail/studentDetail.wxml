@@ -41,7 +41,7 @@
   <view class="cu-form-group">
     <view class="title wd">证明材料</view>
     <view class='pic'>
-      <image src="{{student.perInfo.prove}}" class='img' data-url="{{student.perInfo.prove}}" bindtap="previewImage"></image>
+      <image src="{{fileID}}" class='img' data-url="{{fileID}}" bindtap="previewImage"></image>
     </view>
   </view>
 </view>

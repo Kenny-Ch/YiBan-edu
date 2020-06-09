@@ -87,6 +87,27 @@ exports.main = async(event, context) => {
     } catch (e) {
       console.error(e)
     }
+
+    cloud.callFunction({
+      name: "recordTimeNode",
+      data: {
+        flag: "matchBegin",
+        isNew: false,
+        otherOpenid: event.stuOpenid,
+        otherName: "",
+        openid: event.teaOpenid
+      }
+    })
+    cloud.callFunction({
+      name: "recordTimeNode",
+      data: {
+        flag: "matchBegin",
+        isNew: false,
+        otherOpenid: event.teaOpenid,
+        otherName: "",
+        openid: event.stuOpenid
+      }
+    })
     return '通过审核'
   } else { //不满意
     //学生列表更新

@@ -23,7 +23,7 @@
 	},
 	"appid": "wx7a4010768611ebc5",
 	"projectname": "YiBan-edu",
-	"libVersion": "2.10.4",
+	"libVersion": "2.11.1",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
@@ -340,6 +340,13 @@
 					"id": 41,
 					"name": "pages/manager/teacherDeatail/teacherDeatail",
 					"pathName": "pages/manager/teacherDeatail/teacherDeatail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/manager/reviewComments/reviewComments",
+					"pathName": "pages/manager/reviewComments/reviewComments",
 					"scene": null
 				}
 			]

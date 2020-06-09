@@ -148,8 +148,9 @@ Page({
          */
         var list = [];
 
-        //已经匹配
+
         if (app.globalData.isTeacher == 0) {
+          //已经匹配
           if (app.globalData.isMatch == true) {
             let item = {};
             item.id = 0;
@@ -171,6 +172,16 @@ Page({
               //这里跳转匹配界面
               item.url = "../matching/result/result";
             }
+            list.push(item)
+          } else {
+            let item = {};
+            item.id = 0;
+            item.big_title = "寻找你的以伴老师";
+            item.title = "高考陪伴公益行";
+            item.small_title = "对教育资源较为落后的四五线城市高中生进行“一对一高考陪伴”，助力高中生考上理想的大学院校！";
+            item.button = "开始匹配";
+            item.url = "../matching/matching";
+            list.push(item)
           }
         } else if (app.globalData.isTeacher == 1) {
           //是老师的情况
@@ -183,8 +194,15 @@ Page({
           if (app.globalData.userInfo.otherInfo == undefined) {
             //第二次注册未完成
             item.url = '../join/workingAbility/workingAbility'
-          } else {
+          } else if (app.globalData.userInfo.isCheck == 0) {
+            //第二次注册已完成但是未审核
+            item.url = '../join/result/result'
+          } else if (app.globalData.userInfo.isCheck == 1) {
+            //后台审核通过
             item.url = "../join/myStudent/myStudent?id=" + app.globalData.userInfo._id;
+          } else {
+            //后台审核未通过
+            item.url = 'error'
           }
           list.push(item)
         } else {
@@ -197,6 +215,7 @@ Page({
           item.url = "../matching/matching";
           list.push(item)
         }
+
         var item1 = {};
         item1.id = 1;
         item1.big_title = "伴学服务介绍";
@@ -205,25 +224,37 @@ Page({
         item1.button = "具体介绍";
         item1.url = "../matching/introduce/introduce";
         list.push(item1)
-        that.setData({
-          swiperList: list,
-        })
-        var item2 = {};
-        item2.id = 2;
-        item2.big_title = "成为伴学志愿者";
-        item2.title = "一起迈向公益之路";
-        item2.small_title = "只要你有足够的热情，想为公益事业做出一份自己的贡献，都可以申请成为以伴志愿者！";
-        item2.button = "加入我们";
-        if (app.globalData.userInfo.otherInfo == undefined) {
-          //第二次注册未完成
-          item2.url = '../join/workingAbility/workingAbility'
+
+        //老师注册成功，则不显示第三个swiper
+        if (app.globalData.isNew == false && (app.globalData.userInfo.isCheck == 1 || app.globalData.isTeacher == 0)) {
+          that.setData({
+            swiperList: list,
+          })
         } else {
-          item2.url = "../join/join";
+          var item2 = {};
+          item2.id = 2;
+          item2.big_title = "成为伴学志愿者";
+          item2.title = "一起迈向公益之路";
+          item2.small_title = "只要你有足够的热情，想为公益事业做出一份自己的贡献，都可以申请成为以伴志愿者！";
+          item2.button = "加入我们";
+          if (app.globalData.isNew == true) {
+            item2.url = "../join/join";
+          } else if (app.globalData.userInfo.otherInfo == undefined) {
+            //第二次注册未完成
+            item2.url = '../join/workingAbility/workingAbility'
+          } else if (app.globalData.userInfo.isCheck == 0) {
+            //第二次注册已完成但是未审核
+            item2.url = '../join/result/result'
+          } else {
+            item2.url = "../join/join";
+          }
+          list.push(item2)
+
+          that.setData({
+            swiperList: list,
+          })
         }
-        list.push(item2)
-        that.setData({
-          swiperList: list,
-        })
+
         console.log("【app.globalData】", app.globalData)
       })
     }).catch(err => {
@@ -347,13 +378,31 @@ Page({
           url: '../matching/matching'
         })
       }
-    } else if (!app.globalData.isNew && app.globalData.userInfo.matchWaitList.length != 0) {
+    } else if (app.globalData.isTeacher == 0 && !app.globalData.isNew && app.globalData.userInfo.matchWaitList.length != 0) {
       wx.navigateTo({
         url: '../matching/teacher/teacher?status=false&id=' + app.globalData.userInfo.matchWaitList[0],
       })
-    } else if (!app.globalData.isNew && app.globalData.userInfo.matchList.length != 0) {
+    } else if (app.globalData.isTeacher == 0 && !app.globalData.isNew && app.globalData.userInfo.matchList.length != 0) {
       wx.navigateTo({
         url: '../matching/teacher/teacher?status=true&id=' + app.globalData.userInfo.matchList[0],
+      })
+    } else if (url == 'error') {
+      //老师注册后台审核未通过
+      wx.showModal({
+        title: '审核未通过！',
+        content: '可能是信息填写错误导致，请重新填写信息~',
+        showCancel: true,
+        confirmText: '重新填写',
+        success: function(res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+            wx.navigateTo({
+              url: '../join/join',
+            })
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
       })
     } else {
       wx.navigateTo({

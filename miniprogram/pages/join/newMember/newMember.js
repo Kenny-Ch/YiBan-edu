@@ -15,10 +15,10 @@ Page({
       checked: false,
       value: '女',
     }],
-    region:[],
-    picker: ['大一', '大二', '大三','大四'],
-    shuoming:'说明：请将学生证上包含照片、姓名、院系、专业等信息的照片上传。若拍摄时无法拍成一张，请用ps、画图等软件合并到一张图中。',
-    img:"../../../images/my/tupianimgyulan.png",
+    region: [],
+    picker: ['大一', '大二', '大三', '大四'],
+    shuoming: '说明：请将学生证上包含照片、姓名、院系、专业等信息的照片上传。若拍摄时无法拍成一张，请用ps、画图等软件合并到一张图中。',
+    img: "../../../images/my/tupianimgyulan.png",
   },
   RegionChange: function(e) {
     console.log('地区选择：', e.detail.value)
@@ -47,11 +47,21 @@ Page({
           cloudPath: 'teacher_supporting_materials/' + app.globalData.openid + '.jpg',
           filePath: tempFilePaths[0],
           success(res) {
+            wx.showToast({
+              title: '图片上传成功！',
+              icon: 'none'
+            })
             //上传成功后会返回永久地址
             that.setData({
               fileID: res.fileID //图片存储到云存储的fileID
             })
             console.log(res.fileID)
+          },
+          fail(err) {
+            wx.showToast({
+              title: '图片上传失败！',
+              icon: 'none'
+            })
           }
         })
       }
@@ -119,6 +129,7 @@ Page({
                 major: input.major,
                 wechat: input.wechat,
                 tel: input.tel,
+                email: input.email
               },
               otherInfo: {},
               isCheck: 0,
@@ -150,7 +161,7 @@ Page({
             app.globalData.isNew = false
             console.log(app.globalData)
             wx.redirectTo({
-              url: '../workingAbility/workingAbility',
+              url: '../workingAbility/workingAbility?method=continue',
             })
           }).catch(function(err) {
             console.log(err)

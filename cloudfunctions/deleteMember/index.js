@@ -49,6 +49,18 @@ exports.main = async (event, context) => {
       await db.collection('person').where({
         openid: event.openid
       }).remove()
+      
+      cloud.callFunction({
+        name: "recordTimeNode",
+        data: {
+          flag: "loginOut",
+          isNew: false,
+          otherOpenid: "",
+          otherName: "",
+          openid: event.openid
+        }
+      })
+
       return "删除成功（不保证关联的其他成员相关信息删除成功）"
     } catch(e) {
       console.error(e)
