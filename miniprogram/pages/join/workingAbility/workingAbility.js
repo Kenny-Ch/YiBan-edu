@@ -158,7 +158,7 @@ Page({
               console.log("【workingAbility调用函数uploadCV】", res)
               app.globalData.userInfo.perInfo = perInfo
               wx.showToast({
-                title: '注册成功！',
+                title: '提交成功！',
                 icon: 'success',
                 mask: true,
                 duration: 1500,
