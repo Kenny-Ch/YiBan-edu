@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    page: 1,
     three: [{
       //normal
       title: "树洞评论",
@@ -39,10 +39,11 @@ Page({
   changeSwipe: function(e) {
     var adress = this.data.three[e.detail.current].title;
     console.log("目前在", adress);
-    var type = e.detail.current;
+    var type = e.detail.current
     this.setData({
       i: type
-    });
+    })
+
   },
   tabSelect: function(e) {
     console.log(e.target.dataset.i)
@@ -64,9 +65,21 @@ Page({
   bindChange: function(e) {
     console.log("目前在", this.data.three[e.detail.current].title);
     var that = this;
+    let i = e.detail.current
+    let type = ''
+    if (i == 0) {
+      type = 'tree'
+    } else if (i == 1) {
+      type = 'artical'
+    } else {
+      type = 'video'
+    }
     that.setData({
-      i: e.detail.current
+      i: i,
+      page: 1,
+      type: type
     });
+    this.loadComment(type, 1)
   },
   /**
    * 生命周期函数--监听页面加载
@@ -83,6 +96,14 @@ Page({
         });
       }
     });
+    this.loadComment('tree', 1)
+  },
+
+  loadComment: function(type, index) {
+    let that = this
+    wx.showLoading({
+      title: '加载中',
+    })
     wx.cloud.callFunction({
       name: 'getInteraction',
       data: {
@@ -90,18 +111,31 @@ Page({
         like: false,
         store: false,
         type: 2,
-        inteType: 'artical',
+        inteType: type,
         check: 0,
-        page: 1,
-        num: 20
+        page: index,
+        num: 10
       }
     }).then(function(res) {
       console.log(res)
+      that.setData({
+        page: that.data.page + 1
+      })
+      wx.hideLoading()
     }).catch(function(err) {
       console.log(err)
     })
   },
 
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function() {
+    //防止还未加载却多次上拉的情况
+    if (!this.loading) {
+      this.loadComment(this.data.type, this.data.page)
+    }
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -138,12 +172,7 @@ Page({
 
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
 
-  },
 
   /**
    * 用户点击右上角分享

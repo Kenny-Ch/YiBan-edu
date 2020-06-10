@@ -90,6 +90,9 @@ Page({
 
 
   onLoad: function() {
+    wx.showLoading({
+      title: '加载中',
+    })
     var that = this;
     wx.getSystemInfo({
       success: function(res) {
@@ -254,8 +257,8 @@ Page({
             swiperList: list,
           })
         }
-
         console.log("【app.globalData】", app.globalData)
+        wx.hideLoading()
       })
     }).catch(err => {
       console.log('appjs获取openid失败')

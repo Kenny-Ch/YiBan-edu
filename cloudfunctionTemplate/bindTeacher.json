@@ -1,0 +1,10 @@
+[
+  {
+    "name": "test",
+    "value": {
+      "openid": "123",
+      "tel": "123",
+      "bindingCode": "123"
+    }
+  }
+]

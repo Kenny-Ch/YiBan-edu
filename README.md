@@ -74,6 +74,9 @@
     //该字段只针对老师
     isWeChatReg: boolean       //true代表老师是微信端注册，false代表是绑定的老师
 
+    //教师绑定码
+    teacherBindingCode: string
+
     //学生提供匹配所需要的信息
     "matchInfo": {
         "weakSubject":{             //需要辅导的弱势科目
