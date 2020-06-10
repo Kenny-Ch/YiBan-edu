@@ -3,7 +3,7 @@ page{
   background: linear-gradient(90deg, #ffbd92, #fd6b67);
 }
 .title{
-  width: 112rpx;
+  width: 300rpx;
 	height: 84rpx;
 	color: rgba(80, 80, 80, 1);
 	font-size: 56rpx;
