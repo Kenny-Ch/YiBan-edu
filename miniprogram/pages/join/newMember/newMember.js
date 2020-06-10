@@ -53,7 +53,8 @@ Page({
             })
             //上传成功后会返回永久地址
             that.setData({
-              fileID: res.fileID //图片存储到云存储的fileID
+              fileID: res.fileID, //图片存储到云存储的fileID
+              img:res.fileID
             })
             console.log(res.fileID)
           },

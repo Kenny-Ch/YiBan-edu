@@ -54,38 +54,32 @@ page{
 }
 .ii{
   margin-top:14rpx ;
-}
-radio{
-  border-radius: 50%;
-  height: 32rpx; 
-  width: 32rpx;
-  border:3rpx solid #fd6b67;
   margin-left:30rpx ;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
 }
 radio .wx-radio-input{ 
-  height: 26rpx; 
-  width: 26rpx;
+  height: 30rpx; 
+  width: 30rpx;
   border-radius: 50%;
-  background-color: white;
-  border:none;
-  margin-left:11.5rpx ;
-  margin-bottom:2rpx ;
+  background: transparent;
+  border: 3rpx solid #fd6b67;
 }
+/* 选中后的 背景样式 */
 radio .wx-radio-input.wx-radio-input-checked{
-  border:none;
+ border: none;
 }
+/* 选中后的 对勾样式 */
 radio .wx-radio-input.wx-radio-input-checked::before{
-  border-radius: 50%;
-  width: 24rpx; 
-  height: 24rpx;
-  background-color:#fd6b67;
-  font-size:0rpx; /* 对勾大小 去掉 */
-  margin-bottom:8rpx ;
+ border-radius: 50%;
+ width: 36rpx; 
+ height: 36rpx;
+ line-height: 36rpx;
+ text-align: center;
+ font-size:36rpx; 
+ color:#fff;
+ background: #fd6b67;
+ border: 8rpx solid #fd6b67;
 }
+
 .row{
   height: 50rpx;
   display: flex;
