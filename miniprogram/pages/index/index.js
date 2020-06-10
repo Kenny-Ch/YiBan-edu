@@ -22,37 +22,37 @@ Page({
     clientHeight: 0,
     knowledgeReserve: [{
       url: "../display/artical/artical",
-      image: "../../images/learningMethod.png",
+      image: "cloud://yiban-edu.7969-yiban-edu-1301806073/index/学科学习法.png",
       left: "学科学习法",
     }, {
       url: "../display/artical/artical",
-      image: "../../images/LearningMaterials.png",
+      image: "cloud://yiban-edu.7969-yiban-edu-1301806073/index/学习资料分享.png",
       left: "学习资料分享",
     }, {
       url: "../display/artical/artical",
-      image: "../../images/experienceSharing.png",
+      image: "cloud://yiban-edu.7969-yiban-edu-1301806073/index/高考心得分享.png",
       left: "高考心得分享",
     }],
     dreamFactory: [{
       url: "../display/artical/artical",
-      image: "../../images/learningMethod.png",
+      image: "cloud://yiban-edu.7969-yiban-edu-1301806073/index/选科资讯.png",
       left: "选科资讯",
     }, {
       url: "../dreamFactory/schoollist/schoollist",
-      image: "../../images/LearningMaterials.png",
+      image: "cloud://yiban-edu.7969-yiban-edu-1301806073/index/高校资讯.png",
       left: "高校资讯",
     }, {
       url: "../dreamFactory/majorlist/majorlist",
-      image: "../../images/experienceSharing.png",
+      image: "cloud://yiban-edu.7969-yiban-edu-1301806073/index/专业了解.png",
       left: "专业了解",
     }],
     companionClass: [{
       url: "../display/classroom/classroom",
-      image: "../../images/learningMethod.png",
+      image: "cloud://yiban-edu.7969-yiban-edu-1301806073/index/精品课堂.png",
       left: "精品课堂",
     }, {
       url: "../display/classroom/classroom",
-      image: "../../images/LearningMaterials.png",
+      image: "cloud://yiban-edu.7969-yiban-edu-1301806073/index/学霸讲座.png",
       left: "学霸讲座",
     }],
 
