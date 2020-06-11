@@ -59,6 +59,20 @@ Page({
         that.setData({
           ['teacher.isCheck']: 1
         })
+        wx.cloud.callFunction({
+          name: recordTimeNode,
+          data: {
+            isNew: true,
+            flag: 'register',
+            otherName: "",
+            otherOpenid: "",
+            openid:  that.data.teacher.openid,
+            name: that.data.teacher.name,
+            job: that.data.teacher.job
+          }
+        }).then(function(res){
+          console.log('时间节点已记录：',res)
+        })
       } else if (check == 'reject') {
         wx.showToast({
           title: '退回申请成功！',
