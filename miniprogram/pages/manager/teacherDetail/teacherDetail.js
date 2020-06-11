@@ -29,11 +29,51 @@ Page({
         let fileID = "cloud://yiban-edu.7969-yiban-edu-1301806073/supporting_materials/" + res.data.openid + ".jpg"
         that.setData({
           teacher: res.data,
-          fileID:fileID
+          fileID: fileID
         })
       }).catch(function(err) {
         console.log(err)
       })
+  },
+
+  checkMatch: function(e) {
+    let check = e.currentTarget.dataset.check
+    let that = this
+    const db = wx.cloud.database()
+    const app = getApp()
+    wx.cloud.callFunction({
+      name: 'checkTeacher',
+      data: {
+        id: that.data.teacher._id,
+        check: check
+      }
+    }).then(function(res) {
+      console.log("【teacherDetail调用函数checkTeacher，check=" + check + "】", res)
+      if (check == 'pass') {
+        wx.showToast({
+          title: '通过审核成功！',
+          icon: 'none',
+          mask: true,
+          duration: 1500
+        })
+        that.setData({
+          ['teacher.isCheck']: 1
+        })
+      } else if (check == 'reject') {
+        wx.showToast({
+          title: '退回申请成功！',
+          icon: 'none',
+          mask: true,
+          duration: 1500
+        })
+        that.setData({
+          ['teacher.isCheck']: 2
+        })
+      }
+
+    }).catch(function(err) {
+      console.log(err)
+    })
   },
 
   /**
