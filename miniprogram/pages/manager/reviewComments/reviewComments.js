@@ -20,23 +20,24 @@ Page({
     x: 0,
     bottomtext: '------到底啦------',
     toBeReviewed: [
-    // {
-    //   name: '李桂明',
-    //   time: '2020-06-07 11:12:13',
-    //   pinglun: '所以监听用户的截图操作，提示用户进行分享，既缩短了以前分享截图的操作路径，避免了在之前长路径中的行为流失（比如截图完成后忘记分享或觉得麻烦放弃分享等等），也让用户觉得更加贴心。用户分享内容到社交媒体或好友。',
-    // }],
-    // haveReviewed: [{
-    //   name: '李桂明',
-    //   time: '2020-06-07 11:12:13',
-    //   pinglun: '所以监听用户的截图操作，提示用户进行分享，既缩短了以前分享截图的操作路径，避免了在之前长路径中的行为流失（比如截图完成后忘记分享或觉得麻烦放弃分享等等），也让用户觉得更加贴心。用户分享内容到社交媒体或好友。',
-    //   adopt: true, //已通过
-    // }, {
-    //   name: '李桂明',
-    //   time: '2020-06-07 11:12:13',
-    //   pinglun: '所以监听用户的截图操作，提示用户进行分享，既缩短了以前分享截图的操作路径，避免了在之前长路径中的行为流失（比如截图完成后忘记分享或觉得麻烦放弃分享等等），也让用户觉得更加贴心。用户分享内容到社交媒体或好友。',
-    //   adopt: false, //不通过
-    // }
-  ],
+      // {
+      //   name: '李桂明',
+      //   time: '2020-06-07 11:12:13',
+      //   pinglun: '所以监听用户的截图操作，提示用户进行分享，既缩短了以前分享截图的操作路径，避免了在之前长路径中的行为流失（比如截图完成后忘记分享或觉得麻烦放弃分享等等），也让用户觉得更加贴心。用户分享内容到社交媒体或好友。',
+      // }],
+      // haveReviewed: [{
+      //   name: '李桂明',
+      //   time: '2020-06-07 11:12:13',
+      //   pinglun: '所以监听用户的截图操作，提示用户进行分享，既缩短了以前分享截图的操作路径，避免了在之前长路径中的行为流失（比如截图完成后忘记分享或觉得麻烦放弃分享等等），也让用户觉得更加贴心。用户分享内容到社交媒体或好友。',
+      //   adopt: true, //已通过
+      // }, {
+      //   name: '李桂明',
+      //   time: '2020-06-07 11:12:13',
+      //   pinglun: '所以监听用户的截图操作，提示用户进行分享，既缩短了以前分享截图的操作路径，避免了在之前长路径中的行为流失（比如截图完成后忘记分享或觉得麻烦放弃分享等等），也让用户觉得更加贴心。用户分享内容到社交媒体或好友。',
+      //   adopt: false, //不通过
+      // }
+    ],
+
   },
   changeSwipe: function(e) {
     var adress = this.data.three[e.detail.current].title;
@@ -45,8 +46,8 @@ Page({
     this.setData({
       i: type
     })
-
   },
+
   tabSelect: function(e) {
     console.log(e.target.dataset.i)
     /*获取可视窗口宽度*/
@@ -64,6 +65,7 @@ Page({
       x: disX　
     })
   },
+
   bindChange: function(e) {
     console.log("目前在", this.data.three[e.detail.current].title);
     var that = this;
@@ -81,12 +83,12 @@ Page({
       page: 1,
       type: type
     });
-    this.loadComment(type, 1)
+    // this.loadComment(type, 1)
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: async function(options) {
     var that = this;
     wx.getSystemInfo({
       success: function(res) {
@@ -98,10 +100,48 @@ Page({
         });
       }
     });
-    this.loadComment('tree', 1)
+    this.loadToBeReviewedComment('tree', 1)
+    this.loadToBeReviewedComment('artical', 1)
+    this.loadToBeReviewedComment('video', 1)
+
+    this.loadHaveReviewedComment('tree', 1)
+    this.loadHaveReviewedComment('artical', 1)
+    this.loadHaveReviewedComment('video', 1)
   },
 
-  loadComment: function(type, index) {
+  loadHaveReviewedComment: function (type, index) {
+    let that = this
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.cloud.callFunction({
+      name: 'getInteraction',
+      data: {
+        comment: true,
+        like: false,
+        store: false,
+        type: 2,
+        inteType: type,
+        check: 1,
+        page: index,
+        num: 1000
+      }
+    }).then(function (res) {
+      console.log("【getIntraction, isCheck=1, type=" + type + "】", res)
+      let haveReviewed = type + ".haveReviewed"
+      that.setData({
+        page: that.data.page + 1,
+        [haveReviewed]: res.result.comments
+      })
+      wx.hideLoading()
+      return res
+    }).catch(function (err) {
+      console.log(err)
+    })
+  },
+
+
+  loadToBeReviewedComment: function(type, index) {
     let that = this
     wx.showLoading({
       title: '加载中',
@@ -116,14 +156,17 @@ Page({
         inteType: type,
         check: 0,
         page: index,
-        num: 10
+        num: 1000
       }
     }).then(function(res) {
-      console.log(res)
+      console.log("【getIntraction, isCheck=0, type=" + type + "】", res)
+      let toBeReviewed = type + ".toBeReviewed"
       that.setData({
-        page: that.data.page + 1
+        page: that.data.page + 1,
+        [toBeReviewed]: res.result.comments
       })
       wx.hideLoading()
+      return res
     }).catch(function(err) {
       console.log(err)
     })

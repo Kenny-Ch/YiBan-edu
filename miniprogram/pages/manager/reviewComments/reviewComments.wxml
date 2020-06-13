@@ -12,49 +12,49 @@
   <swiper-item>
     <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
       <!--待审核-->
-      <view wx:if='{{toBeReviewed.length>0}}'>
+      <view wx:if='{{tree.toBeReviewed.length>0}}'>
         <view class="smalltitle">待审核</view>
-        <view class="card" wx:for="{{toBeReviewed}}">
+        <view class="card" wx:for="{{tree.toBeReviewed}}">
           <view>
             <view class='top'>
               <view class="shu"></view>
               <view class='nametime'>
-                <view class='name'>{{item.name}}</view>
+                <view class='name'>{{item.nickname}}</view>
                 <view class='time'>{{item.time}}</view>
               </view>
               <image src="../.../../../../images/manager/toBeReviewed.svg" class="right"></image>
             </view>
-            <view class="common" style="margin-right:10rpx">{{item.pinglun}}</view>
+            <view class="common" style="margin-right:10rpx">{{item.comment}}</view>
           </view>
         </view>
       </view>
       <!--已审核-->
-      <view wx:if='{{haveReviewed.length>0}}'>
+      <view wx:if='{{tree.haveReviewed.length>0}}'>
         <view class="smalltitle">已审核</view>
-        <view class="card" wx:for="{{haveReviewed}}">
+        <view class="card" wx:for="{{tree.haveReviewed}}">
           <!--已通过-->
           <view wx:if="{{item.adopt==true}}">
             <view class='top'>
               <view class="shu"></view>
               <view class='nametime'>
-                <view class='name'>{{item.name}}</view>
+                <view class='name'>{{item.nickname}}</view>
                 <view class='time'>{{item.time}}</view>
               </view>
               <image src="../.../../../../images/manager/circle-check.svg" class="right1"></image>
             </view>
-            <view class="common" style="margin-right:10rpx">{{item.pinglun}}</view>
+            <view class="common" style="margin-right:10rpx">{{item.comment}}</view>
           </view>
           <!--未通过-->
           <view wx:else>
             <view class='top'>
               <view class="shu"></view>
               <view class='nametime'>
-                <view class='name'>{{item.name}}</view>
+                <view class='name'>{{item.nickname}}</view>
                 <view class='time'>{{item.time}}</view>
               </view>
               <image src="../.../../../../images/manager/delete.svg" class="right"></image>
             </view>
-            <view class="common" style="margin-right:10rpx">{{item.pinglun}}</view>
+            <view class="common" style="margin-right:10rpx">{{item.comment}}</view>
           </view>
         </view>
       </view>
@@ -65,49 +65,49 @@
   <swiper-item>
     <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
       <!--待审核-->
-      <view wx:if='{{toBeReviewed.length>0}}'>
+      <view wx:if='{{artical.toBeReviewed.length>0}}'>
         <view class="smalltitle">待审核</view>
-        <view class="card" wx:for="{{toBeReviewed}}">
+        <view class="card" wx:for="{{artical.toBeReviewed}}">
           <view>
             <view class='top'>
               <view class="shu"></view>
               <view class='nametime'>
-                <view class='name'>{{item.name}}</view>
+                <view class='name'>{{item.nickname}}</view>
                 <view class='time'>{{item.time}}</view>
               </view>
               <image src="../.../../../../images/manager/toBeReviewed.svg" class="right"></image>
             </view>
-            <view class="common" style="margin-right:10rpx">{{item.pinglun}}</view>
+            <view class="common" style="margin-right:10rpx">{{item.comment}}</view>
           </view>
         </view>
       </view>
       <!--已审核-->
-      <view wx:if='{{haveReviewed.length>0}}'>
+      <view wx:if='{{artical.haveReviewed.length>0}}'>
         <view class="smalltitle">已审核</view>
-        <view class="card" wx:for="{{haveReviewed}}">
+        <view class="card" wx:for="{{artical.haveReviewed}}">
           <!--已通过-->
           <view wx:if="{{item.adopt==true}}">
             <view class='top'>
               <view class="shu"></view>
               <view class='nametime'>
-                <view class='name'>{{item.name}}</view>
+                <view class='name'>{{item.nickname}}</view>
                 <view class='time'>{{item.time}}</view>
               </view>
               <image src="../.../../../../images/manager/circle-check.svg" class="right1"></image>
             </view>
-            <view class="common" style="margin-right:10rpx">{{item.pinglun}}</view>
+            <view class="common" style="margin-right:10rpx">{{item.comment}}</view>
           </view>
           <!--未通过-->
           <view wx:else>
             <view class='top'>
               <view class="shu"></view>
               <view class='nametime'>
-                <view class='name'>{{item.name}}</view>
+                <view class='name'>{{item.nickname}}</view>
                 <view class='time'>{{item.time}}</view>
               </view>
               <image src="../.../../../../images/manager/delete.svg" class="right"></image>
             </view>
-            <view class="common" style="margin-right:10rpx">{{item.pinglun}}</view>
+            <view class="common" style="margin-right:10rpx">{{item.comment}}</view>
           </view>
         </view>
       </view>
@@ -118,49 +118,49 @@
   <swiper-item>
     <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
       <!--待审核-->
-      <view wx:if='{{toBeReviewed.length>0}}'>
+      <view wx:if='{{video.toBeReviewed.length>0}}'>
         <view class="smalltitle">待审核</view>
-        <view class="card" wx:for="{{toBeReviewed}}">
+        <view class="card" wx:for="{{video.toBeReviewed}}">
           <view>
             <view class='top'>
               <view class="shu"></view>
               <view class='nametime'>
-                <view class='name'>{{item.name}}</view>
+                <view class='name'>{{item.nickname}}</view>
                 <view class='time'>{{item.time}}</view>
               </view>
               <image src="../.../../../../images/manager/toBeReviewed.svg" class="right"></image>
             </view>
-            <view class="common" style="margin-right:10rpx">{{item.pinglun}}</view>
+            <view class="common" style="margin-right:10rpx">{{item.comment}}</view>
           </view>
         </view>
       </view>
       <!--已审核-->
-      <view wx:if='{{haveReviewed.length>0}}'>
+      <view wx:if='{{video.haveReviewed.length>0}}'>
         <view class="smalltitle">已审核</view>
-        <view class="card" wx:for="{{haveReviewed}}">
+        <view class="card" wx:for="{{video.haveReviewed}}">
           <!--已通过-->
           <view wx:if="{{item.adopt==true}}">
             <view class='top'>
               <view class="shu"></view>
               <view class='nametime'>
-                <view class='name'>{{item.name}}</view>
+                <view class='name'>{{item.nickname}}</view>
                 <view class='time'>{{item.time}}</view>
               </view>
               <image src="../.../../../../images/manager/circle-check.svg" class="right1"></image>
             </view>
-            <view class="common" style="margin-right:10rpx">{{item.pinglun}}</view>
+            <view class="common" style="margin-right:10rpx">{{item.comment}}</view>
           </view>
           <!--未通过-->
           <view wx:else>
             <view class='top'>
               <view class="shu"></view>
               <view class='nametime'>
-                <view class='name'>{{item.name}}</view>
+                <view class='name'>{{item.nickname}}</view>
                 <view class='time'>{{item.time}}</view>
               </view>
               <image src="../.../../../../images/manager/delete.svg" class="right"></image>
             </view>
-            <view class="common" style="margin-right:10rpx">{{item.pinglun}}</view>
+            <view class="common" style="margin-right:10rpx">{{item.comment}}</view>
           </view>
         </view>
       </view>

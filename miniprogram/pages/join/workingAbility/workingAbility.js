@@ -157,6 +157,7 @@ Page({
             }).then(function(res) {
               console.log("【workingAbility调用函数uploadCV】", res)
               app.globalData.userInfo.perInfo = perInfo
+              app.globalData.
               wx.showToast({
                 title: '提交成功！',
                 icon: 'success',

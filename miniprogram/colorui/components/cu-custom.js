@@ -14,7 +14,7 @@ Component({
     bgColor: {
       type: String,
       default: ''
-    }, 
+    },
     isCustom: {
       type: [Boolean, String],
       default: false
@@ -45,8 +45,8 @@ Component({
         delta: 1
       });
     },
-    toHome(){
-      wx.reLaunch({
+    toHome() {
+      wx.redirectTo({
         url: '/pages/index/index',
       })
     }

@@ -108,7 +108,7 @@
 	margin-left: 16rpx;
 }
 .time{
-  width: 256rpx;
+  width: 400rpx;
 	height: 36rpx;
 	color: rgba(80, 80, 80, 1);
 	font-size: 24rpx;

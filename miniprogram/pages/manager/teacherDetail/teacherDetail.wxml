@@ -104,8 +104,8 @@
     <view class="tex">{{teacher.otherInfo.questionB}}</view>
   </view>
 </view>
-<view class='rr' wx:if="{{teacher.isAdopt==false}}">
-  <button bindtap="checkMatch" data-status="true" style="width: 284rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn'>通过审核</button>
-  <button bindtap="checkMatch" data-status="false" style="width: 284rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn'>退回申请</button>
+<view class='rr' wx:if="{{teacher.isCheck==0}}">
+  <button bindtap="checkMatch" data-check="pass" style="width: 284rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn'>通过审核</button>
+  <button bindtap="checkMatch" data-check="reject" style="width: 284rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn'>退回申请</button>
 </view>
 <view class="hh"></view>
