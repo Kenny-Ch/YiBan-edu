@@ -6,7 +6,7 @@ Page({
    */
   data: {
     result:true,
-    QR:'../../../images/my/touxiang.jpg',
+    QR:'cloud://yiban-edu.7969-yiban-edu-1301806073/community/growUp.png',
     shuoming:'请尽快加入以伴志愿者面试群聊，以便快速通过审核。',
   },
   previewImage: function(e) {
