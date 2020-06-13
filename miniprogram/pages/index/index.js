@@ -327,6 +327,10 @@ Page({
           }, 1500)
         }
       })
+    } else if (app.globalData.isTeacher == 1) {
+      wx.navigateTo({
+        url: url
+      })
     } else if (!app.globalData.isMatch) {
       console.log("err")
       wx.showToast({
