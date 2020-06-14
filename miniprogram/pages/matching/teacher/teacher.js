@@ -17,7 +17,7 @@ Page({
       // QR: '../../../images/QR.jpg',
     },
     result: false, //或'正在审核中'
-    shuoming:'请尽快添加老师微信，以便快速通过审核。',
+    shuoming: '请尽快添加老师微信，以便快速通过审核。',
   },
   previewImage: function(e) {
     wx.previewImage({
@@ -42,6 +42,7 @@ Page({
         console.log("【teacher查询数据库person】", res.data[0].perInfo.speciality)
         for (let i in res.data[0].perInfo.speciality)
           res.data[0].perInfo.speciality[i] = that.changeLanguage(res.data[0].perInfo.speciality[i])
+        res.data[0].QR = "cloud://yiban-edu.7969-yiban-edu-1301806073/QR/teacher/" + res.data[0].openid + ".jpg"
         that.setData({
           user: res.data[0]
         })

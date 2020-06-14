@@ -9,7 +9,7 @@ const _ = db.command
 /*  参数表：
     "isNew": bool                   //新成员
     "flag": ""                      //用于标记刻录的时间是什么（注册：register、开始匹配：matchBegin、结束匹配：matchEnd、注销账号：loginOut）
-    "otherName": ""                 //与之匹配的成员姓名
+    "otherName": ""                 //与之匹配的成员姓名 
     "otherOpenid": ""               //与之匹配的成员openid
     "openid": ""                    //openid
     
