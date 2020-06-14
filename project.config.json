@@ -361,7 +361,7 @@
 					"id": 44,
 					"name": "pages/matching/teacher/teacher",
 					"pathName": "pages/matching/teacher/teacher",
-					"query": "id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc",
+					"query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc",
 					"scene": null
 				}
 			]
