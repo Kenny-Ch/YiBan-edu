@@ -121,6 +121,7 @@ Page({
                 data: {
                   flag: that.data.job,
                   openid: app.globalData.openid,
+                  avatarUrl: app.globalData.avatarUrl,
                   registerDate: new Date(),
                   job: 1,
                   name: input.uname,
@@ -141,6 +142,7 @@ Page({
               }).then(res => {
                 app.globalData.userInfo = {
                   openid: app.globalData.openid,
+                  avatarUrl: app.globalData.avatarUrl,
                   registerDate: new Date(),
                   job: input.job,
                   name: input.uname,
