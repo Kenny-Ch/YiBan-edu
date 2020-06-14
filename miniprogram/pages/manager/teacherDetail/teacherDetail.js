@@ -26,7 +26,7 @@ Page({
       .get()
       .then(function(res) {
         console.log("【teacherDetail查询数据库person】", res)
-        let fileID = "cloud://yiban-edu.7969-yiban-edu-1301806073/supporting_materials/" + res.data.openid + ".jpg"
+        let fileID = "cloud://yiban-edu.7969-yiban-edu-1301806073/teacher_supporting_materials/" + res.data.openid + ".jpg"
         that.setData({
           teacher: res.data,
           fileID: fileID
