@@ -80,7 +80,7 @@ Page({
         return 'Biology'
         break
       case '政治':
-        return ''
+        return 'Politics'
         break
       case '历史':
         return 'History'
@@ -139,7 +139,7 @@ Page({
                 otherInfo: {
                   collegeExamScore: {
                     Chinese: input.Chinese,
-                    Math: input.Math,
+                    Mathematics: input.Math,
                     English: input.English,
                     Integration: input.Integration
                   },
