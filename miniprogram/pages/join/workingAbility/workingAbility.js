@@ -157,7 +157,21 @@ Page({
             }).then(function(res) {
               console.log("【workingAbility调用函数uploadCV】", res)
               app.globalData.userInfo.perInfo = perInfo
-              app.globalData.
+              app.globalData.userInfo.otherInfo = {
+                collegeExamScore: {
+                  Chinese: input.Chinese,
+                  Mathematics: input.Math,
+                  English: input.English,
+                  Integration: input.Integration
+                },
+                comprehend: input.comprehend, //对以伴服务的了解
+                experience: input.experience, //你的学生干部经历
+                honor: input.honor, //你的个人荣誉
+                interest: input.interest, //你的兴趣爱好
+                arrange: pick.putch, //新学期课程安排是否紧凑
+                questionA: input.situation1, //问题1
+                questionB: input.situation2, //问题2
+              }
               wx.showToast({
                 title: '提交成功！',
                 icon: 'success',
