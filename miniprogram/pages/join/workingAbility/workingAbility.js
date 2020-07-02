@@ -17,7 +17,46 @@ Page({
       value: false
     }],
     punch: true,
-    jumpMethod: 'redirect'
+    jumpMethod: 'redirect',
+    shuoming: '请在微信点击 我———个人中心——二维码名片，将二维码名片保存起来上传，示例如下：',
+    img: "../../../images/my/tupianimgyulan.png",
+    lzimg:"cloud://yiban-edu.7969-yiban-edu-1301806073/lzimg.png",
+  },
+  upload_picture: function(name) {
+    var that = this
+    //让用户选择或拍摄一张照片
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success(res) {
+        //选择完成会先返回一个临时地址保存备用
+        const tempFilePaths = res.tempFilePaths
+        //将照片上传至云端需要刚才存储的临时地址
+        wx.cloud.uploadFile({
+          cloudPath: 'QR/teacher/' + app.globalData.openid + '.jpg',
+          filePath: tempFilePaths[0],
+          success(res) {
+            wx.showToast({
+              title: '图片上传成功！',
+              icon: 'none'
+            })
+            //上传成功后会返回永久地址
+            that.setData({
+              fileID: res.fileID, //图片存储到云存储的fileID
+              img:res.fileID
+            })
+            console.log(res.fileID)
+          },
+          fail(err) {
+            wx.showToast({
+              title: '图片上传失败！',
+              icon: 'none'
+            })
+          }
+        })
+      }
+    })
   },
   punch_Change: function(e) {
     console.log('新学期的课程安排是否紧凑:', e.detail.value)

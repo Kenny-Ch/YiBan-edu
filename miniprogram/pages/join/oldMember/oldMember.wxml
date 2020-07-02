@@ -10,6 +10,14 @@
     <input type="number" class='contents' placeholder="请填写你预留的手机号码" name='tel'></input>
     <view class='label'>授权码：</view>
     <input type="number" class='contents' placeholder="请填写以伴提供的绑定授权码" name='bindingCode'></input>
+    <view class='label'>个人微信二维码名片：</view>
+    <view class='pic_address'>
+      <image src="{{img}}" class='pic' bindtap="upload_picture"></image>
+    </view>
+    <view class='shuoming'>{{shuoming}}</view>
+    <view class='pic_address'>
+      <image src="{{lzimg}}" class='pic'></image>
+    </view>
   </view>
   <button bindgetuserinfo="getInfo" form-type="submit" open-type="getUserInfo" style="width: 650rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn'>登陆</button>
 </form>

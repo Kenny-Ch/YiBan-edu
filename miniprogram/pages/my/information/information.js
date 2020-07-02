@@ -26,20 +26,39 @@ Page({
     },
     picker: ['高一', '高二', '高三'],
     sexs:['男','女'],
+    fileID: ''
   },
-
+  previewImage: function(e) {
+    wx.previewImage({
+      urls: e.target.dataset.url.split(',')
+      // 需要预览的图片http链接  使用split把字符串转数组。不然会报错
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: async function(options) {
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo
       })
-    } else {
-
+    } 
+    let that = this
+    if(app.globalData.isTeacher == 1){
+      const db = wx.cloud.database()
+      await db.collection('person').doc(app.globalData.openid)
+        .get()
+        .then(function(res) {
+          console.log("【teacherDetail查询数据库person】", res)
+          let fileID = "cloud://yiban-edu.7969-yiban-edu-1301806073/QR/teacher/" + res.data.openid + ".jpg"
+          that.setData({
+            fileID: fileID
+          })
+        }).catch(function(err) {
+          console.log(err)
+        })
     }
-
+   
   },
 
   formSubmit: function(options) {

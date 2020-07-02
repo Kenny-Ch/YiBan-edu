@@ -155,3 +155,25 @@ radio .wx-radio-input.wx-radio-input-checked::before{
   padding:5rpx 20rpx 10rpx 20rpx;
   margin-top:10rpx ;
 }
+.pic_address{
+  width: 590rpx;
+  margin-left:30rpx ;
+  margin-bottom: 12rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+}
+.pic{
+  width: 320rpx;
+  height: 320rpx;
+  color: rgb(165, 165, 165);
+  
+}
+.shuoming{
+  width: 590rpx;
+	color: rgba(166, 166, 166, 1);
+	font-size: 24rpx;
+	line-height: 150%;
+	text-align: left;
+}

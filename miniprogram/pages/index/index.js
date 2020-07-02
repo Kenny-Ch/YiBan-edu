@@ -387,15 +387,17 @@ Page({
           url: '../matching/matching'
         })
       }
-    } else if (app.globalData.isTeacher == 0 && !app.globalData.isNew && app.globalData.userInfo.matchWaitList.length != 0) {
-      wx.navigateTo({
-        url: '../matching/teacher/teacher?status=false&id=' + app.globalData.userInfo.matchWaitList[0],
-      })
-    } else if (app.globalData.isTeacher == 0 && !app.globalData.isNew && app.globalData.userInfo.matchList.length != 0) {
-      wx.navigateTo({
-        url: '../matching/teacher/teacher?status=true&id=' + app.globalData.userInfo.matchList[0],
-      })
-    } else if (url == 'error') {
+    } 
+    // else if (app.globalData.isTeacher == 0 && !app.globalData.isNew && app.globalData.userInfo.matchWaitList.length != 0) {
+    //   wx.navigateTo({
+    //     url: '../matching/teacher/teacher?status=false&id=' + app.globalData.userInfo.matchWaitList[0],
+    //   })
+    // } else if (app.globalData.isTeacher == 0 && !app.globalData.isNew && app.globalData.userInfo.matchList.length != 0) {
+    //   wx.navigateTo({
+    //     url: '../matching/teacher/teacher?status=true&id=' + app.globalData.userInfo.matchList[0],
+    //   })
+    // } 
+    else if (url == 'error') {
       //老师注册后台审核未通过
       wx.showModal({
         title: '审核未通过！',

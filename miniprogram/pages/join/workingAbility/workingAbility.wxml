@@ -7,6 +7,14 @@
 <form class='con' bindsubmit="formSubmit">
   <view class='toptitle'>简历</view>
   <view class='card'>
+    <view class='label'>个人微信二维码名片：</view>
+    <view class='pic_address'>
+      <image src="{{img}}" class='pic' bindtap="upload_picture"></image>
+    </view>
+    <view class='shuoming'>{{shuoming}}</view>
+    <view class='pic_address'>
+      <image src="{{lzimg}}" class='pic'></image>
+    </view>
     <view class='label'>高考成绩：</view>
     <view class='row'>
       <view class='ll'>语文:</view>
