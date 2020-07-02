@@ -20,7 +20,6 @@ page{
 }
 .card{
   width: 650rpx;
-	height: 309rpx;
 	color: rgba(80, 80, 80, 1);
 	background-color: rgba(255, 255, 255, 1);
 	border-radius: 16rpx;
@@ -61,4 +60,26 @@ page{
 	box-shadow: 0rpx 7rpx 14rpx 0rpx rgba(0, 0, 0, 0.12);
   text-align: center;
   margin-bottom:40rpx ;
+}
+.pic_address{
+  width: 590rpx;
+  margin-left:30rpx ;
+  margin-bottom: 12rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+}
+.pic{
+  width: 320rpx;
+  height: 320rpx;
+  color: rgb(165, 165, 165);
+  
+}
+.shuoming{
+  width: 590rpx;
+	color: rgba(166, 166, 166, 1);
+	font-size: 24rpx;
+	line-height: 150%;
+	text-align: left;
 }

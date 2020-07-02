@@ -12,3 +12,12 @@
 .wd{
   width: 150rpx;
 }
+.img{
+  width: 320rpx;
+  height: 320rpx ;
+}
+.pic{
+  width: 80%;
+  margin-top:20rpx ;
+  margin-bottom:20rpx ;
+}
