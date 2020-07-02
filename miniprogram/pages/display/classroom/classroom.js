@@ -27,6 +27,7 @@ Page({
     }],
     i: 0,
     x: 0,
+    bottomtext:'------到底啦------',
   },
   changeSwipe: function(e) {
     var adress = this.data.three[e.detail.current].title;

@@ -327,7 +327,8 @@ Page({
           }, 1500)
         }
       })
-    } else if (app.globalData.isTeacher == 1) {
+    } 
+    else if (app.globalData.isTeacher == 1) {
       wx.navigateTo({
         url: url
       })
@@ -339,7 +340,8 @@ Page({
         duration: 1500,
         mask: true
       })
-    } else {
+    } 
+    else {
       wx.navigateTo({
         url: url
       })
