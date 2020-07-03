@@ -22,4 +22,5 @@
     </view>
     <image src="../.../../../../images/manager/delete.svg" class="right" bindtap="delete" data-index="{{index}}" data-openid="{{item.openid}}"></image>   
   </view>
+  <view class='bott'>{{bottomtext}}</view>
 </view>
