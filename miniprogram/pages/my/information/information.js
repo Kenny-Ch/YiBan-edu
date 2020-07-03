@@ -89,30 +89,39 @@ Page({
   },
 
   getName: function(e) {
-    console.log("【姓名】改变为 ", e.detail.value)
-    this.data.changeValue.name = e.detail.value
+    wx.showToast({
+      title: "姓名不可更改",
+      icon:'none'
+    })
   },
 
   getPhoneNumber: function(e) {
     console.log("【联系方式】改变为 ", e.detail.value)
     this.data.changeValue.perInfo.tel = e.detail.value
+    app.globalData.userInfo.perInfo.tel = e.detail.value
   },
 
   getGender: function(e) {
-    console.log("【性别】改变为 ", e.detail.value)
-    this.data.changeValue.perInfo.gender = e.detail.value
+    // console.log("【性别】改变为 ", e.detail.value)
+    // this.data.changeValue.perInfo.gender = e.detail.value
 
-    var sex = e.detail.value == '0' ? '男' : '女'
-    console.log("【性别】改变为 ", sex)
-    this.data.changeValue.perInfo.gender = sex
-    this.setData({
-      index1: e.detail.value,
+    // var sex = e.detail.value == '0' ? '男' : '女'
+    // console.log("【性别】改变为 ", sex)
+    // this.data.changeValue.perInfo.gender = sex
+    // app.globalData.userInfo.perInfo.gender = sex
+    // this.setData({
+    //   index1: e.detail.value,
+    // })
+    wx.showToast({
+      title: "性别不可更改",
+      icon:'none'
     })
   },
 
   getArea: function(e) {
     console.log("【所在地区】改变为 ", e.detail.value)
     this.data.changeValue.perInfo.area = e.detail.value
+    app.globalData.userInfo.perInfo.area = e.detail.value
     this.setData({
       region: e.detail.value
     })
@@ -121,12 +130,14 @@ Page({
   getSchool: function(e) {
     console.log("【在读学校】改变为 ", e.detail.value)
     this.data.changeValue.perInfo.school = e.detail.value
+    app.globalData.userInfo.perInfo.school = e.detail.value
   },
 
   getGrade: function(e) {
     var grade = e.detail.value == '0' ? '高一' : (e.detail.value == '1' ? '高二' : '高三')
     console.log("【在读年级】改变为 ", grade)
     this.data.changeValue.perInfo.grade = grade
+    app.globalData.userInfo.perInfo.grade = grade
     this.setData({
       index: e.detail.value,
     })
@@ -135,10 +146,12 @@ Page({
   getQQ: function(e) {
     console.log("【QQ】改变为 ", e.detail.value)
     this.data.changeValue.perInfo.qq = e.detail.value
+    app.globalData.userInfo.perInfo.qq = e.detail.value
   },
 
   getEmail: function(e) {
     console.log("【邮箱】改变为 ", e.detail.value)
     this.data.changeValue.perInfo.email = e.detail.value
+    app.globalData.userInfo.perInfo.email = e.detail.value
   },
 })
