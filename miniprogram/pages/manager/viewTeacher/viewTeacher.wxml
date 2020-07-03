@@ -3,7 +3,8 @@
   <view slot="backText">返回</view>
   <view slot="content">以伴edu</view>
 </cu-custom>
-<view class='title'>老师管理</view>
+<view class='title' wx:if="{{type=='match'}}">志愿者管理</view>
+<view class='title' wx:else>志愿者审核</view>
 <view class="line"></view>
 <view class="con">
   <view class="card" wx:for="{{teacher}}">

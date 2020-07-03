@@ -15,6 +15,8 @@ const _ = db.command
         "willGetAlong": true,       //是否愿意与志愿者老师好好相处并学到知识
         "habitAndPlan": "",         //学习习惯与学习计划
         "expectation": "",          //对老师的期望
+        "oneQuestion":"",       //情景题是否选择第一道
+        "answer":"",            //情景题答案
 */
 
 // 云函数入口函数
@@ -31,7 +33,9 @@ exports.main = async (event, context) => {
               willMeeting: event.willMeeting,
               willGetAlong: event.willGetAlong,
               habitAndPlan: event.habitAndPlan,
-              expectation: event.expectation
+              expectation: event.expectation,
+              oneQuestion:event.oneQuestion,
+              answer:event.answer,
             },
             matchList:[],
             matchWaitList:[],

@@ -40,5 +40,15 @@
   <textarea name='leaning' auto-height class='leaning' bindinput="getCustom" value="{{custom}}" />
   <view class='text_title'>对老师的期望：</view>
   <textarea name='teacher' auto-height class='leaning' bindinput="getWilling" value="{{willing}}" />
+  <view class='text_title'>情景题（二选一）：</view>
+  <view class='text_bottom'>1、假如你向老师提问，而老师刚好有事，你会怎么做？</view>
+  <view class='text_bottom'>2、假如你觉得老师给你提供的帮助不大，你会怎么做？</view>
+  <radio-group class='row ii' bindchange="choose_Change">
+    <view class='row' wx:for="{{question}}">
+      <radio value="{{item.value}}" checked="{{item.checked}}" color='#fff' />
+      <view class='text_name'>{{item.name}}</view>
+    </view>
+  </radio-group>
+  <textarea name='teacher' auto-height class='leaning' bindinput="getAnswer" value="{{answer}}" />
   <button form-type="submit" style="width: 342rpx;min-height: 50rpx;border-radius: 55rpx;" bindtap="uploadMatchInfo">提交登记</button>
 </form>

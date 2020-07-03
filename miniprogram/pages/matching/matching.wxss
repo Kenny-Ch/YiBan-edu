@@ -38,6 +38,14 @@
   font-weight: bold;
   margin-top:35rpx ;
 }
+.text_bottom{
+  width: 100%;
+	color: rgba(254, 123, 111, 1);
+	font-size: 28rpx;
+	line-height: 150%;
+	text-align: left;
+  margin-top:20rpx ;
+}
 .row{
   display: flex;
   flex-direction: row;

@@ -60,6 +60,11 @@
     <view class="title wd">对老师期望</view>
     <view class="tex">{{student.matchInfo.expectation}}</view>
   </view>
+  <view class="cu-form-group">
+    <view class="title wd" wx:if="{{student.matchInfo.oneQuestion=='第一题'}}">假如你向老师提问，而老师刚好有事，你会怎么做？</view>
+    <view class="title wd" wx:else>假如你觉得老师给你提供的帮助不大，你会怎么做？</view>
+    <view class="tex">{{student.matchInfo.answer}}</view>
+  </view>
 </view>
 <view class='rr' wx:if="{{student.isAdopt==false}}">
   <button bindtap="checkMatch" data-status="true" style="width: 284rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn'>通过审核</button>

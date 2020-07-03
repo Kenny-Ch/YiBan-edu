@@ -12,7 +12,7 @@
   margin-left: 30rpx;
 }
 .line{
-  width: 257rpx;
+  width: 307rpx;
 	height: 17rpx;
 	color: rgba(80, 80, 80, 1);
 	background-color: rgba(248, 211, 100, 1);
