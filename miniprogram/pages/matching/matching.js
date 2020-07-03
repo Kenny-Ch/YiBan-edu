@@ -85,6 +85,16 @@ Page({
     custom: '',
     willing: '',
     answer:'',
+    sub:false,
+    userAgree:false,
+  },
+  goToUserLicence: function(){
+    wx.navigateTo({
+      url: './licence/licence',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   },
   choose_Change: function(e) {
     console.log('情景题选择：', e.detail.value)
@@ -161,6 +171,16 @@ Page({
   getWilling: function(e) {
     console.log("willing:", e.detail.value)
     this.data.willing = e.detail.value
+  },
+  myCancel:function(e){
+    this.setData({
+      sub:false,
+    })
+  },
+  formSubmit:function(e){
+    this.setData({
+      sub:true,
+    })
   },
   uploadMatchInfo: function(e) {
     var weakSubject = {};

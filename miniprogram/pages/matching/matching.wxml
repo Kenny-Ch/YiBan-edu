@@ -50,5 +50,18 @@
     </view>
   </radio-group>
   <textarea name='teacher' auto-height class='leaning' bindinput="getAnswer" value="{{answer}}" />
-  <button form-type="submit" style="width: 342rpx;min-height: 50rpx;border-radius: 55rpx;" bindtap="uploadMatchInfo">提交登记</button>
+  <button form-type="submit" class="tijiao" style="width: 342rpx;min-height: 50rpx;border-radius: 55rpx;" >提交登记</button>
 </form>
+<view wx:if='{{userAgree==false&&sub==true}}'>
+  <view catchtouchmove="catchtouchmove" class="tips">
+    <view class="tips_box">
+      <view class="hint_view">
+        <view class="text">
+          <view class="hint1" bindtap='goToUserLicence'>点击查看《学生承诺书》</view>
+        </view>
+      </view>
+      <button bindtap="myCancel" class="noAgreeBtn" style="width: 382rpx;min-height: 50rpx;border-radius: 55rpx;">不同意</button>
+      <button bindtap="uploadMatchInfo" class="agreeBtn" style="width: 382rpx;min-height: 50rpx;border-radius: 55rpx;">我已阅读并同意</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,16 @@
+<!--miniprogram/pages/matching/licence/licence.wxml-->
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">以伴edu</view>
+</cu-custom>
+<view>
+  <view class='title'>以伴学生承诺书</view>
+  <view class='h1'>使用条款及声明</view>
+  <view>
+    xxx
+  </view>
+  <view class='h1'>小程序用途</view>
+  <view>
+    yyy
+  </view>
+</view>
