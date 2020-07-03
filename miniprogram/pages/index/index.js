@@ -193,7 +193,7 @@ Page({
           item.big_title = "感谢您的志愿付出";
           item.title = "一起迈向公益之路";
           item.small_title = "只要你有足够的热情，想为公益事业做出一份自己的贡献，都可以申请成为以伴志愿者！";
-          item.button = "查看我的学生";
+          item.button = "加入我们";
           if (app.globalData.userInfo.otherInfo == undefined) {
             //第二次注册未完成
             item.url = '../join/workingAbility/workingAbility'
@@ -203,11 +203,14 @@ Page({
           } else if (app.globalData.userInfo.isCheck == 1) {
             //后台审核通过
             item.url = "../join/myStudent/myStudent?id=" + app.globalData.userInfo._id;
+            item.button = "查看我的学生"
           } else {
             //后台审核未通过
             item.url = 'error'
           }
+          if (app.globalData.userInfo.otherInfo != undefined) {
           list.push(item)
+          }
         } else {
           let item = {};
           item.id = 0;

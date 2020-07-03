@@ -30,7 +30,7 @@
   </view>
   <view class="cu-form-group">
     <view class="title wd">在读学校</view>
-    <input type='text' value="{{userInfo.perInfo.school}}"></input>
+    <input type='text' value="{{userInfo.perInfo.school}}" bindblur="getSchool"></input>
   </view>
   <view class="cu-form-group">
     <view class="title wd">在读年级</view>
@@ -42,11 +42,11 @@
   </view>
   <view class="cu-form-group">
     <view class="title wd">QQ</view>
-    <input type='number' value="{{userInfo.perInfo.qq}}"></input>
+    <input type='number' value="{{userInfo.perInfo.qq}}" bindblur="getQQ"></input>
   </view>
   <view class="cu-form-group">
     <view class="title wd">邮箱</view>
-    <input type='text' value="{{userInfo.perInfo.email}}"></input>
+    <input type='text' value="{{userInfo.perInfo.email}}" bindblur="getEmail"></input>
   </view>
   <view class="cu-form-group" wx:if="{{teacher}}">
     <view class="title wd">个人微信二维码名片</view>

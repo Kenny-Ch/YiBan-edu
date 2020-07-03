@@ -18,13 +18,14 @@ Page({
     userInfo: {
 
     },
-    region:[],
+    region: [],
     changeValue: {
-      'perInfo':{
+      'perInfo': {
 
       }
     },
     picker: ['高一', '高二', '高三'],
+
     sexs:['男','女'],
     fileID: '',
     teacher:false
@@ -34,6 +35,7 @@ Page({
       urls: e.target.dataset.url.split(',')
       // 需要预览的图片http链接  使用split把字符串转数组。不然会报错
     })
+
   },
   /**
    * 生命周期函数--监听页面加载
@@ -67,31 +69,40 @@ Page({
     console.log(options)
     const db = wx.cloud.database()
     const app = getApp()
-    db.collection('person').where({
-        openid: app.globalData.openid
-      }).update({
-
+    let that = this
+    wx.cloud.callFunction({
+      name: 'updateInfo',
+      data: {
+        _id: that.data.userInfo._id,
+        name: that.data.changeValue.name,
+        perInfo: that.data.changeValue.perInfo
+      }
+    }).then(function(res) {
+      console.log("【my/information调用函数updateInfo】", res)
+      wx.showToast({
+        title: res.result,
+        icon:'none'
       })
-      .then(function(res) {
-        console.log("information查找数据库person", res)
-      })
+    }).catch(function(err) {
+      console.log(err)
+    })
   },
 
   getName: function(e) {
-    console.log("【姓名】改变为 ",e.detail.value)
+    console.log("【姓名】改变为 ", e.detail.value)
     this.data.changeValue.name = e.detail.value
   },
 
-  getPhoneNumber: function(e){
+  getPhoneNumber: function(e) {
     console.log("【联系方式】改变为 ", e.detail.value)
     this.data.changeValue.perInfo.tel = e.detail.value
   },
 
-  getGender:function(e){
+  getGender: function(e) {
     console.log("【性别】改变为 ", e.detail.value)
     this.data.changeValue.perInfo.gender = e.detail.value
 
-    var sex = e.detail.value == '0'?'男':'女'
+    var sex = e.detail.value == '0' ? '男' : '女'
     console.log("【性别】改变为 ", sex)
     this.data.changeValue.perInfo.gender = sex
     this.setData({
@@ -99,34 +110,34 @@ Page({
     })
   },
 
-  getArea:function(e){
+  getArea: function(e) {
     console.log("【所在地区】改变为 ", e.detail.value)
-    this.data.changeValue.perInfo.tel = e.detail.value
+    this.data.changeValue.perInfo.area = e.detail.value
     this.setData({
       region: e.detail.value
     })
   },
 
-  getSchool: function (e) {
+  getSchool: function(e) {
     console.log("【在读学校】改变为 ", e.detail.value)
     this.data.changeValue.perInfo.school = e.detail.value
   },
 
-  getGrade: function (e) {
-    var grade = e.detail.value == '0'?'高一':(e.detail.value == '1'?'高二':'高三')
-    console.log("【在读年级】改变为 ",grade)
-    this.data.changeValue.perInfo.grade =grade
+  getGrade: function(e) {
+    var grade = e.detail.value == '0' ? '高一' : (e.detail.value == '1' ? '高二' : '高三')
+    console.log("【在读年级】改变为 ", grade)
+    this.data.changeValue.perInfo.grade = grade
     this.setData({
       index: e.detail.value,
     })
   },
 
-  getQQ: function (e) {
+  getQQ: function(e) {
     console.log("【QQ】改变为 ", e.detail.value)
-    this.data.changeValue.perInfo.tel = e.detail.value
+    this.data.changeValue.perInfo.qq = e.detail.value
   },
 
-  getEmail: function (e) {
+  getEmail: function(e) {
     console.log("【邮箱】改变为 ", e.detail.value)
     this.data.changeValue.perInfo.email = e.detail.value
   },
