@@ -157,7 +157,7 @@ Page({
           })
           return
         } else {
-          if (input.Chinese == '' || input.Math == '' || input.English == '' || input.introduction == '' || input.comprehend == '' || input.experience == '' || input.honor == '' || input.interest == '' || input.situation1 == '' || input.situation2 == '' || pick.grade1 == undefined || pick.grade2 == undefined || pick.grade3 == undefined || pick.grade4 == undefined) {
+          if (input.Chinese == '' || input.Math == '' || input.English == '' || input.introduction == '' || input.comprehend == '' || input.experience == '' || input.honor == '' || input.interest == '' || input.situation1 == '' || input.situation2 == '' || pick.grade1 == undefined || pick.grade2 == undefined || pick.grade3 == undefined || pick.grade4 == undefined|| pick.fileID == undefined) {
             wx.showToast({
               title: '信息填写不完整~',
               icon: 'none',

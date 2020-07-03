@@ -26,7 +26,8 @@ Page({
     },
     picker: ['高一', '高二', '高三'],
     sexs:['男','女'],
-    fileID: ''
+    fileID: '',
+    teacher:false
   },
   previewImage: function(e) {
     wx.previewImage({
@@ -44,7 +45,7 @@ Page({
       })
     } 
     let that = this
-    if(app.globalData.isTeacher == 1){
+    if(app.globalData.isTeacher == 1&&app.globalData.userInfo.otherInfo != undefined){
       const db = wx.cloud.database()
       await db.collection('person').doc(app.globalData.openid)
         .get()
@@ -52,6 +53,7 @@ Page({
           console.log("【teacherDetail查询数据库person】", res)
           let fileID = "cloud://yiban-edu.7969-yiban-edu-1301806073/QR/teacher/" + res.data.openid + ".jpg"
           that.setData({
+            teacher:true,
             fileID: fileID
           })
         }).catch(function(err) {

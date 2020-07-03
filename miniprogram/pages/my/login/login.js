@@ -15,7 +15,7 @@ Page({
       checked: false,
       value: '女',
     }],
-    picker: ['高一', '高二', '高三'],
+    picker: ['初一','初二','初三','高一', '高二', '高三'],
     region: [],
     job: 0, //1是老师，0是学生
     img: "../../../images/my/tupianimgyulan.png"

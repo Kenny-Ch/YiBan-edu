@@ -97,17 +97,34 @@ Page({
     console.log(e)
     console.log('checkbox发生change事件，携带value值为：', e.detail.value)
     console.log("长度:" + e.detail.value.length);
-    let index = e.target.dataset.index - 1
-    let checked = "subject[" + index + "].checked"
-    let score = "subject[" + index + "].score"
-    this.setData({
-      [checked]: !(this.data.subject[index].checked),
-    })
-    if ((this.data.subject[index].checked) == false) {
-      this.setData({
-        [score]: ''
-      })
+    let ll=0;
+    var index = e.target.dataset.index - 1
+    var checked = "subject[" + index + "].checked"
+    for (let sub of this.data.subject) {
+      if (sub.checked == true)
+        ll=ll+1;
     }
+    if(ll>=3&&this.data.subject[index].checked==false){
+      this.setData({
+        [checked]: false,
+      })
+      wx.showToast({
+        title: '最多只能选择3个科目',
+        duration: 1000,
+        icon: 'none'
+      })
+    }else{
+      let score = "subject[" + index + "].score"
+      this.setData({
+        [checked]: !(this.data.subject[index].checked),
+      })
+      if ((this.data.subject[index].checked) == false) {
+        this.setData({
+          [score]: ''
+        })
+      }
+    }
+    
   },
   fraction: function(e) {
     let index = e.target.dataset.index - 1

@@ -48,8 +48,8 @@
     <view class="title wd">邮箱</view>
     <input type='text' value="{{userInfo.perInfo.email}}"></input>
   </view>
-  <view class="cu-form-group" wx:if="{{app.globalData.isTeacher == 1}}">
-    <view class="title wd">证明材料</view>
+  <view class="cu-form-group" wx:if="{{teacher}}">
+    <view class="title wd">个人微信二维码名片</view>
     <view class='pic'>
       <image lazy-load="true" src="{{fileID}}" class='img' data-url="{{fileID}}" bindtap="previewImage"></image>
     </view>

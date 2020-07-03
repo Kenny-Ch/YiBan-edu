@@ -10,6 +10,7 @@
     <view class="row ii">
       <view class="shu"></view>
       <view class="name">{{item.name}}</view>
+      <view class="gender">{{item.perInfo.gender}}</view>
       <view class="school">{{item.perInfo.school}}</view>
       <view class="major">{{item.perInfo.major}}专业</view>
     </view>
