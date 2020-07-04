@@ -69,8 +69,18 @@
       that.setData({
         type: options.type
       })
+      if (options.type == 'match') {
+        that.setData({
+          isCheck: 1
+        })
+      } else {
+        that.setData({
+          isCheck: 0
+        })
+      }
       db.collection('person').where({
-          job: 1
+          job: 1,
+          isCheck: that.data.isCheck
         }).get()
         .then(function(res) {
           console.log("【manager/viewTeacher查询数据库person】", res)
@@ -120,11 +130,11 @@
 
     jump: function(e) {
       let index = e.currentTarget.dataset.index
-      if(this.data.type == 'match'){
+      if (this.data.type == 'match') {
         wx.navigateTo({
           url: '../teacherMatch/teacherMatch?id=' + this.data.teacher[index]._id + '&openid=' + this.data.teacher[index].openid,
         })
-      }else{
+      } else {
         wx.navigateTo({
           url: '../teacherDetail/teacherDetail?id=' + this.data.teacher[index]._id + '&openid=' + this.data.teacher[index].openid,
         })

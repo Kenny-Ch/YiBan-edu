@@ -23,6 +23,7 @@ Page({
     lzimg:"cloud://yiban-edu.7969-yiban-edu-1301806073/lzimg.png",
   },
   upload_picture: function(name) {
+    const app = getApp()
     var that = this
     //让用户选择或拍摄一张照片
     wx.chooseImage({

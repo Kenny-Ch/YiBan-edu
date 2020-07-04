@@ -45,10 +45,12 @@ Page({
       })
     } else {
       let identity = ''
-      if (app.globalData.isTeacher == false) 
+      if (app.globalData.userInfo.job == 0) 
         identity = '学生'
-      else
+      else if (app.globalData.userInfo.job == 1)
         identity = '老师'
+      else
+        identity = ''
       this.setData({
         userinfo: {
           name: app.globalData.userInfo.name,
