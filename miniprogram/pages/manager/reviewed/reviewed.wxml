@@ -1,0 +1,119 @@
+<!--miniprogram/pages/manager/reviewed/reviewed.wxml-->
+<!--miniprogram/pages/manager/reviewComments/reviewComments.wxml-->
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">以伴edu</view>
+</cu-custom>
+<view class='title'>已审核评论</view>
+<view class="line"></view>
+<!--三大部分-->
+<scroll-view scroll-x class='three-nav' scroll-left='{{x}}' scroll-with-animation='true' bindtap='tabSelect'>
+  <text wx:for='{{three}}' wx:key='{{index}}' class='item-nav {{i==index ? "active" : ""}}' data-i='{{index}}'>{{item.title}}</text>
+</scroll-view>
+<swiper current="{{i}}" class="swiper-box" duration="300" style="height:{{height_sys}}px" bindchange="bindChange">
+  <!--树洞评论-->
+  <swiper-item>
+    <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
+      <!--已审核-->
+      <view wx:if='{{tree.haveReviewed.length>0}}'>
+        <view class="card" wx:for="{{tree.haveReviewed}}">
+          <!--已通过-->
+          <view wx:if="{{item.isCheck==1}}">
+            <view class='top'>
+              <view class="shu"></view>
+              <view class='nametime'>
+                <view class='name'>{{item.nickname}}</view>
+                <view class='time'>{{item.time}}</view>
+              </view>
+              <image src="../.../../../../images/manager/circle-check.svg" class="right1"></image>
+            </view>
+            <view class="common" style="margin-right:10rpx">{{item.comment}}</view>
+          </view>
+          <!--未通过-->
+          <view wx:else>
+            <view class='top'>
+              <view class="shu"></view>
+              <view class='nametime'>
+                <view class='name'>{{item.nickname}}</view>
+                <view class='time'>{{item.time}}</view>
+              </view>
+              <image src="../.../../../../images/manager/delete.svg" class="right"></image>
+            </view>
+            <view class="common" style="margin-right:10rpx">{{item.comment}}</view>
+          </view>
+        </view>
+      </view>
+      <view class='bott'>{{bottomtext}}</view>
+    </scroll-view>
+  </swiper-item>
+  <!-- 文章评论 -->
+  <swiper-item>
+    <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
+      <!--已审核-->
+      <view wx:if='{{artical.haveReviewed.length>0}}'>
+        <view class="card" wx:for="{{artical.haveReviewed}}">
+          <!--已通过-->
+          <view wx:if="{{item.isCheck==1}}">
+            <view class='top'>
+              <view class="shu"></view>
+              <view class='nametime'>
+                <view class='name'>{{item.nickname}}</view>
+                <view class='time'>{{item.time}}</view>
+              </view>
+              <image src="../.../../../../images/manager/circle-check.svg" class="right1"></image>
+            </view>
+            <view class="common" style="margin-right:10rpx">{{item.comment}}</view>
+          </view>
+          <!--未通过-->
+          <view wx:else>
+            <view class='top'>
+              <view class="shu"></view>
+              <view class='nametime'>
+                <view class='name'>{{item.nickname}}</view>
+                <view class='time'>{{item.time}}</view>
+              </view>
+              <image src="../.../../../../images/manager/delete.svg" class="right"></image>
+            </view>
+            <view class="common" style="margin-right:10rpx">{{item.comment}}</view>
+          </view>
+        </view>
+      </view>
+      <view class='bott'>{{bottomtext}}</view>
+    </scroll-view>
+  </swiper-item>
+  <!-- 视频评论 -->
+  <swiper-item>
+    <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
+      <!--已审核-->
+      <view wx:if='{{video.haveReviewed.length>0}}'>
+        <view class="card" wx:for="{{video.haveReviewed}}">
+          <!--已通过-->
+          <view wx:if="{{item.isCheck==1}}">
+            <view class='top'>
+              <view class="shu"></view>
+              <view class='nametime'>
+                <view class='name'>{{item.nickname}}</view>
+                <view class='time'>{{item.time}}</view>
+              </view>
+              <image src="../.../../../../images/manager/circle-check.svg" class="right1"></image>
+            </view>
+            <view class="common" style="margin-right:10rpx">{{item.comment}}</view>
+          </view>
+          <!--未通过-->
+          <view wx:else>
+            <view class='top'>
+              <view class="shu"></view>
+              <view class='nametime'>
+                <view class='name'>{{item.nickname}}</view>
+                <view class='time'>{{item.time}}</view>
+              </view>
+              <image src="../.../../../../images/manager/delete.svg" class="right"></image>
+            </view>
+            <view class="common" style="margin-right:10rpx">{{item.comment}}</view>
+          </view>
+        </view>
+      </view>
+      <view class='bott'>{{bottomtext}}</view>
+    </scroll-view>
+  </swiper-item>
+</swiper>

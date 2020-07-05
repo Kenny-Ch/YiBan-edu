@@ -66,3 +66,6 @@ page{
   text-align: left;
   margin-top:8rpx ;
 }
+.bot{
+  height: 80rpx;
+}
