@@ -37,7 +37,21 @@ Page({
       //   adopt: false, //不通过
       // }
     ],
-
+    tree: {
+      page: 1,
+      toBeReviewed: [],
+      haveReviewed: []
+    },
+    artical: {
+      page: 1,
+      toBeReviewed: [],
+      haveReviewed: []
+    },
+    video: {
+      page: 1,
+      toBeReviewed: [],
+      haveReviewed: []
+    }
   },
   changeSwipe: function(e) {
     var adress = this.data.three[e.detail.current].title;
@@ -83,7 +97,6 @@ Page({
       page: 1,
       type: type
     });
-    // this.loadComment(type, 1)
   },
   /**
    * 生命周期函数--监听页面加载
@@ -124,15 +137,24 @@ Page({
         inteType: type,
         check: '_.nin(0)',
         page: index,
-        num: 1000
+        num: 5
       }
     }).then(function(res) {
-      console.log("【getIntraction, isCheck=1, type=" + type + "】", res)
+      console.log("【getIntraction, isCheck=1, type=" + type + ", index=" + index + "】", res)
       let haveReviewed = type + ".haveReviewed"
-      that.setData({
-        page: that.data.page + 1,
-        [haveReviewed]: res.result.comments
-      })
+      if (type == 'tree') {
+        that.setData({
+          [haveReviewed]: that.data.tree.haveReviewed.concat(res.result.comments)
+        })
+      } else if (type == 'artical') {
+        that.setData({
+          [haveReviewed]: that.data.artical.haveReviewed.concat(res.result.comments)
+        })
+      } else {
+        that.setData({
+          [haveReviewed]: that.data.artical.haveReviewed.concat(res.result.comments)
+        })
+      }
       wx.hideLoading()
       return res
     }).catch(function(err) {
@@ -156,15 +178,25 @@ Page({
         inteType: type,
         check: 0,
         page: index,
-        num: 1000
+        num: 5
       }
     }).then(function(res) {
-      console.log("【getIntraction, isCheck=0, type=" + type + "】", res)
+      console.log("【getIntraction, isCheck=0, type=" + type + ", index=" + index + "】", res)
       let toBeReviewed = type + ".toBeReviewed"
-      that.setData({
-        page: that.data.page + 1,
-        [toBeReviewed]: res.result.comments
-      })
+      if (type == 'tree') {
+        that.setData({
+          [toBeReviewed]: that.data.tree.toBeReviewed.concat(res.result.comments)
+        })
+      } else if (type == 'artical') {
+        that.setData({
+          [toBeReviewed]: that.data.artical.toBeReviewed.concat(res.result.comments)
+        })
+      } else {
+        that.setData({
+          [toBeReviewed]: that.data.artical.toBeReviewed.concat(res.result.comments)
+        })
+      }
+
       wx.hideLoading()
       return res
     }).catch(function(err) {
@@ -273,9 +305,36 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-    //防止还未加载却多次上拉的情况
     if (!this.loading) {
-      this.loadComment(this.data.type, this.data.page)
+      console.log("下拉刷新")
+      let type = ''
+      switch (this.data.i) {
+        case 0:
+          type = 'tree'
+          this.setData({
+            'tree.page': this.data.tree.page + 1
+          })
+          this.loadHaveReviewedComment(type, this.data.tree.page)
+          this.loadToBeReviewedComment(type, this.data.tree.page)
+          break
+        case 1:
+          type = 'artical'
+          this.setData({
+            'artical.page': this.data.artical.page + 1
+          })
+          this.loadHaveReviewedComment(type, this.data.artical.page)
+          this.loadToBeReviewedComment(type, this.data.artical.page)
+          break
+        case 2:
+          type = 'video'
+          this.setData({
+            'video.page': this.data.video.page + 1
+          })
+          this.loadHaveReviewedComment(type, this.data.video.page)
+          this.loadToBeReviewedComment(type, this.data.video.page)
+          break
+      }
+      //防止还未加载却多次上拉的情况
     }
   },
 
