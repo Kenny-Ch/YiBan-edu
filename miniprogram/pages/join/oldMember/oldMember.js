@@ -73,7 +73,7 @@ Page({
             mask: true
           })
           return
-        } else if (input.phone == "" || input.bindingCode == "") {
+        } else if (input.phone == "" || input.bindingCode == ""||that.data.fileID == undefined) {
           wx.showToast({
             title: '信息填写不完整~',
             icon: 'none',

@@ -12,7 +12,7 @@
   margin-left: 30rpx;
 }
 .line{
-  width: 257rpx;
+  width: 307rpx;
 	height: 17rpx;
 	color: rgba(80, 80, 80, 1);
 	background-color: rgba(248, 211, 100, 1);
@@ -30,7 +30,7 @@
 }
 .card{
 	width: 682rpx;
-	height: 139rpx;
+	min-height: 139rpx;
 	color: rgba(80, 80, 80, 1);
 	background-color: rgba(255, 255, 255, 1);
 	border-radius: 16rpx;
@@ -76,23 +76,31 @@
 	line-height: 150%;
 	text-align: left;
 	font-weight: bold;
-	margin-left: 16rpx;
+	margin-left: 8rpx;
+}
+.gender{
+	width: 28rpx;
+	color: rgba(80, 80, 80, 1);
+	font-size: 24rpx;
+	line-height: 150%;
+	text-align: left;
+	margin-left:20rpx ;
 }
 .school{
+	max-width: 166rpx;
 	color: rgba(80, 80, 80, 1);
 	font-size: 24rpx;
 	line-height: 150%;
 	text-align: left;
-	margin-left: 16rpx;
-	margin-top:16rpx ;
+	margin-left:20rpx ;
 }
 .major{
+	max-width: 156rpx;
 	color: rgba(80, 80, 80, 1);
 	font-size: 24rpx;
 	line-height: 150%;
-	text-align: left;
-	margin-left: 16rpx;
-	margin-top:16rpx ;
+  text-align: left;
+  margin-left:20rpx ;
 }
 .bottom{
 	width: 100%;
@@ -117,3 +125,11 @@
 	flex-direction: row;
 	align-items: center;
 }
+.bott{
+	width: 100%rpx;
+	color: rgba(80, 80, 80, 1);
+	font-size: 24rpx;
+	line-height: 150%;
+	text-align: center;
+	margin:20rpx ;
+ }

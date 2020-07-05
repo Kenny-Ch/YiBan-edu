@@ -27,6 +27,7 @@
       //     subject: ['语文', '数学', '英语'],
       //   }
       // ],
+      bottomtext:'------到底啦------',
     },
     delete: function(e) {
       let openid = e.currentTarget.dataset.openid

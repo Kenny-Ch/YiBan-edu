@@ -49,6 +49,12 @@
       <image lazy-load="true" src="{{fileID}}" class='img' data-url="{{fileID}}" bindtap="previewImage"></image>
     </view>
   </view>
+  <view class="cu-form-group">
+    <view class="title wd">个人微信二维码名片</view>
+    <view class='pic'>
+      <image lazy-load="true" src="{{QRfileID}}" class='img' data-url="{{QRfileID}}" bindtap="previewImage"></image>
+    </view>
+  </view>
 </view>
 <!--登记信息-->
 <view class="title1">简历信息</view>

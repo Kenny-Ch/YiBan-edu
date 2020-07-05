@@ -6,7 +6,7 @@
 <form bindsubmit="formSubmit">
   <view class="cu-form-group margin-top">
     <view class="title wd">姓名</view>
-    <input type='text' value="{{userInfo.name}}" bindblur="getName"></input>
+    <input type='text' value="{{userInfo.name}}" disabled="false" bindtap="getName"></input>
   </view>
   <view class="cu-form-group">
     <view class="title wd">联系方式</view>
@@ -14,12 +14,16 @@
   </view>
   <view class="cu-form-group">
     <view class="title wd">性别</view>
+    <input type='text' value="{{userInfo.perInfo.gender}}" disabled="false" bindtap="getGender"></input>
+  </view>
+  <!-- <view class="cu-form-group">
+    <view class="title wd">性别</view>
     <picker bindchange="getGender" value="{{index1}}" range="{{sexs}}">
       <view class="contents">
         {{index1?sexs[index1]:userInfo.perInfo.gender}}
       </view>
     </picker>
-  </view>
+  </view> -->
   <view class="cu-form-group">
     <view class="title wd">所在地区</view>
     <picker mode="region" bindchange="getArea" value="{{region}}" custom-item="{{customItem}}">
@@ -48,8 +52,8 @@
     <view class="title wd">邮箱</view>
     <input type='text' value="{{userInfo.perInfo.email}}" bindblur="getEmail"></input>
   </view>
-  <view class="cu-form-group" wx:if="{{app.globalData.isTeacher == 1}}">
-    <view class="title wd">证明材料</view>
+  <view class="cu-form-group" wx:if="{{teacher}}">
+    <view class="title wd">个人微信二维码名片</view>
     <view class='pic'>
       <image lazy-load="true" src="{{fileID}}" class='img' data-url="{{fileID}}" bindtap="previewImage"></image>
     </view>

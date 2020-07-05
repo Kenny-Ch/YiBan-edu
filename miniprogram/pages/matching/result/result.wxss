@@ -24,7 +24,7 @@
 }
 .card{
   width: 682rpx;
-	height: 139rpx;
+	min-height: 139rpx;
 	color: rgba(80, 80, 80, 1);
 	background-color: rgba(255, 255, 255, 1);
 	border-radius: 16rpx;
@@ -57,8 +57,6 @@
   align-items: center;
 }
 .name{
-  width: 96rpx;
-	height: 48rpx;
 	color: rgba(80, 80, 80, 1);
 	font-size: 32rpx;
 	line-height: 150%;
@@ -66,19 +64,24 @@
   font-weight: bold;
   margin-left:8rpx ;
 }
-.school{
-	height: 36rpx;
-	left: 82rpx;
-	top: 135rpx;
+.gender{
+	width: 28rpx;
 	color: rgba(80, 80, 80, 1);
 	font-size: 24rpx;
 	line-height: 150%;
 	text-align: left;
+	margin-left:20rpx ;
+}
+.school{
+	max-width: 166rpx;
+	color: rgba(80, 80, 80, 1);
+	font-size: 24rpx;
+	line-height: 150%;
+	text-align: left;
+	margin-left:20rpx ;
 }
 .major{
-	height: 36rpx;
-	left: 82rpx;
-	top: 135rpx;
+	max-width: 156rpx;
 	color: rgba(80, 80, 80, 1);
 	font-size: 24rpx;
 	line-height: 150%;

@@ -109,7 +109,7 @@ Page({
     this.loadHaveReviewedComment('video', 1)
   },
 
-  loadHaveReviewedComment: function (type, index) {
+  loadHaveReviewedComment: function(type, index) {
     let that = this
     wx.showLoading({
       title: '加载中',
@@ -122,11 +122,11 @@ Page({
         store: false,
         type: 2,
         inteType: type,
-        check: 1,
+        check: '_.nin(0)',
         page: index,
         num: 1000
       }
-    }).then(function (res) {
+    }).then(function(res) {
       console.log("【getIntraction, isCheck=1, type=" + type + "】", res)
       let haveReviewed = type + ".haveReviewed"
       that.setData({
@@ -135,7 +135,7 @@ Page({
       })
       wx.hideLoading()
       return res
-    }).catch(function (err) {
+    }).catch(function(err) {
       console.log(err)
     })
   },
@@ -169,6 +169,103 @@ Page({
       return res
     }).catch(function(err) {
       console.log(err)
+    })
+  },
+
+  passComment: function(e) {
+    let that = this
+    let dataset = e.currentTarget.dataset
+    let index = dataset.index
+    let type = dataset.type
+    console.log(dataset)
+    wx.showModal({
+      title: '通过审核',
+      content: '是否通过该评论的审核？',
+      cancelText: '不通过',
+      confirmText: '通过',
+      success(res) {
+        let toBeReviewed = type + '.toBeReviewed[' + index + '].isCheck'
+        let afterReviewed = type + '.toBeReviewed'
+        let haveReviewed = type + '.haveReviewed'
+        console.log(haveReviewed)
+        if (res.confirm) {
+          console.log('通过评论')
+          wx.cloud.callFunction({
+            name: 'test',
+            data: {
+              commentid: dataset.commentid,
+              isCheck: 1
+            }
+          }).then(function(res) {
+            console.log('reviewComments调用函数passComment', res)
+            that.setData({
+              [toBeReviewed]: 1
+            })
+            if (type == 'tree') {
+              let havedata = that.data.tree.toBeReviewed[index]
+              let tobedata = that.data.tree.toBeReviewed.splice(index + 1, 1)
+              that.setData({
+                [haveReviewed]: that.data.tree.haveReviewed.concat(havedata),
+                [afterReviewed]: tobedata
+              })
+            } else if (type == 'artical') {
+              let havedata = that.data.artical.toBeReviewed[index]
+              let tobedata = that.data.artical.toBeReviewed.splice(index + 1, 1)
+              that.setData({
+                [haveReviewed]: that.data.artical.haveReviewed.concat(that.data.artical.toBeReviewed[index]),
+                [afterReviewed]: tobedata
+              })
+            } else {
+              let havedata = that.data.video.toBeReviewed[index]
+              let tobedata = that.data.video.toBeReviewed.splice(index + 1, 1)
+              that.setData({
+                [haveReviewed]: that.data.video.haveReviewed.concat(that.data.video.toBeReviewed[index]),
+                [afterReviewed]: tobedata
+              })
+            }
+          }).catch(function(err) {
+            console.log(err)
+          })
+        } else if (res.cancel) {
+          console.log('不通过评论')
+          wx.cloud.callFunction({
+            name: 'passComment',
+            data: {
+              commentid: dataset.commentid,
+              isCheck: 2
+            }
+          }).then(function(res) {
+            console.log('reviewComments调用函数passComment', res)
+            that.setData({
+              [toBeReviewed]: 2
+            })
+            if (type == 'tree') {
+              let havedata = that.data.tree.toBeReviewed[index]
+              let tobedata = that.data.tree.toBeReviewed.splice(index + 1, 1)
+              that.setData({
+                [haveReviewed]: that.data.tree.haveReviewed.concat(havedata),
+                [afterReviewed]: tobedata
+              })
+            } else if (type == 'artical') {
+              let havedata = that.data.artical.toBeReviewed[index]
+              let tobedata = that.data.artical.toBeReviewed.splice(index + 1, 1)
+              that.setData({
+                [haveReviewed]: that.data.artical.haveReviewed.concat(that.data.artical.toBeReviewed[index]),
+                [afterReviewed]: tobedata
+              })
+            } else {
+              let havedata = that.data.video.toBeReviewed[index]
+              let tobedata = that.data.video.toBeReviewed.splice(index + 1, 1)
+              that.setData({
+                [haveReviewed]: that.data.video.haveReviewed.concat(that.data.video.toBeReviewed[index]),
+                [afterReviewed]: tobedata
+              })
+            }
+          }).catch(function(err) {
+            console.log(err)
+          })
+        }
+      }
     })
   },
 

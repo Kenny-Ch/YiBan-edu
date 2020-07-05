@@ -7,7 +7,8 @@ Page({
   data: {
     A: '问题A：假如你发现自己的学生不理睬你或者不愿向你汇报学习情况，你会怎么做？',
     B: '问题B：假如你发现学生问的问题经常不是你的强项，你会怎么做？',
-    fileID: ''
+    fileID: '',
+    QRfileID:'',
   },
   previewImage: function(e) {
     wx.previewImage({
@@ -27,9 +28,11 @@ Page({
       .then(function(res) {
         console.log("【teacherDetail查询数据库person】", res)
         let fileID = "cloud://yiban-edu.7969-yiban-edu-1301806073/teacher_supporting_materials/" + res.data.openid + ".jpg"
+        let QRfileID = "cloud://yiban-edu.7969-yiban-edu-1301806073/QR/teacher/" + res.data.openid + ".jpg"
         that.setData({
           teacher: res.data,
-          fileID: fileID
+          fileID: fileID,
+          QRfileID:QRfileID
         })
       }).catch(function(err) {
         console.log(err)

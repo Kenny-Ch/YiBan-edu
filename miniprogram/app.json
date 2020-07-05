@@ -36,7 +36,8 @@
     "pages/join/newMember/newMember",
     "pages/join/workingAbility/workingAbility",
     "pages/join/result/result",
-    "pages/manager/teacherDetail/teacherDetail"
+    "pages/manager/teacherDetail/teacherDetail",
+    "pages/matching/licence/licence"
   ],
   "window": {
     "navigationStyle": "custom",

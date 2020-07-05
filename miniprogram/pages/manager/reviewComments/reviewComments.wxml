@@ -14,8 +14,8 @@
       <!--待审核-->
       <view wx:if='{{tree.toBeReviewed.length>0}}'>
         <view class="smalltitle">待审核</view>
-        <view class="card" wx:for="{{tree.toBeReviewed}}">
-          <view>
+        <view class="card" wx:for="{{tree.toBeReviewed}}" wx:for-index="index">
+          <view bindtap="passComment" data-index="{{index}}" data-commentid="{{item._id}}" data-type="tree">
             <view class='top'>
               <view class="shu"></view>
               <view class='nametime'>
@@ -33,7 +33,7 @@
         <view class="smalltitle">已审核</view>
         <view class="card" wx:for="{{tree.haveReviewed}}">
           <!--已通过-->
-          <view wx:if="{{item.adopt==true}}">
+          <view wx:if="{{item.isCheck==1}}">
             <view class='top'>
               <view class="shu"></view>
               <view class='nametime'>
@@ -67,8 +67,8 @@
       <!--待审核-->
       <view wx:if='{{artical.toBeReviewed.length>0}}'>
         <view class="smalltitle">待审核</view>
-        <view class="card" wx:for="{{artical.toBeReviewed}}">
-          <view>
+        <view class="card" wx:for="{{artical.toBeReviewed}}" wx:for-index="index">
+          <view bindtap="passComment" data-index="{{index}}" data-commentid="{{item._id}}" data-type="artical">
             <view class='top'>
               <view class="shu"></view>
               <view class='nametime'>
@@ -86,7 +86,7 @@
         <view class="smalltitle">已审核</view>
         <view class="card" wx:for="{{artical.haveReviewed}}">
           <!--已通过-->
-          <view wx:if="{{item.adopt==true}}">
+          <view wx:if="{{item.isCheck==1}}">
             <view class='top'>
               <view class="shu"></view>
               <view class='nametime'>
@@ -120,8 +120,8 @@
       <!--待审核-->
       <view wx:if='{{video.toBeReviewed.length>0}}'>
         <view class="smalltitle">待审核</view>
-        <view class="card" wx:for="{{video.toBeReviewed}}">
-          <view>
+        <view class="card" wx:for="{{video.toBeReviewed}}" wx:for-index="index">
+          <view bindtap="passComment" data-index="{{index}}" data-commentid="{{item._id}}" data-type="video">
             <view class='top'>
               <view class="shu"></view>
               <view class='nametime'>
@@ -139,7 +139,7 @@
         <view class="smalltitle">已审核</view>
         <view class="card" wx:for="{{video.haveReviewed}}">
           <!--已通过-->
-          <view wx:if="{{item.adopt==true}}">
+          <view wx:if="{{item.isCheck==1}}">
             <view class='top'>
               <view class="shu"></view>
               <view class='nametime'>

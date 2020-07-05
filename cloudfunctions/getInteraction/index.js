@@ -4,6 +4,7 @@ cloud.init({
   env: cloud.DYNAMIC_CURRENT_ENV
 })
 const db = cloud.database()
+const _ = db.command
 const MAX_LIMIT = 100
 /*  参数表：
     {
@@ -20,7 +21,7 @@ const MAX_LIMIT = 100
 */
 
 // 云函数入口函数
-exports.main = async (event, context) => {
+exports.main = async(event, context) => {
   console.log('传入参数：', event)
 
   var data = {}
@@ -164,35 +165,68 @@ exports.main = async (event, context) => {
       data.stores = stores
     }
   } else if (event.type == 2) {
-    if (event.comment) {
-      var res = await db.collection('interaction').skip((event.page - 1) * event.num).limit(event.num).where({
-        flag: 'comment',
-        type: event.inteType,
-        isCheck: event.check
-      }).get()
+    if (event.check == '_.nin(0)') {
+      if (event.comment) {
+        var res = await db.collection('interaction').skip((event.page - 1) * event.num).limit(event.num).where({
+          flag: 'comment',
+          type: event.inteType,
+          isCheck: _.nin(['0'])
+        }).get()
 
-      data.comments = res.data
+        data.comments = res.data
+      }
+
+      if (event.like) {
+        var res = await db.collection('interaction').skip((event.page - 1) * event.num).limit(event.num).where({
+          flag: 'like',
+          type: event.inteType,
+          isCheck: _.nin(['0'])
+        }).get()
+
+        data.likes = res.data
+      }
+
+      if (event.store) {
+        var res = await db.collection('interaction').skip((event.page - 1) * event.num).limit(event.num).where({
+          flag: 'store',
+          type: event.inteType,
+          isCheck: _.nin(['0'])
+        }).get()
+
+        data.stores = res.data
+      }
+    }else{
+      if (event.comment) {
+        var res = await db.collection('interaction').skip((event.page - 1) * event.num).limit(event.num).where({
+          flag: 'comment',
+          type: event.inteType,
+          isCheck: event.check
+        }).get()
+
+        data.comments = res.data
+      }
+
+      if (event.like) {
+        var res = await db.collection('interaction').skip((event.page - 1) * event.num).limit(event.num).where({
+          flag: 'like',
+          type: event.inteType,
+          isCheck: event.check
+        }).get()
+
+        data.likes = res.data
+      }
+
+      if (event.store) {
+        var res = await db.collection('interaction').skip((event.page - 1) * event.num).limit(event.num).where({
+          flag: 'store',
+          type: event.inteType,
+          isCheck: event.check
+        }).get()
+
+        data.stores = res.data
+      }
     }
-
-    if (event.like) {
-      var res = await db.collection('interaction').skip((event.page - 1) * event.num).limit(event.num).where({
-        flag: 'like',
-        type: event.inteType,
-        isCheck: event.check
-      }).get()
-
-      data.likes = res.data
-    }
-
-    if (event.store) {
-      var res = await db.collection('interaction').skip((event.page - 1) * event.num).limit(event.num).where({
-        flag: 'store',
-        type: event.inteType,
-        isCheck: event.check
-      }).get()
-
-      data.stores = res.data
-    }
+    
   }
 
 

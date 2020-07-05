@@ -69,11 +69,42 @@ Page({
       checked: false,
       value: false
     }],
+    question:[{
+      name: '第一题',
+      checked: true,
+      value: '第一题'
+    }, {
+      name: '第二题',
+      checked: false,
+      value: '第二题'
+    }],
     punch: true,
     class: true,
+    one:true,
     getAlong: true,
     custom: '',
     willing: '',
+    answer:'',
+    sub:false,
+    userAgree:false,
+  },
+  goToUserLicence: function(){
+    wx.navigateTo({
+      url: './licence/licence',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+  choose_Change: function(e) {
+    console.log('情景题选择：', e.detail.value)
+    this.setData({
+      one: e.detail.value,
+    })
+  },
+  getAnswer: function(e) {
+    console.log("answer:", e.detail.value)
+    this.data.answer = e.detail.value
   },
   class_Change: function(e) {
     console.log('是否接受不定期班会：', e.detail.value)
@@ -97,17 +128,34 @@ Page({
     console.log(e)
     console.log('checkbox发生change事件，携带value值为：', e.detail.value)
     console.log("长度:" + e.detail.value.length);
-    let index = e.target.dataset.index - 1
-    let checked = "subject[" + index + "].checked"
-    let score = "subject[" + index + "].score"
-    this.setData({
-      [checked]: !(this.data.subject[index].checked),
-    })
-    if ((this.data.subject[index].checked) == false) {
-      this.setData({
-        [score]: ''
-      })
+    let ll=0;
+    var index = e.target.dataset.index - 1
+    var checked = "subject[" + index + "].checked"
+    for (let sub of this.data.subject) {
+      if (sub.checked == true)
+        ll=ll+1;
     }
+    if(ll>=3&&this.data.subject[index].checked==false){
+      this.setData({
+        [checked]: false,
+      })
+      wx.showToast({
+        title: '最多只能选择3个科目',
+        duration: 1000,
+        icon: 'none'
+      })
+    }else{
+      let score = "subject[" + index + "].score"
+      this.setData({
+        [checked]: !(this.data.subject[index].checked),
+      })
+      if ((this.data.subject[index].checked) == false) {
+        this.setData({
+          [score]: ''
+        })
+      }
+    }
+    
   },
   fraction: function(e) {
     let index = e.target.dataset.index - 1
@@ -124,6 +172,16 @@ Page({
     console.log("willing:", e.detail.value)
     this.data.willing = e.detail.value
   },
+  myCancel:function(e){
+    this.setData({
+      sub:false,
+    })
+  },
+  formSubmit:function(e){
+    this.setData({
+      sub:true,
+    })
+  },
   uploadMatchInfo: function(e) {
     var weakSubject = {};
     for (let sub of this.data.subject) {
@@ -132,7 +190,7 @@ Page({
     }
     console.log("wak", weakSubject)
     // 检验不合格
-    if (this.data.custom == '' || this.data.willing == '') {
+    if (this.data.custom == '' || this.data.willing == ''||this.data.answer == '') {
       wx.showToast({
         title: '请填写完整信息！',
         duration: 1000,
@@ -155,7 +213,9 @@ Page({
         'willMeeting': that.data.class,
         'willGetAlong': that.data.getAlong,
         'habitAndPlan': that.data.custom,
-        'expectation': that.data.willing
+        'expectation': that.data.willing,
+        'oneQuestion':that.data.one,
+        'answer':that.data.answer
       }
       wx.cloud.callFunction({
         name: 'uploadMatchInfo',
@@ -263,6 +323,8 @@ Page({
         getAlong: info.willGetAlong,
         custom: info.habitAndPlan,
         willing: info.expectation,
+        one:info.oneQuestion=="第一题"?true:false,
+        answer:info.answer,
       })
     }
   },
