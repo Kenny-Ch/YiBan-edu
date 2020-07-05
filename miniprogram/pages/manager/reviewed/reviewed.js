@@ -79,8 +79,199 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: async function (options) {
+    var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        var Client = wx.getMenuButtonBoundingClientRect();
+        var height = res.windowHeight - (res.statusBarHeight + Client.height + (Client.top - res.statusBarHeight) * 2)
+        that.setData({
+          clientHeight: res.windowHeight,
+          height_sys: height - 64,
+        });
+      }
+    });
+    // this.loadToBeReviewedComment('tree', 1)
+    // this.loadToBeReviewedComment('artical', 1)
+    // this.loadToBeReviewedComment('video', 1)
 
+    this.loadHaveReviewedComment('tree', 1)
+    this.loadHaveReviewedComment('artical', 1)
+    this.loadHaveReviewedComment('video', 1)
+  },
+
+  loadHaveReviewedComment: function (type, index) {
+    let that = this
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.cloud.callFunction({
+      name: 'getInteraction',
+      data: {
+        comment: true,
+        like: false,
+        store: false,
+        type: 2,
+        inteType: type,
+        check: '_.nin(0)',
+        page: index,
+        num: 10
+      }
+    }).then(function (res) {
+      console.log("【getIntraction, isCheck=1, type=" + type + ", index=" + index + "】", res)
+      let haveReviewed = type + ".haveReviewed"
+      if (type == 'tree') {
+        that.setData({
+          [haveReviewed]: that.data.tree.haveReviewed.concat(res.result.comments)
+        })
+      } else if (type == 'artical') {
+        that.setData({
+          [haveReviewed]: that.data.artical.haveReviewed.concat(res.result.comments)
+        })
+      } else if (type == 'video') {
+        that.setData({
+          [haveReviewed]: that.data.video.haveReviewed.concat(res.result.comments)
+        })
+      }
+      wx.hideLoading()
+      return res
+    }).catch(function (err) {
+      console.log(err)
+    })
+  },
+
+  passComment: function (e) {
+    let that = this
+    let dataset = e.currentTarget.dataset
+    let index = dataset.index
+    let type = dataset.type
+    console.log(dataset)
+    wx.showModal({
+      title: '通过审核',
+      content: '是否通过该评论的审核？',
+      cancelText: '不通过',
+      confirmText: '通过',
+      success(res) {
+        let toBeReviewed = type + '.toBeReviewed[' + index + '].isCheck'
+        let afterReviewed = type + '.toBeReviewed'
+        let haveReviewed = type + '.haveReviewed'
+        console.log(haveReviewed)
+        if (res.confirm) {
+          console.log('通过评论')
+          wx.cloud.callFunction({
+            name: 'test',
+            data: {
+              commentid: dataset.commentid,
+              isCheck: 1
+            }
+          }).then(function (res) {
+            console.log('reviewComments调用函数passComment', res)
+            that.setData({
+              [toBeReviewed]: 1
+            })
+            if (type == 'tree') {
+              let havedata = that.data.tree.toBeReviewed[index]
+              let tobedata = that.data.tree.toBeReviewed.splice(index + 1, 1)
+              that.setData({
+                [haveReviewed]: that.data.tree.haveReviewed.concat(havedata),
+                [afterReviewed]: tobedata
+              })
+            } else if (type == 'artical') {
+              let havedata = that.data.artical.toBeReviewed[index]
+              let tobedata = that.data.artical.toBeReviewed.splice(index + 1, 1)
+              that.setData({
+                [haveReviewed]: that.data.artical.haveReviewed.concat(that.data.artical.toBeReviewed[index]),
+                [afterReviewed]: tobedata
+              })
+            } else {
+              let havedata = that.data.video.toBeReviewed[index]
+              let tobedata = that.data.video.toBeReviewed.splice(index + 1, 1)
+              that.setData({
+                [haveReviewed]: that.data.video.haveReviewed.concat(that.data.video.toBeReviewed[index]),
+                [afterReviewed]: tobedata
+              })
+            }
+          }).catch(function (err) {
+            console.log(err)
+          })
+        } else if (res.cancel) {
+          console.log('不通过评论')
+          wx.cloud.callFunction({
+            name: 'passComment',
+            data: {
+              commentid: dataset.commentid,
+              isCheck: 2
+            }
+          }).then(function (res) {
+            console.log('reviewComments调用函数passComment', res)
+            that.setData({
+              [toBeReviewed]: 2
+            })
+            if (type == 'tree') {
+              let havedata = that.data.tree.toBeReviewed[index]
+              let tobedata = that.data.tree.toBeReviewed.splice(index + 1, 1)
+              that.setData({
+                [haveReviewed]: that.data.tree.haveReviewed.concat(havedata),
+                [afterReviewed]: tobedata
+              })
+            } else if (type == 'artical') {
+              let havedata = that.data.artical.toBeReviewed[index]
+              let tobedata = that.data.artical.toBeReviewed.splice(index + 1, 1)
+              that.setData({
+                [haveReviewed]: that.data.artical.haveReviewed.concat(that.data.artical.toBeReviewed[index]),
+                [afterReviewed]: tobedata
+              })
+            } else {
+              let havedata = that.data.video.toBeReviewed[index]
+              let tobedata = that.data.video.toBeReviewed.splice(index + 1, 1)
+              that.setData({
+                [haveReviewed]: that.data.video.haveReviewed.concat(that.data.video.toBeReviewed[index]),
+                [afterReviewed]: tobedata
+              })
+            }
+          }).catch(function (err) {
+            console.log(err)
+          })
+        }
+      }
+    })
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    if (!this.loading) {
+      console.log("下拉刷新")
+      let type = ''
+      switch (this.data.i) {
+        case 0:
+          type = 'tree'
+          this.setData({
+            'tree.page': this.data.tree.page + 1
+          })
+          this.loadHaveReviewedComment(type, this.data.tree.page)
+          break
+        case 1:
+          type = 'artical'
+          this.setData({
+            'artical.page': this.data.artical.page + 1
+          })
+          this.loadHaveReviewedComment(type, this.data.artical.page)
+          break
+        case 2:
+          type = 'video'
+          this.setData({
+            'video.page': this.data.video.page + 1
+          })
+          this.loadHaveReviewedComment(type, this.data.video.page)
+          break
+      }
+      //防止还未加载却多次上拉的情况
+    }
   },
 
   /**
@@ -119,11 +310,42 @@ Page({
   },
 
   /**
-   * 页面上拉触底事件的处理函数
-   */
+     * 页面上拉触底事件的处理函数
+     */
   onReachBottom: function () {
-
+    if (!this.loading) {
+      console.log("下拉刷新")
+      let type = ''
+      switch (this.data.i) {
+        case 0:
+          type = 'tree'
+          this.setData({
+            'tree.page': this.data.tree.page + 1
+          })
+          this.loadHaveReviewedComment(type, this.data.tree.page)
+          this.loadToBeReviewedComment(type, this.data.tree.page)
+          break
+        case 1:
+          type = 'artical'
+          this.setData({
+            'artical.page': this.data.artical.page + 1
+          })
+          this.loadHaveReviewedComment(type, this.data.artical.page)
+          this.loadToBeReviewedComment(type, this.data.artical.page)
+          break
+        case 2:
+          type = 'video'
+          this.setData({
+            'video.page': this.data.video.page + 1
+          })
+          this.loadHaveReviewedComment(type, this.data.video.page)
+          this.loadToBeReviewedComment(type, this.data.video.page)
+          break
+      }
+      //防止还未加载却多次上拉的情况
+    }
   },
+
 
   /**
    * 用户点击右上角分享

@@ -117,9 +117,9 @@ Page({
     this.loadToBeReviewedComment('artical', 1)
     this.loadToBeReviewedComment('video', 1)
 
-    this.loadHaveReviewedComment('tree', 1)
-    this.loadHaveReviewedComment('artical', 1)
-    this.loadHaveReviewedComment('video', 1)
+    // this.loadHaveReviewedComment('tree', 1)
+    // this.loadHaveReviewedComment('artical', 1)
+    // this.loadHaveReviewedComment('video', 1)
   },
 
   loadHaveReviewedComment: function(type, index) {
@@ -140,6 +140,7 @@ Page({
         num: 5
       }
     }).then(function(res) {
+      z
       console.log("【getIntraction, isCheck=1, type=" + type + ", index=" + index + "】", res)
       let haveReviewed = type + ".haveReviewed"
       if (type == 'tree') {
@@ -178,7 +179,7 @@ Page({
         inteType: type,
         check: 0,
         page: index,
-        num: 5
+        num: 10
       }
     }).then(function(res) {
       console.log("【getIntraction, isCheck=0, type=" + type + ", index=" + index + "】", res)
@@ -191,9 +192,9 @@ Page({
         that.setData({
           [toBeReviewed]: that.data.artical.toBeReviewed.concat(res.result.comments)
         })
-      } else {
+      } else if (type == 'video') {
         that.setData({
-          [toBeReviewed]: that.data.artical.toBeReviewed.concat(res.result.comments)
+          [toBeReviewed]: that.data.video.toBeReviewed.concat(res.result.comments)
         })
       }
 
@@ -314,7 +315,7 @@ Page({
           this.setData({
             'tree.page': this.data.tree.page + 1
           })
-          this.loadHaveReviewedComment(type, this.data.tree.page)
+          // this.loadHaveReviewedComment(type, this.data.tree.page)
           this.loadToBeReviewedComment(type, this.data.tree.page)
           break
         case 1:
@@ -322,7 +323,7 @@ Page({
           this.setData({
             'artical.page': this.data.artical.page + 1
           })
-          this.loadHaveReviewedComment(type, this.data.artical.page)
+          // this.loadHaveReviewedComment(type, this.data.artical.page)
           this.loadToBeReviewedComment(type, this.data.artical.page)
           break
         case 2:
@@ -330,7 +331,7 @@ Page({
           this.setData({
             'video.page': this.data.video.page + 1
           })
-          this.loadHaveReviewedComment(type, this.data.video.page)
+          // this.loadHaveReviewedComment(type, this.data.video.page)
           this.loadToBeReviewedComment(type, this.data.video.page)
           break
       }
