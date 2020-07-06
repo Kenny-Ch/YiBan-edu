@@ -100,7 +100,7 @@
 	align-items: center;
 }
 .name{
-  width: auto;
+  width: 380rpx;
 	color: rgba(80, 80, 80, 1);
 	font-size: 32rpx;
 	line-height: 150%;
@@ -109,7 +109,7 @@
 	margin-left: 16rpx;
 }
 .time{
-  width: 400rpx;
+  width: 280rpx;
 	height: 36rpx;
 	color: rgba(80, 80, 80, 1);
 	font-size: 24rpx;

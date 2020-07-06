@@ -5,6 +5,7 @@
 </cu-custom>
 <view class='title'>待审核评论</view>
 <view class="line"></view>
+<wxs src="../../template/filter.wxs" module="filters"/>
 <!--三大部分-->
 <scroll-view scroll-x class='three-nav' scroll-left='{{x}}' scroll-with-animation='true' bindtap='tabSelect'>
   <text wx:for='{{three}}' wx:key='{{index}}' class='item-nav {{i==index ? "active" : ""}}' data-i='{{index}}'>{{item.title}}</text>
@@ -21,7 +22,7 @@
               <view class="shu"></view>
               <view class='nametime'>
                 <view class='name'>{{item.nickname}}</view>
-                <view class='time'>{{item.time}}</view>
+                <view class='time'>{{filters.formatTime(item.time)}}</view>
               </view>
               <image src="../.../../../../images/manager/toBeReviewed.svg" class="right"></image>
             </view>
@@ -43,7 +44,7 @@
               <view class="shu"></view>
               <view class='nametime'>
                 <view class='name'>{{item.nickname}}</view>
-                <view class='time'>{{item.time}}</view>
+                <view class='time'>{{filters.formatTime(item.time)}}</view>
               </view>
               <image src="../.../../../../images/manager/toBeReviewed.svg" class="right"></image>
             </view>
@@ -65,7 +66,7 @@
               <view class="shu"></view>
               <view class='nametime'>
                 <view class='name'>{{item.nickname}}</view>
-                <view class='time'>{{item.time}}</view>
+                <view class='time'>{{filters.formatTime(item.time)}}</view>
               </view>
               <image src="../.../../../../images/manager/toBeReviewed.svg" class="right"></image>
             </view>
