@@ -162,7 +162,7 @@ Page({
         if (res.confirm) {
           console.log('通过评论')
           wx.cloud.callFunction({
-            name: 'test',
+            name: 'passComment',
             data: {
               commentid: dataset.commentid,
               isCheck: 1
