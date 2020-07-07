@@ -49,6 +49,14 @@
     </view>
   </navigator>
 
+  <navigator url="./officialAccount/officialAccount" hover-class="none">
+    <view class='list-item'>
+      <image src="../../images/my/WeChat.svg" class='icon'></image>
+      <view class='title'>关于以伴</view>
+      <text class="cuIcon-right lg text-gray "></text>
+    </view>
+  </navigator>
+
   <view class='list-item'>
     <navigator target="miniProgram" open-type="navigate" app-id="{{ appId }}" extra-data="{{ extraData }}" version="release" hover-class="none" class='nv'>
       <image src="../../images/my/fankuiheyan.png" class='icon'></image>
