@@ -19,6 +19,7 @@ Page({
     picker: ['大一', '大二', '大三', '大四'],
     shuoming: '说明：请将学生证上包含照片、姓名、院系、专业等信息的照片上传。若拍摄时无法拍成一张，请用ps、画图等软件合并到一张图中。',
     img: "../../../images/my/tupianimgyulan.png",
+    isTrue:false,    //网校编号填写是否正确
   },
   RegionChange: function(e) {
     console.log('地区选择：', e.detail.value)

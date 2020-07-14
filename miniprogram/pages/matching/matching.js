@@ -87,6 +87,7 @@ Page({
     answer:'',
     sub:false,
     userAgree:false,
+    isTrue:false,    //网校编号填写是否正确
   },
   goToUserLicence: function(){
     wx.navigateTo({
