@@ -28,7 +28,8 @@ Page({
         customInfo: `iPhone OS 10.3.1 / 3.2.0.43 / 0`,
       }
     },
-    jumpUrl: ''
+    jumpUrl: '',
+    sub:false,
   },
 
   /**
@@ -62,7 +63,16 @@ Page({
 
     }
   },
-
+  reply:function() {
+    this.setData({
+      sub:true,
+    })
+  },
+  cancel:function() {
+    this.setData({
+      sub:false,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

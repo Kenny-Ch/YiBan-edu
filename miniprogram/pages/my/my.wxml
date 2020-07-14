@@ -57,6 +57,12 @@
     </view>
   </navigator>
 
+  <view class='list-item' >
+    <image src="../../images/my/kefu.svg" class='icon'></image>
+    <view class='title' bindtap="reply">在线客服</view> 
+    <text class="cuIcon-right lg text-gray "></text>
+  </view>
+
   <view class='list-item'>
     <navigator target="miniProgram" open-type="navigate" app-id="{{ appId }}" extra-data="{{ extraData }}" version="release" hover-class="none" class='nv'>
       <image src="../../images/my/fankuiheyan.png" class='icon'></image>
@@ -64,5 +70,18 @@
       <text class="cuIcon-right lg text-gray "></text>
     </navigator>
   </view>
+</view>
 
+<view wx:if='{{sub==true}}'>
+  <view catchtouchmove="catchtouchmove" class="tips">
+    <view class="tips_box">
+      <view class="hint_view">
+        <view class="text">
+          <view class="my_text_bottom" >此客服通道可询问您关于以伴的疑惑，如您已为以伴教育公益团队的志愿者或学生，也可在此处进行意见交流及相关人员投诉。</view>
+        </view>
+      </view>
+      <button class="noAgreeBtn" style="width: 382rpx;min-height: 50rpx;border-radius: 55rpx;" open-type='contact'>在线客服</button>
+      <button bindtap="cancel" class="agreeBtn" style="width: 382rpx;min-height: 50rpx;border-radius: 55rpx;">取消</button>
+    </view>
+  </view>
 </view>
