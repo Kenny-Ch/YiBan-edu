@@ -124,3 +124,81 @@ radio .wx-radio-input.wx-radio-input-checked::before{
   margin-left: 10rpx;
   margin-right: 40rpx;
 }
+.my_contents{
+  width: 450rpx;
+	height: 42rpx;
+	color: rgba(80, 80, 80, 1);
+	font-size: 28rpx;
+	line-height: 150%;
+  text-align: left;
+  border-bottom: 3rpx solid rgba(80, 80, 80, 1);
+  margin-top:28rpx ;
+}
+.my_text_bottom{
+  width: 450rpx;
+	color:  #d140f5;
+	font-size: 28rpx;
+	line-height: 150%;
+	text-align: left;
+  margin-top:20rpx ;
+}
+.tips {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+}
+
+.tips .tips_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75%;
+  height: auto;
+  border-radius: 45rpx;
+  background: #fff;
+  overflow: hidden;
+}
+
+.tips .tips_box .hint_view {
+  display: flex;
+  align-items: center;
+}
+
+.tips .tips_box .hint_view .text {
+  display: flex;
+  flex-direction: column;
+  margin: 12rpx 24rpx;
+}
+
+.tips .tips_box .hint1 {
+  margin-top: 38rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #1a1a1a;
+  line-height:52rpx;
+  border-bottom:1px solid;
+}
+
+.agreeBtn {
+  color: rgba(255, 255, 255, 1);
+	background-color: #d140f5;
+	font-size: 28rpx;
+	text-align: center;
+  font-weight: bold;
+  margin-top:26rpx ;
+  margin-bottom:36rpx ;
+}
+.isTipShow {
+display: block;
+}
+
+.isTipHide {
+display: none;
+}
