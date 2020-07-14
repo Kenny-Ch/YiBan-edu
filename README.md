@@ -15,16 +15,36 @@
 ## 数据库设计
 
 ```json
+
+//networkSchool
+{
+  网校名、网校编号、成立时间、志愿者人数、学生人数
+  "_id": ""
+  "schoolID": "" 网校编号
+  "name": "" 网校名
+  "openid": "" 发起人的openid
+  "date": "" 成立时间
+  "volunteerNum": "" 志愿者人数
+  "studentNum": "" 学生人数
+}
+
+
 //person(存储个人信息及匹配信息)
 {
     "openid": "",                   //openid
-    "job": "",                      //职业 0是学生 1是老师
+    "yibanID": "" 专属编号
+    "job": "",                      //职业 0是学生 1是老师 2是其他人
     "name": "",                     //姓名
     "registerDate": "",             //注册日期
     "matchList": [],                //匹配的名单列表（openid）
     "matchWaitList":[],             //申请的/待匹配的名单（openid）
     "matchReject": boolean          //true为被拒绝，false为没被拒绝
     "isMatchFull": false,           //匹配是否已经满了
+
+    "schoolID": ""  网校编号
+    "isManager": boolean 管理员
+    "isAmbassador": boolean  形象大使
+    "isSupervisor": boolean  监事会成员
 
     //个人信息模块
     "perInfo": {
