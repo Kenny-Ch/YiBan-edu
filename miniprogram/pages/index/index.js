@@ -233,9 +233,7 @@ Page({
 
         //老师注册成功，则不显示第三个swiper
         if (app.globalData.isNew == false && (app.globalData.userInfo.isCheck == 1 || app.globalData.isTeacher == 0)) {
-          that.setData({
-            swiperList: list,
-          })
+          
         } else {
           var item2 = {};
           item2.id = 2;
@@ -256,10 +254,43 @@ Page({
           }
           list.push(item2)
 
-          that.setData({
-            swiperList: list,
-          })
+          
         }
+
+        //发起人
+        var item3 = {};
+        item3.id = 3;
+        item3.big_title = "建立您的网校";
+        item3.title = "以伴网校平台";
+        item3.small_title = "以伴有着成百上千的网校，您可以借助以伴公益教育平台，实现您的公益梦想！";
+        item3.button = "成为发起人";
+        item3.url = "../sponsor/binding/binding";
+        list.push(item3)
+
+        // //发起人
+        // var item3 = {};
+        // item3.id = 3;
+        // item3.big_title = "建立您的网校";
+        // item3.title = "以伴网校平台";
+        // item3.small_title = "以伴有着成百上千的网校，您可以借助以伴公益教育平台，实现您的公益梦想！";
+        // item3.button = "查看我的网校";
+        // item3.url = "../sponsor/binding/binding";
+        // list.push(item3)
+
+        //形象大使
+        var item4 = {};
+        item4.id = 4;
+        item4.big_title = "成为以伴形象大使";
+        item4.title = "一起让更多学生受益";
+        item4.small_title = "以伴形象大使，让更多学生加入以伴，享受以伴优质教育服务，为推进教育的发展贡献一份力量";
+        item4.button = "一起加油";
+        item4.url = "../ambassador/ambassador";
+        list.push(item4)
+
+        that.setData({
+          swiperList: list,
+        })
+
         console.log("【app.globalData】", app.globalData)
         wx.hideLoading()
       })

@@ -18,7 +18,7 @@ Page({
     }],
     punch: true,
     jumpMethod: 'redirect',
-    shuoming: '请在微信点击 我———个人中心——二维码名片，将二维码名片保存起来上传，示例如下：',
+    shuoming: '请在微信点击 我——个人中心——二维码名片，将二维码名片保存起来上传，示例如下：',
     img: "../../../images/my/tupianimgyulan.png",
     lzimg:"cloud://yiban-edu.7969-yiban-edu-1301806073/lzimg.png",
   },

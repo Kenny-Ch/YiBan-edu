@@ -38,7 +38,10 @@
     "pages/join/result/result",
     "pages/manager/teacherDetail/teacherDetail",
     "pages/matching/licence/licence",
-    "pages/manager/reviewed/reviewed"
+    "pages/manager/reviewed/reviewed",
+    "pages/my/officialAccount/officialAccount",
+    "pages/sponsor/binding/binding",
+    "pages/ambassador/ambassador"
   ],
   "window": {
     "navigationStyle": "custom",

@@ -1,0 +1,87 @@
+/* miniprogram/pages/ambassador/ambassador.wxss */
+page{
+  background: linear-gradient(90deg, #ffbd92, #fd6b67);
+}
+.con{
+  display: flex;
+  flex-direction: column;
+	align-items: center;
+}
+.toptitle{
+  width: 650rpx;
+	height: 84rpx;
+	color: rgba(80, 80, 80, 1);
+	font-size: 56rpx;
+	line-height: 150%;
+	text-align: left;
+  font-weight: bold;
+  margin-top:40rpx ;
+}
+.card{
+  width: 650rpx;
+	color: rgba(80, 80, 80, 1);
+	background-color: rgba(255, 255, 255, 1);
+	border-radius: 16rpx;
+	font-size: 28rpx;
+	line-height: 150%;
+	box-shadow: 0rpx 7rpx 14rpx 0rpx rgba(0, 0, 0, 0.12);
+  text-align: center;
+  margin-top:108rpx ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top:32rpx ;
+  margin-bottom:80rpx ;
+}
+.label{
+  width: 590rpx;
+	height: 36rpx;
+	color: rgba(166, 166, 166, 1);
+	font-size: 24rpx;
+	line-height: 150%;
+  text-align: left;
+  margin-top:20rpx ;
+}
+.contents{
+  width: 590rpx;
+	height: 42rpx;
+	color: rgba(80, 80, 80, 1);
+	font-size: 28rpx;
+	line-height: 150%;
+  text-align: left;
+  border-bottom: 3rpx solid rgba(80, 80, 80, 1);
+}
+.btn{
+	color: rgba(80, 80, 80, 1);
+	background-color: rgba(255, 255, 255, 1);
+	font-size: 28rpx;
+	line-height: 150%;
+	box-shadow: 0rpx 7rpx 14rpx 0rpx rgba(0, 0, 0, 0.12);
+  text-align: center;
+  margin-bottom:40rpx ;
+}
+.pic_address{
+  width: 590rpx;
+  margin-left:30rpx ;
+  margin-bottom: 12rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+}
+.pic{
+  width: 320rpx;
+  height: 320rpx;
+  color: rgb(165, 165, 165);
+  
+}
+.shuoming{
+  width: 590rpx;
+	color: rgba(166, 166, 166, 1);
+	font-size: 24rpx;
+	line-height: 150%;
+	text-align: left;
+}
+.bot{
+  height: 48rpx;
+}

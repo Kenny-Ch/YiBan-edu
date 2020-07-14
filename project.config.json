@@ -363,6 +363,19 @@
 					"pathName": "pages/matching/teacher/teacher",
 					"query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/sponsor/binding/binding",
+					"pathName": "pages/sponsor/binding/binding",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/ambassador/ambassador",
+					"pathName": "pages/ambassador/ambassador",
+					"scene": null
 				}
 			]
 		}

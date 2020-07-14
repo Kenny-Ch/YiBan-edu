@@ -1,0 +1,16 @@
+<!--miniprogram/pages/my/officialAccount/officialAccount.wxml-->
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">以伴edu</view>
+</cu-custom>
+<view class="con1">
+  <image src='cloud://yiban-edu.7969-yiban-edu-1301806073/teacher.png' class="info"></image>
+  <view class='card'>
+    <view class="name">以伴教育志愿团队</view>
+    <view class="introduce">
+      <view class="text2">{{introduction}}</view>
+    </view>
+    <image src="{{QR}}" class='QR' data-url="{{QR}}" bindtap="previewImage"></image>
+    <view class="text2">{{shuoming}}</view>
+  </view>
+</view>
