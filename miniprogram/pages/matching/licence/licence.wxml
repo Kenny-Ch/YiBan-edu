@@ -3,14 +3,15 @@
   <view slot="backText">返回</view>
   <view slot="content">以伴edu</view>
 </cu-custom>
-<view>
-  <view class='title'>以伴学生承诺书</view>
-  <view class='h1'>使用条款及声明</view>
-  <view>
-    xxx
+<view class='title'>以伴学生承诺书</view>
+<view class="line"></view>
+<view class='contents'>
+  <view class="wrapText">
+    <text class='mytext'>       本人于{{year}}年{{month}}月{{day}}日自愿加入<text class='rr'>“万校云义教，以青春作伴”</text>公益项目（以下简称“‘以伴’项目”），成为其志愿服务对象——“以伴学生”群体中的一员。为此，本人将作出以下承诺：</text>
   </view>
-  <view class='h1'>小程序用途</view>
-  <view>
-    yyy
+  <view wx:for="{{tt}}" class="wrapText">
+    <text class='mytext'>{{item.text}}</text>
   </view>
+  <view class="dd">承诺日期：{{year}}年{{month}}月{{day}}日</view>
+  <view class="hh"></view>
 </view>
