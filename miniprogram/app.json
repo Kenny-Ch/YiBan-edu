@@ -41,7 +41,8 @@
     "pages/manager/reviewed/reviewed",
     "pages/my/officialAccount/officialAccount",
     "pages/sponsor/binding/binding",
-    "pages/ambassador/ambassador"
+    "pages/ambassador/ambassador",
+    "pages/manager/viewSchool/viewSchool"
   ],
   "window": {
     "navigationStyle": "custom",

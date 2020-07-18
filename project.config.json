@@ -382,6 +382,13 @@
 					"id": -1,
 					"name": "pages/matching/licence/licence",
 					"pathName": "pages/matching/licence/licence",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/manager/viewSchool/viewSchool",
+					"pathName": "pages/manager/viewSchool/viewSchool",
 					"scene": null
 				}
 			]

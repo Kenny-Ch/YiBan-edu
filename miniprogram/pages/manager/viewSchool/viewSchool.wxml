@@ -1,0 +1,25 @@
+<!--miniprogram/pages/manager/viewSchool/viewSchool.wxml-->
+<!--miniprogram/pages/manager/viewTeacher/viewTeacher.wxml-->
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">以伴edu</view>
+</cu-custom>
+<view class='title'>网校查看</view>
+<view class="line"></view>
+<view class="con">
+  <view class="card" wx:for="{{school}}">
+    <view class="left" bindtap="jump" data-index="{{index}}" hover-class="none">
+      <view class='top'>
+        <view class="shu"></view>
+        <view class='name'>{{item.name}}</view>
+        <view class="schoolID">以伴{{item.schoolID}}网校</view>
+      </view>
+      <view class='text1'>
+        <view class="text" style="margin-right: 36rpx;">志愿者：{{item.Num[0]}}人</view>
+        <view class="text">学生：{{item.Num[1]}}人</view>
+      </view>
+    </view>
+    <image src="../.../../../../images/manager/delete.svg" class="right" bindtap="delete" data-index="{{index}}" data-openid="{{item.openid}}"></image>   
+  </view>
+  <view class='bott'>{{bottomtext}}</view>
+</view>

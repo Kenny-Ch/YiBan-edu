@@ -25,6 +25,16 @@
     <image src='../../images/manager/yishenhe.svg' class='img'></image>
   </view>
 </navigator>
+<!--网校信息查看-->
+<view bindtap="jump" data-url="./viewSchool/viewSchool" hover-class="none">
+  <view class='card' style="background-image: linear-gradient( 90deg, #97ABFF 10%, #123597 100%);">
+    <view class='text'>
+      <view class="text-title">网校信息情况</view>
+      <view class='text-titlebottom'>这里可以查看网校及其志愿者与学生的信息哦</view>
+    </view>
+    <image src='../../images/manager/pipeifangshi.png' class='img'></image>
+  </view>
+</view>
 <!--师生匹配情况-->
 <view bindtap="jump" data-url="./viewTeacher/viewTeacher?type=match" hover-class="none">
   <view class='card' style="background-image: linear-gradient( 90deg, #97ABFF 10%, #123597 100%);">
