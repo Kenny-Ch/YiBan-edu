@@ -41,7 +41,8 @@ Page({
     wx.cloud.callFunction({
       name: 'matchTeacher',
       data: {
-        weakSubject: app.globalData.matchInfo.weakSubject
+        weakSubject: app.globalData.matchInfo.weakSubject,
+        schoolID:app.globalData.perInfo.schoolID
       }
     }).then(function(res) {
       console.log("matching/result调用函数matchTeacher", res)

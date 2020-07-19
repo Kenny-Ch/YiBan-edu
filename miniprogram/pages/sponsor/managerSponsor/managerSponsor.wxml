@@ -10,10 +10,10 @@
   <view class='card'>
     <view class="row">
       <view class='name'>{{school.name}}</view>
-      <view class='wrapp'><text class='schoolID'>ID:{{school.ID}}</text></view>
+      <view class='wrapp'><text class='schoolID'>ID:{{school.schoolID}}</text></view>
     </view>
     <view class="row time">
-      创建时间：{{school.time}}
+      创建时间：{{school.date}}
     </view>
     <view class='row introduction'>
       {{school.introduce}}
@@ -24,7 +24,7 @@
     <view class='row title'>志愿者老师审核</view>
     <view class='row cc'>
       <view class='block'>
-        <view class='num'>{{school.tutor[0]}}</view>
+        <view class='num'>{{school.volunteerNum}}</view>
         <view class='tt'>志愿者</view>
       </view>
       <view class="hh"></view>
@@ -45,7 +45,7 @@
     <view class='row title'>师生匹配情况</view>
     <view class='row cc'>
       <view class='block'>
-        <view class='num'>{{school.student[0]}}</view>
+        <view class='num'>{{school.studentNum}}</view>
         <view class='tt'>学生</view>
       </view>
       <view class="hh"></view>

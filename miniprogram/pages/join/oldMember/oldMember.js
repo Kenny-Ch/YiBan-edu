@@ -83,7 +83,7 @@ Page({
           return
         } else {
           wx.cloud.callFunction({
-            name: 'bindTeacher',
+            name: 'bindMember',
             data: {
               openid: app.globalData.openid,
               bindingCode: input.bindingCode,

@@ -69,7 +69,7 @@ Page({
       checked: false,
       value: false
     }],
-    question:[{
+    question: [{
       name: '第一题',
       checked: true,
       value: '第一题'
@@ -80,16 +80,16 @@ Page({
     }],
     punch: true,
     class: true,
-    one:true,
+    one: true,
     getAlong: true,
     custom: '',
     willing: '',
-    answer:'',
-    sub:false,
-    userAgree:false,
-    isTrue:false,    //网校编号填写是否正确
+    answer: '',
+    sub: false,
+    userAgree: false,
+    networkNo: '', //网校编号
   },
-  goToUserLicence: function(){
+  goToUserLicence: function() {
     wx.navigateTo({
       url: './licence/licence',
       success: function(res) {},
@@ -129,14 +129,14 @@ Page({
     console.log(e)
     console.log('checkbox发生change事件，携带value值为：', e.detail.value)
     console.log("长度:" + e.detail.value.length);
-    let ll=0;
+    let ll = 0;
     var index = e.target.dataset.index - 1
     var checked = "subject[" + index + "].checked"
     for (let sub of this.data.subject) {
       if (sub.checked == true)
-        ll=ll+1;
+        ll = ll + 1;
     }
-    if(ll>=3&&this.data.subject[index].checked==false){
+    if (ll >= 3 && this.data.subject[index].checked == false) {
       this.setData({
         [checked]: false,
       })
@@ -145,7 +145,7 @@ Page({
         duration: 1000,
         icon: 'none'
       })
-    }else{
+    } else {
       let score = "subject[" + index + "].score"
       this.setData({
         [checked]: !(this.data.subject[index].checked),
@@ -156,7 +156,7 @@ Page({
         })
       }
     }
-    
+
   },
   fraction: function(e) {
     let index = e.target.dataset.index - 1
@@ -173,14 +173,14 @@ Page({
     console.log("willing:", e.detail.value)
     this.data.willing = e.detail.value
   },
-  myCancel:function(e){
+  myCancel: function(e) {
     this.setData({
-      sub:false,
+      sub: false,
     })
   },
-  formSubmit:function(e){
+  formSubmit: function(e) {
     this.setData({
-      sub:true,
+      sub: true,
     })
   },
   uploadMatchInfo: function(e) {
@@ -191,7 +191,7 @@ Page({
     }
     console.log("wak", weakSubject)
     // 检验不合格
-    if (this.data.custom == '' || this.data.willing == ''||this.data.answer == '') {
+    if (this.data.custom == '' || this.data.willing == '' || this.data.answer == '') {
       wx.showToast({
         title: '请填写完整信息！',
         duration: 1000,
@@ -215,8 +215,9 @@ Page({
         'willGetAlong': that.data.getAlong,
         'habitAndPlan': that.data.custom,
         'expectation': that.data.willing,
-        'oneQuestion':that.data.one,
-        'answer':that.data.answer
+        'oneQuestion': that.data.one,
+        'answer': that.data.answer,
+        'schoolID': that.data.networkNo
       }
       wx.cloud.callFunction({
         name: 'uploadMatchInfo',
@@ -324,11 +325,43 @@ Page({
         getAlong: info.willGetAlong,
         custom: info.habitAndPlan,
         willing: info.expectation,
-        one:info.oneQuestion=="第一题"?true:false,
-        answer:info.answer,
+        one: info.oneQuestion == "第一题" ? true : false,
+        answer: info.answer,
       })
     }
   },
+
+  networkSchool: function(options) {
+    wx.showLoading({
+      title: '加载中',
+    })
+    const db = wx.cloud.database()
+    let that = this
+    db.collection('networkSchool').where({
+        schoolID: options.detail.value.networkNo
+      }).get()
+      .then(function(res) {
+        console.log("【matching查询数据库networkSchool】", res)
+        if (res.data.length == 0) {
+          //不存在该网校
+          that.setData({
+            networkNo: ''
+          })
+          wx.showToast({
+            title: '不存在该网校！',
+            icon: 'none'
+          })
+        } else {
+          that.setData({
+            networkNo: options.detail.value.networkNo
+          })
+        }
+        wx.hideLoading()
+      }).catch(function(err) {
+        console.log(err)
+      })
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
