@@ -1,0 +1,64 @@
+<!--miniprogram/pages/sponsor/managerSponsor/managerSponsor.wxml-->
+<image class='background' src="../../../images/sponsor/sponsor.png" mode="aspectFill"></image>
+<!--页面其它部分-->
+<cu-custom isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content"></view>
+</cu-custom>
+<view class='con'>
+  <!--基本信息-->
+  <view class='card'>
+    <view class="row">
+      <view class='name'>{{school.name}}</view>
+      <view class='wrapp'><text class='schoolID'>ID:{{school.ID}}</text></view>
+    </view>
+    <view class="row time">
+      创建时间：{{school.time}}
+    </view>
+    <view class='row introduction'>
+      {{school.introduce}}
+    </view>
+  </view>
+  <!--志愿者审核-->
+  <view class='bottom-card'>
+    <view class='row title'>志愿者老师审核</view>
+    <view class='row cc'>
+      <view class='block'>
+        <view class='num'>{{school.tutor[0]}}</view>
+        <view class='tt'>志愿者</view>
+      </view>
+      <view class="hh"></view>
+      <view class='block'>
+        <view class='num'>{{school.tutor[1]}}</view>
+        <view class='tt'>待审核</view>
+      </view>
+    </view>
+  </view>
+  <view bindtap="jump" data-url="../../manager/viewTeacher/viewTeacher?type=check" hover-class="none">
+    <view class='black-card'>
+      <view class='row manager'>前往管理</view>
+    </view>
+  </view>
+
+  <!--师生匹配情况-->
+  <view class='bottom-card'>
+    <view class='row title'>师生匹配情况</view>
+    <view class='row cc'>
+      <view class='block'>
+        <view class='num'>{{school.student[0]}}</view>
+        <view class='tt'>学生</view>
+      </view>
+      <view class="hh"></view>
+      <view class='block'>
+        <view class='num'>{{school.student[1]}}</view>
+        <view class='tt'>待审核</view>
+      </view>
+    </view>
+  </view>
+  <view bindtap="jump" data-url="../../manager/viewTeacher/viewTeacher?type=match" hover-class="none">
+    <view class='black-card'>
+      <view class='row manager'>前往管理</view>
+    </view>
+  </view>
+
+</view>

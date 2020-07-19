@@ -28,6 +28,34 @@
   "studentNum": "" 学生人数
 }
 
+//sponsor(发起人绑定)
+{
+    "openid":"",
+    "name":"",
+    "perInfo": {
+        "gender": "",               //性别
+        "school": "",               //所在学校
+        "grade": "",                //年级
+        "area": [],                 //地区
+        "major": "",                //专业
+        "wechat": "",               //微信号
+        "tel": "",                  //电话号码
+    }
+}
+//ambassador(形象大使绑定)
+{
+    "openid":"",
+    "name":"",
+    "perInfo": {
+        "gender": "",               //性别
+        "school": "",               //所在学校
+        "grade": "",                //年级
+        "area": [],                 //地区
+        "major": "",                //专业
+        "wechat": "",               //微信号
+        "tel": "",                  //电话号码
+    }
+}
 
 //person(存储个人信息及匹配信息)
 {

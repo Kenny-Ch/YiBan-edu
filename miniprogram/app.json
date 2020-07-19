@@ -42,7 +42,8 @@
     "pages/my/officialAccount/officialAccount",
     "pages/sponsor/binding/binding",
     "pages/ambassador/ambassador",
-    "pages/manager/viewSchool/viewSchool"
+    "pages/manager/viewSchool/viewSchool",
+    "pages/sponsor/managerSponsor/managerSponsor"
   ],
   "window": {
     "navigationStyle": "custom",
