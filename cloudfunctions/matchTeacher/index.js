@@ -15,11 +15,13 @@ const TOTAL_LEN = 3
       "科目": 分数,
       "科目": 分数
     }     
+    "schoolID":""               //网校ID
 */
 
 // 云函数入口函数
 exports.main = async (event, context) => {
   console.log('传入参数：', event)
+  var schoolID = eent.schoolID
   var keys = []
   for (var key in event.weakSubject) {
     keys.push(key)
@@ -34,6 +36,7 @@ exports.main = async (event, context) => {
     isCheck: 1,
     matchList: _.size(0),
     registerDate: _.lt(markDate),
+    schoolID: schoolID,
     'perInfo.speciality': _.all([keys[0], keys[1], keys[2]])
   }, ).get()
   len = res.data.length
@@ -53,6 +56,7 @@ exports.main = async (event, context) => {
       matchList: _.size(0),
       registerDate: _.lt(markDate),
       openid: _.nin(ids),
+      schoolID: schoolID,
       'perInfo.speciality': _.or([
         _.all([keys[0], keys[1]]),
         _.all([keys[0], keys[2]]),
@@ -75,6 +79,7 @@ exports.main = async (event, context) => {
         matchList: _.size(0),
         registerDate: _.lt(markDate),
         openid: _.nin(ids),
+        schoolID: schoolID,
         'perInfo.speciality': _.or([
           _.all([keys[0]]),
           _.all([keys[1]]),
@@ -96,6 +101,7 @@ exports.main = async (event, context) => {
           job: 1,
           isCheck: 1,
           openid: _.nin(ids),
+          schoolID: schoolID,
           isMatchFull: false
         }).get()
         len = len + res3.data.length
@@ -116,6 +122,7 @@ exports.main = async (event, context) => {
             isCheck: 1,
             openid: _.nin(ids),
             job: 1,
+            schoolID: schoolID,
             isMatchFull: false
           }).get()
           len = len + res4.data.length
@@ -136,6 +143,7 @@ exports.main = async (event, context) => {
               openid: _.nin(ids),
               job: 1,
               isCheck: 1,
+              schoolID: schoolID,
               isMatchFull: false
             }).get()
             result = result.concat(res5.data)

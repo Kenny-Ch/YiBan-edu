@@ -11,6 +11,7 @@ const db = cloud.database()
     "registerDate": Date()          //注册日期
     "job": "",                      //职业
     "name": "",                     //姓名
+    "schoolID": ""                  //网校ID
 
     //个人信息模块
     "perInfo": {
@@ -59,7 +60,8 @@ exports.main = async(event, context) => {
             avatarUrl: event.avatarUrl,
             perInfo: event.perInfo,
             matchList: [],
-            matchWaitList: []
+            matchWaitList: [],
+            schoolID: event.schoolID
           }
         })
       } catch (e) {

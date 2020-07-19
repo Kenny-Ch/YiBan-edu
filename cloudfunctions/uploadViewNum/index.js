@@ -6,6 +6,9 @@ cloud.init({
 })
 const db = cloud.database()
 const _ = db.command
+/*
+//文章或视频的记录id
+ */
 
 // 云函数入口函数
 exports.main = async(event, context) => {

@@ -17,6 +17,7 @@ const _ = db.command
         "expectation": "",          //对老师的期望
         "oneQuestion":"",       //情景题是否选择第一道
         "answer":"",            //情景题答案
+        "schoolID": ""              //网校ID
 */
 
 // 云函数入口函数
@@ -36,6 +37,7 @@ exports.main = async (event, context) => {
               expectation: event.expectation,
               oneQuestion:event.oneQuestion,
               answer:event.answer,
+              schoolID: event.schoolID
             },
             matchList:[],
             matchWaitList:[],
