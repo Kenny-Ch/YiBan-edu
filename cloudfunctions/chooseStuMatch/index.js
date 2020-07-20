@@ -29,6 +29,7 @@ exports.main = async(event, context) => {
   }
 
   //老师待匹配列表更新
+  var schoolID = ""
   var teaIsFull = false
   var teaAftWaitList = []
   var teaPreInfo = await db.collection('person').where({
@@ -36,7 +37,8 @@ exports.main = async(event, context) => {
   }).field({
     matchWaitList: true,
     matchList: true,
-    isMatchFull: true
+    isMatchFull: true,
+    schoolID: true
   }).get()
   if (teaPreInfo.data[0].isMatchFull) {
     teaAftWaitList = []
@@ -51,6 +53,7 @@ exports.main = async(event, context) => {
       teaIsFull = true
     }
   }
+  schoolID = teaPreInfo.data[0].schoolID
 
 
   if (event.res == 1) { //满意
@@ -65,7 +68,8 @@ exports.main = async(event, context) => {
             matchList: _.push([event.teaOpenid]),
             matchWaitList: stuAftWaitList,
             isMatchFull: true,
-            matchReject: false
+            matchReject: false,
+            schoolID: schoolID
           },
         })
     } catch (e) {

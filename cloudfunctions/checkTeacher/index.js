@@ -10,6 +10,7 @@ const _ = db.command
 exports.main = async(event, context) => {
   //check = pass 通过
   //check = reject 不通过
+  //id 对应教师的记录id
 
   if (event.check == 'pass') {
     await db.collection('person').doc(event.id).update({

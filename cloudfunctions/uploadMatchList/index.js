@@ -6,6 +6,10 @@ cloud.init({
 })
 const db = cloud.database()
 const _ = db.command
+/*
+  //记录id
+  //匹配列表
+ */
 // 云函数入口函数
 exports.main = async(event, context) => {
   const wxContext = cloud.getWXContext()

@@ -19,7 +19,8 @@ exports.main = async (event, context) => {
   }).field({
     matchList: true,
     matchWaitList: true,
-    name: true
+    name: true,
+    job: true
   }).get()
   console.log('主用户：', res.data)
 
@@ -59,14 +60,27 @@ exports.main = async (event, context) => {
   }
   console.log('修改后的两列表：',list, waitList)
 
-  await db.collection('person').where({
-    openid: event.selfOpenid
-  }).update({
-    data:{
-      matchList: list,
-      matchWaitList: waitList
-    }
-  }).then(console.log)
-  .catch(console.error)
   
+  if(res.data[0].job == 0){ //学生
+    await db.collection('person').where({
+      openid: event.selfOpenid
+    }).update({
+      data:{
+        matchList: list,
+        matchWaitList: waitList,
+        schoolID: null
+      }
+    }).then(console.log)
+    .catch(console.error)
+  } else if(res.data[0].job == 1){
+    await db.collection('person').where({
+      openid: event.selfOpenid
+    }).update({
+      data:{
+        matchList: list,
+        matchWaitList: waitList
+      }
+    }).then(console.log)
+    .catch(console.error)
+  }
 }
