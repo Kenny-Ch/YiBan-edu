@@ -33,7 +33,13 @@ exports.main = async (event, context) => {console.log(event)
     }).count()
     var teaRes = await db.collection('person').where({
       job: 1,
-      schoolID: schools[i]
+      schoolID: schools[i],
+      isCheck:1
+    }).count()
+    var waitTeaRes = await db.collection('person').where({
+      job: 1,
+      schoolID: schools[i],
+      isCheck:_.neq(1)
     }).count()
     
 
@@ -42,7 +48,8 @@ exports.main = async (event, context) => {console.log(event)
     }).update({
       data:{
         studentNum: _.inc(stuRes.total),
-        volunteerNum: _.inc(teaRes.total)
+        volunteerNum: _.inc(teaRes.total),
+        waitCheckTeacherNum: waitTeaRes.total
       }
     })
 
