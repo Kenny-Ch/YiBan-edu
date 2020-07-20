@@ -50,7 +50,8 @@ Page({
             data: {
               openid: app.globalData.openid,
               bindingCode: input.bindingCode,
-              tel: input.tel
+              tel: input.tel,
+              isSponsor: true
             }
           }).then(function(res) {
             if (res.result == '绑定成功！') {

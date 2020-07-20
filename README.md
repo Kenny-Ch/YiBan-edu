@@ -73,6 +73,7 @@
     "isManager": boolean 管理员
     "isAmbassador": boolean  形象大使
     "isSupervisor": boolean  监事会成员
+    "isSponsor": boolean 是否为发起人
 
     //个人信息模块
     "perInfo": {
