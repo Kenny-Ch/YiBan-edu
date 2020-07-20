@@ -209,7 +209,7 @@ Page({
             item.url = 'error'
           }
           if (app.globalData.userInfo.otherInfo != undefined) {
-          list.push(item)
+            list.push(item)
           }
         } else {
           let item = {};
@@ -233,7 +233,7 @@ Page({
 
         //老师注册成功，则不显示第三个swiper
         if (app.globalData.isNew == false && (app.globalData.userInfo.isCheck == 1 || app.globalData.isTeacher == 0)) {
-          
+
         } else {
           var item2 = {};
           item2.id = 2;
@@ -254,7 +254,7 @@ Page({
           }
           list.push(item2)
 
-          
+
         }
 
         //发起人
@@ -263,8 +263,13 @@ Page({
         item3.big_title = "建立您的网校";
         item3.title = "以伴网校平台";
         item3.small_title = "以伴有着成百上千的网校，您可以借助以伴公益教育平台，实现您的公益梦想！";
-        item3.button = "成为发起人";
-        item3.url = "../sponsor/binding/binding";
+        if (app.globalData.userInfo.isSponsor) {
+          item3.button = "我的网校";
+          item3.url = "../sponsor/managerSponsor/managerSponsor?schoolID=" + app.globalData.userInfo.schoolID;
+        } else {
+          item3.button = "成为发起人";
+          item3.url = "../sponsor/binding/binding";
+        }
         list.push(item3)
 
         // //发起人
@@ -361,8 +366,7 @@ Page({
           }, 1500)
         }
       })
-    } 
-    else if (app.globalData.isTeacher == 1) {
+    } else if (app.globalData.isTeacher == 1) {
       wx.navigateTo({
         url: url
       })
@@ -374,8 +378,7 @@ Page({
         duration: 1500,
         mask: true
       })
-    } 
-    else {
+    } else {
       wx.navigateTo({
         url: url
       })
@@ -421,7 +424,7 @@ Page({
           url: '../matching/matching'
         })
       }
-    } 
+    }
     // else if (app.globalData.isTeacher == 0 && !app.globalData.isNew && app.globalData.userInfo.matchWaitList.length != 0) {
     //   wx.navigateTo({
     //     url: '../matching/teacher/teacher?status=false&id=' + app.globalData.userInfo.matchWaitList[0],

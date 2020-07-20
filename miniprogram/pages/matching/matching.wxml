@@ -54,21 +54,23 @@
 </form>
 <view wx:if='{{userAgree==false&&sub==true}}'>
   <view catchtouchmove="catchtouchmove" class="tips">
-    <view class="tips_box">
-      <view class="hint_view">
-        <view class="text">
-          <view class="hint1" bindtap='goToUserLicence'>点击查看《学生承诺书》</view>
-        </view>
-      </view>
+    <cover-view class="tips_box">
+      <cover-view class="hint_view">
+        <cover-view class="text">
+          <cover-view class="hint1" bindtap='goToUserLicence'>点击查看《学生承诺书》</cover-view>
+           <cover-view class="bb"></cover-view>
+        </cover-view>
+      </cover-view>
       <button bindtap="myCancel" class="noAgreeBtn" style="width: 382rpx;min-height: 50rpx;border-radius: 55rpx;">不同意</button>
       <button bindtap="uploadMatchInfo" class="agreeBtn" style="width: 382rpx;min-height: 50rpx;border-radius: 55rpx;">我已阅读并同意</button>
-    </view>
+    </cover-view>
   </view>
 
 </view>
+
 <view wx:if='{{networkNo==""}}'>
   <form bindsubmit="networkSchool">
-    <view catchtouchmove="catchtouchmove" class="tips">
+    <view catchtouchmove="catchtouchmove" class="tips1">
       <view class="tips_box">
         <view class="hint_view">
           <view class="text">

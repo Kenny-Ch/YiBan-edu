@@ -25,14 +25,14 @@
 .mytext{
   width: 100%;
 	color: rgba(56, 56, 56, 1);
-	font-size: 36rpx;
+	font-size: 32rpx;
   text-align: left;
   white-space:pre-wrap
 }
 .rr{
   width: 100%;
 	color: rgb(245, 8, 8);
-	font-size: 36rpx;
+	font-size: 32rpx;
   text-align: left;
 }
 .wrapText{

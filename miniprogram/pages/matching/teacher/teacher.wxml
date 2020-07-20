@@ -1,5 +1,5 @@
 <!--miniprogram/pages/matching/teacher/teacher.wxml-->
-<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+<cu-custom bgColor="bg-gradual-orange" isBack="{{false}}">
   <view slot="backText">返回</view>
   <view slot="content">以伴edu</view>
 </cu-custom>
