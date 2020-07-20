@@ -21,7 +21,7 @@ const TOTAL_LEN = 3
 // 云函数入口函数
 exports.main = async (event, context) => {
   console.log('传入参数：', event)
-  var schoolID = eent.schoolID
+  var schoolID = event.schoolID
   var keys = []
   for (var key in event.weakSubject) {
     keys.push(key)

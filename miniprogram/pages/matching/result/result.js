@@ -42,7 +42,7 @@ Page({
       name: 'matchTeacher',
       data: {
         weakSubject: app.globalData.matchInfo.weakSubject,
-        schoolID:app.globalData.perInfo.schoolID
+        schoolID:app.globalData.schoolID
       }
     }).then(function(res) {
       console.log("matching/result调用函数matchTeacher", res)
