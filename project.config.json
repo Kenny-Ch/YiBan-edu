@@ -23,7 +23,7 @@
 	},
 	"appid": "wx7a4010768611ebc5",
 	"projectname": "YiBan-edu",
-	"libVersion": "2.11.1",
+	"libVersion": "2.11.2",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
