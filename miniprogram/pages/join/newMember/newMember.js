@@ -19,7 +19,7 @@ Page({
     picker: ['大一', '大二', '大三', '大四'],
     shuoming: '说明：请将学生证上包含照片、姓名、院系、专业等信息的照片上传。若拍摄时无法拍成一张，请用ps、画图等软件合并到一张图中。',
     img: "../../../images/my/tupianimgyulan.png",
-    isTrue:false,    //网校编号填写是否正确
+    networkNo: '', //网校编号
   },
   RegionChange: function(e) {
     console.log('地区选择：', e.detail.value)
@@ -55,7 +55,7 @@ Page({
             //上传成功后会返回永久地址
             that.setData({
               fileID: res.fileID, //图片存储到云存储的fileID
-              img:res.fileID
+              img: res.fileID
             })
             console.log(res.fileID)
           },
@@ -123,6 +123,7 @@ Page({
               matchWaitList: [],
               matchReject: false,
               isMatchFull: false,
+              schoolID: that.data.networkNo,
               perInfo: {
                 gender: pick.gender,
                 school: input.school,
@@ -148,6 +149,7 @@ Page({
               matchWaitList: [],
               matchReject: false,
               isMatchFull: false,
+              shcoolID: that.data.networkNo,
               perInfo: {
                 gender: pick.gender,
                 school: input.school,
@@ -171,6 +173,37 @@ Page({
         }
       }
     })
+  },
+
+  networkSchool: function (options) {
+    wx.showLoading({
+      title: '加载中',
+    })
+    const db = wx.cloud.database()
+    let that = this
+    db.collection('networkSchool').where({
+      schoolID: options.detail.value.networkNo
+    }).get()
+      .then(function (res) {
+        console.log("【matching查询数据库networkSchool】", res)
+        if (res.data.length == 0) {
+          //不存在该网校
+          that.setData({
+            networkNo: ''
+          })
+          wx.showToast({
+            title: '不存在该网校！',
+            icon: 'none'
+          })
+        } else {
+          that.setData({
+            networkNo: options.detail.value.networkNo
+          })
+        }
+        wx.hideLoading()
+      }).catch(function (err) {
+        console.log(err)
+      })
   },
 
   /**

@@ -27,7 +27,7 @@
       //     subject: ['语文', '数学', '英语'],
       //   }
       // ],
-      bottomtext:'------到底啦------',
+      bottomtext: '------到底啦------',
     },
     delete: function(e) {
       let openid = e.currentTarget.dataset.openid
@@ -68,32 +68,54 @@
       const db = wx.cloud.database()
       let that = this
       that.setData({
-        type: options.type
+        type: options.type,
+        schoolID: options.schoolID
       })
-      if (options.type == 'match') {
-        that.setData({
-          isCheck: 1
-        })
-      } else {
-        that.setData({
-          isCheck: 0
-        })
-      }
-      db.collection('person').where({
-          job: 1,
-          isCheck: that.data.isCheck
-        }).get()
-        .then(function(res) {
-          console.log("【manager/viewTeacher查询数据库person】", res)
-          for (let i in res.data)
-            for (let j in res.data[i].perInfo.speciality)
-              res.data[i].perInfo.speciality[j] = that.changeLanguage(res.data[i].perInfo.speciality[j])
+      if (options.type != "") {
+        if (options.type == 'match') {
           that.setData({
-            teacher: res.data
+            isCheck: 1
           })
-        }).catch(function(err) {
-          console.log(err)
-        })
+        } else if (options.type == 'check') {
+          that.setData({
+            isCheck: 0
+          })
+        }
+        db.collection('person').where({
+            job: 1,
+            schoolID: that.data.schoolID,
+            isCheck: that.data.isCheck
+          }).get()
+          .then(function(res) {
+            console.log("【manager/viewTeacher查询数据库person】", res)
+            for (let i in res.data)
+              for (let j in res.data[i].perInfo.speciality)
+                res.data[i].perInfo.speciality[j] = that.changeLanguage(res.data[i].perInfo.speciality[j])
+            that.setData({
+              teacher: res.data
+            })
+          }).catch(function(err) {
+            console.log(err)
+          })
+      } else {
+        db.collection('person').where({
+            job: 1,
+            schoolID: that.data.schoolID,
+            // isCheck: that.data.isCheck
+          }).get()
+          .then(function(res) {
+            console.log("【manager/viewTeacher查询数据库person】", res)
+            for (let i in res.data)
+              for (let j in res.data[i].perInfo.speciality)
+                res.data[i].perInfo.speciality[j] = that.changeLanguage(res.data[i].perInfo.speciality[j])
+            that.setData({
+              teacher: res.data
+            })
+          }).catch(function(err) {
+            console.log(err)
+          })
+      }
+
     },
 
     changeLanguage: function(word) {

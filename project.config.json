@@ -403,6 +403,63 @@
 					"id": -1,
 					"name": "pages/sponsor/managerSponsor/managerSponsor",
 					"pathName": "pages/sponsor/managerSponsor/managerSponsor",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/manager/viewSchool/viewSchool",
+					"pathName": "pages/manager/viewSchool/viewSchool",
+					"query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc",
+					"scene": null
+				},
+				{
+					"id": 52,
+					"name": "pages/sponsor/managerSponsor/managerSponsor",
+					"pathName": "pages/sponsor/managerSponsor/managerSponsor",
+					"query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0001",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/sponsor/binding/binding",
+					"pathName": "pages/sponsor/binding/binding",
+					"query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0001",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/matching/matching",
+					"pathName": "pages/matching/matching",
+					"query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0001",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/matching/teacher/teacher",
+					"pathName": "pages/matching/teacher/teacher",
+					"query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0001",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/matching/result/result",
+					"pathName": "pages/matching/result/result",
+					"query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0001",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/join/join",
+					"pathName": "pages/join/join",
+					"query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0001",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/join/newMember/newMember",
+					"pathName": "pages/join/newMember/newMember",
+					"query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0001",
 					"scene": null
 				}
 			]

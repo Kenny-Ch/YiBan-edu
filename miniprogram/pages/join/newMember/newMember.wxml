@@ -11,7 +11,8 @@
     <view class='label'>性别：</view>
     <radio-group class='row1 ii' bindchange="sex_Change">
       <view class='row1' wx:for="{{judge}}">
-        <radio value="{{item.value}}" checked="{{item.checked}}" color='#fff' /> <view class='text_name'>{{item.name}}</view>
+        <radio value="{{item.value}}" checked="{{item.checked}}" color='#fff' />
+        <view class='text_name'>{{item.name}}</view>
       </view>
     </radio-group>
     <view class='label'>所在地区：</view>
@@ -44,16 +45,18 @@
   </view>
   <button bindgetuserinfo="getInfo" form-type="submit" open-type="getUserInfo" style="width: 650rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn'>登陆</button>
 </form>
-<view wx:if='{{isTrue==false}}'>
-  <view catchtouchmove="catchtouchmove" class="tips">
-    <view class="tips_box">
-      <view class="hint_view">
-        <view class="text">
-          <input type="number" class='my_contents' placeholder="请填写你的网校编号" ></input>
-          <view class="my_text_bottom" >提示：网校编号请向邀请人索取，若无邀请人，请填写默认网校编号：0001</view>
+<view wx:if='{{networkNo==""}}'>
+  <form bindsubmit="networkSchool">
+    <view catchtouchmove="catchtouchmove" class="tips">
+      <view class="tips_box">
+        <view class="hint_view">
+          <view class="text">
+            <input type="number" name="networkNo" class='my_contents' placeholder="请填写你的网校编号"></input>
+            <view class="my_text_bottom">提示：网校编号请向邀请人索取，若无邀请人，请填写默认网校编号：0001</view>
+          </view>
         </view>
+        <button form-type="submit" class="agreeBtn" style="width: 382rpx;min-height: 50rpx;border-radius: 55rpx;">提交</button>
       </view>
-      <button class="agreeBtn" style="width: 382rpx;min-height: 50rpx;border-radius: 55rpx;">提交</button>
     </view>
-  </view>
+  </form>
 </view>
