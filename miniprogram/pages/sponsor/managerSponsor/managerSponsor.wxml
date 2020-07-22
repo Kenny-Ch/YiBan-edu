@@ -29,7 +29,7 @@
       </view>
       <view class="hh"></view>
       <view class='block'>
-        <view class='num'>{{school.tutor[1]}}</view>
+        <view class='num'>{{school.waitCheckTeacherNum}}</view>
         <view class='tt'>待审核</view>
       </view>
     </view>
