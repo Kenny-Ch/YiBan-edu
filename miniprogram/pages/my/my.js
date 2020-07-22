@@ -7,7 +7,7 @@ Page({
    */
   data: {
     userinfo: {
-      
+
     },
     // list:[{
     //   icon:'../../images/my/tongxunlu.png',
@@ -29,7 +29,7 @@ Page({
       }
     },
     jumpUrl: '',
-    sub:false,
+    sub: false,
   },
 
   /**
@@ -46,12 +46,22 @@ Page({
       })
     } else {
       let identity = ''
-      if (app.globalData.userInfo.job == 0) 
-        identity = '学生'
+      if (app.globalData.userInfo.job == 0)
+        identity = '  学生  '
       else if (app.globalData.userInfo.job == 1)
-        identity = '老师'
-      else
-        identity = ''
+        identity = '  老师  '
+      if (app.globalData.userInfo.isManager)
+        identity = identity + '  管理员  '
+      if (app.globalData.userInfo.isAmbassador) {
+        identity = identity + '  形象大使  '
+      }
+      if (app.globalData.userInfo.isSupervisor) {
+        identity = identity + '  监事会成员  '
+      }
+      if (app.globalData.userInfo.isSponsor) {
+        identity = identity + '  发起人  '
+      }
+
       this.setData({
         userinfo: {
           name: app.globalData.userInfo.name,
@@ -63,14 +73,14 @@ Page({
 
     }
   },
-  reply:function() {
+  reply: function() {
     this.setData({
-      sub:true,
+      sub: true,
     })
   },
-  cancel:function() {
+  cancel: function() {
     this.setData({
-      sub:false,
+      sub: false,
     })
   },
   /**
