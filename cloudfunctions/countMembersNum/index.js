@@ -10,6 +10,7 @@ const _ = db.command
 // 云函数入口函数
 exports.main = async (event, context) => {
   console.log("传入的参数为：",event)
+  if(!event.hasOwnProperty("schoolID")){
    // 先取出集合记录总数
    const countResult = await db.collection('networkSchool').count()
    const total = countResult.total
@@ -61,8 +62,37 @@ exports.main = async (event, context) => {
         waitMatchStuNum: waitMatchStuRes.total
       }
     })
-
     console.log("schoolID:",schools[i],"学生数量:",stuRes.total,"老师数量:",teaRes.total,"待审核老师数量：",waitTeaRes.total,"待匹配学生数量：",waitMatchStuRes.total)
   }
+} else {
+  var stuRes = await db.collection('person').where({
+    job: 0,
+    schoolID: event.schoolID
+  }).count()
+  var teaRes = await db.collection('person').where({
+    job: 1,
+    schoolID: event.schoolID,
+    isCheck:1
+  }).count()
+  var waitTeaRes = await db.collection('person').where({
+    job: 1,
+    schoolID: event.schoolID,
+    isCheck:_.neq(1)
+  }).count()
+  var waitMatchStuRes = await db.collection('person').where({
+    job: 0,
+    'matchInfo.schoolID': event.schoolID,
+    matchWaitList: _.size(1)
+  }).count()
+
+  console.log("schoolID:",event.schoolID,"学生数量:",stuRes.total,"老师数量:",teaRes.total,"待审核老师数量：",waitTeaRes.total,"待匹配学生数量：",waitMatchStuRes.total)
+
+  return {
+    studentNum: stuRes.total,
+    volunteerNum: teaRes.total,
+    waitCheckTeacherNum: waitTeaRes.total,
+    waitMatchStuNum: waitMatchStuRes.total
+  }
+}
 
 }

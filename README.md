@@ -26,6 +26,7 @@
   "date": "" 成立时间
   "volunteerNum": "" 志愿者人数
   "studentNum": "" 学生人数
+  "waitCheckTeacherNum": "" 待审核老师人数
 }
 
 //sponsor(发起人绑定)
@@ -88,6 +89,8 @@
         "wechat": "",               //微信号
         "tel": "",                  //电话号码
         "stuNum": 0,                //最多可辅导的学生数量
+        "schoolID": "",             //网校id
+        "orderNum": 1,              //网校志愿者成员序号
         
         //或者
         //学生
