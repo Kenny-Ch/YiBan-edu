@@ -24,6 +24,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    
+
     const db = wx.cloud.database()
     let that = this
     db.collection('networkSchool').where({
@@ -39,9 +41,36 @@ Page({
         that.setData({
           ['school.date']: date
         })
+        that.updateNetworkSchoolInfo(options)
       }).catch(function(err) {
         console.log(err)
       })
+  },
+
+  onPullDownRefresh: function() {
+    this.updateNetworkSchoolInfo()
+  },
+  updateNetworkSchoolInfo: function (options) {
+    var that = this
+    wx.cloud.callFunction({
+      name: 'countMembersNum',
+      data: {
+        schoolID: options.schoolID
+      }
+    }).then(function(res) {
+      console.log("【sponsor/managerSponsor查询人数信息】",res)
+      if(res.result!=null)
+      that.setData({
+        'school.studentNum': res.result.studentNum,
+        'school.volunteerNum': res.result.volunteerNum,
+        'school.waitCheckTeacherNum': res.result.waitCheckTeacherNum,
+        'school.waitMatchStuNum': res.result.waitMatchStuNum
+      })
+
+    }).catch(function(err) {
+      console.log(err)
+    })
+    
   },
 
   /**

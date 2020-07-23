@@ -50,7 +50,7 @@
       </view>
       <view class="hh"></view>
       <view class='block'>
-        <view class='num'>{{school.student[1]}}</view>
+        <view class='num'>{{school.waitMatchStuNum}}</view>
         <view class='tt'>待审核</view>
       </view>
     </view>

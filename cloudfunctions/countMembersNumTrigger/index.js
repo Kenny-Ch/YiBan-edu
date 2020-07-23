@@ -53,8 +53,10 @@ exports.main = async (event, context) => {
       schoolID: schools[i]
     }).update({
       data:{
-        studentNum: _.inc(stuRes.total),
-        volunteerNum: _.inc(teaRes.total),
+        // studentNum: _.inc(stuRes.total),
+        // volunteerNum: _.inc(teaRes.total),
+        studentNum: stuRes.total,
+        volunteerNum: teaRes.total,
         waitCheckTeacherNum: waitTeaRes.total,
         waitMatchStuNum: waitMatchStuRes.total
       }
