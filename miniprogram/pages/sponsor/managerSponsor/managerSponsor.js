@@ -45,10 +45,14 @@ Page({
       }).catch(function(err) {
         console.log(err)
       })
+      wx.stopPullDownRefresh()
   },
 
   onPullDownRefresh: function() {
-    this.updateNetworkSchoolInfo()
+    var that = this
+    this.onLoad({
+      schoolID:that.school.schoolID
+    }); //重新加载onLoad()
   },
   updateNetworkSchoolInfo: function (options) {
     var that = this
