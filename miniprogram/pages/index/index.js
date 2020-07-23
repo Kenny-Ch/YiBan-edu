@@ -263,7 +263,7 @@ Page({
         item3.big_title = "建立您的网校";
         item3.title = "以伴网校平台";
         item3.small_title = "以伴有着成百上千的网校，您可以借助以伴公益教育平台，实现您的公益梦想！";
-        if (app.globalData.userInfo.isSponsor) {
+        if (app.globalData.isNew == false && app.globalData.userInfo.hasOwnProperty("isSponsor")&&app.globalData.userInfo.isSponsor==true) {
           item3.button = "我的网校";
           item3.url = "../sponsor/managerSponsor/managerSponsor?schoolID=" + app.globalData.userInfo.schoolID;
         } else {
@@ -283,7 +283,7 @@ Page({
         // list.push(item3)
 
         //形象大使
-        if (!app.globalData.userInfo.isAmbassador) {
+        if (!(app.globalData.isNew == false && app.globalData.userInfo.hasOwnProperty("isAmbassador")&&app.globalData.userInfo.isAmbassador==true)) {
           var item4 = {};
           item4.id = 4;
           item4.big_title = "成为以伴形象大使";

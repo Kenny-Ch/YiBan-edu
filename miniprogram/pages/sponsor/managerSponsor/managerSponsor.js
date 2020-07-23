@@ -6,12 +6,6 @@ Page({
    */
   data: {
     school: {
-      name: '万校计划',
-      ID: '0001',
-      time: '2020/07/18',
-      introduce: '圣诞节圣诞节和大家圣诞节圣诞节',
-      tutor: [220, 20],
-      student: [220, 21]
     },
   },
   jump: function(res) {

@@ -24,6 +24,7 @@
   "name": "" 网校名
   "openid": "" 发起人的openid
   "date": "" 成立时间
+  "":""
   "volunteerNum": "" 志愿者人数
   "studentNum": "" 学生人数
   "waitCheckTeacherNum": "" 待审核老师人数
