@@ -283,14 +283,18 @@ Page({
         // list.push(item3)
 
         //形象大使
-        var item4 = {};
-        item4.id = 4;
-        item4.big_title = "成为以伴形象大使";
-        item4.title = "一起让更多学生受益";
-        item4.small_title = "以伴形象大使，让更多学生加入以伴，享受以伴优质教育服务，为推进教育的发展贡献一份力量";
-        item4.button = "一起加油";
-        item4.url = "../ambassador/ambassador";
-        list.push(item4)
+        if (!app.globalData.userInfo.isAmbassador) {
+          var item4 = {};
+          item4.id = 4;
+          item4.big_title = "成为以伴形象大使";
+          item4.title = "一起让更多学生受益";
+          item4.small_title = "以伴形象大使，让更多学生加入以伴，享受以伴优质教育服务，为推进教育的发展贡献一份力量";
+          item4.button = "一起加油";
+          item4.url = "../ambassador/ambassador";
+          list.push(item4)
+        }
+        
+        
 
         that.setData({
           swiperList: list,
