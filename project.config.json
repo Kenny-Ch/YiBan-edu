@@ -461,6 +461,12 @@
 					"pathName": "pages/join/newMember/newMember",
 					"query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0001",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/sponsor/managerSponsor/managerSponsor",
+					"pathName": "pages/sponsor/managerSponsor/managerSponsor",
+					"scene": null
 				}
 			]
 		}
