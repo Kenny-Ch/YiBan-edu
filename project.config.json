@@ -403,10 +403,10 @@
 					"scene": null
 				},
 				{
-					"id": 50,
+					"id": -1,
 					"name": "pages/sponsor/managerSponsor/managerSponsor",
 					"pathName": "pages/sponsor/managerSponsor/managerSponsor",
-					"query": "schoolID=0001",
+					"query": "",
 					"scene": null
 				},
 				{
@@ -420,7 +420,7 @@
 					"id": 52,
 					"name": "pages/sponsor/managerSponsor/managerSponsor",
 					"pathName": "pages/sponsor/managerSponsor/managerSponsor",
-					"query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0001",
+					"query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0002",
 					"scene": null
 				},
 				{
@@ -463,12 +463,6 @@
 					"name": "pages/join/newMember/newMember",
 					"pathName": "pages/join/newMember/newMember",
 					"query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0001",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/sponsor/managerSponsor/managerSponsor",
-					"pathName": "pages/sponsor/managerSponsor/managerSponsor",
 					"scene": null
 				}
 			]

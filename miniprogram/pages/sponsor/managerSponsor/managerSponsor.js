@@ -10,8 +10,9 @@ Page({
   },
   jump: function(res) {
     let url = res.currentTarget.dataset.url
+    let that = this
     wx.navigateTo({
-      url: url + "&schoolID=" + this.data.schoolID
+      url: url + "&schoolID=" + that.data.school.schoolID
     })
   },
   /**

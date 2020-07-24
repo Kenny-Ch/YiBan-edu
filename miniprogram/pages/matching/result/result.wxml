@@ -5,6 +5,7 @@
 </cu-custom>
 <view class='title'>匹配登记</view>
 <view class="line"></view>
+<view>{{text}}</view>
 <view class='card row' wx:for="{{list}}" hover-class="none" bindtap="teacherDetail" data-openid="{{item.openid}}">
   <view class='coloum info1'>
     <view class="row ii">

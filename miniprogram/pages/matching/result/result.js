@@ -42,16 +42,23 @@ Page({
       name: 'matchTeacher',
       data: {
         weakSubject: app.globalData.matchInfo.weakSubject,
-        schoolID:app.globalData.matchInfo.schoolID
+        schoolID: app.globalData.matchInfo.schoolID
       }
     }).then(function(res) {
       console.log("matching/result调用函数matchTeacher", res)
-      for (let i in res.result)
-        for (let j in res.result[i].perInfo.speciality)
-          res.result[i].perInfo.speciality[j] = that.changeLanguage(res.result[i].perInfo.speciality[j])
-      that.setData({
-        list: res.result
-      })
+      if (res.result.length == 0) {
+        that.setData({
+          text: '暂时还没有老师哦'
+        })
+      } else {
+        for (let i in res.result)
+          for (let j in res.result[i].perInfo.speciality)
+            res.result[i].perInfo.speciality[j] = that.changeLanguage(res.result[i].perInfo.speciality[j])
+        that.setData({
+          list: res.result
+        })
+      }
+
     }).catch(function(err) {
       console.log(err)
     })
