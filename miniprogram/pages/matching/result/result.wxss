@@ -118,3 +118,9 @@
   color: rgba(250, 173, 20, 1);
   margin-left:30rpx ;
 }
+.bottomtext{
+	width: 100%;
+	color: rgba(56, 56, 56, 1);
+	font-size: 32rpx;
+	text-align: center;
+}

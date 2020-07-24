@@ -47,6 +47,8 @@
 </view>
 <!--登记信息-->
 <view class="title1">登记信息</view>
+<view class='text2'>{{A}}</view>
+<view class='text2'>{{B}}</view>
 <view class="block margin-top">
   <view class="cu-form-group" wx:for="{{student.subject}}">
     <view class="title wd">{{item.name}}</view>
@@ -61,8 +63,8 @@
     <view class="tex">{{student.matchInfo.expectation}}</view>
   </view>
   <view class="cu-form-group">
-    <view class="title wd" wx:if="{{student.matchInfo.oneQuestion=='第一题'}}">假如你向老师提问，而老师刚好有事，你会怎么做？</view>
-    <view class="title wd" wx:else>假如你觉得老师给你提供的帮助不大，你会怎么做？</view>
+    <view class="title wd" wx:if="{{student.matchInfo.oneQuestion=='第一题'}}">问题A</view>
+    <view class="title wd" wx:else>问题B</view>
     <view class="tex">{{student.matchInfo.answer}}</view>
   </view>
 </view>

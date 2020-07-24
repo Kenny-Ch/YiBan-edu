@@ -35,6 +35,8 @@ Page({
       // isAdopt: false, //是否已通过
       fileID: "cloud://yiban-edu.7969-yiban-edu-1301806073/teacher_supporting_materials/undefined.jpg	"
     },
+    A: '问题A：假如你向老师提问，而老师刚好有事，你会怎么做？',
+    B: '问题B：假如你觉得老师给你提供的帮助不大，你会怎么做？',
 
   },
   previewImage: function(e) {
