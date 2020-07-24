@@ -66,7 +66,8 @@ Page({
         userinfo: {
           name: app.globalData.userInfo.name,
           url: this.data.userinfo.url,
-          identity: identity
+          identity: identity,
+          isManager: app.globalData.userInfo.isManager
         },
         jumpUrl: 'information/information'
       })

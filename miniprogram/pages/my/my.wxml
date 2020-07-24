@@ -41,7 +41,7 @@
     </view>
   </navigator>
 
-  <navigator url="../manager/manager" hover-class="none">
+  <navigator url="../manager/manager" hover-class="none" hidden="{{!userinfo.isManager}}">
     <view class='list-item'>
       <image src="../../images/my/manager.svg" class='icon'></image>
       <view class='title'>管理后台</view>
