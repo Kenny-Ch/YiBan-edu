@@ -20,7 +20,7 @@ Page({
     jumpMethod: 'redirect',
     shuoming: '请在微信点击 我——个人中心——二维码名片，将二维码名片保存起来上传，示例如下：',
     img: "../../../images/my/tupianimgyulan.png",
-    lzimg:"cloud://yiban-edu.7969-yiban-edu-1301806073/lzimg.png",
+    lzimg: "cloud://yiban-edu.7969-yiban-edu-1301806073/lzimg.png",
   },
   upload_picture: function(name) {
     const app = getApp()
@@ -45,7 +45,7 @@ Page({
             //上传成功后会返回永久地址
             that.setData({
               fileID: res.fileID, //图片存储到云存储的fileID
-              img:res.fileID
+              img: res.fileID
             })
             console.log(res.fileID)
           },
@@ -75,7 +75,7 @@ Page({
   },
   PickerChange1(e) {
     var grade = this.data.picker[e.detail.value];
-    console.log('年级选择：', grade)
+    console.log('科目1选择：', grade)
     this.setData({
       index1: e.detail.value,
       grade1: grade //科目1
@@ -83,7 +83,7 @@ Page({
   },
   PickerChange2(e) {
     var grade = this.data.picker[e.detail.value];
-    console.log('年级选择：', grade)
+    console.log('科目2选择：', grade)
     this.setData({
       index2: e.detail.value,
       grade2: grade //科目2
@@ -91,7 +91,7 @@ Page({
   },
   PickerChange3(e) {
     var grade = this.data.picker[e.detail.value];
-    console.log('年级选择：', grade)
+    console.log('科目3选择：', grade)
     this.setData({
       index3: e.detail.value,
       grade3: grade //科目3
@@ -158,9 +158,16 @@ Page({
           })
           return
         } else {
-          if (input.Chinese == '' || input.Math == '' || input.English == '' || input.introduction == '' || input.comprehend == '' || input.experience == '' || input.honor == '' || input.interest == '' || input.situation1 == '' || input.situation2 == '' || pick.grade1 == undefined || pick.grade2 == undefined || pick.grade3 == undefined || pick.grade4 == undefined|| pick.fileID == undefined) {
+
+          if (input.Chinese == '' || input.Math == '' || input.English == '' || input.introduction == '' || input.comprehend == '' || input.experience == '' || input.honor == '' || input.interest == '' || input.situation1 == '' || input.situation2 == '' || pick.grade1 == undefined || pick.grade2 == undefined || pick.grade3 == undefined || pick.grade4 == undefined || pick.fileID == undefined) {
             wx.showToast({
               title: '信息填写不完整~',
+              icon: 'none',
+              duration: 1500
+            })
+          } else if (pick.grade1 == pick.grade2 || pick.grade2 == pick.grade3 || pick.grade3 == pick.grade1) {
+            wx.showToast({
+              title: '不可选重复的擅长科目',
               icon: 'none',
               duration: 1500
             })

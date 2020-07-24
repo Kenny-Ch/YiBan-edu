@@ -464,6 +464,13 @@
 					"pathName": "pages/join/newMember/newMember",
 					"query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0001",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/join/workingAbility/workingAbility",
+					"pathName": "pages/join/workingAbility/workingAbility",
+					"query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0002",
+					"scene": null
 				}
 			]
 		}
