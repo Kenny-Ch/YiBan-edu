@@ -160,7 +160,7 @@
         })
       } else {
         wx.navigateTo({
-          url: '../teacherDetail/teacherDetail?id=' + this.data.teacher[index]._id + '&openid=' + this.data.teacher[index].openid,
+          url: '../teacherDetail/teacherDetail?id=' + this.data.teacher[index]._id + '&openid=' + this.data.teacher[index].openid + '&schoolID=' + this.data.schoolID,
         })
       }
     },

@@ -57,9 +57,9 @@
     </view>
   </navigator>
 
-  <view class='list-item' >
+  <view class='list-item'>
     <image src="../../images/my/kefu.svg" class='icon'></image>
-    <view class='title' bindtap="reply">在线客服</view> 
+    <view class='title' bindtap="reply">在线客服</view>
     <text class="cuIcon-right lg text-gray "></text>
   </view>
 
@@ -77,7 +77,7 @@
     <view class="tips_box">
       <view class="hint_view">
         <view class="text">
-          <view class="my_text_bottom" >此客服通道可询问您关于以伴的疑惑，如您已为以伴教育公益团队的志愿者或学生，也可在此处进行意见交流及相关人员投诉。</view>
+          <view class="my_text_bottom">此客服通道可询问您关于以伴的疑惑，如您已为以伴教育公益团队的志愿者或学生，也可在此处进行意见交流及相关人员投诉。</view>
         </view>
       </view>
       <button class="noAgreeBtn" style="width: 382rpx;min-height: 50rpx;border-radius: 55rpx;" open-type='contact'>在线客服</button>

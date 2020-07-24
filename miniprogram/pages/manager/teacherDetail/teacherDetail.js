@@ -8,7 +8,7 @@ Page({
     A: '问题A：假如你发现自己的学生不理睬你或者不愿向你汇报学习情况，你会怎么做？',
     B: '问题B：假如你发现学生问的问题经常不是你的强项，你会怎么做？',
     fileID: '',
-    QRfileID:'',
+    QRfileID: '',
   },
   previewImage: function(e) {
     wx.previewImage({
@@ -20,6 +20,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: async function(options) {
+    this.setData({
+      _options: options
+    })
     const app = getApp()
     const db = wx.cloud.database()
     let that = this
@@ -32,7 +35,7 @@ Page({
         that.setData({
           teacher: res.data,
           fileID: fileID,
-          QRfileID:QRfileID
+          QRfileID: QRfileID
         })
       }).catch(function(err) {
         console.log(err)
@@ -69,12 +72,12 @@ Page({
             flag: 'register',
             otherName: "",
             otherOpenid: "",
-            openid:  that.data.teacher.openid,
+            openid: that.data.teacher.openid,
             name: that.data.teacher.name,
             job: that.data.teacher.job
           }
-        }).then(function(res){
-          console.log('时间节点已记录：',res)
+        }).then(function(res) {
+          console.log('时间节点已记录：', res)
         })
       } else if (check == 'reject') {
         wx.showToast({
@@ -91,6 +94,16 @@ Page({
     }).catch(function(err) {
       console.log(err)
     })
+  },
+
+  back: function() {
+    let data = {
+      SchoolID: this.data._options.SchoolID,
+      type: 'check'
+    }
+    let pages = getCurrentPages()
+    let beforePage = pages[pages.length - 2]
+    beforePage.onLoad(data)
   },
 
   /**
