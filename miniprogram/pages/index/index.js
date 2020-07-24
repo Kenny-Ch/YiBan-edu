@@ -184,7 +184,11 @@ Page({
             item.small_title = "对教育资源较为落后的四五线城市高中生进行“一对一高考陪伴”，助力高中生考上理想的大学院校！";
             item.button = "开始匹配";
             item.url = "../matching/matching";
-            list.push(item)
+            if (app.globalData.userInfo.job == 2 || (app.globalData.userInfo.hasOwnProperty("isSponsor") && app.globalData.userInfo.isSponsor == false)) {
+              //break
+            } else {
+              list.push(item)
+            }
           }
         } else if (app.globalData.isTeacher == 1) {
           //是老师的情况
@@ -209,7 +213,8 @@ Page({
             item.url = 'error'
           }
           if (app.globalData.userInfo.otherInfo != undefined) {
-            list.push(item)
+            if (app.globalData.userInfo.job != 2)
+              list.push(item)
           }
         } else {
           let item = {};
@@ -219,7 +224,13 @@ Page({
           item.small_title = "对教育资源较为落后的四五线城市高中生进行“一对一高考陪伴”，助力高中生考上理想的大学院校！";
           item.button = "开始匹配";
           item.url = "../matching/matching";
-          list.push(item)
+          if (app.globalData.userInfo.job == 2 || (app.globalData.userInfo.hasOwnProperty("isSponsor") && app.globalData.userInfo.isSponsor == false)) {
+            //break
+          } else {
+            list.push(item)
+          }
+
+
         }
 
         var item1 = {};
@@ -252,7 +263,8 @@ Page({
           } else {
             item2.url = "../join/join";
           }
-          list.push(item2)
+          if (app.globalData.userInfo.job != 2)
+            list.push(item2)
 
 
         }
