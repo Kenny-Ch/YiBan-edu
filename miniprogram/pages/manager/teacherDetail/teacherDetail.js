@@ -63,7 +63,7 @@ Page({
           ['teacher.isCheck']: 1
         })
         wx.cloud.callFunction({
-          name: recordTimeNode,
+          name: 'recordTimeNode',
           data: {
             isNew: true,
             flag: 'register',
