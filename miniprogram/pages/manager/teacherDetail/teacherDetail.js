@@ -99,9 +99,10 @@ Page({
   back: function() {
     let that = this
     let data = {
-      SchoolID: that.data._options.SchoolID,
+      schoolID: that.data._options.schoolID,
       type: 'check',
     }
+
     let pages = getCurrentPages()
     let beforePage = pages[pages.length - 2]
     beforePage.onLoad(data)

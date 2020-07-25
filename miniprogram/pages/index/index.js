@@ -184,7 +184,7 @@ Page({
             item.small_title = "对教育资源较为落后的四五线城市高中生进行“一对一高考陪伴”，助力高中生考上理想的大学院校！";
             item.button = "开始匹配";
             item.url = "../matching/matching";
-            if (app.globalData.userInfo.job == 2 || (app.globalData.userInfo.hasOwnProperty("isSponsor") && app.globalData.userInfo.isSponsor == false)) {
+            if ((app.globalData.userInfo.hasOwnProperty("job") && app.globalData.userInfo.job == 2) || (app.globalData.userInfo.hasOwnProperty("isSponsor") && app.globalData.userInfo.isSponsor == false)) {
               //break
             } else {
               list.push(item)
@@ -213,7 +213,7 @@ Page({
             item.url = 'error'
           }
           if (app.globalData.userInfo.otherInfo != undefined) {
-            if (app.globalData.userInfo.job != 2)
+            if (app.globalData.userInfo.hasOwnProperty("job") && app.globalData.userInfo.job != 2)
               list.push(item)
           }
         } else {
@@ -224,7 +224,7 @@ Page({
           item.small_title = "对教育资源较为落后的四五线城市高中生进行“一对一高考陪伴”，助力高中生考上理想的大学院校！";
           item.button = "开始匹配";
           item.url = "../matching/matching";
-          if (app.globalData.userInfo.job == 2 || (app.globalData.userInfo.hasOwnProperty("isSponsor") && app.globalData.userInfo.isSponsor == false)) {
+          if ((app.globalData.userInfo.hasOwnProperty("job") && app.globalData.userInfo.job == 2) || (app.globalData.userInfo.hasOwnProperty("isSponsor") && app.globalData.userInfo.isSponsor == false)) {
             //break
           } else {
             list.push(item)
@@ -263,7 +263,7 @@ Page({
           } else {
             item2.url = "../join/join";
           }
-          if (app.globalData.userInfo.job != 2)
+          if (app.globalData.userInfo.hasOwnProperty("job") && app.globalData.userInfo.job != 2)
             list.push(item2)
 
 
