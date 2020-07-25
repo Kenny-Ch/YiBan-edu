@@ -36,13 +36,26 @@ Page({
         that.setData({
           ['school.date']: date
         })
-        //that.updateNetworkSchoolInfo(options)
+        that.updateNetworkSchoolInfo(options)
       }).catch(function(err) {
         console.log(err)
       })
       wx.stopPullDownRefresh()
   },
-
+  copyText: function (e) {
+    wx.setClipboardData({
+      data: e.target.dataset.id,
+      success: function (res) {
+        wx.getClipboardData({
+          success: function (res) {
+            wx.showToast({
+              title: '复制微信号成功'
+            })
+          }
+        })
+      }
+    })
+  },
   onPullDownRefresh: function() {
     var that = this
     this.onLoad({

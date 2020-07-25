@@ -211,6 +211,7 @@ radio .wx-radio-input.wx-radio-input-checked::before{
 }
 
 .tips .tips_box .hint_view {
+  margin-top:48rpx;
   display: flex;
   align-items: center;
 }
@@ -222,7 +223,6 @@ radio .wx-radio-input.wx-radio-input-checked::before{
 }
 
 .tips .tips_box .hint1 {
-  margin-top: 38rpx;
   text-align: center;
   font-size: 30rpx;
   color: #1a1a1a;
@@ -275,4 +275,19 @@ display: none;
 	line-height: 150%;
 	text-align: left;
   margin-top:20rpx ;
+}
+.ccc{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 108rpx;
+  top: 464rpx;
+  z-index: 1006;
+}
+.cancel{
+  width: 96rpx;
+  height: 96rpx;
+  margin-left:485rpx ;
+  
 }
