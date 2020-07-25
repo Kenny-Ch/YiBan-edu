@@ -36,7 +36,7 @@ Page({
         that.setData({
           ['school.date']: date
         })
-        that.updateNetworkSchoolInfo(options)
+        //that.updateNetworkSchoolInfo(options)
       }).catch(function(err) {
         console.log(err)
       })
