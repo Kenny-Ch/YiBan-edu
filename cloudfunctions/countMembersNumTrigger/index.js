@@ -39,8 +39,9 @@ exports.main = async (event, context) => {
     }).count()
     var waitTeaRes = await db.collection('person').where({
       job: 1,
-      schoolID: schools[i],
-      isCheck:_.neq(1)
+      schoolID: event.schoolID,
+      isCheck: 0,
+      otherInfo: _.exists(true)
     }).count()
     var waitMatchStuRes = await db.collection('person').where({
       job: 0,

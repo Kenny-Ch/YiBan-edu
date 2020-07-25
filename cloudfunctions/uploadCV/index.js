@@ -39,6 +39,19 @@ const db = cloud.database()
 // 云函数入口函数
 exports.main = async (event, context) => {
   console.log('传入参数：', event)
+  var res = await db.collection('person').where({
+    openid: event.openid
+  }).field({
+    schoolID:true
+  }).get()
+  db.collection('networkSchool').where({
+    schoolID: res.data[0].schoolID
+  }).update({
+    data:{
+      waitCheckTeacherNum:_.inc(1)
+    }
+  }).then(console.log)
+  .catch(console.error)
   try {
     return await db.collection('person').where({
       openid: event.openid
@@ -51,6 +64,7 @@ exports.main = async (event, context) => {
         otherInfo: event.otherInfo,
         isCheck: event.isCheck,
         isWeChatReg: event.isWeChatReg,
+        isMatchFull: false
       }
     })
   } catch (e) {
