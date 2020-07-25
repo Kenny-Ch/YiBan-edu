@@ -13,6 +13,7 @@ const _ = db.command
 
 // 云函数入口函数
 exports.main = async (event, context) => {
+  console.log('传入参数：',evnet)
   var res1
   var res2
   //学生待匹配列表更新
@@ -42,6 +43,22 @@ exports.main = async (event, context) => {
   } catch(e) {
     console.error(e)
   }
+
+  var res = await db.collection('person').where({
+    openid: event.teaOpenid
+  }).field({
+    schoolID:true
+  }).get()
+  console.log('获取的网校id：',res)
+
+  await db.collection('networkSchool').where({
+    schoolID: res.data[0].schoolID
+  }).update({
+    data:{
+      waitMatchStuNum:_.inc(1)
+    }
+  }).then(console.log)
+  .catch(console.error)
 
   var result ={}
   result.stuRes = res1

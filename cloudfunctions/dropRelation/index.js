@@ -20,7 +20,8 @@ exports.main = async (event, context) => {
     matchList: true,
     matchWaitList: true,
     name: true,
-    job: true
+    job: true,
+    schoolID:true
   }).get()
   console.log('主用户：', res.data)
 
@@ -62,7 +63,7 @@ exports.main = async (event, context) => {
 
   
   if(res.data[0].job == 0){ //学生
-    await db.collection('person').where({
+    db.collection('person').where({
       openid: event.selfOpenid
     }).update({
       data:{
@@ -72,13 +73,30 @@ exports.main = async (event, context) => {
       }
     }).then(console.log)
     .catch(console.error)
+    db.collection('networkSchool').where({
+      schoolID: res.data[0].schoolID
+    }).update({
+      data:{
+        studentNum:_.inc(-1),
+        teacherNum: _.inc(-res.data[0].matchList.length)
+      }
+    }).then(console.log)
+    .catch(console.error)
   } else if(res.data[0].job == 1){
-    await db.collection('person').where({
+    db.collection('person').where({
       openid: event.selfOpenid
     }).update({
       data:{
         matchList: list,
         matchWaitList: waitList
+      }
+    }).then(console.log)
+    .catch(console.error)
+    db.collection('networkSchool').where({
+      schoolID: res.data[0].schoolID
+    }).update({
+      data:{
+        studentNum:_.inc(-res.data[0].matchList.length)
       }
     }).then(console.log)
     .catch(console.error)

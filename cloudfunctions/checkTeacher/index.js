@@ -16,6 +16,14 @@ exports.main = async(event, context) => {
   if (event.check == 'pass') {
     var schIDres = await db.collection('person').doc(event.id).field({schoolID:true}).get()
     var schID = schIDres.data.schoolID
+    db.collection('networkSchool').where({
+      schoolID: schID
+    }).update({
+      data:{
+        waitCheckTeacherNum:_.inc(-1)
+      }
+    }).then(console.log)
+    .catch(console.error)
     var maxres = await db.collection('person')
       .aggregate()
       .group({
