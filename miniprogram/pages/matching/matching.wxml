@@ -55,14 +55,17 @@
 <view wx:if='{{userAgree==false&&sub==true}}'>
   <view catchtouchmove="catchtouchmove" class="tips">
     <cover-view class="tips_box">
+      <cover-view class='ccc'>
+        <cover-image src="../../images/matching/shanchu.png" class='cancel' bindtap="myCancel"></cover-image>
+      </cover-view>
       <cover-view class="hint_view">
         <cover-view class="text">
           <cover-view class="hint1" bindtap='goToUserLicence'>点击查看《学生承诺书》</cover-view>
            <cover-view class="bb"></cover-view>
         </cover-view>
       </cover-view>
-      <button bindtap="myCancel" class="noAgreeBtn" style="width: 382rpx;min-height: 50rpx;border-radius: 55rpx;">不同意</button>
-      <button bindtap="uploadMatchInfo" class="agreeBtn" style="width: 382rpx;min-height: 50rpx;border-radius: 55rpx;">我已阅读并同意</button>
+      <button bindtap="uploadMatchInfo" class="noAgreeBtn" style="width: 382rpx;min-height: 50rpx;border-radius: 55rpx;">我已阅读并同意</button>
+      <button bindtap="myCancel" class="agreeBtn" style="width: 382rpx;min-height: 50rpx;border-radius: 55rpx;">不同意</button>
     </cover-view>
   </view>
 

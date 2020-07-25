@@ -10,7 +10,7 @@
   <view class='card'>
     <view class="row">
       <view class='name'>{{school.name}}</view>
-      <view class='wrapp'><text class='schoolID'>ID:{{school.schoolID}}</text></view>
+      <view class='wrapp' ><text class='schoolID' bindtap='copyText' data-id="{{school.schoolID}}">ID:{{school.schoolID}}</text></view>
     </view>
     <view class="row time">
       创建时间：{{school.date}}
