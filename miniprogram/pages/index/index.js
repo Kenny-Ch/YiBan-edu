@@ -2,7 +2,6 @@
 const app = getApp()
 
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -133,6 +132,7 @@ Page({
         if (res.result.length == 0) {
           app.globalData.isNew = true
           app.globalData.isMatch = false
+          app.globalData.userInfo = ""
         } else {
           this.getDays(res.result[0].registerDate)
           app.globalData.userInfo = res.result[0]
