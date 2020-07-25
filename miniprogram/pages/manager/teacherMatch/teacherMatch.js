@@ -123,6 +123,39 @@ Page({
     })
   },
 
+  deleteStu: function(e) {
+    console.log(e.currentTarget)
+    let index = e.currentTarget.dataset.index
+    let openid = e.currentTarget.dataset.openid
+    let that = this
+    wx.showModal({
+      title: '是否删除该学生？',
+      content: '一经操作，不可更改。',
+      success(res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          wx.cloud.callFunction({
+            name: 'deleteMember',
+            data: {
+              openid: openid
+            }
+          }).then(function(res) {
+            console.log("【teacherMatch调用函数deleteMember】", res)
+            let list = that.data.teacher.studentAdopt.splice(index - 1, 1)
+            that.setData({
+              ['teacher.studentAdopt']: list
+            })
+          }).catch(function(err) {
+            console.log(err)
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
