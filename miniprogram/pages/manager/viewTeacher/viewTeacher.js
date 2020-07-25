@@ -71,7 +71,6 @@
         type: options.type,
         schoolID: options.schoolID
       })
-      console.log(options)
       if (options.type != "") {
         if (options.type == 'match') {
           that.setData({

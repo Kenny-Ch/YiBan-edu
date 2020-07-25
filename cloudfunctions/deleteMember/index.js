@@ -18,7 +18,9 @@ exports.main = async(event, context) => {
     openid: event.openid
   }).field({
     matchList: true,
-    matchWaitList: true
+    matchWaitList: true,
+    job:true,
+    schoolID: true
   }).get()
   console.log("删除成员的信息", res.data[0])
 
@@ -43,6 +45,17 @@ exports.main = async(event, context) => {
         }
       })
     }
+  }
+
+  if(res.data[0].job == 1 && res.data[0].hasOwnProperty("schoolID")){
+    db.collection('networkSchool').where({
+      schoolID: res.data[0].schoolID
+    }).update({
+      data:{
+        teacherNum:_.inc(-1)
+      }
+    }).then(console.log)
+    .catch(console.error)
   }
 
   try {

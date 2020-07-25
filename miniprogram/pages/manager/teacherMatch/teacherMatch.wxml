@@ -8,7 +8,7 @@
 <view class='plusBtn'>
   <navigator url="../teacherDetail/teacherDetail?id={{_options.id}}&openid={{_options.openid}}" class="plusBtn">
     <image src="../../../images/manager/xinxi-.png" class='plusIcon'></image>
-  </navigator> 
+  </navigator>
 </view>
 <view class="con">
   <!--待审核-->
@@ -47,8 +47,9 @@
             <view class="text" style="margin-right:10rpx" wx:for="{{item.subject}}">{{item}}</view>
           </view>
         </view>
-        <image src="../.../../../../images/manager/delete.svg" class="right" data-id="{{item.id}}"></image>
+
       </navigator>
+      <image bindtap="deleteStu" src="../.../../../../images/manager/delete.svg" class="right" data-index="{{index}}" data-openid="{{item.openid}}"></image>
     </view>
   </view>
 </view>

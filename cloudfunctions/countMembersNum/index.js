@@ -77,7 +77,8 @@ exports.main = async (event, context) => {
   var waitTeaRes = await db.collection('person').where({
     job: 1,
     schoolID: event.schoolID,
-    isCheck:_.neq(1)
+    isCheck: 0,
+    otherInfo: _.exists(true)
   }).count()
   var waitMatchStuRes = await db.collection('person').where({
     job: 0,
@@ -86,6 +87,19 @@ exports.main = async (event, context) => {
   }).count()
 
   console.log("schoolID:",event.schoolID,"学生数量:",stuRes.total,"老师数量:",teaRes.total,"待审核老师数量：",waitTeaRes.total,"待匹配学生数量：",waitMatchStuRes.total)
+
+  db.collection('networkSchool').where({
+    schoolID: event.schoolID
+  }).update({
+    data:{
+      // studentNum: _.inc(stuRes.total),
+      // volunteerNum: _.inc(teaRes.total),
+      studentNum: stuRes.total,
+      volunteerNum: teaRes.total,
+      waitCheckTeacherNum: waitTeaRes.total,
+      waitMatchStuNum: waitMatchStuRes.total
+    }
+  })
 
   return {
     studentNum: stuRes.total,

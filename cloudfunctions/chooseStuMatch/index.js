@@ -92,6 +92,16 @@ exports.main = async(event, context) => {
       console.error(e)
     }
 
+    db.collection('networkSchool').where({
+      schoolID: schoolID
+    }).update({
+      data:{
+        studentNum:_.inc(1),
+        waitMatchStuNum:_.inc(-1)
+      }
+    }).then(console.log)
+    .catch(console.error)
+
     cloud.callFunction({
       name: "recordTimeNode",
       data: {
@@ -142,6 +152,16 @@ exports.main = async(event, context) => {
     } catch (e) {
       console.error(e)
     }
+
+    db.collection('networkSchool').where({
+      schoolID: schoolID
+    }).update({
+      data:{
+        waitMatchStuNum:_.inc(-1)
+      }
+    }).then(console.log)
+    .catch(console.error)
+    
     return '退回申请'
   }
 
