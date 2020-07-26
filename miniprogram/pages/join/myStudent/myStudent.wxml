@@ -22,8 +22,8 @@
             <view class="text" style="margin-right:10rpx" wx:for="{{item.subject}}">{{item}}</view>
           </view>
         </view>
-        <image src="../.../../../../images/manager/toBeReviewed.svg" class="right" data-id="{{item.id}}"></image>
       </navigator>
+      <image src="../.../../../../images/manager/toBeReviewed.svg" class="right" data-id="{{item.id}}"></image>
     </view>
   </view>
   <!--已通过-->
@@ -42,8 +42,8 @@
             <view class="text" style="margin-right:10rpx" wx:for="{{item.subject}}">{{item}}</view>
           </view>
         </view>
-        <image bindtap="deleteStu" src="../.../../../../images/manager/delete.svg" class="right" data-id="{{item.id}}"></image>
       </navigator>
+      <image bindtap="deleteStu" src="../.../../../../images/manager/delete.svg" class="right" data-id="{{item.id}}"></image>
     </view>
   </view>
 </view>

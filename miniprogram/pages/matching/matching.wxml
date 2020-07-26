@@ -55,9 +55,7 @@
 <view wx:if='{{userAgree==false&&sub==true}}'>
   <view catchtouchmove="catchtouchmove" class="tips">
     <cover-view class="tips_box">
-      <cover-view class='ccc'>
-        <cover-image src="../../images/matching/shanchu.png" class='cancel' bindtap="myCancel"></cover-image>
-      </cover-view>
+      <cover-image src="../../images/matching/shanchu.png" class='cancel' bindtap="myCancel"></cover-image>
       <cover-view class="hint_view">
         <cover-view class="text">
           <cover-view class="hint1" bindtap='goToUserLicence'>点击查看《学生承诺书》</cover-view>
