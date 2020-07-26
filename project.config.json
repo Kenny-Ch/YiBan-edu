@@ -15,6 +15,7 @@
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
+		"compileHotReLoad": false,
 		"babelSetting": {
 			"ignore": [],
 			"disablePlugins": [],
@@ -477,6 +478,12 @@
 					"name": "pages/manager/teacherDetail/teacherDetail",
 					"pathName": "pages/manager/teacherDetail/teacherDetail",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/display/classroom/classroom",
+					"pathName": "pages/display/classroom/classroom",
 					"scene": null
 				}
 			]
