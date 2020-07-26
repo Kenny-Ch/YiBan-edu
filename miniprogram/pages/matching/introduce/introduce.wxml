@@ -1,6 +1,7 @@
-<!--miniprogram/pages/matching/introduce/introduce.wxml-->
+<!-- miniprogram/pages/matching/introduce/introduce.wxml-->
 <cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
   <view slot="backText">返回</view>
-  <view slot="content">以伴edu</view>
+  <view slot="content"></view>
 </cu-custom>
 <image src='cloud://yiban-edu.7969-yiban-edu-1301806073/index/post.png' class='img'></image>
+
