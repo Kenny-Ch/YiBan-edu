@@ -15,7 +15,7 @@
     <swiper-item>
       <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
         <view wx:for="{{list}}" class='card' wx:if="{{item.type == 'Chinese'}}">
-          <navigator url="../video/video?id={{item._id}}&collection=inClass" hover-class="none">
+            <view bindtap="jumpToBilibili" data-_id="{{item._id}}" hover-class="none">
             <view class='row ii'>
               <view class='shu'></view>
               <view class='card-title'>{{item.title}}</view>
@@ -29,7 +29,7 @@
               <view class='chakan'>点击观看视频</view>
               <text class="cuIcon-right text-gray size"></text>
             </view>
-          </navigator>
+          </view>
         </view>  
         <view class='bott'>{{bottomtext}}</view>
       </scroll-view>
@@ -38,7 +38,7 @@
     <swiper-item>
       <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
         <view wx:for="{{list}}" class='card' wx:if="{{item.type == 'Math'}}">
-          <navigator url="../video/video?id={{item._id}}&collection=inClass" hover-class="none">
+          <view bindtap="jumpToBilibili" data-_id="{{item._id}}" hover-class="none">
             <view class='row ii'>
               <view class='shu'></view>
               <view class='card-title'>{{item.title}}</view>
@@ -52,7 +52,7 @@
               <view class='chakan'>点击观看视频</view>
               <text class="cuIcon-right text-gray size"></text>
             </view>
-          </navigator>
+          </view>
         </view>  
         <view class='bott'>{{bottomtext}}</view>
       </scroll-view>
@@ -61,7 +61,7 @@
     <swiper-item>
       <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
         <view wx:for="{{list}}" class='card' wx:if="{{item.type == 'English'}}">
-          <navigator url="../video/video?id={{item._id}}&collection=inClass" hover-class="none">
+           <view bindtap="jumpToBilibili" data-_id="{{item._id}}" hover-class="none">
             <view class='row ii'>
               <view class='shu'></view>
               <view class='card-title'>{{item.title}}</view>
@@ -75,7 +75,7 @@
               <view class='chakan'>点击观看视频</view>
               <text class="cuIcon-right text-gray size"></text>
             </view>
-          </navigator>
+          </view>
         </view>  
         <view class='bott'>{{bottomtext}}</view>
       </scroll-view>
@@ -84,7 +84,7 @@
     <swiper-item>
       <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
         <view wx:for="{{list}}" class='card' wx:if="{{item.type == 'Physics'}}">
-          <navigator url="../video/video?id={{item._id}}&collection=inClass" hover-class="none">
+          <view bindtap="jumpToBilibili" data-_id="{{item._id}}" hover-class="none">
             <view class='row ii'>
               <view class='shu'></view>
               <view class='card-title'>{{item.title}}</view>
@@ -98,7 +98,7 @@
               <view class='chakan'>点击观看视频</view>
               <text class="cuIcon-right text-gray size"></text>
             </view>
-          </navigator>
+          </view>
         </view>  
         <view class='bott'>{{bottomtext}}</view>
       </scroll-view>
@@ -107,7 +107,7 @@
     <swiper-item>
       <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
         <view wx:for="{{list}}" class='card' wx:if="{{item.type == 'Biology'}}">
-          <navigator url="../video/video?id={{item._id}}&collection=inClass" hover-class="none">
+            <view bindtap="jumpToBilibili" data-_id="{{item._id}}" hover-class="none">
             <view class='row ii'>
               <view class='shu'></view>
               <view class='card-title'>{{item.title}}</view>
@@ -121,7 +121,7 @@
               <view class='chakan'>点击观看视频</view>
               <text class="cuIcon-right text-gray size"></text>
             </view>
-          </navigator>
+          </view>
         </view>  
         <view class='bott'>{{bottomtext}}</view>
       </scroll-view>
@@ -130,7 +130,7 @@
     <swiper-item>
       <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
         <view wx:for="{{list}}" class='card' wx:if="{{item.type == 'Chemistry'}}">
-          <navigator url="../video/video?id={{item._id}}&collection=inClass" hover-class="none">
+           <view bindtap="jumpToBilibili" data-_id="{{item._id}}" hover-class="none">
             <view class='row ii'>
               <view class='shu'></view>
               <view class='card-title'>{{item.title}}</view>
@@ -144,7 +144,7 @@
               <view class='chakan'>点击观看视频</view>
               <text class="cuIcon-right text-gray size"></text>
             </view>
-          </navigator>
+          </view>
         </view>  
         <view class='bott'>{{bottomtext}}</view>
       </scroll-view>
@@ -153,7 +153,7 @@
     <swiper-item>
       <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
         <view wx:for="{{list}}" class='card' wx:if="{{item.type == 'Politics'}}">
-          <navigator url="../video/video?id={{item._id}}&collection=inClass" hover-class="none">
+            <view bindtap="jumpToBilibili" data-_id="{{item._id}}" hover-class="none">
             <view class='row ii'>
               <view class='shu'></view>
               <view class='card-title'>{{item.title}}</view>
@@ -167,7 +167,7 @@
               <view class='chakan'>点击观看视频</view>
               <text class="cuIcon-right text-gray size"></text>
             </view>
-          </navigator>
+          </view>
         </view>  
         <view class='bott'>{{bottomtext}}</view>
       </scroll-view>
@@ -176,7 +176,7 @@
     <swiper-item>
       <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
         <view wx:for="{{list}}" class='card' wx:if="{{item.type == 'History'}}">
-          <navigator url="../video/video?id={{item._id}}&collection=inClass" hover-class="none">
+            <view bindtap="jumpToBilibili" data-_id="{{item._id}}" hover-class="none">
             <view class='row ii'>
               <view class='shu'></view>
               <view class='card-title'>{{item.title}}</view>
@@ -190,7 +190,7 @@
               <view class='chakan'>点击观看视频</view>
               <text class="cuIcon-right text-gray size"></text>
             </view>
-          </navigator>
+          </view>
         </view>  
         <view class='bott'>{{bottomtext}}</view>
       </scroll-view>
@@ -199,7 +199,7 @@
     <swiper-item>
       <scroll-view scroll-y="{{true}}" style="height:{{height_sys}}px">
         <view wx:for="{{list}}" class='card' wx:if="{{item.type == 'Geography'}}">
-          <navigator url="../video/video?id={{item._id}}&collection=inClass" hover-class="none">
+          <view bindtap="jumpToBilibili" data-_id="{{item._id}}" hover-class="none">
             <view class='row ii'>
               <view class='shu'></view>
               <view class='card-title'>{{item.title}}</view>
@@ -213,7 +213,7 @@
               <view class='chakan'>点击观看视频</view>
               <text class="cuIcon-right text-gray size"></text>
             </view>
-          </navigator>
+          </view>
         </view>  
         <view class='bott'>{{bottomtext}}</view>
       </scroll-view>

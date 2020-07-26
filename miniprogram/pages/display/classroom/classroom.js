@@ -27,9 +27,9 @@ Page({
     }],
     i: 0,
     x: 0,
-    bottomtext:'------到底啦------',
+    bottomtext: '------到底啦------',
   },
-  changeSwipe: function(e) {
+  changeSwipe: function (e) {
     var adress = this.data.three[e.detail.current].title;
     console.log("目前在", adress);
     var type = e.detail.current;
@@ -37,24 +37,24 @@ Page({
       i: type
     });
   },
-  tabSelect: function(e) {
+  tabSelect: function (e) {
     console.log(e.target.dataset.i)
     /*获取可视窗口宽度*/
-    　
-    var w = wx.getSystemInfoSync().windowWidth;　
-    var leng = this.data.three.length;　
-    var i = e.target.dataset.i;　
-    var disX = (i - 2) * w / leng;　
-    if (i != this.data.i) {　　
-      this.setData({　　
-        i: e.target.dataset.i　　
-      })　
-    }　
-    this.setData({　　
-      x: disX　
+
+    var w = wx.getSystemInfoSync().windowWidth;
+    var leng = this.data.three.length;
+    var i = e.target.dataset.i;
+    var disX = (i - 2) * w / leng;
+    if (i != this.data.i) {
+      this.setData({
+        i: e.target.dataset.i
+      })
+    }
+    this.setData({
+      x: disX
     })
   },
-  bindChange: function(e) {
+  bindChange: function (e) {
     var adress = this.data.three[e.detail.current].title;
     console.log("目前在", adress);
     var that = this;
@@ -68,14 +68,14 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: async function(options) {
+  onLoad: async function (options) {
     const app = getApp()
     wx.showLoading({
       title: '加载中',
     })
     var that = this;
     wx.getSystemInfo({
-      success: function(res) {
+      success: function (res) {
         var Client = wx.getMenuButtonBoundingClientRect();
         var height = res.windowHeight - (res.statusBarHeight + Client.height + (Client.top - res.statusBarHeight) * 2)
         that.setData({
@@ -88,7 +88,7 @@ Page({
     this.setData({
       title: options.name,
     })
-    this.getVideo(options).then(function(res) {
+    this.getVideo(options).then(function (res) {
       console.log("【classroom页面】video list加载成功")
       wx.hideLoading()
     });
@@ -98,49 +98,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
 
@@ -148,7 +148,6 @@ Page({
     var that = this
     let dataList;
     await wx.cloud.callFunction({
-      // 要调用的云函数名称
       name: 'getContext',
       data: {
         flag: options.name
@@ -177,17 +176,34 @@ Page({
     }
   },
 
+  jumpToBilibili: function (options) {
+    console.log(options)
+    let _id = options.currentTarget.dataset._id
+    const db = wx.cloud.database()
+    db.collection('inClass').doc(_id).get()
+      .then(function (res) {
+        console.log("【classroom查询数据库inClass】", res)
+        wx.navigateToMiniProgram({
+          appId: 'wx7564fd5313d24844',
+          path: 'pages/video/video?bvid=' + res.data.contextUrl,
+        })
+      }).catch(function (err) {
+        console.log(err)
+      })
+
+  },
+
   //仅用于video界面不报错
-  uploadViewNum: function() {
+  uploadViewNum: function () {
 
   },
-  uploadLikeNum: function() {
+  uploadLikeNum: function () {
 
   },
-  uploadCommentNum: function() {
+  uploadCommentNum: function () {
 
   },
-  uploadStoreNum: function() {
+  uploadStoreNum: function () {
 
   },
 })
