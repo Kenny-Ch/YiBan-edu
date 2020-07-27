@@ -53,7 +53,7 @@ Page({
       if (app.globalData.userInfo.isManager)
         identity = identity + '  管理员  '
       if (app.globalData.userInfo.isAmbassador) {
-        identity = identity + '  形象大使  '
+        identity = identity + '  爱心大使  '
       }
       if (app.globalData.userInfo.isSupervisor) {
         identity = identity + '  监事会成员  '

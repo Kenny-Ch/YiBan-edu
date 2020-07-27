@@ -6,7 +6,8 @@
 <view class="title">{{title}}</view>
 <view class="artical">
   <view class="card" wx:for="{{articals}}" wx:for-index="index">
-    <navigator url='{{item.nav}}?id={{item._id}}&collection={{item.collection}}&index={{index}}' hover-class="none">
+    <view wx:if="{{item.nav==Anvideo}}">
+      <navigator target="miniProgram" open-type='navigate' app-id='wx7564fd5313d24844' path='pages/video/video?bvid={{item.contextUrl}}' hover-class="none">
       <view class="top"> 
         <view class='text'>
           <view class='text-title'>{{item.title}}</view>
@@ -26,6 +27,29 @@
         <view class='time'>{{item.time}}</view>
       </view>
     </navigator>
+    </view>
+    <view wx:else>
+      <navigator url='{{item.nav}}?id={{item._id}}&collection={{item.collection}}&index={{index}}' hover-class="none">
+        <view class="top"> 
+          <view class='text'>
+            <view class='text-title'>{{item.title}}</view>
+            <view class="text-abstract">{{item.introdution}}</view>
+          </view>
+          <image src="{{item.coverImgUrl}}" class="img"></image>
+        </view>
+        <view class="bottom">
+          <image src='../../../images/dianzan.png' class='icon'></image>
+          <text class='num'>{{item.storeNum}}</text>
+          <image src='../../../images/icon-.png' class='icon'></image>
+          <text class='num'>{{item.viwerNum}}</text>
+          <image src='../../../images/decompress/dianzan.png' class='icon'></image>
+          <text class='num'>{{item.praisePoints}}</text>
+          <image src='../../../images/pinglun.png' class='icon1'></image>
+          <text class='num'>{{item.comment}}</text>
+          <view class='time'>{{item.time}}</view>
+        </view>
+      </navigator>
+    </view>
   </view>
   <view class='bott'>{{bottomtext}}</view>
 </view>
