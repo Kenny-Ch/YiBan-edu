@@ -58,7 +58,7 @@ Page({
     havematch: false,
     haveteacher: false,
   },
-  changeSwipe: function(e) {
+  changeSwipe: function (e) {
     var adress = (e.detail.current == 0) ? "知识储备站" : ((e.detail.current == 1) ? "升学梦工厂" : "以伴课堂");
     console.log("目前在", adress);
     var type = e.detail.current;
@@ -66,7 +66,7 @@ Page({
       i: type
     });
   },
-  tabSelect: function(e) {
+  tabSelect: function (e) {
     /*获取可视窗口宽度*/
     var w = wx.getSystemInfoSync().windowWidth;
     var leng = this.data.three.length;
@@ -81,20 +81,20 @@ Page({
       x: disX
     })
   },
-  cardSwiper: function(e) {
+  cardSwiper: function (e) {
     this.setData({
       cardCur: e.detail.current,
     })
   },
 
 
-  onLoad: function() {
+  onLoad: function () {
     wx.showLoading({
       title: '加载中',
     })
     var that = this;
     wx.getSystemInfo({
-      success: function(res) {
+      success: function (res) {
         that.setData({
           clientHeight: res.windowHeight
         });
@@ -102,7 +102,7 @@ Page({
     });
 
     wx.getUserInfo({
-      success: function(res) {
+      success: function (res) {
         console.log("【index获取UserInfo】", res)
         app.globalData.wxname = res.userInfo.nickName
         app.globalData.avatarUrl = res.userInfo.avatarUrl
@@ -263,7 +263,7 @@ Page({
           } else {
             item2.url = "../join/join";
           }
-          if (app.globalData.userInfo.hasOwnProperty("job") && app.globalData.userInfo.job != 2)
+          if (app.globalData.isNew == true || (app.globalData.userInfo.hasOwnProperty("job") && app.globalData.userInfo.job != 2))
             list.push(item2)
 
 
@@ -275,7 +275,7 @@ Page({
         item3.big_title = "建立您的网校";
         item3.title = "以伴网校平台";
         item3.small_title = "以伴有着成百上千的网校，您可以借助以伴公益教育平台，实现您的公益梦想！";
-        if (app.globalData.isNew  ==  false  &&  app.globalData.userInfo.hasOwnProperty("isSponsor") && app.globalData.userInfo.isSponsor == true) {
+        if (app.globalData.isNew == false && app.globalData.userInfo.hasOwnProperty("isSponsor") && app.globalData.userInfo.isSponsor == true) {
           item3.button = "我的网校";
           item3.url = "../sponsor/managerSponsor/managerSponsor?schoolID=" + app.globalData.userInfo.schoolID;
         } else {
@@ -295,7 +295,7 @@ Page({
         // list.push(item3)
 
         //形象大使
-        if (!(app.globalData.isNew  ==  false  &&  app.globalData.userInfo.hasOwnProperty("isAmbassador") && app.globalData.userInfo.isAmbassador == true)) {
+        if (!(app.globalData.isNew == false && app.globalData.userInfo.hasOwnProperty("isAmbassador") && app.globalData.userInfo.isAmbassador == true)) {
           var item4 = {};
           item4.id = 4;
           item4.big_title = "成为以伴形象大使";
@@ -321,7 +321,7 @@ Page({
   },
 
   //计算相隔天数
-  getDays: function(date) {
+  getDays: function (date) {
     date = new Date(date)
     var d1 = Date.parse(date)
     var d2 = Date.parse(new Date())
@@ -332,7 +332,7 @@ Page({
     })
   },
 
-  bindChange: function(e) {
+  bindChange: function (e) {
     var adress = (e.detail.current == 0) ? "知识储备站" : ((e.detail.current == 1) ? "升学梦工厂" : "以伴课堂");
     var that = this;
     that.setData({
@@ -341,7 +341,7 @@ Page({
   },
 
   //跳转个人信息页面
-  jumpToMyPage: function() {
+  jumpToMyPage: function () {
     if (app.globalData.isNew) {
       console.log('【index】用户未注册，跳转注册页面')
       wx.navigateTo({
@@ -349,7 +349,7 @@ Page({
         fail: (res) => {
           console.log('【index页面跳转注册界面失败】,res')
         },
-        success: (result) => {},
+        success: (result) => { },
       })
     } else {
       console.log('【index】用户已注册，跳转我的页面')
@@ -358,12 +358,12 @@ Page({
         fail: (res) => {
           console.log('【index页面跳转我的个人信息界面失败】,res')
         },
-        success: (result) => {},
+        success: (result) => { },
       })
     }
   },
 
-  jumpToVideo: function(e) {
+  jumpToVideo: function (e) {
     console.log(e)
     let url = e.currentTarget.dataset.url
     const app = getApp()
@@ -373,8 +373,8 @@ Page({
         icon: 'none',
         duration: 1500,
         mask: true,
-        success: function() {
-          setTimeout(function() {
+        success: function () {
+          setTimeout(function () {
             wx.navigateTo({
               url: '../my/login/login',
             })
@@ -401,7 +401,7 @@ Page({
     }
   },
 
-  jumpSwiper: function(e) {
+  jumpSwiper: function (e) {
     let url = e.currentTarget.dataset.url
     if (url == '../matching/matching') {
       if (app.globalData.isNew) {
@@ -410,8 +410,8 @@ Page({
           icon: 'none',
           duration: 1500,
           mask: true,
-          success: function() {
-            setTimeout(function() {
+          success: function () {
+            setTimeout(function () {
               wx.navigateTo({
                 url: '../my/login/login',
               })
@@ -424,7 +424,7 @@ Page({
           content: '可能是信息填写错误导致，请重新填写信息~',
           showCancel: true,
           confirmText: '重新填写',
-          success: function(res) {
+          success: function (res) {
             if (res.confirm) {
               console.log('用户点击确定')
               wx.navigateTo({
@@ -457,7 +457,7 @@ Page({
         content: '可能是信息填写错误导致，请重新填写信息~',
         showCancel: true,
         confirmText: '重新填写',
-        success: function(res) {
+        success: function (res) {
           if (res.confirm) {
             console.log('用户点击确定')
             wx.navigateTo({
@@ -478,49 +478,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })
