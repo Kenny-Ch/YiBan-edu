@@ -1,26 +1,26 @@
 <!--miniprogram/pages/manager/viewTeacher/viewTeacher.wxml-->
 <cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
-  <view slot="backText">返回</view>
-  <view slot="content">以伴edu</view>
+	<view slot="backText">返回</view>
+	<view slot="content">以伴edu</view>
 </cu-custom>
-<view class='title' wx:if="{{type=='match'}}">志愿者管理</view>
+<view class='title' wx:if="{{type==''||type=='match'}}">志愿者管理</view>
 <view class='title' wx:else>志愿者审核</view>
 <view class="line"></view>
 <view class="con">
-  <view class="card" wx:for="{{teacher}}">
-    <view class="left" bindtap="jump" data-index="{{index}}" hover-class="none">
-      <view class='top'>
-        <view class="shu"></view>
-        <view class='name'>{{item.name}}</view>
-        <view class="gender">{{item.perInfo.gender}}</view>
-        <view class='school'>{{item.perInfo.school}}</view>
-        <view class="major">{{item.perInfo.major}}</view>
-      </view>
-      <view class='text1'>擅长科目：
-      <view class="text" style="margin-right: 15rpx;" wx:for="{{item.perInfo.speciality}}" wx:for-item="name">{{name}}</view>
-    </view>
-    </view>
-    <image src="../.../../../../images/manager/delete.svg" class="right" bindtap="delete" data-index="{{index}}" data-openid="{{item.openid}}"></image>   
-  </view>
-  <view class='bott'>{{bottomtext}}</view>
+	<view class="card" wx:for="{{teacher}}">
+		<view class="left" bindtap="jump" data-index="{{index}}" hover-class="none">
+			<view class='top'>
+				<view class="shu"></view>
+				<view class='name'>{{item.name}}</view>
+				<view class="gender">{{item.perInfo.gender}}</view>
+				<view class='school'>{{item.perInfo.school}}</view>
+				<view class="major">{{item.perInfo.major}}</view>
+			</view>
+			<view class='text1'>擅长科目：
+				<view class="text" style="margin-right: 15rpx;" wx:for="{{item.perInfo.speciality}}" wx:for-item="name">{{name}}</view>
+			</view>
+		</view>
+		<image src="../.../../../../images/manager/delete.svg" class="right" bindtap="delete" data-index="{{index}}" data-openid="{{item.openid}}"></image>
+	</view>
+	<view class='bott'>{{bottomtext}}</view>
 </view>

@@ -7,7 +7,7 @@
 <view class='title'>网校查看</view>
 <view class="line"></view>
 <view class="con">
-  <navigator hover-class="none" url="../viewTeacher/viewTeacher?schoolID={{item.schoolID}}" class="card" wx:for="{{school}}">
+  <navigator hover-class="none" url="../viewTeacher/viewTeacher?type=match&schoolID={{item.schoolID}}" class="card" wx:for="{{school}}">
     <view class="left" bindtap="jump" data-index="{{index}}" hover-class="none">
       <view class='top'>
         <view class="shu"></view>
