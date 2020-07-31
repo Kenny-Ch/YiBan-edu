@@ -18,6 +18,7 @@ Page({
     }],
     i: 0,
     x: 0,
+    hasTeacherItem:false,
     clientHeight: 0,
     knowledgeReserve: [{
       url: "../display/artical/artical",
@@ -215,6 +216,9 @@ Page({
           if (app.globalData.userInfo.otherInfo != undefined) {
             if (app.globalData.userInfo.hasOwnProperty("job") && app.globalData.userInfo.job != 2)
               list.push(item)
+              that.setData({
+                hasTeacherItem:true
+              })
           }
         } else {
           let item = {};
@@ -263,7 +267,7 @@ Page({
           } else {
             item2.url = "../join/join";
           }
-          if (app.globalData.isNew == true || (app.globalData.userInfo.hasOwnProperty("job") && app.globalData.userInfo.job != 2))
+          if ((app.globalData.isNew == true || (app.globalData.userInfo.hasOwnProperty("job") && app.globalData.userInfo.job != 2))&&that.data.hasTeacherItem==false)
             list.push(item2)
 
 
@@ -318,6 +322,7 @@ Page({
     }).catch(err => {
       console.log('appjs获取openid失败')
     })
+
   },
 
   //计算相隔天数
