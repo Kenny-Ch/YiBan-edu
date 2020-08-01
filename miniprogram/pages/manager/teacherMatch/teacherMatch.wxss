@@ -151,3 +151,10 @@
   width: 80rpx;
 	height: 80rpx;
 }
+.bottomtext{
+	width: 100%;
+	font-size: 40rpx;
+	text-align: center;
+	margin-top:64rpx;
+	color: #fd6b67;
+}

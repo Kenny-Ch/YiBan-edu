@@ -34,6 +34,8 @@
 {
     "openid":"",
     "name":"",
+    "isSponsor":true,
+    "schoolID":"",                  //网校ID
     "perInfo": {
         "gender": "",               //性别
         "school": "",               //所在学校

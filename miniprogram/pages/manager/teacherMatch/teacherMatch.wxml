@@ -11,6 +11,7 @@
   </navigator>
 </view>
 <view class="con">
+  <view class="bottomtext" wx:if='{{teacher.student.length+teacher.studentAdopt.length==0}}'>{{text}}</view>
   <!--待审核-->
   <view wx:if='{{teacher.student.length>0}}'>
     <view class="smalltitle">待审核</view>
