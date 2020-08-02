@@ -35,13 +35,13 @@ Page({
     const db = wx.cloud.database()
     let that = this
     wx.cloud.callFunction({
-      name: 'getUserInfo',
+      name: 'getSchoolInfo',
       // 传递给云函数的参数
       data: {},
       success: res => {
         console.log("【manager/viewSchool查询数据库networkSchool】", res)
         that.setData({
-          school: res.data
+          school: res.result[0]
         })
       },
       fail: err => {
