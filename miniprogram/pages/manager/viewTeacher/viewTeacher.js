@@ -1,11 +1,11 @@
-// miniprogram/pages/manager/viewTeacher/viewTeacher.js
-Page({
+  // miniprogram/pages/manager/viewTeacher/viewTeacher.js
+  Page({
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
-    type: '',
+    /**
+     * 页面的初始数据
+     */
+    data: {
+      type: '',
       // teacher: [{
       //     id: 1,
       //     name: '李桂明',
@@ -98,7 +98,7 @@ Page({
               for (let j in res.data[i].perInfo.speciality)
                 res.data[i].perInfo.speciality[j] = that.changeLanguage(res.data[i].perInfo.speciality[j])
             that.setData({
-              teacher: list
+              teacher: res.data
             })
           },
           fail: err => {
@@ -206,119 +206,63 @@ Page({
 
     jump: function (e) {
       let index = e.currentTarget.dataset.index
-      if (this.data.type == 'match') {
+      if (this.data.type == 'match' || this.data.type == '') {
         wx.navigateTo({
           url: '../teacherMatch/teacherMatch?id=' + this.data.teacher[index]._id + '&openid=' + this.data.teacher[index].openid,
         })
-      } else if (options.type == 'check') {
-        that.setData({
-          isCheck: 0
+      } else {
+        wx.navigateTo({
+          url: '../teacherDetail/teacherDetail?id=' + this.data.teacher[index]._id + '&openid=' + this.data.teacher[index].openid + '&schoolID=' + this.data.schoolID,
         })
       }
-      db.collection('person').where({
-        job: 1,
-        schoolID: that.data.schoolID,
-        isCheck: that.data.isCheck
-      }).get()
-        .then(function (res) {
-          console.log("【manager/viewTeacher查询数据库person】", res)
-          for (let i in res.data)
-            for (let j in res.data[i].perInfo.speciality)
-              res.data[i].perInfo.speciality[j] = that.changeLanguage(res.data[i].perInfo.speciality[j])
-          that.setData({
-            teacher: res.data
-          })
-        }).catch(function (err) {
-          console.log(err)
-        })
-    } else {
-      db.collection('person').where({
-        job: 1,
-        schoolID: that.data.schoolID,
-        // isCheck: that.data.isCheck
-      }).get()
-        .then(function (res) {
-          console.log("【manager/viewTeacher查询数据库person】", res)
-          for (let i in res.data)
-            for (let j in res.data[i].perInfo.speciality)
-              res.data[i].perInfo.speciality[j] = that.changeLanguage(res.data[i].perInfo.speciality[j])
-          that.setData({
-            teacher: res.data
-          })
-        }).catch(function (err) {
-          console.log(err)
-        })
-    }
+    },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+    },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+    },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
+    },
 
     /**
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
+    },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
+    },
 
     /**
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
+    },
 
     /**
      * 用户点击右上角分享
      */
     onShareAppMessage: function () {
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+    }
 })
