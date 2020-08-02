@@ -94,11 +94,11 @@
           },
           success: res => {
             console.log("【manager/viewTeacher查询数据库person】", res)
-            for (let i in res.data)
-              for (let j in res.data[i].perInfo.speciality)
-                res.data[i].perInfo.speciality[j] = that.changeLanguage(res.data[i].perInfo.speciality[j])
+            for (let i in res.result[0])
+              for (let j in res.result[0][i].perInfo.speciality)
+              res.result[0][i].perInfo.speciality[j] = that.changeLanguage(res.result[0][i].perInfo.speciality[j])
             that.setData({
-              teacher: res.data
+              teacher: res.result[0]
             })
           },
           fail: err => {
@@ -137,11 +137,11 @@
           },
           success: res => {
             console.log("【manager/viewTeacher查询数据库person】", res)
-            for (let i in res.data)
-              for (let j in res.data[i].perInfo.speciality)
-                res.data[i].perInfo.speciality[j] = that.changeLanguage(res.data[i].perInfo.speciality[j])
+            for (let i in res.result[0])
+              for (let j in res.result[0][i].perInfo.speciality)
+                res.result[0][i].perInfo.speciality[j] = that.changeLanguage(res.result[0][i].perInfo.speciality[j])
             that.setData({
-              teacher: res.data
+              teacher: res.result[0]
             })
           },
           fail: err => {
