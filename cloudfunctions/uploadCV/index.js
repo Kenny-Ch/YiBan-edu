@@ -4,6 +4,7 @@ cloud.init({
   env: cloud.DYNAMIC_CURRENT_ENV
 })
 const db = cloud.database()
+const _ = db.command
 
 /*  参数表：
     "openid": ""                    //openid

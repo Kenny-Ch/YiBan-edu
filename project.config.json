@@ -302,7 +302,7 @@
 					"id": 35,
 					"name": "pages/manager/viewTeacher/viewTeacher",
 					"pathName": "pages/manager/viewTeacher/viewTeacher",
-					"query": "",
+					"query": "type=match",
 					"scene": null
 				},
 				{
@@ -484,6 +484,7 @@
 					"id": -1,
 					"name": "pages/display/classroom/classroom",
 					"pathName": "pages/display/classroom/classroom",
+					"query": "",
 					"scene": null
 				}
 			]

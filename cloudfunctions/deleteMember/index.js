@@ -63,7 +63,7 @@ exports.main = async(event, context) => {
       openid: event.openid
     }).remove()
 
-    cloud.callFunction({
+    await cloud.callFunction({
       name: "recordTimeNode",
       data: {
         flag: "loginOut",
