@@ -33,6 +33,7 @@
     delete: function (e) {
       let openid = e.currentTarget.dataset.openid
       let index = e.currentTarget.dataset.index
+      let id = e.currentTarget.dataset.id
       let that = this
       wx.showModal({
         title: '提示',
@@ -40,21 +41,38 @@
         success: function (res) {
           if (res.confirm) {
             console.log('用户点击确定')
-            wx.cloud.callFunction({
-              name: 'deleteMember',
-              data: {
-                openid: openid,
-              }
-            }).then(function (res) {
-              console.log("【viewTeacher调用函数deleteMember】", res)
-              let list = that.data.teacher.splice(index, index)
-              console.log(list)
-              that.setData({
-                teacher: list
+            if (openid != undefined)
+              wx.cloud.callFunction({
+                name: 'deleteMember',
+                data: {
+                  openid: openid,
+                }
+              }).then(function (res) {
+                console.log("【viewTeacher调用函数deleteMember】", res)
+                let list = that.data.teacher.splice(index, index)
+                console.log(list)
+                that.setData({
+                  teacher: list
+                })
+              }).catch(function (err) {
+                console.log(err)
               })
-            }).catch(function (err) {
-              console.log(err)
-            })
+            else
+              wx.cloud.callFunction({
+                name: 'deleteMember',
+                data: {
+                  _id: id,
+                }
+              }).then(function (res) {
+                console.log("【viewTeacher调用函数deleteMember】", res)
+                let list = that.data.teacher.splice(index, index)
+                console.log(list)
+                that.setData({
+                  teacher: list
+                })
+              }).catch(function (err) {
+                console.log(err)
+              })
           } else if (res.cancel) {
             console.log('用户点击取消')
           }
@@ -96,7 +114,7 @@
             console.log("【manager/viewTeacher查询数据库person】", res)
             for (let i in res.result[0])
               for (let j in res.result[0][i].perInfo.speciality)
-              res.result[0][i].perInfo.speciality[j] = that.changeLanguage(res.result[0][i].perInfo.speciality[j])
+                res.result[0][i].perInfo.speciality[j] = that.changeLanguage(res.result[0][i].perInfo.speciality[j])
             that.setData({
               teacher: res.result[0]
             })
@@ -265,4 +283,4 @@
     onShareAppMessage: function () {
 
     }
-})
+  })

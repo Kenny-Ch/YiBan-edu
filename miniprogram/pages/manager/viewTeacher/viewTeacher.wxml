@@ -20,7 +20,7 @@
 				<view class="text" style="margin-right: 15rpx;" wx:for="{{item.perInfo.speciality}}" wx:for-item="name">{{name}}</view>
 			</view>
 		</view>
-		<image src="../.../../../../images/manager/delete.svg" class="right" bindtap="delete" data-index="{{index}}" data-openid="{{item.openid}}"></image>
+		<image src="../.../../../../images/manager/delete.svg" class="right" bindtap="delete" data-index="{{index}}" data-openid="{{item.openid}}" data-id="{{item._id}}"></image>
 	</view>
 	<view class='bott'>{{bottomtext}}</view>
 </view>

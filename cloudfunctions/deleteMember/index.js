@@ -14,8 +14,18 @@ const _ = db.command
 exports.main = async(event, context) => {
   console.log("传入参数", event)
 
+  if(event.openid !=undefined)
   var res = await db.collection('person').where({
     openid: event.openid
+  }).field({
+    matchList: true,
+    matchWaitList: true,
+    job:true,
+    schoolID: true
+  }).get()
+  else
+  var res = await db.collection('person').where({
+    _id: event._id
   }).field({
     matchList: true,
     matchWaitList: true,
