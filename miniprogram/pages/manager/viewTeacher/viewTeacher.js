@@ -54,6 +54,11 @@
                 that.setData({
                   teacher: list
                 })
+                wx.showToast({
+                  title: '删除成功！',
+                  duration: 1000,
+                  icon: 'none'
+                })
               }).catch(function (err) {
                 console.log(err)
               })
@@ -69,6 +74,11 @@
                 console.log(list)
                 that.setData({
                   teacher: list
+                })
+                wx.showToast({
+                  title: '删除成功！',
+                  duration: 1000,
+                  icon: 'none'
                 })
               }).catch(function (err) {
                 console.log(err)
