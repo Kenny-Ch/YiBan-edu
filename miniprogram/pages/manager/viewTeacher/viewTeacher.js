@@ -49,10 +49,9 @@
                 }
               }).then(function (res) {
                 console.log("【viewTeacher调用函数deleteMember】", res)
-                let list = that.data.teacher.splice(index, index)
-                console.log(list)
+                that.data.teacher.splice(index, 1)
                 that.setData({
-                  teacher: list
+                  teacher: that.data.teacher
                 })
                 wx.showToast({
                   title: '删除成功！',
@@ -70,10 +69,9 @@
                 }
               }).then(function (res) {
                 console.log("【viewTeacher调用函数deleteMember】", res)
-                let list = that.data.teacher.splice(index, index)
-                console.log(list)
+                that.data.teacher.splice(index, 1)
                 that.setData({
-                  teacher: list
+                  teacher: that.data.teacher
                 })
                 wx.showToast({
                   title: '删除成功！',
