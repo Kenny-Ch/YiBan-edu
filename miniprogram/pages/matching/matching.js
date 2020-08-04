@@ -88,6 +88,7 @@ Page({
     sub: false,
     userAgree: false,
     networkNo: '', //网校编号
+    isDisabled:false,
   },
   goToUserLicence: function() {
     wx.navigateTo({
@@ -185,6 +186,9 @@ Page({
   },
   uploadMatchInfo: function(e) {
     var weakSubject = {};
+    this.setData({
+      isDisabled:true
+    })
     for (let sub of this.data.subject) {
       if (sub.checked == true)
         weakSubject[sub.en + ''] = sub.score
@@ -197,10 +201,16 @@ Page({
         duration: 1000,
         icon: 'none'
       })
+      this.setData({
+        isDisabled:false
+      })
     } else if (weakSubject == undefined) {
       wx.showToast({
         title: '输入的分数有误！',
         icon: 'none'
+      })
+      this.setData({
+        isDisabled:false
       })
     }
     //检验合格

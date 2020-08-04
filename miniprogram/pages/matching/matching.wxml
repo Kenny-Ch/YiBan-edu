@@ -50,7 +50,7 @@
     </view>
   </radio-group>
   <textarea name='teacher' auto-height class='leaning' bindinput="getAnswer" value="{{answer}}" />
-  <button form-type="submit" class="tijiao" style="width: 342rpx;min-height: 50rpx;border-radius: 55rpx;">提交登记</button>
+  <button form-type="submit" disabled='{{isDisabled}}' class="tijiao" style="width: 342rpx;min-height: 50rpx;border-radius: 55rpx;">提交登记</button>
 </form>
 <view wx:if='{{userAgree==false&&sub==true}}'>
   <view catchtouchmove="catchtouchmove" class="tips">

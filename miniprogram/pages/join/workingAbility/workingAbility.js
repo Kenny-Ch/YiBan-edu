@@ -21,6 +21,7 @@ Page({
     shuoming: '请在微信点击 我——个人中心——二维码名片，将二维码名片保存起来上传，示例如下：',
     img: "../../../images/my/tupianimgyulan.png",
     lzimg: "cloud://yiban-edu.7969-yiban-edu-1301806073/lzimg.png",
+    isDisabled:false,
   },
   upload_picture: function(name) {
     const app = getApp()
@@ -148,6 +149,9 @@ Page({
     const app = getApp()
     let that = this
     let pick = that.data
+    that.setData({
+      isDisabled:true
+    })
     wx.getSetting({
       success: function(res) {
         if (!res.authSetting['scope.userInfo']) {
@@ -155,6 +159,9 @@ Page({
             title: '请先授权！',
             icon: 'none',
             duration: 1500
+          })
+          that.setData({
+            isDisabled:false
           })
           return
         } else {
@@ -165,11 +172,17 @@ Page({
               icon: 'none',
               duration: 1500
             })
+            that.setData({
+              isDisabled:false
+            })
           } else if (pick.grade1 == pick.grade2 || pick.grade2 == pick.grade3 || pick.grade3 == pick.grade1) {
             wx.showToast({
               title: '不可选重复的擅长科目',
               icon: 'none',
               duration: 1500
+            })
+            that.setData({
+              isDisabled:false
             })
           } else {
             let perInfo = app.globalData.userInfo.perInfo
@@ -234,6 +247,9 @@ Page({
               })
             }).catch(function(err) {
               console.log(err)
+              that.setData({
+                isDisabled:false
+              })
             })
           }
         }

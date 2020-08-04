@@ -78,7 +78,7 @@
 
 .introduce {
   width: 100%;
-  height: 114rpx;
+  min-height: 114rpx;
   display: flex;
   flex-direction: row;
   align-items: center;
