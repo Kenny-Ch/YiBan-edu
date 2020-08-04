@@ -143,9 +143,10 @@ Page({
         if (res.confirm) {
           console.log('用户点击确定')
           wx.cloud.callFunction({
-            name: 'deleteMember',
+            name: 'dropRelation',
             data: {
-              openid: openid
+              selfOpenid: this.data.openid,
+              dropOpenid: openid
             }
           }).then(function(res) {
             console.log("【teacherMatch调用函数deleteMember】", res)
