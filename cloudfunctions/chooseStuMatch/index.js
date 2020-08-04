@@ -38,7 +38,8 @@ exports.main = async(event, context) => {
     matchWaitList: true,
     matchList: true,
     isMatchFull: true,
-    schoolID: true
+    schoolID: true,
+    'perInfo.stuNum': true
   }).get()
   if (teaPreInfo.data[0].isMatchFull) {
     teaAftWaitList = []
@@ -49,15 +50,16 @@ exports.main = async(event, context) => {
       else
         teaAftWaitList.push(item)
     }
-    if (teaPreInfo.data[0].matchList.length == 2) {
-      teaIsFull = true
-    }
+    
   }
   schoolID = teaPreInfo.data[0].schoolID
 
 
   if (event.res == 1) { //满意
-
+    if (teaPreInfo.data[0].matchList.length + 1 == teaPreInfo.data[0].perInfo.stuNum) {
+      teaIsFull = true
+      teaAftWaitList = []
+    }
     //学生列表更新
     try {
       res1 = await db.collection('person').where({
@@ -102,7 +104,7 @@ exports.main = async(event, context) => {
     }).then(console.log)
     .catch(console.error)
 
-    cloud.callFunction({
+    await cloud.callFunction({
       name: "recordTimeNode",
       data: {
         flag: "matchBegin",
@@ -112,7 +114,7 @@ exports.main = async(event, context) => {
         openid: event.teaOpenid
       }
     })
-    cloud.callFunction({
+    await cloud.callFunction({
       name: "recordTimeNode",
       data: {
         flag: "matchBegin",

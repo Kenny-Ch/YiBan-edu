@@ -54,6 +54,7 @@ Page({
       }).then(function(res) {
         console.log("【manager/teacherMatch调用aggregatePerson函数】", res)
         let matchList = res.result.list[0].personList
+        if(matchList != undefined) {
         for (let item in matchList) {
           let subject = []
           for (let sub in matchList[item].matchInfo.weakSubject) {
@@ -61,7 +62,11 @@ Page({
           }
           matchList[item].subject = subject
         }
+      } else {
+        matchList = []
+      }
         let matchWaitList = res.result.list[0].personWaitList
+        if(matchWaitList != undefined) {
         for (let item in matchWaitList) {
           let subject = []
           for (let sub in matchWaitList[item].matchInfo.weakSubject) {
@@ -69,6 +74,9 @@ Page({
           }
           matchWaitList[item].subject = subject
         }
+      } else {
+        matchWaitList = []
+      }
         that.setData({
           teacher: {
             name: res.result.list[0].name,

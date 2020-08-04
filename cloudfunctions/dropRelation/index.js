@@ -32,7 +32,7 @@ exports.main = async (event, context) => {
     if(res.data[0].matchList[i] != event.dropOpenid){
       list.push(res.data[0].matchList[i])
     } else {
-      cloud.callFunction({
+      await cloud.callFunction({
         name: "recordTimeNode",
         data: {
           flag: "matchEnd",
@@ -42,7 +42,7 @@ exports.main = async (event, context) => {
           openid: event.dropOpenid
         }
       })
-      cloud.callFunction({
+      await cloud.callFunction({
         name: "recordTimeNode",
         data: {
           flag: "matchBegin",
@@ -82,13 +82,14 @@ exports.main = async (event, context) => {
       }
     }).then(console.log)
     .catch(console.error)
-  } else if(res.data[0].job == 1){
+  } else if(res.data[0].job != 0){
     db.collection('person').where({
       openid: event.selfOpenid
     }).update({
       data:{
         matchList: list,
-        matchWaitList: waitList
+        matchWaitList: waitList,
+        isMatchFull: false
       }
     }).then(console.log)
     .catch(console.error)
