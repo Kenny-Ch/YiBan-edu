@@ -89,6 +89,20 @@ Page({
     userAgree: false,
     networkNo: '', //网校编号
     isDisabled:false,
+    inputInfo:'请填写你的网校编号'
+  },
+  tapInput() {
+    this.setData({
+        //在真机上将焦点给input
+        inputFocus:true,
+        //初始占位清空
+        inputInfo: ''
+    });
+  },
+  blurInput(e) {
+    this.setData({
+        inputInfo: e.detail.value || '请填写你的网校编号'
+    });
   },
   goToUserLicence: function() {
     wx.navigateTo({
@@ -264,6 +278,7 @@ Page({
   onLoad: function(options) {
     const app = getApp()
     if (app.globalData.matchInfo != undefined) {
+      console.log('有的有的')
       let info = app.globalData.matchInfo
       this.setData({
         subject: [{

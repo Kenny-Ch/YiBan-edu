@@ -260,13 +260,13 @@ display: none;
 }
 .contents{
   width: 450rpx;
-	height: 42rpx;
+  height: 42rpx;
+  line-height: 42rpx;
+  /* margin-top为text的高度，保持视觉上一致 */
+  margin-top: -42rpx; 
 	color: rgba(80, 80, 80, 1);
 	font-size: 28rpx;
-	line-height: 150%;
   text-align: left;
-  border-bottom: 3rpx solid rgba(80, 80, 80, 1);
-  margin-top:28rpx ;
 }
 .my_text_bottom{
   width: 450rpx;
@@ -287,4 +287,31 @@ display: none;
   left: 108rpx;
   top: 464rpx;
   z-index: 1006;
+}
+.cover-input{
+  width: 450rpx;
+  height: 42rpx;
+  line-height: 42rpx;
+  background-color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-left: 15rpx;
+  padding-right: 15rpx;
+  margin-top:48rpx ;
+}
+.text1{
+  height: 42rpx;
+  line-height: 42rpx;
+}
+.wrap{
+  word-break: break-all;
+  word-wrap:break-word;
+  white-space:pre-line;
+}
+.bb1{
+  height: 2rpx;
+  width: 100%;
+  color: #1a1a1a;
+  background-color:#1a1a1a ;
 }

@@ -142,17 +142,24 @@ Page({
       success(res) {
         if (res.confirm) {
           console.log('用户点击确定')
+          console.log('selfOpenid: ',that.data.teacher.openid)
+          console.log('dropOpenid:',openid)
           wx.cloud.callFunction({
             name: 'dropRelation',
             data: {
-              selfOpenid: this.data.openid,
+              selfOpenid: that.data.teacher.openid,
               dropOpenid: openid
             }
           }).then(function(res) {
             console.log("【teacherMatch调用函数deleteMember】", res)
-            let list = that.data.teacher.studentAdopt.splice(index - 1, 1)
+            that.data.teacher.studentAdopt.splice(index - 1, 1)
             that.setData({
-              ['teacher.studentAdopt']: list
+              ['teacher.studentAdopt']: that.data.teacher.studentAdopt
+            })
+            wx.showToast({
+              title: '删除成功！',
+              duration: 1000,
+              icon: 'none'
             })
           }).catch(function(err) {
             console.log(err)

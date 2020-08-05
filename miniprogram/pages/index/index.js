@@ -138,11 +138,14 @@ Page({
           this.getDays(res.result[0].registerDate)
           app.globalData.userInfo = res.result[0]
           app.globalData.isNew = false
-          if (res.result[0].matchInfo != null) {
+          if (res.result[0].matchInfo != null ) {
             app.globalData.isMatch = true
             app.globalData.matchInfo = res.result[0].matchInfo
           } else {
             app.globalData.isMatch = false
+            if(res.result[0].matchInfo != null){
+              app.globalData.matchInfo = res.result[0].matchInfo
+            }
           }
           app.globalData.name = res.result[0].name
           app.globalData.isTeacher = res.result[0].job
