@@ -29,6 +29,7 @@ exports.main = async (event, context) => {
   var len = 0
   var markDate = new Date(new Date().getTime() - 10 * 24 * 60 * 60 * 1000)
   var result = []
+  var ids = [""]
 
   //超过十天未匹配、全匹配
   var res = await db.collection('person').limit(TOTAL_LEN - len).where({
@@ -36,18 +37,16 @@ exports.main = async (event, context) => {
     isCheck: 1,
     matchList: _.size(0),
     registerDate: _.lt(markDate),
+    openid: _.nin(ids),
     schoolID: schoolID,
-    'perInfo.speciality': _.all([keys[0], keys[1], keys[2]]),
-    openid: _.exists(true),
-    openid: _.neq('')
+    'perInfo.speciality': _.all(keys)
   }, ).get()
   len = res.data.length
   result = result.concat(res.data)
-  console.log('第一类匹配情况：', res.data, 'ids(未添加本次的id)', ids, '匹配总人数：', len)
+  console.log('第一类匹配情况(超过十天未匹配、全匹配)：', res.data, 'ids(未添加本次的id)', ids, '匹配总人数：', len)
 
   if (len < 3) {
     //超过十天未匹配，部分匹配
-    var ids = []
     for (var item of res.data) {
       ids.push(item.openid)
     }
@@ -63,13 +62,11 @@ exports.main = async (event, context) => {
         _.all([keys[0], keys[1]]),
         _.all([keys[0], keys[2]]),
         _.all([keys[1], keys[2]])
-      ]),
-      openid: _.exists(true),
-      openid: _.neq('')
+      ])
     }, ).get()
     len = len + res1.data.length
     result = result.concat(res1.data)
-    console.log('第二类匹配情况：', res1.data, 'ids(未添加本次的id)', ids, '匹配总人数：', len)
+    console.log('第二类匹配情况(超过十天未匹配，两个符合匹配)：', res1.data, 'ids(未添加本次的id)', ids, '匹配总人数：', len)
 
     if (len < 3) {
       for (var item of res1.data) {
@@ -88,13 +85,11 @@ exports.main = async (event, context) => {
           _.all([keys[0]]),
           _.all([keys[1]]),
           _.all([keys[2]])
-        ]),
-        openid: _.exists(true),
-        openid: _.neq('')
+        ])
       }, ).get()
       len = len + res2.data.length
       result = result.concat(res2.data)
-      console.log('第三类匹配情况：', res2.data, 'ids(未添加本次的id)', ids, '匹配总人数：', len)
+      console.log('第三类匹配情况(超过十天未匹配，单个匹配)：', res2.data, 'ids(未添加本次的id)', ids, '匹配总人数：', len)
 
       if (len < 3) {
         for (var item of res2.data) {
@@ -103,18 +98,16 @@ exports.main = async (event, context) => {
 
         //未超过十天匹配成功，全匹配
         var res3 = await db.collection('person').limit(TOTAL_LEN).where({
-          'perInfo.speciality': _.all([keys[0], keys[1], keys[2]]),
+          'perInfo.speciality': _.all(keys),
           job: 1,
           isCheck: 1,
           openid: _.nin(ids),
           schoolID: schoolID,
-          isMatchFull: false,
-          openid: _.exists(true),
-          openid: _.neq('')
+          isMatchFull: false
         }).get()
         len = len + res3.data.length
         result = result.concat(res3.data)
-        console.log('第四类匹配情况：', res3.data, 'ids(未添加本次的id)', ids, '匹配总人数：', len)
+        console.log('第四类匹配情况（未超过十天匹配成功，全匹配）：', res3.data, 'ids(未添加本次的id)', ids, '匹配总人数：', len)
 
         if (len < 3) {
           for (var item of res3.data) {
@@ -131,13 +124,11 @@ exports.main = async (event, context) => {
             openid: _.nin(ids),
             job: 1,
             schoolID: schoolID,
-            isMatchFull: false,
-            openid: _.exists(true),
-            openid: _.neq('')
+            isMatchFull: false
           }).get()
           len = len + res4.data.length
           result = result.concat(res4.data)
-          console.log('第五类匹配情况：', res4.data, 'ids(未添加本次的id)', ids, '匹配总人数：', len)
+          console.log('第五类匹配情况（未超过十天匹配成功，两个匹配）：', res4.data, 'ids(未添加本次的id)', ids, '匹配总人数：', len)
 
           if (len < 3) {
             for (var item of res4.data) {
@@ -154,11 +145,10 @@ exports.main = async (event, context) => {
               job: 1,
               isCheck: 1,
               schoolID: schoolID,
-              isMatchFull: false,
-              openid: _.neq('')
+              isMatchFull: false
             }).get()
             result = result.concat(res5.data)
-            console.log('第六类匹配情况：', res5.data, 'ids(未添加本次的id)', ids, '匹配总人数：', len + res5.data.length)
+            console.log('第六类匹配情况（未超过十天匹配成功，仅匹配一项）：', res5.data, '不参与匹配的openids(未添加本次的id)', ids, '匹配总人数：', len + res5.data.length)
           }
         }
       }

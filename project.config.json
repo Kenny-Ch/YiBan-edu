@@ -267,7 +267,7 @@
 					"id": 30,
 					"name": "pages/manager/viewTeacher/viewTeacher",
 					"pathName": "pages/manager/viewTeacher/viewTeacher",
-					"query": "",
+					"query": "type=match&schoolID=0001",
 					"scene": null
 				},
 				{
