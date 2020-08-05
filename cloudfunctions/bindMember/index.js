@@ -35,15 +35,15 @@ exports.main = async (event, context) => {
           openid: event.openid
         }
       })
-      if (event.hasOwnProperty("isSponsor") && event.isSponsor == true) {
-        db.collection('networkSchool').where({
-          schoolID: res.data[0].schoolID
-        }).update({
-          data: {
-            openid: event.openid
-          }
-        })
-      }
+      // if (event.hasOwnProperty("isSponsor") && event.isSponsor == true) {
+      //   db.collection('networkSchool').where({
+      //     schoolID: res.data[0].schoolID
+      //   }).update({
+      //     data: {
+      //       openid: event.openid
+      //     }
+      //   })
+      // }
       return '绑定成功！'
     } else if(res.data[0].openid.length>0){
       console.log('已经绑定了账号',res)

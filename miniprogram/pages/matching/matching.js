@@ -104,43 +104,43 @@ Page({
         inputInfo: e.detail.value || '请填写你的网校编号'
     });
   },
-  goToUserLicence: function() {
+  goToUserLicence: function () {
     wx.navigateTo({
       url: './licence/licence',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
+      success: function (res) {},
+      fail: function (res) {},
+      complete: function (res) {},
     })
   },
-  choose_Change: function(e) {
+  choose_Change: function (e) {
     console.log('情景题选择：', e.detail.value)
     this.setData({
       one: e.detail.value,
     })
   },
-  getAnswer: function(e) {
+  getAnswer: function (e) {
     console.log("answer:", e.detail.value)
     this.data.answer = e.detail.value
   },
-  class_Change: function(e) {
+  class_Change: function (e) {
     console.log('是否接受不定期班会：', e.detail.value)
     this.setData({
       class: e.detail.value,
     })
   },
-  punch_Change: function(e) {
+  punch_Change: function (e) {
     console.log('是否愿意参加每日打卡记录学习情况：', e.detail.value)
     this.setData({
       punch: e.detail.value,
     })
   },
-  getAlong_Change: function(e) {
+  getAlong_Change: function (e) {
     console.log('是否愿意与志愿者老师好好相处并学到知识：', e.detail.value)
     this.setData({
       getAlong: e.detail.value,
     })
   },
-  checkboxChange: function(e) {
+  checkboxChange: function (e) {
     console.log(e)
     console.log('checkbox发生change事件，携带value值为：', e.detail.value)
     console.log("长度:" + e.detail.value.length);
@@ -173,35 +173,44 @@ Page({
     }
 
   },
-  fraction: function(e) {
+  fraction: function (e) {
     let index = e.target.dataset.index - 1
     let score = "subject[" + index + "].score"
     this.setData({
       [score]: e.detail.value
     })
   },
-  getCustom: function(e) {
+  getCustom: function (e) {
     console.log("custom:", e.detail.value)
     this.data.custom = e.detail.value
   },
-  getWilling: function(e) {
+  getWilling: function (e) {
     console.log("willing:", e.detail.value)
     this.data.willing = e.detail.value
   },
-  myCancel: function(e) {
+  myCancel: function (e) {
     this.setData({
       sub: false,
     })
   },
-  formSubmit: function(e) {
-    this.setData({
-      sub: true,
-    })
+  formSubmit: function (e) {
+    if(this.data.userAgree==false){
+      this.setData({
+        sub: true,
+      })
+    }
+    else{
+      this.uploadMatchInfo()
+    }
   },
-  uploadMatchInfo: function(e) {
+  uploadMatchInfo: function (e) {
     var weakSubject = {};
+    wx.showLoading({
+      title: '加载中',
+    })
     this.setData({
-      isDisabled:true
+      isDisabled: true,
+      userAgree:true
     })
     for (let sub of this.data.subject) {
       if (sub.checked == true)
@@ -210,76 +219,117 @@ Page({
     console.log("wak", weakSubject)
     // 检验不合格
     if (this.data.custom == '' || this.data.willing == '' || this.data.answer == '') {
+      wx.hideLoading()
       wx.showToast({
         title: '请填写完整信息！',
         duration: 1000,
         icon: 'none'
       })
       this.setData({
-        isDisabled:false
+        isDisabled: false
       })
     } else if (weakSubject == undefined) {
+      wx.hideLoading()
       wx.showToast({
         title: '输入的分数有误！',
         icon: 'none'
       })
       this.setData({
-        isDisabled:false
+        isDisabled: false
       })
     }
     //检验合格
     else {
       var that = this
       const app = getApp()
-      let data = {
-        'openid': app.globalData.openid,
-        'weakSubject': weakSubject,
-        'willCheckIn': that.data.punch,
-        'willMeeting': that.data.class,
-        'willGetAlong': that.data.getAlong,
-        'habitAndPlan': that.data.custom,
-        'expectation': that.data.willing,
-        'oneQuestion': that.data.one,
-        'answer': that.data.answer,
-        'schoolID': that.data.networkNo
-      }
-      wx.cloud.callFunction({
-        name: 'uploadMatchInfo',
-        data: data,
-      }).then(function(res) {
-        console.log("【matching调用函数uploadMatchInfo】")
-        console.log('匹配信息添加成功！', res)
 
-        wx.showToast({
-          title: '登记成功！',
-          icon: 'success',
-          mask: true,
-          success: function() {
-            app.globalData.matchInfo = data
-            app.globalData.matchList = []
-            app.globalData.matchWaitList = []
-            app.globalData.userInfo.matchReject = false
-            setTimeout(function() {
-              wx.redirectTo({
-                url: './result/result',
+      //判断学校是否有至少一个科目匹配的老师
+      var keys = []
+      for (let key in weakSubject) {
+        keys.push(key)
+      }
+      const db = wx.cloud.database()
+      const _ = db.command
+      db.collection('person').where({
+          schoolID: that.data.networkNo,
+          job: 1,
+          isCheck: 1,
+          isMatchFull: false,
+          openid: db.command.neq(""),
+          'perInfo.speciality': _.or([
+            _.all([keys[0]]),
+            _.all([keys[1]]),
+            _.all([keys[2]])
+          ])
+        })
+        .limit(1)
+        .get()
+        .then(function (ress) {
+          wx.hideLoading()
+          if (ress.data.length == 1) {
+            let data = {
+              'openid': app.globalData.openid,
+              'weakSubject': weakSubject,
+              'willCheckIn': that.data.punch,
+              'willMeeting': that.data.class,
+              'willGetAlong': that.data.getAlong,
+              'habitAndPlan': that.data.custom,
+              'expectation': that.data.willing,
+              'oneQuestion': that.data.one,
+              'answer': that.data.answer,
+              'schoolID': that.data.networkNo
+            }
+            wx.cloud.callFunction({
+              name: 'uploadMatchInfo',
+              data: data,
+            }).then(function (res) {
+              console.log("【matching调用函数uploadMatchInfo】")
+              console.log('匹配信息添加成功！', res)
+              wx.hideLoading()
+              wx.showToast({
+                title: '登记成功！',
+                icon: 'success',
+                mask: true,
+                success: function () {
+                  app.globalData.matchInfo = data
+                  app.globalData.matchList = []
+                  app.globalData.matchWaitList = []
+                  app.globalData.userInfo.matchReject = false
+                  setTimeout(function () {
+                    wx.redirectTo({
+                      url: './result/result',
+                    })
+                  }, 1500)
+                }
               })
-            }, 1500)
+
+            }).catch(function (err) {
+              wx.hideLoading()
+              console.log('匹配信息添加失败!', err)
+            })
+          } else {
+            wx.showToast({
+              title: '该网校未有和您匹配的老师，请另选其他网校！',
+              icon: 'none',
+              duration: 2000
+            })
+            that.setData({
+              networkNo: '',
+              sub: false,
+              inputInfo:'',
+              isDisabled: false
+            })
           }
         })
-        
-      }).catch(function(err) {
-        console.log('匹配信息添加失败!', err)
-      })
     }
 
   },
   /**
    * 生命周期函数--监听页面加载3
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     const app = getApp()
     if (app.globalData.matchInfo != undefined) {
-      console.log('有的有的')
       let info = app.globalData.matchInfo
       this.setData({
         subject: [{
@@ -357,7 +407,7 @@ Page({
     }
   },
 
-  networkSchool: function(options) {
+  networkSchool: function (options) {
     wx.showLoading({
       title: '加载中',
     })
@@ -366,24 +416,53 @@ Page({
     db.collection('networkSchool').where({
         schoolID: options.detail.value.networkNo
       }).get()
-      .then(function(res) {
+      .then(function (res) {
         console.log("【matching查询数据库networkSchool】", res)
+        wx.hideLoading()
         if (res.data.length == 0) {
           //不存在该网校
           that.setData({
-            networkNo: ''
+            networkNo: '',
+            inputInfo:''
           })
           wx.showToast({
             title: '不存在该网校！',
-            icon: 'none'
+            icon: 'none',
+            duration: 1500
           })
         } else {
-          that.setData({
-            networkNo: options.detail.value.networkNo
-          })
+          db.collection('person').where({
+              schoolID: options.detail.value.networkNo,
+              job: 1,
+              isCheck: 1,
+              isMatchFull: false,
+              openid: db.command.neq("")
+            })
+            .limit(1)
+            .get()
+            .then(function (ress) {
+              if (ress.data.length == 1) {
+                that.setData({
+                  networkNo: options.detail.value.networkNo,
+                  inputInfo:options.detail.value.networkNo
+                })
+              } else {
+                that.setData({
+                  networkNo: '',
+                  inputInfo:''
+                })
+                wx.showToast({
+                  title: '该网校未有空闲的老师,请另选其他网校！',
+                  icon: 'none',
+                  duration: 1500
+                })
+              }
+            })
+
+
         }
-        wx.hideLoading()
-      }).catch(function(err) {
+        
+      }).catch(function (err) {
         console.log(err)
       })
   },
@@ -392,49 +471,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

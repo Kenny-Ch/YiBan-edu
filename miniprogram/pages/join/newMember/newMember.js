@@ -199,6 +199,7 @@ Page({
     }).get()
       .then(function (res) {
         console.log("【matching查询数据库networkSchool】", res)
+        wx.hideLoading()
         if (res.data.length == 0) {
           //不存在该网校
           that.setData({
@@ -213,7 +214,6 @@ Page({
             networkNo: options.detail.value.networkNo
           })
         }
-        wx.hideLoading()
       }).catch(function (err) {
         console.log(err)
       })
