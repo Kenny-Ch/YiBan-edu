@@ -249,6 +249,7 @@ Page({
       }).then(function(res) {
         console.log("【matching调用函数uploadMatchInfo】")
         console.log('匹配信息添加成功！', res)
+
         wx.showToast({
           title: '登记成功！',
           icon: 'success',
@@ -265,7 +266,7 @@ Page({
             }, 1500)
           }
         })
-
+        
       }).catch(function(err) {
         console.log('匹配信息添加失败!', err)
       })
