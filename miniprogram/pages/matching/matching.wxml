@@ -69,7 +69,7 @@
 
 </view>
 
-<view wx:if='{{networkNo==""}}'>
+<!-- <view wx:if='{{networkNo==""}}'>
   <form bindsubmit="networkSchool">
     <view catchtouchmove="catchtouchmove" class="tips">
       <cover-view class="tips_box">
@@ -87,4 +87,4 @@
       </cover-view>
     </view>
   </form>
-</view>
+</view> -->

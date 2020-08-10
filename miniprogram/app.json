@@ -39,7 +39,8 @@
     "pages/sponsor/binding/binding",
     "pages/ambassador/ambassador",
     "pages/manager/viewSchool/viewSchool",
-    "pages/sponsor/managerSponsor/managerSponsor"
+    "pages/sponsor/managerSponsor/managerSponsor",
+    "pages/matching/chooseSchool/chooseSchool"
   ],
   "window": {
     "navigationStyle": "custom",
@@ -58,6 +59,5 @@
     "cu-custom": "/colorui/components/cu-custom",
     "towxml": "/towxml/towxml"
   },
-  "plugins": {
-  }
+  "plugins": {}
 }

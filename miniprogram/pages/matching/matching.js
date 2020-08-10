@@ -407,65 +407,6 @@ Page({
     }
   },
 
-  networkSchool: function (options) {
-    wx.showLoading({
-      title: '加载中',
-    })
-    const db = wx.cloud.database()
-    let that = this
-    db.collection('networkSchool').where({
-        schoolID: options.detail.value.networkNo
-      }).get()
-      .then(function (res) {
-        console.log("【matching查询数据库networkSchool】", res)
-        wx.hideLoading()
-        if (res.data.length == 0) {
-          //不存在该网校
-          that.setData({
-            networkNo: '',
-            inputInfo:''
-          })
-          wx.showToast({
-            title: '不存在该网校！',
-            icon: 'none',
-            duration: 1500
-          })
-        } else {
-          db.collection('person').where({
-              schoolID: options.detail.value.networkNo,
-              job: 1,
-              isCheck: 1,
-              isMatchFull: false,
-              openid: db.command.neq("")
-            })
-            .limit(1)
-            .get()
-            .then(function (ress) {
-              if (ress.data.length == 1) {
-                that.setData({
-                  networkNo: options.detail.value.networkNo,
-                  inputInfo:options.detail.value.networkNo
-                })
-              } else {
-                that.setData({
-                  networkNo: '',
-                  inputInfo:''
-                })
-                wx.showToast({
-                  title: '该网校未有空闲的老师,请另选其他网校！',
-                  icon: 'none',
-                  duration: 1500
-                })
-              }
-            })
-
-
-        }
-        
-      }).catch(function (err) {
-        console.log(err)
-      })
-  },
 
 
   /**

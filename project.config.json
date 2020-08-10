@@ -486,6 +486,12 @@
 					"pathName": "pages/display/classroom/classroom",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/matching/chooseSchool/chooseSchool",
+					"pathName": "pages/matching/chooseSchool/chooseSchool",
+					"scene": null
 				}
 			]
 		}
