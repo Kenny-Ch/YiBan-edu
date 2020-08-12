@@ -88,20 +88,20 @@ Page({
     sub: false,
     userAgree: false,
     networkNo: '', //网校编号
-    isDisabled:false,
-    inputInfo:'请填写你的网校编号'
+    isDisabled: false,
+    inputInfo: '请填写你的网校编号'
   },
   tapInput() {
     this.setData({
-        //在真机上将焦点给input
-        inputFocus:true,
-        //初始占位清空
-        inputInfo: ''
+      //在真机上将焦点给input
+      inputFocus: true,
+      //初始占位清空
+      inputInfo: ''
     });
   },
   blurInput(e) {
     this.setData({
-        inputInfo: e.detail.value || '请填写你的网校编号'
+      inputInfo: e.detail.value || '请填写你的网校编号'
     });
   },
   goToUserLicence: function () {
@@ -194,12 +194,11 @@ Page({
     })
   },
   formSubmit: function (e) {
-    if(this.data.userAgree==false){
+    if (this.data.userAgree == false) {
       this.setData({
         sub: true,
       })
-    }
-    else{
+    } else {
       this.uploadMatchInfo()
     }
   },
@@ -210,7 +209,7 @@ Page({
     })
     this.setData({
       isDisabled: true,
-      userAgree:true
+      userAgree: true
     })
     for (let sub of this.data.subject) {
       if (sub.checked == true)
@@ -308,17 +307,36 @@ Page({
               console.log('匹配信息添加失败!', err)
             })
           } else {
-            wx.showToast({
-              title: '该网校未有和您匹配的老师，请另选其他网校！',
-              icon: 'none',
-              duration: 2000
+            wx.hideLoading()
+            wx.showModal({
+              title: '提示',
+              content: '该网校未有和您匹配的老师，请另选其他网校！',
+              success(res) {
+                var schid = that.data.networkNo
+                that.setData({
+                  sub: false,
+                  inputInfo: '',
+                  isDisabled: false
+                })
+                if (res.confirm) {
+                  console.log('用户点击确定')
+
+                  wx.navigateTo({
+                    url: '/pages/matching/chooseSchool/chooseSchool?schoolID=' + schid,
+                    events: '',
+                    success: (result) => {},
+                    fail: (res) => {},
+                    complete: (res) => {},
+
+                  })
+                } else if (res.cancel) {
+                  console.log('用户点击取消')
+                }
+              }
             })
-            that.setData({
-              networkNo: '',
-              sub: false,
-              inputInfo:'',
-              isDisabled: false
-            })
+
+
+
           }
         })
     }
@@ -328,6 +346,11 @@ Page({
    * 生命周期函数--监听页面加载3
    */
   onLoad: function (options) {
+    if (options.schoolID) {
+      this.setData({
+        networkNo: options.schoolID
+      })
+    }
     const app = getApp()
     if (app.globalData.matchInfo != undefined) {
       let info = app.globalData.matchInfo

@@ -168,7 +168,7 @@ Page({
             //是学生的情况
             if (app.globalData.userInfo.matchReject) {
               //匹配失败
-              item.url = "../matching/matching"
+              item.url = "../matching/chooseSchool/chooseSchool"
             } else if (app.globalData.userInfo.matchWaitList.length != 0) {
               //这里跳转待审核界面
               item.url = "../matching/teacher/teacher?status=false&id=" + app.globalData.userInfo.matchWaitList[0];
@@ -187,7 +187,7 @@ Page({
             item.title = "高考陪伴公益行";
             item.small_title = "对教育资源较为落后的四五线城市高中生进行“一对一高考陪伴”，助力高中生考上理想的大学院校！";
             item.button = "开始匹配";
-            item.url = "../matching/matching";
+            item.url = "../matching/chooseSchool/chooseSchool";
             if ((app.globalData.userInfo.hasOwnProperty("job") && app.globalData.userInfo.job == 2) || (app.globalData.userInfo.hasOwnProperty("isSponsor") && app.globalData.userInfo.isSponsor == false)) {
               //break
             } else {
@@ -230,7 +230,7 @@ Page({
           item.title = "高考陪伴公益行";
           item.small_title = "对教育资源较为落后的四五线城市高中生进行“一对一高考陪伴”，助力高中生考上理想的大学院校！";
           item.button = "开始匹配";
-          item.url = "../matching/matching";
+          item.url = "../matching/chooseSchool/chooseSchool";
           if ((app.globalData.userInfo.hasOwnProperty("job") && app.globalData.userInfo.job == 2) || (app.globalData.userInfo.hasOwnProperty("isSponsor") && app.globalData.userInfo.isSponsor == false)) {
             //break
           } else {
@@ -414,7 +414,7 @@ Page({
 
   jumpSwiper: function (e) {
     let url = e.currentTarget.dataset.url
-    if (url == '../matching/matching') {
+    if (url == '../matching/chooseSchool/chooseSchool') {
       if (app.globalData.isNew) {
         wx.showToast({
           title: '请先注册！',
@@ -439,7 +439,7 @@ Page({
             if (res.confirm) {
               console.log('用户点击确定')
               wx.navigateTo({
-                url: '../matching/matching',
+                url: '../matching/chooseSchool/chooseSchool',
               })
             } else if (res.cancel) {
               console.log('用户点击取消')
@@ -448,7 +448,7 @@ Page({
         })
       } else {
         wx.navigateTo({
-          url: '../matching/matching'
+          url: '../matching/chooseSchool/chooseSchool'
         })
       }
     }

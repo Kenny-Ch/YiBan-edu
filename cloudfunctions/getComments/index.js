@@ -24,16 +24,16 @@ exports.main = async (event, context) => {
     const batchTimes = Math.ceil(total / 100)
 
     // 承载所有读操作的 promise 的数组
-    const comments = []
+    var comments = []
 
     for (let i = 0; i < batchTimes; i++) {
       var res = await db.collection('comments').skip(i * MAX_LIMIT).limit(MAX_LIMIT).where({
         openid: event.openid
       }).get()
-      comments.push(res.data)
+      comments = comments.concat(res.data)
     }
 
-    return comments
+    return [comments]
   
   } else {
       //获取所有评论
@@ -46,13 +46,13 @@ exports.main = async (event, context) => {
       const batchTimes = Math.ceil(total / 100)
   
       // 承载所有读操作的 promise 的数组
-      const comments = []
+      var comments = []
   
       for (let i = 0; i < batchTimes; i++) {
         var res = await db.collection('comments').skip(i * MAX_LIMIT).limit(MAX_LIMIT).get()
-        comments.push(res.data)
+        comments =  comments.concat(res.data)
       }
-      return comments
+      return [comments]
     
   }
 }

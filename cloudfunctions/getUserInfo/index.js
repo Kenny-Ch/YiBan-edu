@@ -21,13 +21,13 @@ exports.main = async (event, context) => {
    const batchTimes = Math.ceil(total / 100)
  
    // 承载所有读操作的 promise 的数组
-   const persons = []
+   var persons = []
  
    for (let i = 0; i < batchTimes; i++) {
      var res = await db.collection('person').skip(i * MAX_LIMIT).limit(MAX_LIMIT).where(event.selection).get()
-       persons.push(res.data)
+       persons = persons.concat(res.data)
    }
-   return persons
+   return [persons]
   } else {
     var res = await db.collection('person').where({
       openid: event.openid

@@ -29,17 +29,17 @@ exports.main = async (event, context) => {
     const batchTimes = Math.ceil(total / 100)
 
     // 承载所有读操作的 promise 的数组
-    const questions = []
+    var questions = []
 
     for (let i = 0; i < batchTimes; i++) {
       var res = await db.collection('question').skip(i * MAX_LIMIT).limit(MAX_LIMIT).where({
         flag: event.flag
       })
       .get()
-      questions.push(res.data)
+      questions = questions.concat(res.data)
     }
 
-    return questions
+    return [questions]
 
   } else if (flag == 'usingQue') {
     //usingQue：个人中心-常见问题
@@ -62,7 +62,7 @@ exports.main = async (event, context) => {
       questions = questions.concat(res.data)
     }
 
-    return questions
+    return [questions]
 
   } else if (flag == 'pressQue') {
     //pressQue:心灵解压馆-压力疏导-常见问题解答
@@ -85,7 +85,7 @@ exports.main = async (event, context) => {
       questions = questions.concat(res.data)
     }
 
-    return questions
+    return [questions]
     
   }
 }
