@@ -213,7 +213,7 @@ Page({
             item.url = 'error'
           }
           if (app.globalData.userInfo.otherInfo != undefined) {
-            if (app.globalData.userInfo.hasOwnProperty("job") && app.globalData.userInfo.job != 2)
+            if ((app.globalData.userInfo.hasOwnProperty("isSponsor") && app.globalData.isSponsor) || app.globalData.userInfo.hasOwnProperty("job") && app.globalData.userInfo.job != 2)
               list.push(item)
           }
         } else {
@@ -263,7 +263,7 @@ Page({
           } else {
             item2.url = "../join/join";
           }
-          if (app.globalData.isNew == true || (app.globalData.userInfo.hasOwnProperty("job") && app.globalData.userInfo.job != 2))
+          if (app.globalData.isNew == true || (app.globalData.userInfo.hasOwnProperty("isSponsor") && app.globalData.isSponsor) || (app.globalData.userInfo.hasOwnProperty("job") && app.globalData.userInfo.job != 2))
             list.push(item2)
 
 
@@ -386,7 +386,7 @@ Page({
       wx.navigateTo({
         url: url
       })
-    } 
+    }
     else if (!app.globalData.isMatch) {
       console.log("err")
       wx.showToast({
@@ -395,7 +395,7 @@ Page({
         duration: 1500,
         mask: true
       })
-    } 
+    }
     else {
       wx.navigateTo({
         url: url
