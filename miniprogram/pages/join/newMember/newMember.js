@@ -20,6 +20,7 @@ Page({
     shuoming: '说明：请将学生证上包含照片、姓名、院系、专业等信息的照片上传。若拍摄时无法拍成一张，请用ps、画图等软件合并到一张图中。',
     img: "../../../images/my/tupianimgyulan.png",
     networkNo: '', //网校编号
+    isDisabled:false,
   },
   RegionChange: function(e) {
     console.log('地区选择：', e.detail.value)
@@ -95,6 +96,9 @@ Page({
     let input = e.detail.value
     let pick = that.data
     console.log(input)
+    that.setData({
+      isDisabled:true
+    })
     wx.getSetting({
       success: function(res) {
         if (!res.authSetting['scope.userInfo']) {
@@ -103,12 +107,18 @@ Page({
             icon: 'none',
             duration: 1500,
           })
+          that.setData({
+            isDisabled:false
+          })
           return
         } else if (input.name == "" || input.major == "" || input.school == "" || input.wechat == "" || input.tel == "" || input.email == "" || pick.grade == undefined || pick.fileID == undefined || pick.region == undefined) {
           wx.showToast({
             title: '信息填写不完整~',
             icon: 'none',
             duration: 1500
+          })
+          that.setData({
+            isDisabled:false
           })
         } else {
           wx.cloud.callFunction({
@@ -169,6 +179,9 @@ Page({
             })
           }).catch(function(err) {
             console.log(err)
+            that.setData({
+              isDisabled:false
+            })
           })
         }
       }
@@ -186,6 +199,7 @@ Page({
     }).get()
       .then(function (res) {
         console.log("【matching查询数据库networkSchool】", res)
+        wx.hideLoading()
         if (res.data.length == 0) {
           //不存在该网校
           that.setData({
@@ -200,7 +214,6 @@ Page({
             networkNo: options.detail.value.networkNo
           })
         }
-        wx.hideLoading()
       }).catch(function (err) {
         console.log(err)
       })

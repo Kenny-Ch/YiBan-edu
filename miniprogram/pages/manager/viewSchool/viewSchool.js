@@ -34,15 +34,32 @@ Page({
     const app = getApp()
     const db = wx.cloud.database()
     let that = this
-    db.collection('networkSchool').get()
-      .then(function(res) {
+    wx.cloud.callFunction({
+      name: 'getSchoolInfo',
+      // 传递给云函数的参数
+      data: {},
+      success: res => {
         console.log("【manager/viewSchool查询数据库networkSchool】", res)
         that.setData({
-          school: res.data
+          school: res.result[0]
         })
-      }).catch(function(err) {
-        console.log(err);
-      })
+      },
+      fail: err => {
+        console.log(err)
+      },
+      complete: () => {
+        // ...
+      }
+    })
+    // db.collection('networkSchool').get()
+    //   .then(function(res) {
+    //     console.log("【manager/viewSchool查询数据库networkSchool】", res)
+    //     that.setData({
+    //       school: res.data
+    //     })
+    //   }).catch(function(err) {
+    //     console.log(err);
+    //   })
   },
 
   /**

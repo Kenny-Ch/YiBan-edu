@@ -17,7 +17,6 @@
 <!--标题以下-->
 <view class='under'>
   <!--可移动卡片-->
-  
     <swiper class="card-swiper" indicator-dots="{{false}}" bindchange="cardSwiper">
       <swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}}">
         <view class="swiper-item">
@@ -55,7 +54,6 @@
     </view>
     <!--三大部分-->
     <scroll-view scroll-x class='three-nav' scroll-left='{{x}}' scroll-with-animation='true' bindtap='tabSelect'>
-    
       <text wx:for='{{three}}' wx:key='{{index}}' class='item-nav {{i==index ? "active" : ""}}' data-i='{{index}}'>{{item.title}}</text>
     </scroll-view>
     <swiper current="{{i}}" class="swiper-box" duration="300" style="height:920rpx" bindchange="bindChange">

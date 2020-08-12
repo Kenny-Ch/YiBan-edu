@@ -4,17 +4,37 @@ cloud.init({
   env: cloud.DYNAMIC_CURRENT_ENV
 })
 const db = cloud.database()
+const MAX_LIMIT = 100
 
 /*  参数表：
     "openid": "", 个人的openid
 */
 
 // 云函数入口函数
-exports.main = async (event, context) => {
-  var res = await db.collection('person').where({
-    openid: event.openid
-  }).get()
-  return res.data
+exports.main = async (event, context) => {  
+  console.log('传入的参数是：',event)
+  if(event.hasOwnProperty('selection')) {
+    const countResult = await db.collection('person').where(event.selection).count()
+   const total = countResult.total
+ 
+   // 计算需分几次取
+   const batchTimes = Math.ceil(total / 100)
+ 
+   // 承载所有读操作的 promise 的数组
+   const persons = []
+ 
+   for (let i = 0; i < batchTimes; i++) {
+     var res = await db.collection('person').skip(i * MAX_LIMIT).limit(MAX_LIMIT).where(event.selection).get()
+       persons.push(res.data)
+   }
+   return persons
+  } else {
+    var res = await db.collection('person').where({
+      openid: event.openid
+    }).get()
+    return res.data
+  }
+  
 }
 /* 返回值:
   {

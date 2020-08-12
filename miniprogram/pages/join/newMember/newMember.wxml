@@ -43,7 +43,7 @@
     </view>
     <view class='shuoming'>{{shuoming}}</view>
   </view>
-  <button bindgetuserinfo="getInfo" form-type="submit" open-type="getUserInfo" style="width: 650rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn'>登陆</button>
+  <button bindgetuserinfo="getInfo" form-type="submit" disabled='{{isDisabled}}' open-type="getUserInfo" style="width: 650rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn'>登陆</button>
 </form>
 <view wx:if='{{networkNo==""}}'>
   <form bindsubmit="networkSchool">

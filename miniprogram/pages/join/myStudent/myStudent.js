@@ -33,7 +33,7 @@ Page({
       //   }
       // ],
     },
-
+    text:"暂时无匹配的学生",
   },
 
   /**
@@ -70,7 +70,8 @@ Page({
           teacher: {
             name: res.result.list[0].name,
             student: matchWaitList,
-            studentAdopt: matchList
+            studentAdopt: matchList,
+            openid: res.result.list[0].openid
           }
         })
       })
@@ -123,9 +124,10 @@ Page({
         if (res.confirm) {
           console.log('用户点击确定')
           wx.cloud.callFunction({
-            name: 'deleteMember',
+            name: 'dropRelation',
             data: {
-              openid: openid
+              selfOpenid: this.data.openid,
+              dropOpenid: openid
             }
           }).then(function (res) {
             console.log("【teacherMatch调用函数deleteMember】", res)

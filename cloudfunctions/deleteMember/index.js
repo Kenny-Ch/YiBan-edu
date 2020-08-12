@@ -11,17 +11,28 @@ const _ = db.command
 */
 
 // 云函数入口函数
-exports.main = async(event, context) => {
+exports.main = async (event, context) => {
   console.log("传入参数", event)
 
-  var res = await db.collection('person').where({
-    openid: event.openid
-  }).field({
-    matchList: true,
-    matchWaitList: true,
-    job:true,
-    schoolID: true
-  }).get()
+  if (event.openid != undefined) {
+    var res = await db.collection('person').where({
+      openid: event.openid
+    }).field({
+      matchList: true,
+      matchWaitList: true,
+      job: true,
+      schoolID: true
+    }).get()
+  } else {
+    var res = await db.collection('person').where({
+      _id: event._id
+    }).field({
+      matchList: true,
+      matchWaitList: true,
+      job: true,
+      schoolID: true
+    }).get()
+  }
   console.log("删除成员的信息", res.data[0])
 
   if (res.data[0].matchWaitList.length != 0) {
@@ -47,23 +58,47 @@ exports.main = async(event, context) => {
     }
   }
 
-  if(res.data[0].job == 1 && res.data[0].hasOwnProperty("schoolID")){
+  if (res.data[0].job == 1 && res.data[0].hasOwnProperty("schoolID")) {
     db.collection('networkSchool').where({
-      schoolID: res.data[0].schoolID
-    }).update({
-      data:{
-        teacherNum:_.inc(-1)
-      }
-    }).then(console.log)
-    .catch(console.error)
+        schoolID: res.data[0].schoolID
+      }).update({
+        data: {
+          teacherNum: _.inc(-1)
+        }
+      }).then(console.log)
+      .catch(console.error)
   }
 
   try {
+    if(event.openid != undefined) {
     await db.collection('person').where({
       openid: event.openid
-    }).remove()
+    }).update({
+      data:{
+        isCheck: 0,
+        isMatchFull: false,
+        otherInfo: _.remove(),
+        'perInfo.speciality': _.remove(),
+        'perInfo.introduction': _.remove(),
+        'perInfo.stuNum': _.remove()
+      }
+    })
+  } else {
+    await db.collection('person').where({
+      _id: event._id
+    }).update({
+      data:{
+        isCheck: 0,
+        isMatchFull: false,
+        otherInfo: _.remove(),
+        'perInfo.speciality': _.remove(),
+        'perInfo.introduction': _.remove(),
+        'perInfo.stuNum': _.remove()
+      }
+    })
+  }
 
-    cloud.callFunction({
+    await cloud.callFunction({
       name: "recordTimeNode",
       data: {
         flag: "loginOut",

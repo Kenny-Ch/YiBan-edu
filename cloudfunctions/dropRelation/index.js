@@ -32,7 +32,7 @@ exports.main = async (event, context) => {
     if(res.data[0].matchList[i] != event.dropOpenid){
       list.push(res.data[0].matchList[i])
     } else {
-      cloud.callFunction({
+      await cloud.callFunction({
         name: "recordTimeNode",
         data: {
           flag: "matchEnd",
@@ -42,16 +42,16 @@ exports.main = async (event, context) => {
           openid: event.dropOpenid
         }
       })
-      cloud.callFunction({
-        name: "recordTimeNode",
-        data: {
-          flag: "matchBegin",
-          isNew: false,
-          otherOpenid: event.dropOpenid,
-          otherName: "",
-          openid: event.selfOpenid
-        }
-      })
+      // await cloud.callFunction({
+      //   name: "recordTimeNode",
+      //   data: {
+      //     flag: "matchBegin",
+      //     isNew: false,
+      //     otherOpenid: event.dropOpenid,
+      //     otherName: "",
+      //     openid: event.selfOpenid
+      //   }
+      // })
     }
       
   }
@@ -63,17 +63,17 @@ exports.main = async (event, context) => {
 
   
   if(res.data[0].job == 0){ //学生
-    db.collection('person').where({
+    await db.collection('person').where({
       openid: event.selfOpenid
     }).update({
       data:{
         matchList: list,
         matchWaitList: waitList,
-        schoolID: null
+        schoolID: _.remove()
       }
     }).then(console.log)
     .catch(console.error)
-    db.collection('networkSchool').where({
+    await db.collection('networkSchool').where({
       schoolID: res.data[0].schoolID
     }).update({
       data:{
@@ -82,17 +82,32 @@ exports.main = async (event, context) => {
       }
     }).then(console.log)
     .catch(console.error)
-  } else if(res.data[0].job == 1){
-    db.collection('person').where({
+  } else if(res.data[0].job != 0){
+    await db.collection('person').where({
       openid: event.selfOpenid
     }).update({
       data:{
         matchList: list,
-        matchWaitList: waitList
+        matchWaitList: waitList,
+        isMatchFull: false
       }
     }).then(console.log)
     .catch(console.error)
-    db.collection('networkSchool').where({
+
+    await db.collection('person').where({
+      openid: event.dropOpenid
+    }).update({
+      data:{
+        matchList: _.pull(event.selfOpenid),
+        matchWaitList: _.pull(event.selfOpenid),
+        isMatchFull: false,
+        schoolID: _.remove(),
+        'matchInfo.schoolID' :_.remove()
+      }
+    }).then(console.log)
+    .catch(console.error)
+
+    await db.collection('networkSchool').where({
       schoolID: res.data[0].schoolID
     }).update({
       data:{

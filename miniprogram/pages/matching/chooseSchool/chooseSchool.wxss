@@ -1,0 +1,133 @@
+/* miniprogram/pages/matching/chooseSchool/chooseSchool.wxss */
+@import "../../../colorui/animation.wxss";
+
+page{
+  width: 100%;
+  background: linear-gradient(90deg, #f7d7ba, #d140f5);
+}
+.con{
+  display: flex;
+  flex-direction: column;
+	align-items: center;
+}
+.title{
+  width: 88%;
+	height: 84rpx;
+	color: rgba(80, 80, 80, 1);
+	font-size: 56rpx;
+	line-height: 150%;
+	text-align: left;
+	font-weight: bold;
+}
+.intro{
+  width: 88%;
+	color: rgba(80, 80, 80, 0.8214285714285714);
+	font-size: 28rpx;
+	line-height: 150%;
+  text-align: left;
+  margin-top: 18rpx;
+}
+.card{
+  width: 650rpx;
+	min-height: 126rpx;
+	color: rgba(80, 80, 80, 1);
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 16rpx;
+	font-size: 28rpx;
+	line-height: 150%;
+	box-shadow: 0rpx 7rpx 14rpx 0rpx rgba(0, 0, 0, 0.12);
+  text-align: center;
+  padding-top: 16rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top:24rpx;
+}
+.card-bottom-border{
+  border-bottom-left-radius: 16rpx;
+  border-bottom-right-radius: 16rpx;
+}
+.school_name{
+  width: 94%;
+	color: rgba(80, 80, 80, 1);
+	font-size: 36rpx;
+	line-height: 150%;
+	text-align: left;
+  font-weight: bold;
+}
+.st{
+	color: rgba(80, 80, 80, 1);
+	font-size: 28rpx;
+	line-height: 150%;
+  text-align: left;
+  margin-left: 24rpx;
+}
+.row{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin-top:16rpx ;
+}
+.small_card{
+  width: 132rpx;
+	height: 53rpx;
+	color: rgba(80, 80, 80, 1);
+  background-color: rgba(56, 56, 56, 1);
+  border-bottom-right-radius: 16rpx;
+  border-top-left-radius: 16rpx;
+	font-size: 28rpx;
+	line-height: 150%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.schoolID{
+	color: rgba(191, 170, 131, 1);
+	font-size: 28rpx;
+	line-height: 150%;
+  text-align: left;
+}
+.num{
+  width: 542rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom:16rpx ;
+}
+.card-bottom{
+  width: 650rpx;
+	min-height: 126rpx;
+	color: rgba(80, 80, 80, 1);
+	background-color: rgba(255, 255, 255, 1);
+	font-size: 28rpx;
+	line-height: 150%;
+	box-shadow: 0rpx 7rpx 14rpx 0rpx rgba(0, 0, 0, 0.12);
+  text-align: center;
+  padding-top: 16rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom-left-radius: 16rpx;
+  border-bottom-right-radius: 16rpx;
+}
+.hh{
+  width: 100%;
+  height:12rpx;
+}
+.mytext_title{
+  font-size: 36rpx;
+	text-align: left;
+  font-weight: bold;
+  margin-bottom:16rpx ;
+}
+.mytext{
+  font-size: 32rpx;
+  text-align: left;
+}
+.hh1{
+  width: 100%;
+  height:64rpx;
+}

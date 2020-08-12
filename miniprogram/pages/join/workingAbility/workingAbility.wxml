@@ -74,6 +74,6 @@
     <view class='label'>假如你发现学生问的问题经常不是你的强项，你会怎么做？</view>
     <textarea name='situation2' auto-height class='leaning' value="{{situation2}}" />
   </view>
-  <button bindgetuserinfo="getInfo" form-type="submit" open-type="getUserInfo" style="width: 650rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn'>提交</button>
+  <button bindgetuserinfo="getInfo" form-type="submit" disabled='{{isDisabled}}' open-type="getUserInfo" style="width: 650rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn'>提交</button>
 </form>
 

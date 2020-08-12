@@ -63,29 +63,48 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
-    db.collection('collegeInfo').aggregate()
-      .match({
-        flag: 'major'
-      })
-      .group({
-        _id: '$type',
-        majors: $.addToSet({
-          majorId: '$_id',
-          name: '$name'
-        }),
-      })
-      .limit(100)
-      .end()
-      .then(function(res) {
+    wx.cloud.callFunction({
+      name: 'getMajorList',
+      // 传递给云函数的参数
+      data: {},
+      success: res => {
         console.log("【majorlist查询数据库collegeInfo】", res)
         that.setData({
-          majorlist: res.list
+          majorlist: res.result[0]
         })
         wx.hideLoading()
-      }).catch(function(err) {
+      },
+      fail: err => {
         console.log(err)
         wx.hideLoading()
-      })
+      },
+      complete: () => {
+        // ...
+      }
+    })
+    // db.collection('collegeInfo').aggregate()
+    //   .match({
+    //     flag: 'major'
+    //   })
+    //   .group({
+    //     _id: '$type',
+    //     majors: $.addToSet({
+    //       majorId: '$_id',
+    //       name: '$name'
+    //     }),
+    //   })
+    //   .limit(100)
+    //   .end()
+    //   .then(function(res) {
+    //     console.log("【majorlist查询数据库collegeInfo】", res)
+    //     that.setData({
+    //       majorlist: res.list
+    //     })
+    //     wx.hideLoading()
+    //   }).catch(function(err) {
+    //     console.log(err)
+    //     wx.hideLoading()
+    //   })
   },
 
   /**

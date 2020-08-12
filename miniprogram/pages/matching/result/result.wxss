@@ -120,7 +120,8 @@
 }
 .bottomtext{
 	width: 100%;
-	color: rgba(56, 56, 56, 1);
-	font-size: 32rpx;
+	font-size: 40rpx;
 	text-align: center;
+	margin-top:64rpx;
+	color: #fd6b67;
 }

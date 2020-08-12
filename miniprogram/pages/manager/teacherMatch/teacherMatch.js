@@ -33,7 +33,7 @@ Page({
       //   }
       // ],
     },
-
+    text:"暂时无匹配的学生",
   },
 
   /**
@@ -54,6 +54,7 @@ Page({
       }).then(function(res) {
         console.log("【manager/teacherMatch调用aggregatePerson函数】", res)
         let matchList = res.result.list[0].personList
+        if(matchList != undefined) {
         for (let item in matchList) {
           let subject = []
           for (let sub in matchList[item].matchInfo.weakSubject) {
@@ -61,7 +62,11 @@ Page({
           }
           matchList[item].subject = subject
         }
+      } else {
+        matchList = []
+      }
         let matchWaitList = res.result.list[0].personWaitList
+        if(matchWaitList != undefined) {
         for (let item in matchWaitList) {
           let subject = []
           for (let sub in matchWaitList[item].matchInfo.weakSubject) {
@@ -69,6 +74,9 @@ Page({
           }
           matchWaitList[item].subject = subject
         }
+      } else {
+        matchWaitList = []
+      }
         that.setData({
           teacher: {
             name: res.result.list[0].name,
@@ -134,16 +142,24 @@ Page({
       success(res) {
         if (res.confirm) {
           console.log('用户点击确定')
+          console.log('selfOpenid: ',that.data.teacher.openid)
+          console.log('dropOpenid:',openid)
           wx.cloud.callFunction({
-            name: 'deleteMember',
+            name: 'dropRelation',
             data: {
-              openid: openid
+              selfOpenid: that.data.teacher.openid,
+              dropOpenid: openid
             }
           }).then(function(res) {
             console.log("【teacherMatch调用函数deleteMember】", res)
-            let list = that.data.teacher.studentAdopt.splice(index - 1, 1)
+            that.data.teacher.studentAdopt.splice(index - 1, 1)
             that.setData({
-              ['teacher.studentAdopt']: list
+              ['teacher.studentAdopt']: that.data.teacher.studentAdopt
+            })
+            wx.showToast({
+              title: '删除成功！',
+              duration: 1000,
+              icon: 'none'
             })
           }).catch(function(err) {
             console.log(err)

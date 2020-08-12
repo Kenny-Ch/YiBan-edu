@@ -1,5 +1,4 @@
 <!--miniprogram/pages/manager/viewSchool/viewSchool.wxml-->
-<!--miniprogram/pages/manager/viewTeacher/viewTeacher.wxml-->
 <cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
   <view slot="backText">返回</view>
   <view slot="content">以伴edu</view>

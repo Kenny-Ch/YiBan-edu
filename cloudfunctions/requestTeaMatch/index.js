@@ -13,7 +13,7 @@ const _ = db.command
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  console.log('传入参数：',evnet)
+  console.log('传入参数：',event)
   var res1
   var res2
   //学生待匹配列表更新

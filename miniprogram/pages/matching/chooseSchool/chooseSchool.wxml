@@ -1,0 +1,39 @@
+<!--miniprogram/pages/matching/chooseSchool/chooseSchool.wxml-->
+<cu-custom bgColor="bg-gradual-purple" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">以伴edu</view>
+</cu-custom>
+<view class="con">
+  <view class="title">请选择网校</view>
+  <view class='intro'>{{top_introduce}}</view>
+  <view wx:for="{{school}}" wx:for-index="index" data-index="{{index}}" bindtap="changeToggle" data-target="bottomModal">
+    <view class="card {{item.selectedFlag==false?'card-bottom-border':''}}">
+      <view class='school_name'>{{item.name}}</view>
+      <view class='row'>
+        <view class="num">
+          <view class='st'>学生人数：{{item.studentNum}}</view>
+          <view class='st'>老师人数：{{item.volunteerNum}}</view>
+        </view>
+        <view class='small_card'>
+          <view class='schoolID'>ID:{{item.schoolID}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='hh'></view>
+    <!-- <view class="card-bottom animation-{{animation}} basis-sm shadow" wx:if="{{item.selectedFlag}}">
+    </view> -->
+  </view>
+  <view class='hh1'></view>
+</view>
+<view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white">
+      <view class="action text-orange" bindtap="networkSchool">确定加入</view>
+      <view class="action text-purple" bindtap="hideModal">取消</view>
+    </view>
+    <view class="padding-xl">
+      <view class="mytext_title">{{selectedSchoolName}}简介：</view>
+      <view class="mytext">{{introduce}}</view>
+    </view>
+  </view>
+</view>

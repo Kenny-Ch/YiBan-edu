@@ -1,11 +1,13 @@
-// miniprogram/pages/manager/viewTeacher/viewTeacher.js
-Page({
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
-    type: '',
+  // miniprogram/pages/manager/viewTeacher/viewTeacher.js
+  Page({
+
+    /**
+     * 页面的初始数据
+     */
+    data: {
+      type: '',
+
       // teacher: [{
       //     id: 1,
       //     name: '李桂明',
@@ -29,6 +31,7 @@ Page({
       //   }
       // ],
       bottomtext: '------到底啦------',
+
   },
   delete: function (e) {
     let openid = e.currentTarget.dataset.openid
@@ -76,6 +79,7 @@ Page({
       if (options.type == 'match') {
         that.setData({
           isCheck: 1
+
         })
       } else if (options.type == 'check') {
         that.setData({
@@ -165,52 +169,4 @@ Page({
     }
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

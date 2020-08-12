@@ -18,6 +18,7 @@ Page({
     }],
     i: 0,
     x: 0,
+    hasTeacherItem:false,
     clientHeight: 0,
     knowledgeReserve: [{
       url: "../display/artical/artical",
@@ -137,11 +138,14 @@ Page({
           this.getDays(res.result[0].registerDate)
           app.globalData.userInfo = res.result[0]
           app.globalData.isNew = false
-          if (res.result[0].matchInfo != null) {
+          if (res.result[0].matchInfo != null && res.result[0].matchInfo.schoolID) {
             app.globalData.isMatch = true
             app.globalData.matchInfo = res.result[0].matchInfo
           } else {
             app.globalData.isMatch = false
+            if(res.result[0].matchInfo != null){
+              app.globalData.matchInfo = res.result[0].matchInfo
+            }
           }
           app.globalData.name = res.result[0].name
           app.globalData.isTeacher = res.result[0].job
@@ -215,6 +219,9 @@ Page({
           if (app.globalData.userInfo.otherInfo != undefined) {
             if ((app.globalData.userInfo.hasOwnProperty("isSponsor") && app.globalData.isSponsor) || app.globalData.userInfo.hasOwnProperty("job") && app.globalData.userInfo.job != 2)
               list.push(item)
+              that.setData({
+                hasTeacherItem:true
+              })
           }
         } else {
           let item = {};
@@ -263,6 +270,7 @@ Page({
           } else {
             item2.url = "../join/join";
           }
+
           if (app.globalData.isNew == true || (app.globalData.userInfo.hasOwnProperty("isSponsor") && app.globalData.isSponsor) || (app.globalData.userInfo.hasOwnProperty("job") && app.globalData.userInfo.job != 2))
             list.push(item2)
 
@@ -318,6 +326,7 @@ Page({
     }).catch(err => {
       console.log('appjs获取openid失败')
     })
+
   },
 
   //计算相隔天数
