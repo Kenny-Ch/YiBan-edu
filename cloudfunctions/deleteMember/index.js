@@ -73,29 +73,33 @@ exports.main = async (event, context) => {
     if(event.openid != undefined) {
     await db.collection('person').where({
       openid: event.openid
-    }).update({
-      data:{
-        isCheck: 0,
-        isMatchFull: false,
-        otherInfo: _.remove(),
-        'perInfo.speciality': _.remove(),
-        'perInfo.introduction': _.remove(),
-        'perInfo.stuNum': _.remove()
-      }
-    })
+    }).remove()
+    // .update({
+    //   data:{
+    //     isCheck: 0,
+    //     isMatchFull: false,
+    //     otherInfo: _.remove(),
+    //     'perInfo.speciality': _.remove(),
+    //     'perInfo.introduction': _.remove(),
+    //     'perInfo.stuNum': _.remove(),
+    //     schoolID:_.remove()
+    //   }
+    // })
   } else {
     await db.collection('person').where({
       _id: event._id
-    }).update({
-      data:{
-        isCheck: 0,
-        isMatchFull: false,
-        otherInfo: _.remove(),
-        'perInfo.speciality': _.remove(),
-        'perInfo.introduction': _.remove(),
-        'perInfo.stuNum': _.remove()
-      }
-    })
+    }).remove()
+    // .update({
+    //   data:{
+    //     isCheck: 0,
+    //     isMatchFull: false,
+    //     otherInfo: _.remove(),
+    //     'perInfo.speciality': _.remove(),
+    //     'perInfo.introduction': _.remove(),
+    //     'perInfo.stuNum': _.remove(),
+    //     schoolID:_.remove()
+    //   }
+    // })
   }
 
     await cloud.callFunction({
