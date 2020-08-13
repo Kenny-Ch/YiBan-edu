@@ -18,12 +18,12 @@ exports.main = async (event, context) => {
   const batchTimes = Math.ceil(total / 100)
 
   // 承载所有读操作的 promise 的数组
-  const schools = []
+  var schools = []
 
   for (let i = 0; i < batchTimes; i++) {
     var res = await db.collection('networkSchool').skip(i * MAX_LIMIT).limit(MAX_LIMIT).get()
-    schools.push(res.data)
+    schools = schools.concat(res.data)
   }
-  return schools
+  return [schools]
 
 }

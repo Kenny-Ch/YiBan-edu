@@ -50,7 +50,7 @@ exports.main = async (event, context) => {
     }).count()
     
 
-    db.collection('networkSchool').where({
+    await db.collection('networkSchool').where({
       schoolID: schools[i]
     }).update({
       data:{
@@ -88,7 +88,7 @@ exports.main = async (event, context) => {
 
   console.log("schoolID:",event.schoolID,"学生数量:",stuRes.total,"老师数量:",teaRes.total,"待审核老师数量：",waitTeaRes.total,"待匹配学生数量：",waitMatchStuRes.total)
 
-  db.collection('networkSchool').where({
+  await db.collection('networkSchool').where({
     schoolID: event.schoolID
   }).update({
     data:{

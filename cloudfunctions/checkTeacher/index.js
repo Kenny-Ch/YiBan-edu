@@ -9,13 +9,20 @@ const $ = db.command.aggregate
 
 // 云函数入口函数
 exports.main = async(event, context) => {
+  console.log(event)
   //check = pass 通过
   //check = reject 不通过
   //id 对应教师的记录id
 
   if (event.check == 'pass') {
-    var schIDres = await db.collection('person').doc(event.id).field({schoolID:true}).get()
-    var schID = schIDres.data.schoolID
+    var res = await db.collection('person').doc(event.id).field({
+      schoolID:true,
+      registerDate: true
+    }).get()
+    var schID = res.data.schoolID
+    var date = res.data.registerDate
+    if(date)
+      console.log("日期：",date,date.getTime())
     db.collection('networkSchool').where({
       schoolID: schID
     }).update({
@@ -24,34 +31,12 @@ exports.main = async(event, context) => {
       }
     }).then(console.log)
     .catch(console.error)
-    var maxres = await db.collection('person')
-      .aggregate()
-      .group({
-        _id: '$schoolID',
-        max: $.max('$score')
-    }).end()
-    var max
-    for(let i=0; i<maxres.list.length; i++){
-      if(maxres.list[i]._id == schID){
-        max = maxres.list[i].max
-        break
-      }
-    }
-    var maxstr
-    if(max>=0 && max<=9){
-      maxstr = '000'+max
-    } else if(max>=10 && max<=99){
-      maxstr = '00'+max
-    } else if(max>=100 && max<=999){
-      maxstr = '0'+max
-    } else {
-      maxstr = max+""
-    }
+    var yibanID = "YB"+schID+date.getTime()
 
     await db.collection('person').doc(event.id).update({
       data: {
         isCheck: 1,
-        orderNum: schID + maxstr
+        yibanID: yibanID
       }
     }).then(function(res) {
       return '通过审核'

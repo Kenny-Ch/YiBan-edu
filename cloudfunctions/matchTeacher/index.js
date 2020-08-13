@@ -38,6 +38,7 @@ exports.main = async (event, context) => {
     matchList: _.size(0),
     registerDate: _.lt(markDate),
     openid: _.nin(ids),
+    openid: _.exists(true),
     schoolID: schoolID,
     'perInfo.speciality': _.all(keys)
   }, ).get()
@@ -57,6 +58,7 @@ exports.main = async (event, context) => {
       matchList: _.size(0),
       registerDate: _.lt(markDate),
       openid: _.nin(ids),
+    openid: _.exists(true),
       schoolID: schoolID,
       'perInfo.speciality': _.or([
         _.all([keys[0], keys[1]]),
@@ -80,6 +82,7 @@ exports.main = async (event, context) => {
         matchList: _.size(0),
         registerDate: _.lt(markDate),
         openid: _.nin(ids),
+    openid: _.exists(true),
         schoolID: schoolID,
         'perInfo.speciality': _.or([
           _.all([keys[0]]),
@@ -102,6 +105,7 @@ exports.main = async (event, context) => {
           job: 1,
           isCheck: 1,
           openid: _.nin(ids),
+    openid: _.exists(true),
           schoolID: schoolID,
           isMatchFull: false
         }).get()
@@ -122,6 +126,7 @@ exports.main = async (event, context) => {
             ]),
             isCheck: 1,
             openid: _.nin(ids),
+    openid: _.exists(true),
             job: 1,
             schoolID: schoolID,
             isMatchFull: false
@@ -142,6 +147,7 @@ exports.main = async (event, context) => {
                 _.all([keys[2]])
               ]),
               openid: _.nin(ids),
+    openid: _.exists(true),
               job: 1,
               isCheck: 1,
               schoolID: schoolID,
