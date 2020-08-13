@@ -81,6 +81,9 @@ Page({
         icon: 'none',
         duration: 1500
       })
+      that.setData({
+        modalName: null
+      })
     } else {
       db.collection('person').where({
           schoolID: that.data.selectedSchoolID,
@@ -122,6 +125,9 @@ Page({
               title: '该网校未有空闲的老师,请另选其他网校！',
               icon: 'none',
               duration: 1500
+            })
+            that.setData({
+              modalName: null
             })
           }
         })
