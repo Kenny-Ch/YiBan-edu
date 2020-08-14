@@ -57,8 +57,10 @@ Page({
         if(matchList != undefined) {
         for (let item in matchList) {
           let subject = []
-          for (let sub in matchList[item].matchInfo.weakSubject) {
-            subject.push(that.changeLanguage(sub))
+          if(matchList[item].matchInfo && matchList[item].matchInfo.weakSubject){
+            for (let sub in matchList[item].matchInfo.weakSubject) {
+              subject.push(that.changeLanguage(sub))
+            }
           }
           matchList[item].subject = subject
         }

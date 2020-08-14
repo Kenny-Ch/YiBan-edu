@@ -58,6 +58,7 @@ Page({
 
     havematch: false,
     haveteacher: false,
+    hasTeacherItem:false,
   },
   changeSwipe: function (e) {
     var adress = (e.detail.current == 0) ? "知识储备站" : ((e.detail.current == 1) ? "升学梦工厂" : "以伴课堂");
@@ -217,7 +218,7 @@ Page({
             item.url = 'error'
           }
           if (app.globalData.userInfo.otherInfo != undefined) {
-            if (app.globalData.userInfo.hasOwnProperty("job") && app.globalData.userInfo.job != 2)
+            if ((app.globalData.userInfo.hasOwnProperty("isSponsor") && app.globalData.userInfo.isSponsor) || (app.globalData.userInfo.hasOwnProperty("job") && app.globalData.userInfo.job != 2))
               list.push(item)
               that.setData({
                 hasTeacherItem:true
@@ -251,7 +252,7 @@ Page({
 
         //老师注册成功，则不显示第三个swiper
         if (app.globalData.isNew == false && (app.globalData.userInfo.isCheck == 1 || app.globalData.isTeacher == 0) && app.globalData.userInfo.job == 0) {
-
+          
         } else {
           var item2 = {};
           item2.id = 2;
@@ -270,9 +271,11 @@ Page({
           } else {
             item2.url = "../join/join";
           }
-          if ((app.globalData.isNew == true || (app.globalData.userInfo.hasOwnProperty("job") && app.globalData.userInfo.job != 2))&&that.data.hasTeacherItem==false)
-            list.push(item2)
 
+          if ((app.globalData.isNew == true || (app.globalData.userInfo.hasOwnProperty("isSponsor") && app.globalData.userInfo.isSponsor) || (app.globalData.userInfo.hasOwnProperty("job") && app.globalData.userInfo.job == 2)) && that.data.hasTeacherItem==false){
+            list.push(item2)
+          }
+            
 
         }
 

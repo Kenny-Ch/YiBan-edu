@@ -92,7 +92,7 @@ Page({
       success: function(res) {
         console.log("【question页面调用函数getQuestions】", res.result)
         var qa = [];
-        for (let returndata of res.result.reverse()) {
+        for (let returndata of res.result[0].reverse()) {
           var hh="";
           if(returndata.officialAnswer.length>78){
             hh=returndata.officialAnswer.substring(0, 78)+"……";
