@@ -195,7 +195,7 @@ Page({
               list.push(item)
             }
           }
-        } else if (app.globalData.isTeacher == 1) {
+        } else if (app.globalData.isTeacher == 1 || app.globalData.isTeacher == 2) {
           //是老师的情况
           let item = {};
           item.id = 0;
