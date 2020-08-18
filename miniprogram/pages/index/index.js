@@ -217,12 +217,11 @@ Page({
             //后台审核未通过
             item.url = 'error'
           }
-          if (app.globalData.userInfo.otherInfo != undefined) {
-            if ((app.globalData.userInfo.hasOwnProperty("isSponsor") && app.globalData.userInfo.isSponsor) || (app.globalData.userInfo.hasOwnProperty("job") && app.globalData.userInfo.job != 2))
-              list.push(item)
-              that.setData({
-                hasTeacherItem:true
-              })
+          if ((app.globalData.userInfo.hasOwnProperty("isSponsor") && app.globalData.userInfo.isSponsor) || (app.globalData.userInfo.hasOwnProperty("job") && app.globalData.userInfo.job != 2)){
+            list.push(item)
+            that.setData({
+              hasTeacherItem:true
+            })
           }
         } else {
           let item = {};
