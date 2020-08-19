@@ -1,3 +1,4 @@
+
   // miniprogram/pages/manager/viewTeacher/viewTeacher.js
   Page({
 
@@ -6,6 +7,7 @@
      */
     data: {
       type: '',
+
       // teacher: [{
       //     id: 1,
       //     name: '李桂明',

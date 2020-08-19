@@ -172,13 +172,13 @@ Page({
         var isReview = app.globalData.userInfo.isCheck
         //匹配失败
         var isMatchFail = app.globalData.userInfo.matchReject
-        //老师未完成第二次简历填写
+        //老师是否完成第二次简历填写
         var isTeacherFinish = (app.globalData.userInfo.otherInfo != undefined) ? (true) : (false)
 
 
 
         //寻找你的以伴老师
-        if (isNew || isAmbassador || isStudent) {
+        if (!isOther && (isNew || isAmbassador || isStudent)) {
           //新用户、爱心大使和学生显示
           let item = {};
           item.id = 0;
@@ -214,7 +214,7 @@ Page({
           item.title = "一起迈向公益之路";
           item.small_title = "只要你有足够的热情，想为公益事业做出一份自己的贡献，都可以申请成为以伴志愿者！";
           item.button = "加入我们";
-          if (!isTeacherFinish && isVolunteer) {
+          if ((isOther || isVolunteer) && !isTeacherFinish) {
             //老师未完成第二次简历填写
             item.url = '../join/workingAbility/workingAbility'
           } else if (isReview == 0) {
