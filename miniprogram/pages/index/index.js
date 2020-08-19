@@ -178,8 +178,9 @@ Page({
 
 
         //寻找你的以伴老师
-        if (!isOther && (isNew || isAmbassador || isStudent)) {
+        if (isNew || isAmbassador || isStudent || !isSponsor) {
           //新用户、爱心大使和学生显示
+          //发起人不显示
           let item = {};
           item.id = 0;
           item.big_title = "寻找你的以伴老师";
@@ -216,6 +217,7 @@ Page({
           item.button = "加入我们";
           if ((isOther || isVolunteer) && !isTeacherFinish) {
             //老师未完成第二次简历填写
+            //发起人注册为志愿者
             item.url = '../join/workingAbility/workingAbility'
           } else if (isReview == 0) {
             //未审核
