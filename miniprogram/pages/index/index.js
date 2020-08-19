@@ -178,7 +178,7 @@ Page({
 
 
         //寻找你的以伴老师
-        if (isNew || isAmbassador || isStudent || !isSponsor) {
+        if ((isNew || isAmbassador || isStudent || !isSponsor)&& !isVolunteer) {
           //新用户、爱心大使和学生显示
           //发起人不显示
           let item = {};
@@ -191,17 +191,22 @@ Page({
             //匹配失败
             item.button = "开始匹配";
             item.url = "../matching/chooseSchool/chooseSchool";
-          } else if (isReview == false) {
+          } else if (app.globalData.userInfo.matchWaitList&&app.globalData.userInfo.matchWaitList.length != 0) {
             //待审核界面
             item.button = "查看登记";
             item.url = "../matching/teacher/teacher?status=false&id=" + app.globalData.userInfo.matchWaitList[0];
-          } else if (isReview == true) {
+          } else if (app.globalData.userInfo.matchList&&app.globalData.userInfo.matchList.length != 0) {
             //已审核界面
+            item.button = "查看登记";
             item.url = "../matching/teacher/teacher?status=true&id=" + app.globalData.userInfo.matchList[0];
-          } else {
+          } else if(app.globalData.isMatch == false){
             //匹配界面
             item.button = "开始匹配";
             item.url = "../matching/chooseSchool/chooseSchool";
+          }else {
+            //这里跳转匹配选择界面
+            item.button = "查看登记";
+            item.url = "../matching/result/result";
           }
           list.push(item)
         }
@@ -249,7 +254,7 @@ Page({
 
 
         //建立您的网校
-        if (!isStudent) {
+        if (!isStudent && !isAmbassador) {
           var item = {};
           item.id = 3;
           item.big_title = "建立您的网校";
@@ -268,7 +273,7 @@ Page({
         }
 
         //成为以伴爱心大使
-        if (true) {
+        if (!isSponsor) {
           var item = {};
           item.id = 4;
           item.big_title = "成为以伴爱心大使";
@@ -277,10 +282,7 @@ Page({
           item.button = "一起加油";
           if (isAmbassador) {
             //已绑定
-            wx.showToast({
-              title: '已经是爱心大使！',
-              icon: 'none'
-            })
+            item.url = 'isAmbassador'
           } else {
             //未绑定
             item.url = "../ambassador/ambassador";
@@ -454,7 +456,14 @@ Page({
           }
         }
       })
-    } else {
+    }
+    else if(url=='isAmbassador'){
+      wx.showToast({
+        title: '已经是爱心大使！',
+        icon: 'none'
+      })
+    } 
+    else {
       wx.navigateTo({
         url: url
       })
