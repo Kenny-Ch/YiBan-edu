@@ -500,6 +500,12 @@
 					"pathName": "pages/matching/chooseSchool/chooseSchool",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/register/register",
+					"pathName": "pages/index/register/register",
+					"scene": null
 				}
 			]
 		}

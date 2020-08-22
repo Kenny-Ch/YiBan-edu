@@ -67,7 +67,7 @@
   </view>
   <view class="cu-form-group">
     <view class="title wd">高考数学</view>
-    <view class='tex'>{{teacher.otherInfo.collegeExamScore.Math}}</view>
+    <view class='tex'>{{teacher.otherInfo.collegeExamScore.Mathematics}}</view>
   </view>
   <view class="cu-form-group">
     <view class="title wd">高考英语</view>

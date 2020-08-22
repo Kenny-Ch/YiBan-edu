@@ -1,0 +1,16 @@
+<!--miniprogram/pages/index/register/register.wxml-->
+<cu-custom bgColor="bg-gradual-purple" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">以伴edu</view>
+</cu-custom>
+<view class="con">
+  <view class='row tt'>
+    <image class="pic" src="../../../images/register.svg"></image>
+    <view class="title1">个人注册</view>
+  </view>
+  <view class="intro">{{intro}}</view>
+  <button style="width: 650rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn' bindtap="jumpTo" data-identity='student'>学生注册</button>
+  <button style="width: 650rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn' bindtap="jumpTo" data-identity='teacher'>志愿者注册</button>
+  <button style="width: 650rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn' bindtap="jumpTo" data-identity='sponsor'>发起人绑定</button>
+  <button style="width: 650rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn' bindtap="jumpTo" data-identity='ambassador'>爱心大使绑定</button>
+</view>
