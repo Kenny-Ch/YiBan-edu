@@ -1,6 +1,6 @@
 <!--miniprogram/pages/matching/result/result.wxml-->
-<cu-custom bgColor="bg-gradual-orange" isBack="{{false}}">
-  <view  bindtap="back">返回</view>
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+  <view slot="backText" bindtap="back">返回</view>
   <view slot="content">以伴edu</view>
 </cu-custom>
 <view class='title'>匹配登记</view>

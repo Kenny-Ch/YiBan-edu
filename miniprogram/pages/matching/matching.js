@@ -294,6 +294,7 @@ Page({
                   app.globalData.matchList = []
                   app.globalData.matchWaitList = []
                   app.globalData.userInfo.matchReject = false
+                  app.globalData.isMatch = true
                   setTimeout(function () {
                     wx.redirectTo({
                       url: './result/result',

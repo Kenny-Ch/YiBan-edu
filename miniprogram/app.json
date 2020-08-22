@@ -40,7 +40,8 @@
     "pages/ambassador/ambassador",
     "pages/manager/viewSchool/viewSchool",
     "pages/sponsor/managerSponsor/managerSponsor",
-    "pages/matching/chooseSchool/chooseSchool"
+    "pages/matching/chooseSchool/chooseSchool",
+    "pages/index/register/register"
   ],
   "window": {
     "navigationStyle": "custom",

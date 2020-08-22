@@ -27,7 +27,7 @@
 	},
 	"appid": "wx7a4010768611ebc5",
 	"projectname": "YiBan-edu",
-	"libVersion": "2.12.0",
+	"libVersion": "2.12.1",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
@@ -499,6 +499,12 @@
 					"name": "pages/matching/chooseSchool/chooseSchool",
 					"pathName": "pages/matching/chooseSchool/chooseSchool",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/register/register",
+					"pathName": "pages/index/register/register",
 					"scene": null
 				}
 			]
