@@ -1,0 +1,16 @@
+<!--miniprogram/pages/manager/manualMatching/manualMatching.wxml-->
+<cu-custom bgColor="bg-gradual-orange" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">以伴edu</view>
+</cu-custom>
+<form class='con' bindsubmit="formSubmit">
+  <view class='toptitle'>手动匹配</view>
+  <view class='card'>
+    <view class='label'>学生手机号：</view>
+    <input type="number" class='contents' placeholder="请填写所匹配的学生的手机号码" name='stutel'></input>
+    <view class='label'>志愿者手机号：</view>
+    <input type="number" class='contents' placeholder="请填写所匹配的志愿者的手机号码" name='tetel'></input>
+    <view class='bot'></view>
+  </view>
+  <button style="width: 650rpx;min-height: 40rpx;border-radius: 88rpx;" class='btn'>匹配</button>
+</form>

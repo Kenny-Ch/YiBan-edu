@@ -4,7 +4,7 @@
   <view slot="content">以伴edu</view>
 </cu-custom>
 <view class="title">管理后台</view>
-<view class='title-bottom'>管理员可在这里对用户的评论进行审核以及查看老师与学生的匹配情况。</view>
+<view class='title-bottom'>管理员可在这里对用户的评论进行审核、查看以伴所有网校的情况以及手动对学生与志愿者进行匹配。</view>
 <!--待审核评论-->
 <navigator url="./reviewComments/reviewComments" hover-class="none">
   <view class='card' style="background-image: linear-gradient( 90deg, #FFAA85 10%, #B3315F 100%);">
@@ -27,32 +27,22 @@
 </navigator>
 <!--网校信息查看-->
 <view bindtap="jump" data-url="./viewSchool/viewSchool" hover-class="none">
-  <view class='card' style="background-image: linear-gradient( 90deg, #97ABFF 10%, #123597 100%);">
+  <view class='card' style="background-image: linear-gradient( 90deg, #fdbb2d 10%, #b21f1f 100%);">
     <view class='text'>
       <view class="text-title">网校信息情况</view>
       <view class='text-titlebottom'>这里可以查看网校及其志愿者与学生的信息哦</view>
     </view>
-    <image src='../../images/manager/pipeifangshi.png' class='img'></image>
+    <image src='../../images/manager/cz-qkjc.png' class='img'></image>
   </view>
 </view>
-<!-- 师生匹配情况
-<view bindtap="jump" data-url="./viewTeacher/viewTeacher?type=match" hover-class="none">
+<!--手动进行匹配-->
+<view bindtap="jump" data-url="./manualMatching/manualMatching" hover-class="none">
   <view class='card' style="background-image: linear-gradient( 90deg, #97ABFF 10%, #123597 100%);">
     <view class='text'>
-      <view class="text-title">师生匹配情况</view>
-      <view class='text-titlebottom'>这里可以查看老师与学生的匹配情况</view>
+      <view class="text-title">手动进行匹配</view>
+      <view class='text-titlebottom'>这里可以手动对学生与志愿者进行匹配哦</view>
     </view>
     <image src='../../images/manager/pipeifangshi.png' class='img'></image>
   </view>
 </view>
-志愿者老师审核
-<view bindtap="jump" data-url="./viewTeacher/viewTeacher?type=check" hover-class="none">
-  <view class='card' style="background-image: linear-gradient( 90deg, #FF7AF5 10%, #513162 100%);">
-    <view class='text'>
-      <view class="text-title">志愿者老师审核</view>
-      <view class='text-titlebottom'>对志愿者进行严格审核，保证伴学服务质量</view>
-    </view>
-    <image src='../../images/manager/shenhe.png' class='img'></image>
-  </view>
-</view> -->
 <view class='bot'></view>

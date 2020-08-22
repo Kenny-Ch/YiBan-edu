@@ -28,7 +28,20 @@ Page({
 
     sexs:['男','女'],
     fileID: '',
-    teacher:false
+    teacher:false,
+  },
+  myCancel:function(e){
+    wx.showModal({
+			title: '注销账号',
+			content: '账号一旦注销将无法恢复，请确定是否注销！',
+			success: function(res) {
+				if (res.confirm) {
+				console.log('用户点击确定')
+				} else if (res.cancel) {
+				console.log('用户点击取消')
+				}
+			}
+		})
   },
   previewImage: function(e) {
     wx.previewImage({

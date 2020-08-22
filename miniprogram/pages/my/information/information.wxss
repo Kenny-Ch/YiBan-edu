@@ -21,3 +21,9 @@
   margin-top:20rpx ;
   margin-bottom:20rpx ;
 }
+.row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}

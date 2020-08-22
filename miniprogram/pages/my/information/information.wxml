@@ -58,5 +58,8 @@
       <image lazy-load="true" src="{{fileID}}" class='img' data-url="{{fileID}}" bindtap="previewImage"></image>
     </view>
   </view>
-  <button form-type="submit" style="width: 342rpx;min-height: 60rpx;" class='btn'>提交保存</button>
+  <view class="row">
+    <button form-type="submit" style="width: 282rpx;min-height: 60rpx;" class='btn'>保存信息</button>
+    <button style="width: 282rpx;min-height: 60rpx;" class='btn' bindtap="myCancel">注销账号</button>
+  </view>
 </form>

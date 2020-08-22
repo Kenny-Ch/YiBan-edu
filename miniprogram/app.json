@@ -41,7 +41,8 @@
     "pages/manager/viewSchool/viewSchool",
     "pages/sponsor/managerSponsor/managerSponsor",
     "pages/matching/chooseSchool/chooseSchool",
-    "pages/index/register/register"
+    "pages/index/register/register",
+    "pages/manager/manualMatching/manualMatching"
   ],
   "window": {
     "navigationStyle": "custom",
