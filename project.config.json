@@ -505,6 +505,13 @@
 					"id": -1,
 					"name": "pages/index/register/register",
 					"pathName": "pages/index/register/register",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/register/register",
+					"pathName": "pages/index/register/register",
 					"scene": null
 				}
 			]

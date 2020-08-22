@@ -331,7 +331,7 @@ Page({
     if (app.globalData.isNew) {
       console.log('【index】用户未注册，跳转注册页面')
       wx.navigateTo({
-        url: '/pages/my/login/login',
+        url: '/pages/index/register/register',
         fail: (res) => {
           console.log('【index页面跳转注册界面失败】,res')
         },
