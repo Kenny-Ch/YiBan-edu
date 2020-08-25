@@ -163,3 +163,103 @@ page{
   width: 100%;
   height: 96rpx;
 }
+.tips {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1001;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+}
+
+.tips .tips_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75%;
+  height: auto;
+  border-radius: 45rpx;
+  background: #fff;
+  overflow: hidden;
+}
+
+.tips .tips_box .hint_view {
+  display: flex;
+  align-items: center;
+}
+
+.tips .tips_box .hint_view .text {
+  display: flex;
+  flex-direction: column;
+  margin: 12rpx 24rpx;
+}
+
+.tips .tips_box .hint1 {
+  margin-top:48rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #1a1a1a;
+  line-height:52rpx;
+}
+.agreeBtn {
+  color: rgba(255, 255, 255, 1);
+	background-color: rgba(254, 123, 111, 1);
+	font-size: 28rpx;
+	text-align: center;
+  font-weight: bold;
+  margin-top:26rpx ;
+  margin-bottom:36rpx ;
+}
+.noAgreeBtn {
+  color: rgba(255, 255, 255, 1);
+	background-color: rgba(254, 123, 111, 1);
+	font-size: 28rpx;
+	text-align: center;
+  font-weight: bold;
+  margin-top:40rpx ;
+}
+.cancel{
+  width: 96rpx;
+  height: 96rpx;
+  margin-left:485rpx ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 108rpx;
+  top: 124rpx;
+  z-index: 1006;
+}
+.stext{
+  width:100%;
+	color: rgba(80, 80, 80, 1);
+	font-size: 32rpx;
+	line-height: 150%;
+	text-align: center;
+	font-weight: bold;
+}
+.pic_address{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.pic{
+  width: 320rpx;
+  height: 320rpx;
+  color: rgb(165, 165, 165);
+}
+.shuoming{
+  width: 95%;
+  min-height: 48rpx;
+	color: rgba(166, 166, 166, 1);
+	font-size: 24rpx;
+  text-align: left;
+  word-break:break-all; 
+  margin-top:20rpx ;
+}

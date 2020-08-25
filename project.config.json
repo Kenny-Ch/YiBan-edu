@@ -512,6 +512,19 @@
 					"id": -1,
 					"name": "pages/manager/manualMatching/manualMatching",
 					"pathName": "pages/manager/manualMatching/manualMatching",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/template/imageCropper/imageCropper",
+					"pathName": "pages/template/imageCropper/imageCropper",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/test/test",
+					"pathName": "pages/test/test",
 					"scene": null
 				}
 			]

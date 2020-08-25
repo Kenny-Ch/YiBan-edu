@@ -10,7 +10,7 @@
   <view class='card'>
     <view class="row">
       <view class='name'>{{school.name}}</view>
-      <view class='wrapp' ><text class='schoolID' bindtap='copyText' data-id="{{school.schoolID}}">ID:{{school.schoolID}}</text></view>
+      <view class='wrapp' ><text class='schoolID' bindtap='upLoadSchoolQR' data-id="{{school.schoolID}}">ID:{{school.schoolID}}</text></view>
     </view>
     <view class="row time">
       创建时间：{{school.date}}
@@ -63,4 +63,24 @@
 
   <view class='hh1'></view>
 
+</view>
+<view wx:if='{{openSchoolQR==true}}'>
+  <view catchtouchmove="catchtouchmove" class="tips">
+    <cover-view class="tips_box">
+      <cover-view class="hint_view">
+        <cover-view class="text">
+          <cover-view class="stext">您的网校二维码</cover-view>
+          <cover-view class='pic_address'>
+            <cover-image src="{{img}}" class='pic' style='margin-top:16rpx;' bindtap="upload_picture"></cover-image>
+          </cover-view>
+          <cover-view class='shuoming'>{{shuoming}}</cover-view>
+          <cover-view class='pic_address'>
+            <cover-image src="{{lzimg}}" class='pic'></cover-image>
+          </cover-view>
+        </cover-view>
+      </cover-view>
+      <button bindtap="uploadQR" class="noAgreeBtn" style="width: 382rpx;min-height: 50rpx;border-radius: 55rpx;">提交保存</button>
+      <button bindtap="myCancel" class="agreeBtn" style="width: 382rpx;min-height: 50rpx;border-radius: 55rpx;">取消</button>
+    </cover-view>
+  </view>
 </view>

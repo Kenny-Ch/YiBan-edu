@@ -1,0 +1,7 @@
+<!--miniprogram/pages/template/imageCropper/imageCropper.wxml-->
+<cu-custom bgColor="bg-gradual-orange" isBack="{{false}}">
+  <view slot="backText">返回</view>
+  <view slot="content">以伴edu</view>
+</cu-custom>
+<image-cropper id="image-cropper" limit_move="{{true}}" disable_rotate="{{true}}" width="{{width}}" height="{{height}}" imgSrc="{{src}}" bindload="cropperload" bindimageload="loadimage" bindtapcut="clickcut"></image-cropper>
+<button class='lg my' style='width:100%;min-height:84rpx;color: rgba(255, 255, 255, 1);background-color: rgba(254, 123, 111, 1);' bindtap='getImg'>确定</button>

@@ -7,22 +7,19 @@ Page({
   data: {
     school: {
     },
-  },
-  jump: function(res) {
-    let url = res.currentTarget.dataset.url
-    let that = this
-    wx.navigateTo({
-      url: url + "&schoolID=" + that.data.school.schoolID
-    })
+    openSchoolQR:false,
+    shuoming: '请将群二维码裁剪为以下格式后再提交保存：',
+    img: "../../../images/my/tupianimgyulan.png",
+    lzimg:"../../../images/sponsor/growUp.png",
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    
-
     const db = wx.cloud.database()
     let that = this
+    //如果对应网校数据库存在fileID，则将本页面的fileID和img都赋值为数据库的fileID，否则跳过
+
     db.collection('networkSchool').where({
         schoolID: options.schoolID
       }).get()
@@ -42,18 +39,73 @@ Page({
       })
       wx.stopPullDownRefresh()
   },
-  copyText: function (e) {
-    wx.setClipboardData({
-      data: e.target.dataset.id,
-      success: function (res) {
-        wx.getClipboardData({
-          success: function (res) {
-            wx.showToast({
-              title: '复制微信号成功'
-            })
-          }
+  upLoadSchoolQR: function (e) {
+    var schoolID=e.target.dataset.id
+    this.setData({
+      openSchoolQR:true,
+      schoolID:schoolID,
+    })
+  },
+  uploadQR:function(e) {
+    var that=this
+    if(that.data.myfilePath){
+      wx.cloud.uploadFile({
+        cloudPath: 'networkSchoolQR/'+that.data.schoolID + '.jpg',
+        filePath: that.data.myfilePath,
+        
+        success(res) {
+          wx.showToast({
+            title: '图片上传成功！',
+            icon: 'none'
+          })
+          //将fileID保存到对应网校数据库
+          that.setData({
+            img:res.fileID,
+          })
+        },
+        fail(err) {
+          wx.showToast({
+            title: '图片上传失败！',
+            icon: 'none'
+          })
+        }
+      })
+    }else{
+      wx.showToast({
+        title: '请选择图片！',
+        icon: 'none'
+      })
+    }
+    
+  },
+  upload_picture: function(name) {
+    //让用户选择或拍摄一张照片
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success(res) {
+        //选择完成会先返回一个临时地址保存备用
+        const tempFilePaths = res.tempFilePaths
+        //将照片上传至云端需要刚才存储的临时地址
+        wx.navigateTo({
+          url: '../../template/imageCropper/imageCropper?image='+tempFilePaths,
         })
+
       }
+    })
+  },
+  jump: function(res) {
+    let url = res.currentTarget.dataset.url
+    let that = this
+    wx.navigateTo({
+      url: url + "&schoolID=" + that.data.school.schoolID
+    })
+  },
+  
+  myCancel:function (e) {
+    this.setData({
+      openSchoolQR:false,
     })
   },
   onPullDownRefresh: function() {

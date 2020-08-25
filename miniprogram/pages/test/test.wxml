@@ -2,6 +2,9 @@
   <view slot="backText">返回</view>
   <view slot="content">以伴edu</view>
 </cu-custom>
-<view class="container">
-  <towxml nodes="{{artical}}" />
-</view>
+<image-cropper id="image-cropper" disable_width = "{{true}}" disable_height = "{{true}}" disable_rotate = "{{true}}" limit_move = "{{true}}"     width="258" height="100" imgSrc="{{src}}" bindload="cropperload" bindimageload="loadimage" bindtapcut="clickcut"></image-cropper>
+
+<button class='btn-bottom' bindtap='getImg'>确定</button>
+
+
+

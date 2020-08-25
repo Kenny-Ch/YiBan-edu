@@ -75,7 +75,7 @@
 
     "schoolID": ""  网校编号
     "isManager": boolean 管理员
-    "isAmbassador": boolean  形象大使
+    "isAmbassador": boolean  爱心大使
     "isSupervisor": boolean  监事会成员
     "isSponsor": boolean 是否为发起人
 

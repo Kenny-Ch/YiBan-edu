@@ -143,49 +143,6 @@ radio .wx-radio-input.wx-radio-input-checked::before{
   margin-top:65rpx ;
   margin-bottom:50rpx ;
 }
-
-.tips1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.7);
-}
-
-.tips1 .tips_box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 75%;
-  height: auto;
-  border-radius: 45rpx;
-  background: #fff;
-  overflow: hidden;
-}
-
-.tips1 .tips_box .hint_view {
-  display: flex;
-  align-items: center;
-}
-
-.tips1 .tips_box .hint_view .text {
-  display: flex;
-  flex-direction: column;
-  margin: 12rpx 24rpx;
-}
-
-.tips1 .tips_box .hint1 {
-  margin-top: 38rpx;
-  text-align: center;
-  font-size: 30rpx;
-  color: #1a1a1a;
-  line-height:52rpx;
-}
-
 .tips {
   display: flex;
   justify-content: center;
