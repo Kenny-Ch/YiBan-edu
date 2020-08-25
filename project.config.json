@@ -52,7 +52,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": -1,
 			"list": [
 				{
 					"id": 0,
@@ -341,13 +341,6 @@
 					"scene": null
 				},
 				{
-					"id": 41,
-					"name": "pages/manager/teacherDeatail/teacherDeatail",
-					"pathName": "pages/manager/teacherDeatail/teacherDeatail",
-					"query": "",
-					"scene": null
-				},
-				{
 					"id": -1,
 					"name": "pages/manager/reviewComments/reviewComments",
 					"pathName": "pages/manager/reviewComments/reviewComments",
@@ -512,6 +505,14 @@
 					"id": -1,
 					"name": "pages/manager/manualMatching/manualMatching",
 					"pathName": "pages/manager/manualMatching/manualMatching",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/manager/manualMatching/manualMatching",
+					"pathName": "pages/manager/manualMatching/manualMatching",
+					"query": "",
 					"scene": null
 				}
 			]
