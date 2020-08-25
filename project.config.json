@@ -52,7 +52,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": -1,
 			"list": [
 				{
 					"id": 0,
@@ -338,13 +338,6 @@
 					"name": "pages/join/workingAbility/workingAbility",
 					"pathName": "pages/join/workingAbility/workingAbility",
 					"query": "id=37e26adb5ec29bfb00f9357627ee1f29&status=false&type=teacher",
-					"scene": null
-				},
-				{
-					"id": 41,
-					"name": "pages/manager/teacherDeatail/teacherDeatail",
-					"pathName": "pages/manager/teacherDeatail/teacherDeatail",
-					"query": "",
 					"scene": null
 				},
 				{

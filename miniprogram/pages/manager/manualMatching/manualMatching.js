@@ -5,14 +5,38 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    teaTel: '',
+    stuTel: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+  },
 
+  formSubmit: function (e) {
+    this.setData({
+      teaTel: e.detail.value.teaTel,
+      stuTel: e.detail.value.stuTel
+    })
+
+    let that = this
+    wx.cloud.callFunction({
+      name: 'manualMatch',
+      data: {
+        teaTel: that.data.teaTel,
+        stuTel: that.data.stuTel
+      }
+    }).then(function (res) {
+      console.log("【manualMatching调用函数manualMatch】", res)
+      wx.showToast({
+        title: res.result,
+        icon: 'none'
+      })
+    }).catch(function (err) {
+      console.log(err)
+    })
   },
 
   /**
