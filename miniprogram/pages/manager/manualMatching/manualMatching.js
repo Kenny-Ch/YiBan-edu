@@ -33,7 +33,7 @@ Page({
       wx.showToast({
         title: res.result,
         icon: 'none',
-        duration: 2000,
+        duration: 2500,
       })
     }).catch(function (err) {
       console.log(err)

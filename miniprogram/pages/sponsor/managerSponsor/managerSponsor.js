@@ -7,26 +7,27 @@ Page({
   data: {
     school: {
     },
-    openSchoolQR:false,
+    openSchoolQR: false,
     shuoming: '请将群二维码裁剪为以下格式后再提交保存：',
     img: "../../../images/my/tupianimgyulan.png",
-    lzimg:"../../../images/sponsor/growUp.png",
+    lzimg: "../../../images/sponsor/growUp.png",
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     const db = wx.cloud.database()
     let that = this
     //如果对应网校数据库存在fileID，则将本页面的fileID和img都赋值为数据库的fileID，否则跳过
 
     db.collection('networkSchool').where({
-        schoolID: options.schoolID
-      }).get()
-      .then(function(res) {
+      schoolID: options.schoolID
+    }).get()
+      .then(function (res) {
         console.log("【sponsor/managerSponsor查询数据库networkSchool】", res)
         that.setData({
           school: res.data[0],
+          img: res.data[0].fileID
         })
         let month = res.data[0].date.getMonth() + 1
         let date = res.data[0].date.getFullYear() + '-' + month + '-' + res.data[0].date.getDate()
@@ -34,49 +35,51 @@ Page({
           ['school.date']: date
         })
         that.updateNetworkSchoolInfo(options)
-      }).catch(function(err) {
+      }).catch(function (err) {
         console.log(err)
       })
-      wx.stopPullDownRefresh()
+    wx.stopPullDownRefresh()
   },
   upLoadSchoolQR: function (e) {
-    var schoolID=e.target.dataset.id
+    var schoolID = e.target.dataset.id
     this.setData({
-      openSchoolQR:true,
-      schoolID:schoolID,
+      openSchoolQR: true,
+      schoolID: schoolID,
     })
   },
-  uploadQR:function(e) {
-    var that=this
-    if(that.data.myfilePath){
+  uploadQR: function (e) {
+    var that = this
+    if (that.data.myfilePath) {
       wx.cloud.uploadFile({
-        cloudPath: 'networkSchoolQR/'+that.data.schoolID + '.jpg',
+        cloudPath: 'networkSchoolQR/' + that.data.schoolID + '.jpg',
         filePath: that.data.myfilePath,
-        
-        success(res) {
+        success: res => {
+          //将fileID保存到对应网校数据库
+          that.setData({
+            img: res.fileID,
+          })
+
           wx.showToast({
             title: '图片上传成功！',
             icon: 'none'
           })
-          //将fileID保存到对应网校数据库
-          that.setData({
-            img:res.fileID,
-          })
+
         },
-        fail(err) {
+        fail: err => {
+          console.log(err)
           wx.showToast({
             title: '图片上传失败！',
             icon: 'none'
           })
         }
       })
-    }else{
+    } else {
       wx.showToast({
         title: '请选择图片！',
         icon: 'none'
       })
     }
-    
+
   },
   upload_picture: function(name) {
     var that=this
@@ -90,28 +93,28 @@ Page({
         const tempFilePaths = res.tempFilePaths
         //将照片上传至云端需要刚才存储的临时地址
         wx.navigateTo({
-          url: '../../template/imageCropper/imageCropper?image='+tempFilePaths,
+          url: '../../template/imageCropper/imageCropper?image=' + tempFilePaths,
         })
       }
     })
   },
-  jump: function(res) {
+  jump: function (res) {
     let url = res.currentTarget.dataset.url
     let that = this
     wx.navigateTo({
       url: url + "&schoolID=" + that.data.school.schoolID
     })
   },
-  
-  myCancel:function (e) {
+
+  myCancel: function (e) {
     this.setData({
-      openSchoolQR:false,
+      openSchoolQR: false,
     })
   },
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
     var that = this
     this.onLoad({
-      schoolID:that.school.schoolID
+      schoolID: that.school.schoolID
     }); //重新加载onLoad()
   },
   updateNetworkSchoolInfo: function (options) {
@@ -121,68 +124,68 @@ Page({
       data: {
         schoolID: options.schoolID
       }
-    }).then(function(res) {
-      console.log("【sponsor/managerSponsor查询人数信息】",res)
-      if(res.result!=null)
-      that.setData({
-        'school.studentNum': res.result.studentNum,
-        'school.volunteerNum': res.result.volunteerNum,
-        'school.waitCheckTeacherNum': res.result.waitCheckTeacherNum,
-        'school.waitMatchStuNum': res.result.waitMatchStuNum
-      })
+    }).then(function (res) {
+      console.log("【sponsor/managerSponsor查询人数信息】", res)
+      if (res.result != null)
+        that.setData({
+          'school.studentNum': res.result.studentNum,
+          'school.volunteerNum': res.result.volunteerNum,
+          'school.waitCheckTeacherNum': res.result.waitCheckTeacherNum,
+          'school.waitMatchStuNum': res.result.waitMatchStuNum
+        })
 
-    }).catch(function(err) {
+    }).catch(function (err) {
       console.log(err)
     })
-    
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })
