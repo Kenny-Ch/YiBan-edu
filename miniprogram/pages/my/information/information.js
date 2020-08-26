@@ -67,12 +67,25 @@ Page({
       }
     })
   },
-  previewImage: function (e) {
-    wx.previewImage({
-      urls: e.target.dataset.url.split(',')
-      // 需要预览的图片http链接  使用split把字符串转数组。不然会报错
+  upload_picture: function(name) {
+    var app = getApp();
+    var that = this
+    //让用户选择或拍摄一张照片
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success(res) {
+        //选择完成会先返回一个临时地址保存备用
+        const tempFilePaths = res.tempFilePaths
+        const name='QR/teacher/' + app.globalData.openid
+        //将照片上传至云端需要刚才存储的临时地址
+        wx.navigateTo({
+          url: '../../template/uploadImageCropper/uploadImageCropper?image='+tempFilePaths+'&name='+name,
+        })
+        
+      }
     })
-
   },
   /**
    * 生命周期函数--监听页面加载
@@ -83,14 +96,28 @@ Page({
         userInfo: app.globalData.userInfo
       })
     }
+    if(app.globalData.userInfo.isAmbassador){
+      this.setData({
+        picker:['小学一至三年级','小学四至六年级','初一','初二','初三','高一', '高二', '高三','大一', '大二', '大三', '大四']
+      })
+    }else if(app.globalData.userInfo.job==0){
+      this.setData({
+        picker:['小学一至三年级','小学四至六年级','初一','初二','初三','高一', '高二', '高三']
+      })
+    }
+    else{
+      this.setData({
+        picker:['大一', '大二', '大三', '大四']
+      })
+    }
     let that = this
-    if (app.globalData.isTeacher == 1 && app.globalData.userInfo.otherInfo != undefined) {
+    if (app.globalData.isTeacher == 1 || app.globalData.isTeacher == 2 && app.globalData.userInfo.otherInfo != undefined) {
       const db = wx.cloud.database()
-      await db.collection('person').doc(app.globalData.openid)
+      await db.collection('person').where({openid:app.globalData.openid})
         .get()
         .then(function (res) {
           console.log("【teacherDetail查询数据库person】", res)
-          let fileID = "cloud://yiban-edu.7969-yiban-edu-1301806073/QR/teacher/" + res.data.openid + ".jpg"
+          let fileID = "cloud://yiban-edu.7969-yiban-edu-1301806073/QR/teacher/" + app.globalData.openid + ".jpg"
           that.setData({
             teacher: true,
             fileID: fileID

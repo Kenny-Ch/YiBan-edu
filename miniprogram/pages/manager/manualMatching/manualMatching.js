@@ -32,7 +32,8 @@ Page({
       console.log("【manualMatching调用函数manualMatch】", res)
       wx.showToast({
         title: res.result,
-        icon: 'none'
+        icon: 'none',
+        duration: 2000,
       })
     }).catch(function (err) {
       console.log(err)

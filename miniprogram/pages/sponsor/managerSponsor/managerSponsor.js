@@ -79,6 +79,7 @@ Page({
     
   },
   upload_picture: function(name) {
+    var that=this
     //让用户选择或拍摄一张照片
     wx.chooseImage({
       count: 1,
@@ -91,7 +92,6 @@ Page({
         wx.navigateTo({
           url: '../../template/imageCropper/imageCropper?image='+tempFilePaths,
         })
-
       }
     })
   },
