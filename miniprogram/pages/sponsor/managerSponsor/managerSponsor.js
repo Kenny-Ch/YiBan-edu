@@ -18,8 +18,6 @@ Page({
   onLoad: function (options) {
     const db = wx.cloud.database()
     let that = this
-    //如果对应网校数据库存在fileID，则将本页面的fileID和img都赋值为数据库的fileID，否则跳过
-
     db.collection('networkSchool').where({
       schoolID: options.schoolID
     }).get()
@@ -27,12 +25,25 @@ Page({
         console.log("【sponsor/managerSponsor查询数据库networkSchool】", res)
         that.setData({
           school: res.data[0],
-          img: res.data[0].fileID
         })
         let month = res.data[0].date.getMonth() + 1
         let date = res.data[0].date.getFullYear() + '-' + month + '-' + res.data[0].date.getDate()
         that.setData({
           ['school.date']: date
+        })
+        //如果对应网校数据库存在fileID，则将本页面的fileID和img都赋值为数据库的fileID，否则跳过
+        wx.cloud.downloadFile({
+          fileID: 'cloud://yiban-edu.7969-yiban-edu-1301806073/networkSchoolQR/' + options.schoolID + '.jpg',
+          success: res => {
+            console.log(res)
+            //将fileID保存到对应网校数据库
+            that.setData({
+              img: res.tempFilePath,
+            })
+          },
+          fail: err => {
+            console.log(err)
+          }
         })
         that.updateNetworkSchoolInfo(options)
       }).catch(function (err) {
@@ -58,7 +69,6 @@ Page({
           that.setData({
             img: res.fileID,
           })
-
           wx.showToast({
             title: '图片上传成功！',
             icon: 'none'

@@ -526,7 +526,7 @@
 					"id": 67,
 					"name": "pages/sponsor/managerSponsor/managerSponsor",
 					"pathName": "pages/sponsor/managerSponsor/managerSponsor",
-					"query": "schoolID=9999",
+					"query": "schoolID=0002",
 					"scene": null
 				},
 				{
