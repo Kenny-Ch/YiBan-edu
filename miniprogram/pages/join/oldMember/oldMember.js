@@ -23,6 +23,7 @@ Page({
     })
   },
   upload_picture: function(name) {
+    var app = getApp();
     var that = this
     //让用户选择或拍摄一张照片
     wx.chooseImage({
@@ -32,29 +33,12 @@ Page({
       success(res) {
         //选择完成会先返回一个临时地址保存备用
         const tempFilePaths = res.tempFilePaths
+        const name='QR/teacher/' + app.globalData.openid
         //将照片上传至云端需要刚才存储的临时地址
-        wx.cloud.uploadFile({
-          cloudPath: 'QR/teacher/' + app.globalData.openid + '.jpg',
-          filePath: tempFilePaths[0],
-          success(res) {
-            wx.showToast({
-              title: '图片上传成功！',
-              icon: 'none'
-            })
-            //上传成功后会返回永久地址
-            that.setData({
-              fileID: res.fileID, //图片存储到云存储的fileID
-              img:res.fileID
-            })
-            console.log(res.fileID)
-          },
-          fail(err) {
-            wx.showToast({
-              title: '图片上传失败！',
-              icon: 'none'
-            })
-          }
+        wx.navigateTo({
+          url: '../../template/uploadImageCropper/uploadImageCropper?image='+tempFilePaths+'&name='+name,
         })
+        
       }
     })
   },
