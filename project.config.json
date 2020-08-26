@@ -512,12 +512,28 @@
 					"id": -1,
 					"name": "pages/template/imageCropper/imageCropper",
 					"pathName": "pages/template/imageCropper/imageCropper",
+					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "pages/test/test",
 					"pathName": "pages/test/test",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 67,
+					"name": "pages/sponsor/managerSponsor/managerSponsor",
+					"pathName": "pages/sponsor/managerSponsor/managerSponsor",
+					"query": "schoolID=9999",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/join/result/result",
+					"pathName": "pages/join/result/result",
+					"query": "schoolID=9999",
 					"scene": null
 				}
 			]
