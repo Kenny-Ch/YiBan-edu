@@ -30,7 +30,12 @@ Page({
           QR: res.tempFilePath
         })
       },
-      fail: console.error
+      fail: err => {
+        console.log(err)
+        that.setData({
+          QR: 'cloud://yiban-edu.7969-yiban-edu-1301806073/community/growUp.png',
+        })
+      }
     })
   },
 

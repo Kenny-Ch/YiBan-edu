@@ -44,7 +44,9 @@
     "pages/index/register/register",
     "pages/manager/manualMatching/manualMatching",
     "pages/template/imageCropper/imageCropper",
-    "pages/template/uploadImageCropper/uploadImageCropper"
+    "pages/template/uploadImageCropper/uploadImageCropper",
+    "pages/ambassador/invitedStudents/invitedStudents",
+    "pages/ambassador/viewTeacher/viewTeacher"
   ],
   "window": {
     "navigationStyle": "custom",

@@ -535,6 +535,19 @@
 					"pathName": "pages/join/result/result",
 					"query": "schoolID=9999",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/ambassador/invitedStudents/invitedStudents",
+					"pathName": "pages/ambassador/invitedStudents/invitedStudents",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/ambassador/viewTeacher/viewTeacher",
+					"pathName": "pages/ambassador/viewTeacher/viewTeacher",
+					"scene": null
 				}
 			]
 		}

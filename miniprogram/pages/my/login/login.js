@@ -85,6 +85,8 @@ Page({
 
   formSubmit: function(e) {
     let that = this
+    var input = e.detail.value
+    var pick = that.data
     wx.getSetting({
       success: function(res) {
         if (!res.authSetting['scope.userInfo']) {
@@ -94,7 +96,8 @@ Page({
             duration: 1500
           })
           return
-        } else {
+        }
+        else {
           wx.getUserInfo({
             success: function(res) {
               console.log(res)
@@ -103,8 +106,6 @@ Page({
             }
           })
           console.log('【注册界面提交表单信息】', e.detail.value, that.data.region, that.data.gender, that.data.grade)
-          var input = e.detail.value
-          var pick = that.data
           if (input.uname == "" || input.school == "" || input.qq == "" || input.email == "" || input.tel == "" || pick.region.length == 0 || pick.gender == undefined || pick.grade == undefined || pick.fileID == undefined) {
             wx.showToast({
               title: '信息填写不完整~',
@@ -112,6 +113,10 @@ Page({
               duration: 1500
             })
           } else {
+            if(input.invite != ""){
+              //判断是否有该邀请码，如果没有则需要返回
+            
+            }
             if (that.data.job == 1) {
               //教师注册
               wx.cloud.callFunction({

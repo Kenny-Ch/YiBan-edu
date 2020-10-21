@@ -34,6 +34,8 @@
     <input type="number" class='contents' placeholder="请填写你的手机号码" name='tel'></input>
     <view class='label'>邮箱：</view>
     <input type="text" class='contents' placeholder="请填写你的邮箱" name='email'></input>
+    <view class='label'>邀请码：</view>
+    <input type="text" class='contents' placeholder="如无可不填写" name='invite'></input>
     <view class='label'>证明材料(上传校园卡或其他身份证明材料)：</view>
     <view class='pic_address'>
       <image src="{{img}}" class='pic' bindtap="upload_picture"></image>
