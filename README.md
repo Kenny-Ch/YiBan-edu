@@ -58,7 +58,9 @@
         "major": "",                //专业
         "wechat": "",               //微信号
         "tel": "",                  //电话号码
-    }
+    },
+    "inviteCode":"ybdsxxxxx",       //邀请码，后面是五位数
+    "inviteCodeNum":x               //邀请码后面数字，类型是number，用于取当前最大值而自动生成下一个邀请码
 }
 
 //person(存储个人信息及匹配信息)

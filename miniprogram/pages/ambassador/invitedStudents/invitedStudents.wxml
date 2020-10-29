@@ -10,7 +10,7 @@
   <view class="bottomtext" wx:if='{{student.length==0}}'>{{text}}</view>
   <view wx:if='{{student.length>0}}'>
     <view class="card" wx:for="{{student}}">
-      <navigator class='bottom_card' url="../viewTeacher/viewTeacher?" hover-class="none">
+      <navigator class='bottom_card' url="../viewTeacher/viewTeacher?stuId={{item._id}}" hover-class="none">
         <view class="left">
           <view class='top'>
             <view class="shu"></view>

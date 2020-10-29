@@ -6,8 +6,8 @@
 <view class='title'>匹配的老师</view>
 <view class="line"></view>
 <view class="con">
-  <view class="bottomtext" wx:if='{{teacher==undefine}}'>{{text}}</view>
-  <view wx:if='{{teacher!=undefine}}'>
+  <view class="bottomtext" wx:if='{{teacher==null}}'>{{text}}</view>
+  <view wx:if='{{teacher!=null}}'>
     <view class="card">
       <view class="left" bindtap="jump" data-index="{{index}}" hover-class="none">
         <view class='top'>
