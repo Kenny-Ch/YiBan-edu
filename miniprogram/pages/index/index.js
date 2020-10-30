@@ -282,7 +282,7 @@ Page({
           item.button = "一起加油";
           if (isAmbassador) {
             //已绑定
-            item.url = 'isAmbassador'
+            item.url = '../ambassador/invitedStudents/invitedStudents?inviteCode='+app.globalData.inviteCode;
           } else {
             //未绑定
             item.url = "../ambassador/ambassador";

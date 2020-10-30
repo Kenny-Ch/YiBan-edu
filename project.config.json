@@ -547,6 +547,13 @@
 					"id": -1,
 					"name": "pages/ambassador/viewTeacher/viewTeacher",
 					"pathName": "pages/ambassador/viewTeacher/viewTeacher",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/manager/viewAmbassador/viewAmbassador",
+					"pathName": "pages/manager/viewAmbassador/viewAmbassador",
 					"scene": null
 				}
 			]

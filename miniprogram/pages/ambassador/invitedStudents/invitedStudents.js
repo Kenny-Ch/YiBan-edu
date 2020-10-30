@@ -24,8 +24,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // const inviteCode = app.globalData.inviteCode
-    var inviteCode = "ybds00001"
+    //const inviteCode = app.globalData.inviteCode
+    const inviteCode = options.inviteCode
+//    var inviteCode = "ybds00001"
     var that = this
     wx.cloud.callFunction({
       name: 'getInvitedStu',
