@@ -21,7 +21,9 @@ exports.main = async (event, context) => {
       matchList: true,
       matchWaitList: true,
       job: true,
-      schoolID: true
+      schoolID: true,
+      isAmbassador: true,
+      isSponsor: true
     }).get()
   } else {
     res = await db.collection('person').where({
@@ -30,13 +32,33 @@ exports.main = async (event, context) => {
       matchList: true,
       matchWaitList: true,
       job: true,
-      schoolID: true
+      schoolID: true,
+      isAmbassador: true,
+      isSponsor: true
     }).get()
   }
   console.log("删除成员的信息", res.data[0])
 
-  if(res.data[0].isAmbassador || res.data[0].isSponsor) {
-    return "请联系以伴管理员注销账号";
+  if(res.data[0].isSponsor) {
+    return "请联系以伴管理员注销账号"
+  }
+
+  if(res.data[0].isAmbassador) {
+    await db.collection('person').where({
+      _id: res.data[0]._id
+    }).remove()
+    await cloud.callFunction({
+      name: "recordTimeNode",
+      data: {
+        flag: "loginOut",
+        isNew: false,
+        otherOpenid: "",
+        otherName: "",
+        openid: event.openid
+      }
+    })
+
+    return "删除成功（不保证关联的其他成员相关信息删除成功）"
   } 
   
   if(res.data[0].matchWaitList.length!=0 || res.data[0].matchList.length!=0) {

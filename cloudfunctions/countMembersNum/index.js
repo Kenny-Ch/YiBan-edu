@@ -36,7 +36,8 @@ exports.main = async (event, context) => {
     var teaRes = await db.collection('person').where({
       job: 1,
       schoolID: schools[i],
-      isCheck:1
+      isCheck:1,
+      openid: _.neq("")
     }).count()
     var waitTeaRes = await db.collection('person').where({
       job: 1,
@@ -72,7 +73,8 @@ exports.main = async (event, context) => {
   var teaRes = await db.collection('person').where({
     job: 1,
     schoolID: event.schoolID,
-    isCheck:1
+    isCheck:1,
+    openid:_.neq("")
   }).count()
   var waitTeaRes = await db.collection('person').where({
     job: 1,
@@ -86,6 +88,12 @@ exports.main = async (event, context) => {
     matchWaitList: _.size(1)
   }).count()
 
+  var waitMatchStu = await db.collection('person').where({
+    job: 0,
+    'matchInfo.schoolID': event.schoolID,
+    matchWaitList: _.size(1)
+  }).get()
+  console.log("待匹配学生数组：",waitMatchStu)
   console.log("schoolID:",event.schoolID,"学生数量:",stuRes.total,"老师数量:",teaRes.total,"待审核老师数量：",waitTeaRes.total,"待匹配学生数量：",waitMatchStuRes.total)
 
   await db.collection('networkSchool').where({
