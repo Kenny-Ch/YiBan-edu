@@ -11,14 +11,14 @@
       <view class='top'>
         <view class="shu"></view>
         <view class='name'>{{item.name}}</view>
-        <view class="schoolID">{{item.grade}}</view>
-        <view class="schoolID">{{item.school}}</view>
+        <view class="schoolID">{{item.perInfo.grade}}</view>
+        <view class="schoolID">{{item.perInfo.school}}</view>
       </view>
       <view class='text1'>
         <view class="text" style="margin-right: 36rpx;">邀请学生：{{item.studentNum}}人</view>
       </view>
     </view>
-    <image src="../.../../../../images/manager/delete.svg" class="right" bindtap="delete" data-index="{{index}}" data-openid="{{item.openid}}"></image>
+    <image src="../.../../../../images/manager/delete.svg" class="right" bindtap="delete" data-index="{{index}}" data-id="{{item._id}}"></image>
   </navigator>
   <view class='bott'>{{bottomtext}}</view>
 </view>
