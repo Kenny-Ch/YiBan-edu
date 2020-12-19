@@ -36,7 +36,7 @@
   </view>
 </view>
 <!--爱心大使信息查看-->
-<view bindtap="jump" data-url="./viewSchool/viewSchool" hover-class="none">
+<view bindtap="jump" data-url="./viewAmbassador/viewAmbassador" hover-class="none">
   <view class='card' style="background-image: linear-gradient( 90deg, #91eae4 10%,  #7f7fd5 100%);">
     <view class='text'>
       <view class="text-title">爱心大使信息</view>

@@ -18,6 +18,7 @@ Page({
     //   registerDate:'Mon Aug 03 2020 18:49:18 GMT+0800 (中国标准时间)'
     // },
     ],
+    jump:0,
   },
 
   /**
@@ -26,7 +27,6 @@ Page({
   onLoad: function (options) {
     //const inviteCode = app.globalData.inviteCode
     const inviteCode = options.inviteCode
-//    var inviteCode = "ybds00001"
     var that = this
     wx.cloud.callFunction({
       name: 'getInvitedStu',

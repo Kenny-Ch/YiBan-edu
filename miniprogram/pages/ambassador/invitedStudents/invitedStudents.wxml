@@ -4,7 +4,7 @@
   <view slot="backText">返回</view>
   <view slot="content">以伴edu</view>
 </cu-custom>
-<view class='title'>我邀请的学生</view>
+<view class='title'>邀请的学生</view>
 <view class="line"></view>
 <view class="con">
   <view class="bottomtext" wx:if='{{student.length==0}}'>{{text}}</view>

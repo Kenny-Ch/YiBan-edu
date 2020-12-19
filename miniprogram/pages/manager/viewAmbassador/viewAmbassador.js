@@ -34,17 +34,18 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: async function (options) {
     var that = this
     wx.cloud.callFunction({
       name: 'getAmbassador',
       data: {
       }
     }).then(res => {
-      console.log("获取爱心大师的信息",res)
+      console.log("获取爱心大师的信息",res.result)
       that.setData({
         ambassador:res.result
-      })
+      })  
+
     }).catch(err=>{
       console.log('获取爱心大使失败')
       wx.showToast({
@@ -60,8 +61,9 @@ Page({
 
   delete: function(e) {
     console.log(e);
-    var index = e.target.dataset.index
-    var _id = e.target.dataset.id
+    var index = e.currentTarget.dataset.index
+    var _id = e.currentTarget.dataset.id
+    var that = this
     if(_id) {
       wx.showModal({
         title: '提示',
@@ -76,6 +78,10 @@ Page({
               }
             }).then(res => {
               //实时删除，并更新ui
+              that.data.ambassador.splice(index, 1)
+              that.setData({
+                ambassador: that.data.ambassador
+              })
               wx.showToast({
                 title: '删除成功',
                 icon: 'none',

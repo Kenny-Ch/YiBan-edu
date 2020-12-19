@@ -58,6 +58,14 @@
       <image src="{{fileID}}" class='img' data-url="{{fileID}}" bindtap="upload_picture"></image>
     </view>
   </view>
+  <view class="cu-form-group" wx:if="{{isAmbassador}}">
+    <view class="title wd">邀请码</view>
+   <input type='text' value="{{userInfo.inviteCode}}" bindtap='copyText' disabled="false"></input>
+  </view>
+  <view class="cu-form-group" wx:if="{{isStudent}}">
+    <view class="title wd">邀请码</view>
+   <input type='text' value="{{userInfo.inviteCode}}" bindblur="getInviteCode"></input>
+  </view>
   <view class="row">
     <button form-type="submit" style="width: 282rpx;min-height: 60rpx;" class='btn'>保存信息</button>
     <button style="width: 282rpx;min-height: 60rpx;" class='btn' bindtap="myCancel">注销账号</button>

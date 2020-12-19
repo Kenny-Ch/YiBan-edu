@@ -195,6 +195,7 @@ Page({
                           registerDate: new Date(),
                           avatarUrl: app.globalData.avatarUrl,
                           job: 0,
+                          inviteCode:input.invite,
                           name: input.uname,
                           isMatchFull: false,
                           matchList: [],

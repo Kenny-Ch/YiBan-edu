@@ -71,6 +71,7 @@
 	text-align: center;
 }
 .name{
+	width: 50%;
 	color: rgba(80, 80, 80, 1);
 	font-size: 32rpx;
 	line-height: 150%;

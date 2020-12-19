@@ -6,8 +6,8 @@
 <view class='title'>爱心大使查看</view>
 <view class="line"></view>
 <view class="con">
-  <navigator hover-class="none" url="../../ambassador/invitedStudents/invitedStudents?inviteCode={{item.inviteCode}}" class="card" wx:for="{{ambassador}}">
-    <view class="left" bindtap="jump" data-index="{{index}}" hover-class="none">
+  <view class="card" wx:for="{{ambassador}}">
+    <navigator class="left" data-index="{{index}}" hover-class="none" url="../../ambassador/invitedStudents/invitedStudents?inviteCode={{item.inviteCode}}" >
       <view class='top'>
         <view class="shu"></view>
         <view class='name'>{{item.name}}</view>
@@ -15,10 +15,10 @@
         <view class="schoolID">{{item.perInfo.school}}</view>
       </view>
       <view class='text1'>
-        <view class="text" style="margin-right: 36rpx;">邀请学生：{{item.studentNum}}人</view>
+        <view class="text" style="margin-right: 36rpx;">已邀请学生：{{item.studentNum}}人</view>
       </view>
-    </view>
+    </navigator>
     <image src="../.../../../../images/manager/delete.svg" class="right" bindtap="delete" data-index="{{index}}" data-id="{{item._id}}"></image>
-  </navigator>
+  </view>
   <view class='bott'>{{bottomtext}}</view>
 </view>

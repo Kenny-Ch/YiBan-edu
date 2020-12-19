@@ -29,6 +29,7 @@ Page({
     sexs: ['男', '女'],
     fileID: '',
     teacher: false,
+    isAmbassador:false,
   },
   myCancel: function (e) {
     let that = this
@@ -110,7 +111,18 @@ Page({
         picker:['大一', '大二', '大三', '大四']
       })
     }
+    
     let that = this
+    if(app.globalData.userInfo.isAmbassador==true){
+      that.setData({
+        isAmbassador: true,
+      })
+    }
+    if(app.globalData.userInfo.job==0){
+      that.setData({
+        isStudent: true,
+      })
+    }
     if (app.globalData.isTeacher == 1 || app.globalData.isTeacher == 2 && app.globalData.userInfo.otherInfo != undefined) {
       const db = wx.cloud.database()
       await db.collection('person').where({openid:app.globalData.openid})
@@ -128,18 +140,47 @@ Page({
     }
 
   },
+  copyText: function (e) {
+    var that=this
+    if(that.data.userInfo.inviteCode!=undefined){
+      wx.setClipboardData({
+        data: that.data.userInfo.inviteCode,
+        success: function (res) {
+          wx.getClipboardData({
+            success: function (res) {
+              wx.showToast({
+                title: '复制邀请码成功',
+                icon: 'none'
+              })
+            }
+          })
+        }
+      })
+    }
+    else{
+      wx.showToast({
+        title: '邀请码不存在',
+        icon: 'none'
+      })
+    }
+    
+  },
 
   formSubmit: function (options) {
     console.log(options)
     const db = wx.cloud.database()
     const app = getApp()
     let that = this
+    if(that.data.changeValue.inviteCode==undefined){
+      that.data.changeValue.inviteCode=''
+    }
     wx.cloud.callFunction({
       name: 'updateInfo',
       data: {
         _id: that.data.userInfo._id,
         name: that.data.changeValue.name,
-        perInfo: that.data.changeValue.perInfo
+        perInfo: that.data.changeValue.perInfo,
+        inviteCode:that.data.changeValue.inviteCode
       }
     }).then(function (res) {
       console.log("【my/information调用函数updateInfo】", res)
@@ -151,10 +192,20 @@ Page({
       console.log(err)
     })
   },
-
+  getInviteCode: function (e) {
+    console.log("【邀请码】改变为 ", e.detail.value)
+    this.data.changeValue.inviteCode = e.detail.value
+    app.globalData.userInfo.inviteCode = e.detail.value
+  },
   getName: function (e) {
     wx.showToast({
       title: "姓名不可更改",
+      icon: 'none'
+    })
+  },
+  getInvite: function (e) {
+    wx.showToast({
+      title: "邀请码不可更改",
       icon: 'none'
     })
   },
@@ -198,7 +249,7 @@ Page({
   },
 
   getGrade: function (e) {
-    var grade = e.detail.value == '0' ? '高一' : (e.detail.value == '1' ? '高二' : '高三')
+    var grade = this.data.picker[e.detail.value]
     console.log("【在读年级】改变为 ", grade)
     this.data.changeValue.perInfo.grade = grade
     app.globalData.userInfo.perInfo.grade = grade
