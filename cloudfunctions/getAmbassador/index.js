@@ -28,6 +28,14 @@ exports.main = async (event, context) => {
     }).get()
       result =  result.concat(res.data)
   }
+  for (let i = 0; i < result.length; i++) {
+    var res = await db.collection('person').where({
+      inviteCode:result[i].inviteCode,
+      job:0
+    }).count()
+    let num = res.total
+    result[i].studentNum = num;
+  }
 
   return result
 }

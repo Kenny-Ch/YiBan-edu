@@ -145,6 +145,8 @@
         "habitAndPlan": "",         //学习习惯与学习计划
         "expectation": "",          //对老师的期望
     }
+    inviteCode: string,             //受邀请学生或者爱心大使才有
+    inviteCodeNum: number           //仅爱心大使有，用于自动生成inviteCode
 },
 //学习打卡不清楚
 

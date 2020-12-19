@@ -12,6 +12,7 @@ const MAX_LIMIT = 100
 */
 // 云函数入口函数
 exports.main = async (event, context) => {
+  console.log(event)
   // 先取出集合记录总数
   const countResult = await db.collection('person').where({
     inviteCode:event.inviteCode,
