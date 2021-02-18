@@ -1,562 +1,568 @@
 {
-	"miniprogramRoot": "miniprogram/",
-	"cloudfunctionRoot": "cloudfunctions/",
-	"setting": {
-		"urlCheck": true,
-		"es6": true,
-		"enhance": true,
-		"postcss": true,
-		"minified": true,
-		"newFeature": true,
-		"coverView": true,
-		"autoAudits": false,
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"compileHotReLoad": false,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		},
-		"useIsolateContext": true,
-		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false
-	},
-	"appid": "wx7a4010768611ebc5",
-	"projectname": "YiBan-edu",
-	"libVersion": "2.12.1",
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"list": []
-		},
-		"gamePlugin": {
-			"current": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": -1,
-			"list": [
-				{
-					"id": 0,
-					"name": "db guide",
-					"pathName": "pages/databaseGuide/databaseGuide",
-					"query": ""
-				},
-				{
-					"id": 1,
-					"name": "pages/test/test",
-					"pathName": "pages/test/test",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 2,
-					"name": "pages/matching/matching",
-					"pathName": "pages/matching/matching",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 3,
-					"name": "pages/display/artical/artical",
-					"pathName": "pages/display/artical/artical",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 4,
-					"name": "pages/decompress/heart/heart",
-					"pathName": "pages/decompress/heart/heart",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 5,
-					"name": "pages/decompress/heart/question/question",
-					"pathName": "pages/decompress/heart/question/question",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 6,
-					"name": "pages/decompress/heart/community/community",
-					"pathName": "pages/decompress/heart/community/community",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 7,
-					"name": "pages/display/detail/detail",
-					"pathName": "pages/display/detail/detail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 8,
-					"name": "pages/my/my",
-					"pathName": "pages/my/my",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 9,
-					"name": "pages/my/login/login",
-					"pathName": "pages/my/login/login",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 10,
-					"name": "pages/my/information/information",
-					"pathName": "pages/my/information/information",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 11,
-					"name": "pages/display/classroom/classroom",
-					"pathName": "pages/display/classroom/classroom",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 12,
-					"name": "pages/dreamFactory/school/school",
-					"pathName": "pages/dreamFactory/school/school",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 13,
-					"name": "pages/dreamFactory/major/major",
-					"pathName": "pages/dreamFactory/major/major",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 14,
-					"name": "pages/matching/result/result",
-					"pathName": "pages/matching/result/result",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 15,
-					"name": "pages/matching/introduce/introduce",
-					"pathName": "pages/matching/introduce/introduce",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 16,
-					"name": "pages/matching/teacher/teacher",
-					"pathName": "pages/matching/teacher/teacher",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 17,
-					"name": "pages/decompress/heart/tree/tree",
-					"pathName": "pages/decompress/heart/tree/tree",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 18,
-					"name": "pages/display/video/video",
-					"pathName": "pages/display/video/video",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 19,
-					"name": "pages/dreamFactory/schoollist/schoollist",
-					"pathName": "pages/dreamFactory/schoollist/schoollist",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 20,
-					"name": "pages/index/index",
-					"pathName": "pages/index/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 21,
-					"name": "pages/display/video/video",
-					"pathName": "pages/display/video/video",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 22,
-					"name": "pages/display/classroom/classroom",
-					"pathName": "pages/display/classroom/classroom",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 23,
-					"name": "pages/my/myCollection/myCollection",
-					"pathName": "pages/my/myCollection/myCollection",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 24,
-					"name": "pages/decompress/heart/tree/establish/establish",
-					"pathName": "pages/decompress/heart/tree/establish/establish",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 25,
-					"name": "pages/decompress/heart/tree/detail/detail",
-					"pathName": "pages/decompress/heart/tree/detail/detail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 26,
-					"name": "pages/dreamFactory/majorlist/majorlist",
-					"pathName": "pages/dreamFactory/majorlist/majorlist",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 27,
-					"name": "pages/decompress/heart/question/detail/detail",
-					"pathName": "pages/decompress/heart/question/detail/detail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 28,
-					"name": "pages/join/join",
-					"pathName": "pages/join/join",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 29,
-					"name": "pages/manager/manager",
-					"pathName": "pages/manager/manager",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 30,
-					"name": "pages/manager/viewTeacher/viewTeacher",
-					"pathName": "pages/manager/viewTeacher/viewTeacher",
-					"query": "type=match&schoolID=0001",
-					"scene": null
-				},
-				{
-					"id": 31,
-					"name": "pages/manager/teacherMatch/teacherMatch",
-					"pathName": "pages/manager/teacherMatch/teacherMatch",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 32,
-					"name": "pages/join/myStudent/myStudent",
-					"pathName": "pages/join/myStudent/myStudent",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 33,
-					"name": "pages/join/studentDetail/studentDetail",
-					"pathName": "pages/join/studentDetail/studentDetail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 34,
-					"name": "pages/manager/manager",
-					"pathName": "pages/manager/manager",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 35,
-					"name": "pages/manager/viewTeacher/viewTeacher",
-					"pathName": "pages/manager/viewTeacher/viewTeacher",
-					"query": "type=match",
-					"scene": null
-				},
-				{
-					"id": 36,
-					"name": "pages/manager/teacherMatch/teacherMatch",
-					"pathName": "pages/manager/teacherMatch/teacherMatch",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 37,
-					"name": "pages/join/studentDetail/studentDetail",
-					"pathName": "pages/join/studentDetail/studentDetail",
-					"query": "id=37e26adb5ec29bfb00f9357627ee1f29&status=false&type=teacher",
-					"scene": null
-				},
-				{
-					"id": 38,
-					"name": "pages/join/oldMember/oldMember",
-					"pathName": "pages/join/oldMember/oldMember",
-					"query": "id=37e26adb5ec29bfb00f9357627ee1f29&status=false&type=teacher",
-					"scene": null
-				},
-				{
-					"id": 39,
-					"name": "pages/join/newMember/newMember",
-					"pathName": "pages/join/newMember/newMember",
-					"query": "id=37e26adb5ec29bfb00f9357627ee1f29&status=false&type=teacher",
-					"scene": null
-				},
-				{
-					"id": 40,
-					"name": "pages/join/workingAbility/workingAbility",
-					"pathName": "pages/join/workingAbility/workingAbility",
-					"query": "id=37e26adb5ec29bfb00f9357627ee1f29&status=false&type=teacher",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/manager/reviewComments/reviewComments",
-					"pathName": "pages/manager/reviewComments/reviewComments",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/join/oldMember/oldMember",
-					"pathName": "pages/join/oldMember/oldMember",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 44,
-					"name": "pages/matching/teacher/teacher",
-					"pathName": "pages/matching/teacher/teacher",
-					"query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/sponsor/binding/binding",
-					"pathName": "pages/sponsor/binding/binding",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/ambassador/ambassador",
-					"pathName": "pages/ambassador/ambassador",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/matching/licence/licence",
-					"pathName": "pages/matching/licence/licence",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/manager/viewSchool/viewSchool",
-					"pathName": "pages/manager/viewSchool/viewSchool",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/index/index",
-					"pathName": "pages/index/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/sponsor/managerSponsor/managerSponsor",
-					"pathName": "pages/sponsor/managerSponsor/managerSponsor",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/manager/viewSchool/viewSchool",
-					"pathName": "pages/manager/viewSchool/viewSchool",
-					"query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc",
-					"scene": null
-				},
-				{
-					"id": 52,
-					"name": "pages/sponsor/managerSponsor/managerSponsor",
-					"pathName": "pages/sponsor/managerSponsor/managerSponsor",
-					"query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0002",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/sponsor/binding/binding",
-					"pathName": "pages/sponsor/binding/binding",
-					"query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0001",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/matching/matching",
-					"pathName": "pages/matching/matching",
-					"query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0001",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/matching/teacher/teacher",
-					"pathName": "pages/matching/teacher/teacher",
-					"query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0001",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/matching/result/result",
-					"pathName": "pages/matching/result/result",
-					"query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0001",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/join/join",
-					"pathName": "pages/join/join",
-					"query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0001",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/join/newMember/newMember",
-					"pathName": "pages/join/newMember/newMember",
-					"query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0001",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/join/workingAbility/workingAbility",
-					"pathName": "pages/join/workingAbility/workingAbility",
-					"query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0002",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/manager/teacherDetail/teacherDetail",
-					"pathName": "pages/manager/teacherDetail/teacherDetail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/display/classroom/classroom",
-					"pathName": "pages/display/classroom/classroom",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/matching/chooseSchool/chooseSchool",
-					"pathName": "pages/matching/chooseSchool/chooseSchool",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/matching/chooseSchool/chooseSchool",
-					"pathName": "pages/matching/chooseSchool/chooseSchool",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/index/register/register",
-					"pathName": "pages/index/register/register",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/manager/manualMatching/manualMatching",
-					"pathName": "pages/manager/manualMatching/manualMatching",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/template/imageCropper/imageCropper",
-					"pathName": "pages/template/imageCropper/imageCropper",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/test/test",
-					"pathName": "pages/test/test",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 67,
-					"name": "pages/sponsor/managerSponsor/managerSponsor",
-					"pathName": "pages/sponsor/managerSponsor/managerSponsor",
-					"query": "schoolID=0002",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/join/result/result",
-					"pathName": "pages/join/result/result",
-					"query": "schoolID=9999",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/ambassador/invitedStudents/invitedStudents",
-					"pathName": "pages/ambassador/invitedStudents/invitedStudents",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/ambassador/viewTeacher/viewTeacher",
-					"pathName": "pages/ambassador/viewTeacher/viewTeacher",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/manager/viewAmbassador/viewAmbassador",
-					"pathName": "pages/manager/viewAmbassador/viewAmbassador",
-					"scene": null
-				}
-			]
-		}
-	}
+  "miniprogramRoot": "miniprogram/",
+  "cloudfunctionRoot": "cloudfunctions/",
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "enableEngineNative": false,
+    "bundle": false,
+    "useIsolateContext": true,
+    "useCompilerModule": false,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "userConfirmedBundleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true
+  },
+  "appid": "wx7a4010768611ebc5",
+  "projectname": "YiBan-edu",
+  "libVersion": "2.15.0",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
+  "condition": {
+    "search": {
+      "list": []
+    },
+    "conversation": {
+      "list": []
+    },
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": 0,
+          "name": "db guide",
+          "pathName": "pages/databaseGuide/databaseGuide",
+          "query": ""
+        },
+        {
+          "id": 1,
+          "name": "pages/test/test",
+          "pathName": "pages/test/test",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 2,
+          "name": "pages/matching/matching",
+          "pathName": "pages/matching/matching",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 3,
+          "name": "pages/display/artical/artical",
+          "pathName": "pages/display/artical/artical",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 4,
+          "name": "pages/decompress/heart/heart",
+          "pathName": "pages/decompress/heart/heart",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 5,
+          "name": "pages/decompress/heart/question/question",
+          "pathName": "pages/decompress/heart/question/question",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 6,
+          "name": "pages/decompress/heart/community/community",
+          "pathName": "pages/decompress/heart/community/community",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 7,
+          "name": "pages/display/detail/detail",
+          "pathName": "pages/display/detail/detail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 8,
+          "name": "pages/my/my",
+          "pathName": "pages/my/my",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 9,
+          "name": "pages/my/login/login",
+          "pathName": "pages/my/login/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 10,
+          "name": "pages/my/information/information",
+          "pathName": "pages/my/information/information",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 11,
+          "name": "pages/display/classroom/classroom",
+          "pathName": "pages/display/classroom/classroom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 12,
+          "name": "pages/dreamFactory/school/school",
+          "pathName": "pages/dreamFactory/school/school",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 13,
+          "name": "pages/dreamFactory/major/major",
+          "pathName": "pages/dreamFactory/major/major",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 14,
+          "name": "pages/matching/result/result",
+          "pathName": "pages/matching/result/result",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 15,
+          "name": "pages/matching/introduce/introduce",
+          "pathName": "pages/matching/introduce/introduce",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 16,
+          "name": "pages/matching/teacher/teacher",
+          "pathName": "pages/matching/teacher/teacher",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 17,
+          "name": "pages/decompress/heart/tree/tree",
+          "pathName": "pages/decompress/heart/tree/tree",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 18,
+          "name": "pages/display/video/video",
+          "pathName": "pages/display/video/video",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 19,
+          "name": "pages/dreamFactory/schoollist/schoollist",
+          "pathName": "pages/dreamFactory/schoollist/schoollist",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 20,
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 21,
+          "name": "pages/display/video/video",
+          "pathName": "pages/display/video/video",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 22,
+          "name": "pages/display/classroom/classroom",
+          "pathName": "pages/display/classroom/classroom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 23,
+          "name": "pages/my/myCollection/myCollection",
+          "pathName": "pages/my/myCollection/myCollection",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 24,
+          "name": "pages/decompress/heart/tree/establish/establish",
+          "pathName": "pages/decompress/heart/tree/establish/establish",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 25,
+          "name": "pages/decompress/heart/tree/detail/detail",
+          "pathName": "pages/decompress/heart/tree/detail/detail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 26,
+          "name": "pages/dreamFactory/majorlist/majorlist",
+          "pathName": "pages/dreamFactory/majorlist/majorlist",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 27,
+          "name": "pages/decompress/heart/question/detail/detail",
+          "pathName": "pages/decompress/heart/question/detail/detail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 28,
+          "name": "pages/join/join",
+          "pathName": "pages/join/join",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 29,
+          "name": "pages/manager/manager",
+          "pathName": "pages/manager/manager",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 30,
+          "name": "pages/manager/viewTeacher/viewTeacher",
+          "pathName": "pages/manager/viewTeacher/viewTeacher",
+          "query": "type=match&schoolID=0001",
+          "scene": null
+        },
+        {
+          "id": 31,
+          "name": "pages/manager/teacherMatch/teacherMatch",
+          "pathName": "pages/manager/teacherMatch/teacherMatch",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 32,
+          "name": "pages/join/myStudent/myStudent",
+          "pathName": "pages/join/myStudent/myStudent",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 33,
+          "name": "pages/join/studentDetail/studentDetail",
+          "pathName": "pages/join/studentDetail/studentDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 34,
+          "name": "pages/manager/manager",
+          "pathName": "pages/manager/manager",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 35,
+          "name": "pages/manager/viewTeacher/viewTeacher",
+          "pathName": "pages/manager/viewTeacher/viewTeacher",
+          "query": "type=match",
+          "scene": null
+        },
+        {
+          "id": 36,
+          "name": "pages/manager/teacherMatch/teacherMatch",
+          "pathName": "pages/manager/teacherMatch/teacherMatch",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 37,
+          "name": "pages/join/studentDetail/studentDetail",
+          "pathName": "pages/join/studentDetail/studentDetail",
+          "query": "id=37e26adb5ec29bfb00f9357627ee1f29&status=false&type=teacher",
+          "scene": null
+        },
+        {
+          "id": 38,
+          "name": "pages/join/oldMember/oldMember",
+          "pathName": "pages/join/oldMember/oldMember",
+          "query": "id=37e26adb5ec29bfb00f9357627ee1f29&status=false&type=teacher",
+          "scene": null
+        },
+        {
+          "id": 39,
+          "name": "pages/join/newMember/newMember",
+          "pathName": "pages/join/newMember/newMember",
+          "query": "id=37e26adb5ec29bfb00f9357627ee1f29&status=false&type=teacher",
+          "scene": null
+        },
+        {
+          "id": 40,
+          "name": "pages/join/workingAbility/workingAbility",
+          "pathName": "pages/join/workingAbility/workingAbility",
+          "query": "id=37e26adb5ec29bfb00f9357627ee1f29&status=false&type=teacher",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/manager/reviewComments/reviewComments",
+          "pathName": "pages/manager/reviewComments/reviewComments",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/join/oldMember/oldMember",
+          "pathName": "pages/join/oldMember/oldMember",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 44,
+          "name": "pages/matching/teacher/teacher",
+          "pathName": "pages/matching/teacher/teacher",
+          "query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/sponsor/binding/binding",
+          "pathName": "pages/sponsor/binding/binding",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/ambassador/ambassador",
+          "pathName": "pages/ambassador/ambassador",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/matching/licence/licence",
+          "pathName": "pages/matching/licence/licence",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/manager/viewSchool/viewSchool",
+          "pathName": "pages/manager/viewSchool/viewSchool",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/sponsor/managerSponsor/managerSponsor",
+          "pathName": "pages/sponsor/managerSponsor/managerSponsor",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/manager/viewSchool/viewSchool",
+          "pathName": "pages/manager/viewSchool/viewSchool",
+          "query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc",
+          "scene": null
+        },
+        {
+          "id": 52,
+          "name": "pages/sponsor/managerSponsor/managerSponsor",
+          "pathName": "pages/sponsor/managerSponsor/managerSponsor",
+          "query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0002",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/sponsor/binding/binding",
+          "pathName": "pages/sponsor/binding/binding",
+          "query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0001",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/matching/matching",
+          "pathName": "pages/matching/matching",
+          "query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0001",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/matching/teacher/teacher",
+          "pathName": "pages/matching/teacher/teacher",
+          "query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0001",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/matching/result/result",
+          "pathName": "pages/matching/result/result",
+          "query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0001",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/join/join",
+          "pathName": "pages/join/join",
+          "query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0001",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/join/newMember/newMember",
+          "pathName": "pages/join/newMember/newMember",
+          "query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0001",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/join/workingAbility/workingAbility",
+          "pathName": "pages/join/workingAbility/workingAbility",
+          "query": "status=true&id=opGQO5OQ3_DgYxKN4f7xqEuKmUNc&schoolID=0002",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/manager/teacherDetail/teacherDetail",
+          "pathName": "pages/manager/teacherDetail/teacherDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/display/classroom/classroom",
+          "pathName": "pages/display/classroom/classroom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/matching/chooseSchool/chooseSchool",
+          "pathName": "pages/matching/chooseSchool/chooseSchool",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/matching/chooseSchool/chooseSchool",
+          "pathName": "pages/matching/chooseSchool/chooseSchool",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/index/register/register",
+          "pathName": "pages/index/register/register",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/manager/manualMatching/manualMatching",
+          "pathName": "pages/manager/manualMatching/manualMatching",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/template/imageCropper/imageCropper",
+          "pathName": "pages/template/imageCropper/imageCropper",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/test/test",
+          "pathName": "pages/test/test",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 67,
+          "name": "pages/sponsor/managerSponsor/managerSponsor",
+          "pathName": "pages/sponsor/managerSponsor/managerSponsor",
+          "query": "schoolID=0002",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/join/result/result",
+          "pathName": "pages/join/result/result",
+          "query": "schoolID=9999",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/ambassador/invitedStudents/invitedStudents",
+          "pathName": "pages/ambassador/invitedStudents/invitedStudents",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/ambassador/viewTeacher/viewTeacher",
+          "pathName": "pages/ambassador/viewTeacher/viewTeacher",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/manager/viewAmbassador/viewAmbassador",
+          "pathName": "pages/manager/viewAmbassador/viewAmbassador",
+          "scene": null
+        }
+      ]
+    }
+  }
 }

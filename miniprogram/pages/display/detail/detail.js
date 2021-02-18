@@ -1,4 +1,5 @@
 const app = getApp();
+const db = wx.cloud.database()
 let rewardedVideoAd = null
 
 Page({
@@ -49,22 +50,26 @@ Page({
 
     await this.getArtical(options)
 
-    await app.getText(this.data.post.articalUrl, res => {
-      let obj = app.towxml(res.data, 'markdown', {
-        theme: 'light',
-        events: {
-          tap: (e) => {
-            console.log('tap', e);
+    await this.getArtical(options)
+    if(this.data.post.ishtml==false){
+      await app.getText(this.data.post.articalUrl, res => {
+        let obj = app.towxml(res.data, 'markdown', {
+          theme: 'light',
+          events: {
+            tap: (e) => {
+              console.log('tap', e);
+            }
           }
-        }
+        });
+        var list = _ts.data.post;
+        list.artical = obj;
+        _ts.setData({
+          post: list,
+        });
       });
-      var list = _ts.data.post;
-      list.artical = obj;
-      _ts.setData({
-        post: list,
-      });
-
-    });
+    }else{
+      await this.getHtml(this.data.post.articalUrl)
+    }
 
     //获取文章所有评论
     await this.getComment()
@@ -76,6 +81,21 @@ Page({
 
   },
 
+  async getHtml(options) {
+    let obj = app.towxml(options, 'html', {
+      theme: 'light',
+      events: {
+        tap: (e) => {
+          console.log('tap', e);
+        }
+      }
+    });
+    var list = this.data.post;
+    list.artical = obj;
+    this.setData({
+      post: list,
+    });
+  },
   /**
    * 
    */
@@ -577,6 +597,7 @@ Page({
         console.log("【detail获取数据库" + options.collection + "数据】", res)
         let _id = "post._id"
         let title = "post.title"
+        let ishtml="post.ishtml"
         let defaultImageUrl = "post.defaultImageUrl"
         let articalUrl = "post.articalUrl"
         let createTime = "post.createTime"
@@ -586,6 +607,7 @@ Page({
         that.setData({
           [_id]: res.data._id,
           [title]: res.data.title,
+          [ishtml]:res.data.ishtml,
           [defaultImageUrl]: res.data.coverImgUrl,
           [articalUrl]: res.data.contextUrl,
           [createTime]: res.data.time.getFullYear() + '年' + month + '月' + res.data.time.getDate() + '日',
