@@ -248,7 +248,7 @@ Page({
         success: function() {
           setTimeout(function() {
             wx.navigateTo({
-              url: '../../my/login/login',
+              url: '../../index/register/register',
             })
             return
           }, 1500)
@@ -309,7 +309,7 @@ Page({
         success: function() {
           setTimeout(function() {
             wx.navigateTo({
-              url: '../my/login/login',
+              url: '../../index/register/register',
             })
             return
           }, 1500)
@@ -470,7 +470,7 @@ Page({
           success: function() {
             setTimeout(function() {
               wx.navigateTo({
-                url: '../../my/login/login',
+                url: '../../index/register/register',
               })
               return
             }, 1500)

@@ -381,6 +381,9 @@ Page({
         duration: 1500,
         mask: true
       })
+      wx.navigateTo({
+        url: url
+      })
     }
     else {
       wx.navigateTo({

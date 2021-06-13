@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "image-cropper": "../template/image-cropper/image-cropper"
+    "image-cropper": "../template/image-cropper/image-cropper",
+    "towxml":"/towxml/towxml"
   },
   "navigationBarTitleText": "裁剪图片",
   "disableScroll": true

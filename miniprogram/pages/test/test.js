@@ -1,16 +1,24 @@
+const app = getApp();
 Page({
   data: {
-    src: ''
+    isLoading: true,					// 判断是否尚在加载中
+    article: {},						// 内容数据
+    articleUrl:'',
+    ishtml:false,
   },
-  onLoad: function (options) {
-    //获取到image-cropper对象
-    this.cropper = this.selectComponent("#image-cropper");
-    //设置需要裁剪的图片路径，开始裁剪
+  async onLoad(options) {
+    
+    
+  },
+  imageLoad: function(e) {
+    var width=e.detail.width,  //获取图片真实宽度
+      height=e.detail.height,
+      ratio=width/height;  //图片的真实宽高比例
+    var viewWidth=718,      //设置图片显示宽度，左右留有16rpx边距
+      viewHeight=718/ratio;  //计算的高度值
     this.setData({
-      src: options.image,
-    });
-    wx.showLoading({
-      title: '加载中'
+      width:viewWidth,
+      height:viewHeight
     })
   },
   cropperload(e) {

@@ -106,7 +106,7 @@ Page({
             }
           })
           console.log('【注册界面提交表单信息】', e.detail.value, that.data.region, that.data.gender, that.data.grade)
-          if (input.uname == "" || input.school == "" || input.qq == "" || input.email == "" || input.tel == "" || input.invite == "" || pick.region.length == 0 || pick.gender == undefined || pick.grade == undefined || pick.fileID == undefined) {
+          if (input.uname == "" || input.school == "" || input.qq == "" || input.email == "" || input.tel == "" || pick.region.length == 0 || pick.gender == undefined || pick.grade == undefined || pick.fileID == undefined) {
             wx.showToast({
               title: '信息填写不完整~',
               icon: 'none',
